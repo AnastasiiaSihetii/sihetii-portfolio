@@ -96,8 +96,12 @@ export default function Home() {
             </div>
             <div className="public-item-row">
               <div className="public-item-text">
-                {/* TODO: swap href once the talk link is provided */}
-                <a href="#" className="item-title">
+                <a
+                  href="https://itct.com.ua/news/ux-ui-design-meetup-rinok-dizainu-2026-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="item-title"
+                >
                   AI tools in UX/UI daily design process: practical cases
                 </a>
                 <p className="item-subtitle">
@@ -130,8 +134,12 @@ export default function Home() {
               </div>
             </div>
             <div className="article-body">
-              {/* TODO: swap href once the article link is provided */}
-              <a href="#" className="item-title">
+              <a
+                href="https://journal.gen.tech/post/claude-design-figma-make-canva-magic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="item-title"
+              >
                 Claude Design, Figma Make та Canva Magic: великий тест-драйв ШІ-інструментів
               </a>
               <p className="article-desc">
@@ -164,8 +172,12 @@ export default function Home() {
               </div>
             </div>
             <div className="article-body">
-              {/* TODO: swap href once the article link is provided */}
-              <a href="#" className="item-title">
+              <a
+                href="https://dou.ua/forums/topic/58173/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="item-title"
+              >
                 Design system with Figma MCP and Claude Code: how to reduce manual work
               </a>
               <p className="article-desc">
@@ -191,8 +203,12 @@ export default function Home() {
               </div>
             </div>
             <div className="article-body">
-              {/* TODO: swap href once the article link is provided */}
-              <a href="#" className="item-title">
+              <a
+                href="https://dou.ua/forums/topic/58654/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="item-title"
+              >
                 AI in everyday design tasks: from brief to prototype in hours
               </a>
               <p className="article-desc">
