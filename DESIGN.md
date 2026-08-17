@@ -20,7 +20,7 @@ typography:
     letterSpacing: "-0.04em"
   headline:
     fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "clamp(2.3rem, 5vw, 3.5rem)"
+    fontSize: "clamp(2.5rem, 5vw, 3.5rem)"
     fontWeight: 600
     lineHeight: 1.05
     letterSpacing: "-0.04em"
@@ -48,9 +48,15 @@ typography:
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: "-0.04em"
+  cta-light-sm:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "22px"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-0.04em"
   section-heading:
     fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "clamp(1.9rem, 4.5vw, 2.5rem)"
+    fontSize: "clamp(2.25rem, 4.5vw, 2.5rem)"
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: "-0.04em"
@@ -62,7 +68,7 @@ typography:
     letterSpacing: "-1.28px"
   item-title:
     fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "clamp(1.35rem, 3.5vw, 1.75rem)"
+    fontSize: "clamp(1.6rem, 3.5vw, 1.75rem)"
     fontWeight: 500
     lineHeight: 1.2
     letterSpacing: "-2px"
@@ -152,7 +158,7 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 
 ### Hierarchy
 - **Display** (600–900 weight, `clamp(3.1rem, 7.6vw, 5.8rem)`, line-height 1.05): the case-study page's own title (`h1.hero-title`), and standalone stat numerals inside dark blocks (900 weight, gold). The homepage's own name/wordmark now lives in the cover-hero image instead of an `h1.hero-title` element.
-- **Headline** (600 weight, `clamp(2.3rem, 5vw, 3.5rem)`, line-height 1.05): section headings within a block (`h2.sec-title`).
+- **Headline** (600 weight, `clamp(2.5rem, 5vw, 3.5rem)`, line-height 1.05): section headings within a block (`h2.sec-title`).
 - **Title** (500 weight, letter-spacing -0.02em): `h3`-level subheads, used sparingly.
 - **Body** (400 weight, 1rem, line-height 1.6, max 60ch): paragraph copy; font-stretch 87.5% throughout.
 - **Label** (500 weight, 0.72–0.76rem, uppercase, letter-spacing 0.14em, Fixel at 87.5% width + tabular-nums): eyebrows, tags, meta keys, stat captions, footer credit.
@@ -167,7 +173,7 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 
 ## Layout
 
-A single centered column (`max-width: 1120px`) of full-bleed blocks stacked vertically with `clamp(2rem, 5vw, 3.5rem)` gaps between them — every content row on the page, including the cover-hero's bio/CTA row outside `.page`, shares this same 1120px cap; only intentionally full-bleed elements (the cover wordmark image, a block's own background color) are allowed past it — there is no side-by-side multi-column grid; "bento" describes the color-block rhythm of the stack, not a literal grid layout. Each block pads its content with `clamp(2.25rem, 5vw, 4.5rem)` vertical and `clamp(1.5rem, 6vw, 4.25rem)` horizontal space, and most block content constrains to a `40rem` (or occasionally `44rem`) inner column even inside a full-width block, so line length stays readable against the full-bleed color. Below 720px, block padding tightens, block radius drops from 32px to 22px, and the sticker badge leaves its absolute top-right position to sit static above the block content.
+A single centered column (`max-width: 1120px`) of full-bleed blocks stacked vertically with `clamp(2rem, 5vw, 3.5rem)` gaps between them — every content row on the page, including the cover-hero's bio/CTA row outside `.page`, shares this same 1120px cap; only intentionally full-bleed elements (the cover wordmark image, a block's own background color) are allowed past it — there is no side-by-side multi-column grid; "bento" describes the color-block rhythm of the stack, not a literal grid layout. Each block pads its content with `clamp(2.25rem, 5vw, 4.5rem)` vertical and `clamp(1.5rem, 6vw, 4.25rem)` horizontal space, and most block content constrains to a `40rem` (or occasionally `44rem`) inner column even inside a full-width block, so line length stays readable against the full-bleed color. Below 720px, block padding tightens, block radius drops from 32px to 22px, and the sticker badge leaves its absolute top-right position to sit static above the block content. The case-study card (`.block--card`) is the one exception: it holds a flat 40px radius at every viewport, matching the public-item photo radius rather than the standard block scale, so the two adjacent full-bleed elements read as one rounding system. It also carries its own cover photo (`.case-study-photo`, 1120:560 aspect ratio, 32px radius) as the first item inside `.block-inner`, sitting inset within the same padding as the rest of the card's content rather than bleeding to the card's edges.
 
 ## Elevation & Depth
 
@@ -180,7 +186,7 @@ Flat by default — blocks, tags, buttons, and cards carry no shadow at rest. Th
 
 Large, confident rounding throughout: blocks round at 32px (22px on mobile), and every pill-shaped element — buttons, tags, the sticker, the eyebrow chip — goes fully round at 999px. No hard corners appear anywhere in the system — every rectangle is at minimum an 8px radius, and anything small enough to read as a label or control is a full pill. No borders separate blocks from the page; separation comes entirely from the color change itself. Inside dark blocks, hairline dividers (`--line-on-dark`, 18% white) separate list rows (colophon, tech-list); inside light blocks, the equivalent is `--line-on-light` (14% ink).
 
-Photographic media gets its own, softer step: the public-item cover photo rounds at 40px — larger than any block, reserved for full-width imagery rather than a color field. Small article thumbnails (179×122) stay hard-cornered by design; not every image is a rounded card.
+Photographic media gets its own, softer step: the public-item cover photo rounds at 40px — larger than a standard block, reserved for full-width imagery rather than a color field. Small article thumbnails (179×122) stay hard-cornered by design; not every image is a rounded card. The case-study card (`.block--card`) borrows this 40px photo radius instead of the standard block radius, since it sits directly above the public-item photo and the two need to read as one rounding scale.
 
 ### Named Rules
 **The Pill Rule.** Any interactive or label-sized element — button, tag, sticker, eyebrow chip — is a full 999px pill, never an intermediate radius. Only the large full-bleed blocks use the softer 32px/22px block radius.
@@ -198,7 +204,7 @@ Playful and loose: components read as pieces of party ephemera — a sticker, a 
 ### CTA buttons (signature component — the site's only two contact actions)
 - **Shape:** same 999px pill as `.btn`, but its own type scale (CTA typography role) instead of the mono `.btn` label style.
 - **Download CV** (`.btn--cta`): CTA Blue background, canvas text. Appears twice — 300px tall / 40px text in the footer, `flex:1` height / 18px text (`.btn--cta-sm`) inline in the hero — always the same color pair.
-- **Email** (`.btn--cta-light`): CTA Gray background, ink text. 140px tall in the footer, 80px tall inline in the hero.
+- **Email** (`.btn--cta-light`): CTA Gray background, ink text. 140px tall / 40px text in the footer, 80px tall inline in the hero. Below 600px the footer instance drops to 96px tall / 22px text — the address is long, so it needs its own mobile step to keep side padding instead of running edge-to-edge.
 - **Hover:** both invert to ink background / canvas text — no lift, unlike `.btn`.
 
 ### Tags
@@ -206,7 +212,7 @@ Playful and loose: components read as pieces of party ephemera — a sticker, a 
 - **State:** static only — tags are labels, not interactive filters, in this system
 
 ### Cards / Containers (`.block` and its color variants)
-- **Corner Style:** 32px radius (22px mobile)
+- **Corner Style:** 32px radius (22px mobile); the case-study card (`.block--card`) is a flat 40px at every viewport, matching the public-item photo radius instead
 - **Background:** one full palette color per block — candle, ink, forest, sky, or card
 - **Shadow Strategy:** none (see Elevation)
 - **Border:** none; color change is the only boundary

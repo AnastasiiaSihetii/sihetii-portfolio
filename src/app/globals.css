@@ -101,6 +101,17 @@ h3 { font-weight: 500; letter-spacing: -0.02em; }
 .block-inner { max-width: 40rem; }
 .block-wide .block-inner { max-width: 100%; }
 
+/* Matches the public-item photo radius (40px) so the case-study card and the photo
+   block right below it read as the same rounding, at every viewport. */
+.block--card { border-radius: 40px; }
+.case-study-photo {
+  width: 100%;
+  aspect-ratio: 1120 / 560;
+  border-radius: 32px;
+  background: rgba(27, 22, 32, 0.08);
+  margin-bottom: 1.8rem;
+}
+
 .block--candle { background: var(--candle); color: var(--ink); }
 .block--ink { background: var(--ink); color: var(--canvas); }
 .block--forest { background: var(--forest); color: var(--canvas); }
@@ -119,7 +130,7 @@ h1.hero-title {
   max-width: 14ch;
   margin: 0 0 1.5rem;
 }
-h2.sec-title { font-size: clamp(2.3rem, 5vw, 3.5rem); margin: 0 0 2rem; }
+h2.sec-title { font-size: clamp(2.5rem, 5vw, 3.5rem); margin: 0 0 2rem; }
 
 section p, .block p { margin: 0 0 1.05rem; max-width: 60ch; }
 section p:last-child, .block p:last-child { margin-bottom: 0; }
@@ -190,6 +201,12 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .btn--cta-light { height: 140px; background: #f3f4f6; color: var(--ink); }
 .btn--cta:hover, .btn--cta-light:hover { background: var(--ink); color: var(--canvas); }
 
+@media (max-width: 600px) {
+  /* The footer email address is long; shrink its type so the pill keeps side padding
+     instead of running edge-to-edge on narrow phones. */
+  .site-footer .btn--cta-light { font-size: 22px; height: 96px; }
+}
+
 /* Small CTA variant used in the cover hero (Figma spec: 18px / -4% tracking) */
 .btn--cta-sm {
   height: auto;
@@ -230,7 +247,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .lang-toggle button.active:hover { color: var(--canvas); }
 
 /* ---------- Cover hero: full-bleed wordmark + bio + CTAs ---------- */
-.hero-cover-image { width: 100%; line-height: 0; }
+.hero-cover-image { width: 100%; line-height: 0; overflow: hidden; }
 .hero-cover-img { width: 100%; height: auto; display: block; }
 .hero-cover-header {
   background: var(--canvas);
@@ -270,6 +287,11 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   .btn--cta-sm.btn--cta-light { height: 80px; }
 }
 
+/* Wordmark reads larger on phones; letters crop at the edges rather than shrink to fit */
+@media (max-width: 600px) {
+  .hero-cover-img { width: 145%; max-width: none; }
+}
+
 /* ---------- Public: talks (Figma node 98:90) ---------- */
 .public-section, .articles-section {
   display: flex;
@@ -283,7 +305,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-display);
   font-stretch: 100%;
   font-weight: 600;
-  font-size: clamp(1.9rem, 4.5vw, 2.5rem);
+  font-size: clamp(2.25rem, 4.5vw, 2.5rem);
   line-height: 1.4;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -318,7 +340,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-display);
   font-stretch: 100%;
   font-weight: 500;
-  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-size: clamp(1.6rem, 3.5vw, 1.75rem);
   line-height: 1.2;
   letter-spacing: -2px;
   color: var(--ink);
@@ -384,8 +406,16 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .footer-badge { width: clamp(7.75rem, 13vw, 9.5rem); height: auto; }
 
 @media (max-width: 720px) {
-  .footer-links { flex-direction: column; align-items: flex-start; gap: 2rem; }
-  .footer-badge-group { align-self: auto; width: 100%; }
+  /* Same gap as the in-group links (1.25rem) so the two link columns read as one
+     continuous list instead of two unevenly-spaced clusters. */
+  .footer-links { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .footer-badge-group {
+    align-self: auto;
+    width: 100%;
+    margin-top: 0.5rem;
+    gap: 1.5rem;
+  }
+  .footer-badge { width: 6rem; }
 }
 
 .sticker {
@@ -410,21 +440,6 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 }
 .sticker strong { display: block; font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }
 .sticker--hero { right: clamp(-0.5rem, 2vw, 1rem); top: -1.2rem; background: var(--candle); color: var(--ink); box-shadow: 0 8px 20px rgba(27,22,32,0.22); }
-
-.meta-row { display: flex; flex-wrap: wrap; gap: 0.6rem 2.2rem; }
-.meta-item { font-size: 0.92rem; }
-.meta-item .meta-k {
-  display: block;
-  font-family: var(--font-mono);
-  font-stretch: 87.5%;
-  font-variant-numeric: tabular-nums;
-  font-size: 0.72rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  opacity: 0.6;
-  margin-bottom: 0.2rem;
-}
 
 /* ---------- Colophon list (imprint-style facts, dark block) ---------- */
 .colophon-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
@@ -477,6 +492,8 @@ footer.colophon {
 @media (max-width: 720px) {
   .page { padding: 16px 16px 36px; }
   .block { border-radius: 22px; padding: 2.5rem 1.5rem; }
+  .block--card { border-radius: 40px; padding: 2rem; }
+  .block--card .btn { width: 100%; justify-content: center; }
   .colophon-list li { grid-template-columns: 1fr; gap: 0.3rem; }
   .sticker { position: static; transform: rotate(-3deg); margin: 0 0 1.4rem; width: fit-content; }
 }

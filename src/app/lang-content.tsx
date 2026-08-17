@@ -87,9 +87,6 @@ export const content: Record<
       eyebrow: string;
       title: string;
       desc: string;
-      roleLabel: string;
-      durationLabel: string;
-      durationValue: string;
       linkLabel: string;
     };
     public: {
@@ -126,9 +123,6 @@ export const content: Record<
       eyebrow: "Case study",
       title: "A website for my birthday",
       desc: "For my birthday, I built a website for friends with a celebration schedule and a wishlist where gifts can be reserved anonymously in one click.",
-      roleLabel: "Role",
-      durationLabel: "Timeline",
-      durationValue: "4 days from idea to launch",
       linkLabel: "Open the case study",
     },
     public: {
@@ -164,9 +158,6 @@ export const content: Record<
       eyebrow: "Кейс",
       title: "Сайт на мій день народження",
       desc: "До свого дня народження я створила сайт для друзів із програмою святкування та wishlist-ом, де подарунки можна анонімно забронювати в один клік.",
-      roleLabel: "Роль",
-      durationLabel: "Строк",
-      durationValue: "4 дні від ідеї до релізу",
       linkLabel: "Відкрити кейс",
     },
     public: {

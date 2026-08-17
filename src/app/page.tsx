@@ -47,25 +47,17 @@ export default function Home() {
       {/* ---------- Case study ---------- */}
       <section className="block block--card block-wide">
         <div className="block-inner">
+          {/* TODO: swap for the real case-study cover photo */}
+          <div className="case-study-photo" aria-hidden="true" />
           <p className="eyebrow">{t.caseStudy.eyebrow}</p>
           <h2 className="sec-title">{t.caseStudy.title}</h2>
           <p style={{ marginBottom: "1.6rem" }}>{t.caseStudy.desc}</p>
-          <div className="tag-row" style={{ marginBottom: "1.8rem" }}>
+          <div className="tag-row" style={{ marginBottom: "2rem" }}>
             <span className="tag">Next.js</span>
             <span className="tag">Supabase</span>
             <span className="tag">Claude Code</span>
             <span className="tag">Figma</span>
             <span className="tag">Vercel</span>
-          </div>
-          <div className="meta-row" style={{ marginBottom: "2rem" }}>
-            <div className="meta-item">
-              <span className="meta-k">{t.caseStudy.roleLabel}</span>
-              Product Designer · Design Engineer
-            </div>
-            <div className="meta-item">
-              <span className="meta-k">{t.caseStudy.durationLabel}</span>
-              {t.caseStudy.durationValue}
-            </div>
           </div>
           <a href="/case-studies/birthday-website.html" className="btn">
             {t.caseStudy.linkLabel} <span className="btn-arrow">→</span>

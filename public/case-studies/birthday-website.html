@@ -100,7 +100,6 @@ h3 { font-weight: 500; letter-spacing: -0.02em; }
 .block-inner { max-width: 40rem; }
 .block-wide .block-inner { max-width: 100%; }
 
-.block--candle { background: var(--candle); color: var(--ink); }
 .block--ink { background: var(--ink); color: var(--canvas); }
 .block--forest { background: var(--forest); color: var(--canvas); }
 .block--sky { background: var(--sky); color: var(--card); }
@@ -110,15 +109,27 @@ section p { margin: 0 0 1.05rem; max-width: 60ch; }
 section p:last-child { margin-bottom: 0; }
 .lead { font-size: 1.12rem; line-height: 1.55; }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (plain intro, not a card block) ---------- */
+.hero {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+}
 h1.hero-title {
   font-size: clamp(3.1rem, 7.6vw, 5.8rem);
   max-width: 14ch;
   margin: 0 0 1.5rem;
 }
-.hero .eyebrow { color: var(--ink); background: rgba(27,22,32,0.1); padding: 0.4rem 0.75rem; border-radius: 999px; }
+.hero .eyebrow { color: var(--ink); }
 .hero-context { font-size: 1.02rem; max-width: 48ch; opacity: 0.92; margin: 0 0 0.9rem; }
-.hero-context:last-of-type { margin-bottom: 2.1rem; }
+.hero-context:last-of-type { margin-bottom: 0; }
+.hero-details {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin: 1.8rem 0 2.2rem;
+}
+.hero-text { flex: 1 1 0; min-width: 0; }
+.hero-meta { flex: 0 0 auto; width: clamp(16rem, 24vw, 20rem); }
 .meta-row { display: flex; flex-wrap: wrap; gap: 0.6rem 2.2rem; margin-bottom: 2.1rem; }
 .meta-item { font-size: 0.92rem; }
 .meta-item .meta-k {
@@ -130,7 +141,7 @@ h1.hero-title {
   opacity: 0.6;
   margin-bottom: 0.2rem;
 }
-.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.3rem; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tag {
   font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums;
   font-size: 0.76rem;
@@ -142,14 +153,21 @@ h1.hero-title {
   border-radius: 999px;
   white-space: nowrap;
 }
+.hero-photo {
+  width: 100%;
+  aspect-ratio: 1120 / 560;
+  border-radius: 32px;
+  background: rgba(27, 22, 32, 0.08);
+  margin-bottom: 1.8rem;
+}
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line-on-light);
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
 }
+.hero-actions .btn { width: 100%; justify-content: center; }
+.hero-actions .updated-note { text-align: center; }
 .btn {
   font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums;
   font-size: 0.85rem;
@@ -168,10 +186,11 @@ h1.hero-title {
   cursor: pointer;
 }
 .btn:hover { transform: translateY(-2px); }
+.btn--light { background: #f3f4f6; color: var(--ink); }
+.btn--light:hover { background: var(--ink); color: var(--canvas); }
 .updated-note { font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.78rem; opacity: 0.7; }
 
 /* ---------- Section headers ---------- */
-.block--candle .eyebrow { color: var(--ink); opacity: 0.6; }
 .block--ink .eyebrow, .block--forest .eyebrow { color: var(--wax); }
 .block--sky .eyebrow { color: var(--card); opacity: 0.85; }
 .block--card .eyebrow { color: var(--ink); opacity: 0.55; }
@@ -197,26 +216,10 @@ h2.sec-title { font-size: clamp(2.3rem, 5vw, 3.5rem); margin: 0 0 2rem; }
   z-index: 2;
 }
 .sticker strong { display: block; font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }
-.sticker--hero { right: clamp(-0.5rem, 2vw, 1rem); top: -1.2rem; background: var(--candle); color: var(--ink); }
+.sticker--hero { right: clamp(-0.5rem, 2vw, 1rem); top: 4.85rem; background: var(--candle); color: var(--ink); }
 .sticker--outcomes { right: clamp(0.5rem, 3vw, 2.5rem); top: -1.6rem; }
 
-/* ---------- Process (flow + condensed timeline, merged) ---------- */
-.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-.flow-step {
-  font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums;
-  font-size: 0.82rem;
-  font-weight: 500;
-  background: rgba(245,243,236,0.08);
-  border: 1px solid var(--line-on-dark);
-  color: var(--canvas);
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.flow-arrow { color: var(--wax); font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 1rem; }
-
-.process-lede { font-size: 0.95rem; opacity: 0.8; margin: 2.2rem 0 1.6rem; }
-
+/* ---------- Process (each day carries its own process steps) ---------- */
 .day-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -232,6 +235,18 @@ h2.sec-title { font-size: clamp(2.3rem, 5vw, 3.5rem); margin: 0 0 2rem; }
   flex-direction: column;
   gap: 0.65rem;
 }
+.day-steps { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.day-step {
+  font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums;
+  font-size: 0.76rem;
+  font-weight: 500;
+  background: rgba(245,243,236,0.08);
+  border: 1px solid var(--line-on-dark);
+  color: var(--wax);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
 .day-num {
   font-family: var(--font-display);
   font-weight: 900;
@@ -244,15 +259,6 @@ h2.sec-title { font-size: clamp(2.3rem, 5vw, 3.5rem); margin: 0 0 2rem; }
 .day-card p { font-size: 0.86rem; margin: 0; opacity: 0.92; max-width: none; }
 
 /* ---------- Outcomes ---------- */
-.fact-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.6rem; }
-.fact-chip {
-  font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums;
-  font-size: 0.78rem;
-  padding: 0.5rem 0.85rem;
-  background: rgba(245,243,236,0.14);
-  border: 1px solid var(--line-on-dark);
-  border-radius: 999px;
-}
 .check-list { list-style: none; margin: 0 0 2.8rem; padding: 0; display: flex; flex-direction: column; gap: 1.05rem; max-width: 56ch; }
 .check-list li { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.7rem; font-size: 1rem; }
 .check-list .ok { color: var(--wax); font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-weight: 700; }
@@ -298,6 +304,16 @@ h2.sec-title { font-size: clamp(2.3rem, 5vw, 3.5rem); margin: 0 0 2rem; }
 .tech-name { font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.86rem; }
 .tech-why { opacity: 0.72; }
 
+/* ---------- Case-to-case nav (inserted only once a neighbor exists — see script) ---------- */
+.case-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.case-nav .btn { width: 100%; justify-content: center; }
+.case-nav .btn--prev { grid-column: 1; }
+.case-nav .btn--next { grid-column: 2; }
+
 footer.colophon {
   font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums;
   font-size: 0.76rem;
@@ -312,11 +328,15 @@ footer.colophon {
   .block { border-radius: 22px; padding: 2.5rem 1.5rem; }
   .tech-list li { grid-template-columns: 1fr; gap: 0.3rem; }
   .stat-grid, .day-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .sticker { position: static; transform: rotate(-3deg); margin: 0 0 1.4rem; width: fit-content; }
+  .sticker { position: static; transform: rotate(-3deg); margin: 1.4rem 0 0; width: fit-content; }
+  .hero-details { flex-direction: column; }
+  .hero-meta { width: 100%; }
+  .case-nav { gap: 0.6rem; }
+  .case-nav .btn { padding: 0 1rem; font-size: 0.78rem; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .block { animation: rise 0.55s ease-out both; }
+  .block, .hero { animation: rise 0.55s ease-out both; }
 }
 @keyframes rise {
   from { opacity: 0; transform: translateY(10px); }
@@ -329,29 +349,37 @@ footer.colophon {
 
 <div class="page">
 
-  <header class="block block--candle hero" id="top">
+  <header class="hero" id="top">
+    <!-- TODO: swap for the real case-study cover photo -->
+    <div class="hero-photo" aria-hidden="true"></div>
     <div class="sticker sticker--hero"><strong>4</strong>дні від ідеї до релізу</div>
     <span class="eyebrow">Case study</span>
     <h1 class="hero-title">Сайт на мій день народження</h1>
-    <p class="hero-context">До свого дня народження я створила сайт для друзів із програмою святкування та wishlist-ом, де подарунки можна анонімно забронювати в один клік.</p>
-    <p class="hero-context">Я сама визначила задачу, спроєктувала рішення та реалізувала його. Основною метою було зібрати всю інформацію про подію в одному місці, щоб не дублювати її в чатах і завжди мати одну актуальну версію подій.</p>
-    <p class="hero-context">Щоб зберегти приватність гостей, система не використовує акаунти чи персональні дані. Кожен користувач ідентифікується лише локальним токеном на своєму пристрої.</p>
-    <div class="meta-row">
-      <div class="meta-item"><span class="meta-k">Моя роль</span>Product Designer · Design Engineer</div>
-      <div class="meta-item"><span class="meta-k">Тривалість</span>4 дні · ≈20 год активної роботи</div>
-    </div>
-    <div class="tag-row">
-      <span class="tag">Claude Code</span>
-      <span class="tag">Claude Sonnet 5</span>
-      <span class="tag">Impeccable</span>
-      <span class="tag">Next.js</span>
-      <span class="tag">Supabase</span>
-      <span class="tag">Figma</span>
-      <span class="tag">Vercel</span>
-      <span class="tag">22 коміти</span>
+    <div class="hero-details">
+      <div class="hero-text">
+        <p class="hero-context">До свого дня народження я створила сайт для друзів із програмою святкування та wishlist-ом, де подарунки можна анонімно забронювати в один клік.</p>
+        <p class="hero-context">Я сама визначила задачу, спроєктувала рішення та реалізувала його. Основною метою було зібрати всю інформацію про подію в одному місці, щоб не дублювати її в чатах і завжди мати одну актуальну версію подій.</p>
+        <p class="hero-context">Щоб зберегти приватність гостей, система не використовує акаунти чи персональні дані. Кожен користувач ідентифікується лише локальним токеном на своєму пристрої.</p>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-row">
+          <div class="meta-item"><span class="meta-k">Моя роль</span>Product Designer · Design Engineer</div>
+          <div class="meta-item"><span class="meta-k">Тривалість</span>4 дні · ≈20 год активної роботи</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Claude Code</span>
+          <span class="tag">Claude Sonnet 5</span>
+          <span class="tag">Impeccable</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">22 коміти</span>
+        </div>
+      </div>
     </div>
     <div class="hero-actions">
-      <a class="btn" href="https://sweet27.vercel.app" target="_blank" rel="noopener">Відкрити сайт →</a>
+      <a class="btn btn--light" href="https://sweet27.vercel.app" target="_blank" rel="noopener">Відкрити сайт →</a>
       <span class="updated-note">Кейс підготовлено 29.07.2026 · метрики оновлено 17.08.2026</span>
     </div>
   </header>
@@ -359,36 +387,42 @@ footer.colophon {
   <section class="block block--ink block-wide" id="process">
     <span class="eyebrow">Процес</span>
     <h2 class="sec-title">Проєкт зроблено за 4 дні, ≈20 годин роботи:</h2>
-    <div class="flow">
-      <span class="flow-step">Idea &amp; Goal</span><span class="flow-arrow">→</span>
-      <span class="flow-step">Requirements</span><span class="flow-arrow">→</span>
-      <span class="flow-step">Information Architecture</span><span class="flow-arrow">→</span>
-      <span class="flow-step">Wireframes</span><span class="flow-arrow">→</span>
-      <span class="flow-step">UI Exploration</span><span class="flow-arrow">→</span>
-      <span class="flow-step">Final UI</span><span class="flow-arrow">→</span>
-      <span class="flow-step">Responsive Design</span><span class="flow-arrow">→</span>
-      <span class="flow-step">Development</span><span class="flow-arrow">→</span>
-      <span class="flow-step">Launch</span>
-    </div>
     <div class="day-grid">
       <div class="day-card">
         <span class="day-num">01</span>
         <span class="day-date">24.07 · ~4 год</span>
+        <div class="day-steps">
+          <span class="day-step">Idea &amp; Goal</span>
+          <span class="day-step">Requirements</span>
+          <span class="day-step">Information Architecture</span>
+          <span class="day-step">Wireframes</span>
+        </div>
         <p>Скаффолдинг Next.js, Supabase-бекенд, перший wireframe.</p>
       </div>
       <div class="day-card">
         <span class="day-num">02</span>
         <span class="day-date">27.07 · ~2,5 год</span>
+        <div class="day-steps">
+          <span class="day-step">UI Exploration</span>
+          <span class="day-step">Responsive Design</span>
+        </div>
         <p>UI-напрям, мобільна версія.</p>
       </div>
       <div class="day-card">
         <span class="day-num">03</span>
         <span class="day-date">28.07 · 9 комітів</span>
+        <div class="day-steps">
+          <span class="day-step">Final UI</span>
+          <span class="day-step">Development</span>
+        </div>
         <p>Дизайн-система, критика, обидві листівки-агенди, вішліст, мобільна поліровка.</p>
       </div>
       <div class="day-card">
         <span class="day-num">04</span>
         <span class="day-date">29.07 · ~48 хв</span>
+        <div class="day-steps">
+          <span class="day-step">Launch</span>
+        </div>
         <p>Фінальна поліровка та фікс security-регресії перед релізом.</p>
       </div>
     </div>
@@ -397,12 +431,6 @@ footer.colophon {
   <section class="block block--forest block-wide" id="outcomes">
     <span class="eyebrow">Outcomes</span>
     <h2 class="sec-title">Що вийшло</h2>
-
-    <div class="fact-row">
-      <span class="fact-chip">22 коміти</span>
-      <span class="fact-chip">8 SQL-міграцій</span>
-      <span class="fact-chip">2 мови: EN / UK</span>
-    </div>
 
     <ul class="check-list">
       <li><span class="ok">✓</span><span>Щоб не пояснювати одне й те саме в кожному чаті, зібрала всю інформацію про свято в одному місці.</span></li>
@@ -444,6 +472,48 @@ footer.colophon {
 
 
 </div>
+
+<!-- Case-to-case navigation. Data-driven from CASE_SEQUENCE below so it's
+     ready the moment a second case study ships. This case is currently both
+     first and last, so it renders nothing today — showing a "next case"
+     button with nowhere real to go would imply a series that doesn't exist
+     yet (see PRODUCT.md). Each case-study file is deliberately
+     self-contained, so when a new case ships, copy the updated
+     CASE_SEQUENCE into every case file, not just this one. -->
+<script>
+(function () {
+  var CASE_SEQUENCE = [
+    { slug: "birthday-website", href: "/case-studies/birthday-website.html" }
+  ];
+  var CURRENT_SLUG = "birthday-website";
+
+  var index = CASE_SEQUENCE.findIndex(function (c) { return c.slug === CURRENT_SLUG; });
+  var prev = index > 0 ? CASE_SEQUENCE[index - 1] : null;
+  var next = index > -1 && index < CASE_SEQUENCE.length - 1 ? CASE_SEQUENCE[index + 1] : null;
+  if (!prev && !next) return;
+
+  var nav = document.createElement("nav");
+  nav.className = "case-nav";
+  nav.setAttribute("aria-label", "Weitere Case Studies");
+
+  if (prev) {
+    var prevLink = document.createElement("a");
+    prevLink.className = "btn btn--prev";
+    prevLink.href = prev.href;
+    prevLink.textContent = "← Попередній";
+    nav.appendChild(prevLink);
+  }
+  if (next) {
+    var nextLink = document.createElement("a");
+    nextLink.className = "btn btn--next";
+    nextLink.href = next.href;
+    nextLink.textContent = "Наступний →";
+    nav.appendChild(nextLink);
+  }
+
+  document.querySelector(".page").appendChild(nav);
+})();
+</script>
 
 
 </body>
