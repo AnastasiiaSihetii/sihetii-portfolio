@@ -11,7 +11,7 @@
       "ink": { "role": "neutral", "displayName": "Deep Wick Ink", "canonical": "#1b1620", "tonalRamp": ["#050406", "#0b090d", "#120e16", "#1b1620", "#382e40", "#564760", "#8a7f92", "#c3bcc7"] },
       "canvas": { "role": "neutral", "displayName": "Canvas White", "canonical": "#ffffff", "tonalRamp": ["#c9c9c9", "#d9d9d9", "#e8e8e8", "#f4f4f4", "#ffffff", "#ffffff", "#ffffff", "#ffffff"] },
       "card": { "role": "neutral", "displayName": "Invitation Card Cream", "canonical": "#f5f3ec", "tonalRamp": ["#3a3626", "#5e5842", "#847c61", "#b6ac8e", "#f5f3ec", "#f8f6f0", "#faf9f4", "#fdfcfa"] },
-      "cta-blue": { "role": "cta", "displayName": "CTA Blue", "canonical": "#3765f7", "tonalRamp": ["#0a1442", "#132870", "#1d3c9e", "#2850c8", "#3765f7", "#6288f9", "#93adfb", "#c6d3fd"] },
+      "cta-blue": { "role": "cta", "displayName": "CTA Blue", "canonical": "#134bff", "tonalRamp": ["#0a1442", "#132870", "#1d3c9e", "#2850c8", "#134bff", "#6288f9", "#93adfb", "#c6d3fd"] },
       "cta-gray": { "role": "cta", "displayName": "CTA Gray", "canonical": "#f3f4f6", "tonalRamp": ["#26282c", "#404448", "#5a6066", "#84898f", "#f3f4f6", "#f6f7f8", "#f9fafb", "#fcfcfd"] }
     },
     "typographyMeta": {
@@ -79,7 +79,7 @@
       "refersTo": "button-cta",
       "description": "Download CV — the site's only blue button. Appears at 300px/40px in the footer and flex-grown/18px inline in the hero.",
       "html": "<a class=\"ds-btn-cta\" href=\"#\">Download CV</a>",
-      "css": ".ds-btn-cta { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.4; letter-spacing: -0.04em; background: #3765f7; color: #ffffff; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 300px; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-cta:hover { background: #1b1620; color: #ffffff; }"
+      "css": ".ds-btn-cta { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.4; letter-spacing: -0.04em; background: #134bff; color: #ffffff; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 300px; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-cta:hover { background: #1b1620; color: #ffffff; }"
     },
     {
       "name": "CTA Button (gray)",

@@ -9,7 +9,7 @@ colors:
   ink: "#1b1620"
   canvas: "#ffffff"
   card: "#f5f3ec"
-  cta-blue: "#3765f7"
+  cta-blue: "#134bff"
   cta-gray: "#f3f4f6"
 typography:
   display:
@@ -114,7 +114,7 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 - **Invitation Card Cream** (`#f5f3ec`): the warm off-white block background used for index/listing content (case-study cards); softer than pure canvas, evokes card stock.
 
 ### CTA (contact call-to-action, outside the block palette)
-- **CTA Blue** (`#3765f7`): the primary "Download CV" pill, in both its hero-scale and footer-scale instances. A separate blue from Streamer Sky Blue — this one is reserved for the single contact action, never a block background.
+- **CTA Blue** (`#134bff`): the primary "Download CV" pill, in both its hero-scale and footer-scale instances. A separate blue from Streamer Sky Blue — this one is reserved for the single contact action, never a block background.
 - **CTA Gray** (`#f3f4f6`): the secondary "email" pill paired with CTA Blue. Both invert to ink on hover — see the Named Rule below.
 
 ### Named Rules
