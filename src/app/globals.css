@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* ---------- Fonts (extracted from the shipped case study, served as local files) ---------- */
+@font-face {
+  font-family: 'Fixel Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 87.5% 100%;
+  font-display: swap;
+  src: url('/fonts/fixel-variable-100900-var-0.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  src: url('/fonts/jetbrains-mono-500-cyr-1.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('/fonts/jetbrains-mono-500-lat-2.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  src: url('/fonts/jetbrains-mono-700-cyr-3.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('/fonts/jetbrains-mono-700-lat-4.woff2') format('woff2');
+}
+
+/* ---------- Design tokens (inherited verbatim from the shipped case study) ---------- */
+:root {
+  color-scheme: light;
+  --ink: #1b1620;
+  --canvas: #ffffff;
+  --card: #f5f3ec;
+  --candle: #ff5000;
+  --forest: #1e4a3a;
+  --sky: #4c6bd6;
+  --wax: #f0b429;
+  --line-on-light: rgba(27, 22, 32, 0.14);
+  --line-on-dark: rgba(245, 243, 236, 0.18);
+
+  --font-display: 'Fixel Variable', system-ui, sans-serif;
+  --font-body: 'Fixel Variable', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-candle: var(--candle);
+  --color-forest: var(--forest);
+  --color-sky: var(--sky);
+  --color-wax: var(--wax);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--canvas); }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-stretch: 87.5%;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--wax);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  line-height: 1.05;
+  margin: 0;
+  text-wrap: balance;
+}
+h1, h2 { font-weight: 600; letter-spacing: -0.04em; }
+h3 { font-weight: 500; letter-spacing: -0.02em; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  display: inline-block;
+  margin-bottom: 0.85rem;
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px) 48px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.block {
+  border-radius: 32px;
+  padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 4.25rem);
+  position: relative;
+  overflow: hidden;
+}
+.block-inner { max-width: 40rem; }
+.block-wide .block-inner { max-width: 100%; }
+
+.block--candle { background: var(--candle); color: var(--ink); }
+.block--ink { background: var(--ink); color: var(--canvas); }
+.block--forest { background: var(--forest); color: var(--canvas); }
+.block--sky { background: var(--sky); color: var(--card); }
+.block--card { background: var(--card); color: var(--ink); }
+
+.block--candle .eyebrow { color: var(--ink); opacity: 0.6; }
+.block--ink .eyebrow, .block--forest .eyebrow { color: var(--wax); }
+.block--sky .eyebrow { color: var(--card); opacity: 0.85; }
+.block--card .eyebrow { color: var(--ink); opacity: 0.55; }
+
+section p, .block p { margin: 0 0 1.05rem; max-width: 60ch; }
+section p:last-child, .block p:last-child { margin-bottom: 0; }
+.lead { font-size: 1.12rem; line-height: 1.55; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  background: var(--ink);
+  color: var(--canvas);
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.block--ink .tag, .block--forest .tag { background: rgba(245,243,236,0.12); border: 1px solid var(--line-on-dark); }
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--ink);
+  color: var(--canvas);
+  padding: 0.9rem 1.4rem;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--on-dark { background: var(--wax); color: var(--ink); }
+.btn--on-candle { background: var(--ink); color: var(--canvas); }
+
+.sticker {
+  position: absolute;
+  background: var(--wax);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  transform: rotate(-6deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+  text-align: center;
+  line-height: 1.3;
+  width: 8rem;
+  z-index: 2;
+}
+.sticker strong { display: block; font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }
+.sticker--hero { right: clamp(-0.5rem, 2vw, 1rem); top: -1.2rem; background: var(--candle); color: var(--ink); box-shadow: 0 8px 20px rgba(27,22,32,0.22); }
+
+.meta-row { display: flex; flex-wrap: wrap; gap: 0.6rem 2.2rem; }
+.meta-item { font-size: 0.92rem; }
+.meta-item .meta-k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  margin-bottom: 0.2rem;
+}
+
+/* ---------- Colophon list (imprint-style facts, dark block) ---------- */
+.colophon-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.colophon-list li {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1rem;
+  padding: 1.3rem 0;
+  border-top: 1px solid var(--line-on-dark);
+  font-size: 0.98rem;
+}
+.colophon-list li:last-child { border-bottom: 1px solid var(--line-on-dark); }
+.colophon-key {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--wax);
+  padding-top: 0.15rem;
+}
+.colophon-val a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-on-dark); }
+.colophon-val a:hover { text-decoration-color: currentColor; }
+
+/* ---------- Stat numeral ---------- */
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 100%;
+  font-size: clamp(2rem, 4.4vw, 2.9rem);
+  color: var(--wax);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-cap { font-family: var(--font-mono); font-size: 0.74rem; opacity: 0.85; margin-top: 0.5rem; display: block; }
+
+footer.colophon {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink);
+  opacity: 0.5;
+  text-align: center;
+  padding: 1rem 0 0.5rem;
+}
+
+@media (max-width: 720px) {
+  .page { padding: 16px 16px 36px; }
+  .block { border-radius: 22px; padding: 2.5rem 1.5rem; }
+  .colophon-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .sticker { position: static; transform: rotate(-3deg); margin: 0 0 1.4rem; width: fit-content; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .block { animation: rise 0.55s ease-out both; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
