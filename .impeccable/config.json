@@ -1,0 +1,50 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "18px",
+        "createdAt": "2026-08-17T12:35:31.651Z",
+        "reason": "User-supplied exact Figma spec for hero CTA text (this session's get_design_context call)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.76rem",
+        "createdAt": "2026-08-17T12:35:31.688Z",
+        "reason": "Inherited verbatim from shipped case study (.tag, footer credit) — not enumerated in DESIGN.md's named type ramp per doc.md's own don't-enumerate-one-offs guidance"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.92rem",
+        "createdAt": "2026-08-17T12:35:31.724Z",
+        "reason": "Inherited verbatim from shipped case study (.meta-item)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.68rem",
+        "createdAt": "2026-08-17T12:35:31.760Z",
+        "reason": "Inherited verbatim from shipped case study (.meta-k)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.5rem",
+        "createdAt": "2026-08-17T12:35:31.795Z",
+        "reason": "Inherited verbatim from shipped case study (.sticker strong numeral)"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "2px",
+        "createdAt": "2026-08-17T12:35:31.830Z",
+        "reason": "Focus-visible outline radius, inherited from shipped case study, not a shape token"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "22px",
+        "createdAt": "2026-08-17T12:35:31.865Z",
+        "reason": "Mobile block radius (720px breakpoint), inherited from shipped case study"
+      }
+    ]
+  }
+}

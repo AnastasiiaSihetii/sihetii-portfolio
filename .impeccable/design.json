@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T00:00:00Z",
+  "generatedAt": "2026-08-17T18:00:00Z",
   "title": "Design System: sihetii-portfolio",
   "extensions": {
     "colorMeta": {
@@ -10,13 +10,16 @@
       "sky": { "role": "tertiary", "displayName": "Streamer Sky Blue", "canonical": "#4c6bd6", "tonalRamp": ["#0e1530", "#1a2657", "#273a83", "#3550ab", "#4c6bd6", "#7690e0", "#a0b3ea", "#cbd7f4"] },
       "ink": { "role": "neutral", "displayName": "Deep Wick Ink", "canonical": "#1b1620", "tonalRamp": ["#050406", "#0b090d", "#120e16", "#1b1620", "#382e40", "#564760", "#8a7f92", "#c3bcc7"] },
       "canvas": { "role": "neutral", "displayName": "Canvas White", "canonical": "#ffffff", "tonalRamp": ["#c9c9c9", "#d9d9d9", "#e8e8e8", "#f4f4f4", "#ffffff", "#ffffff", "#ffffff", "#ffffff"] },
-      "card": { "role": "neutral", "displayName": "Invitation Card Cream", "canonical": "#f5f3ec", "tonalRamp": ["#3a3626", "#5e5842", "#847c61", "#b6ac8e", "#f5f3ec", "#f8f6f0", "#faf9f4", "#fdfcfa"] }
+      "card": { "role": "neutral", "displayName": "Invitation Card Cream", "canonical": "#f5f3ec", "tonalRamp": ["#3a3626", "#5e5842", "#847c61", "#b6ac8e", "#f5f3ec", "#f8f6f0", "#faf9f4", "#fdfcfa"] },
+      "cta-blue": { "role": "cta", "displayName": "CTA Blue", "canonical": "#3765f7", "tonalRamp": ["#0a1442", "#132870", "#1d3c9e", "#2850c8", "#3765f7", "#6288f9", "#93adfb", "#c6d3fd"] },
+      "cta-gray": { "role": "cta", "displayName": "CTA Gray", "canonical": "#f3f4f6", "tonalRamp": ["#26282c", "#404448", "#5a6066", "#84898f", "#f3f4f6", "#f6f7f8", "#f9fafb", "#fcfcfd"] }
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "Hero title-page numerals and names; standalone stat numerals on dark blocks." },
       "headline": { "displayName": "Headline", "purpose": "Section headings within a block." },
       "body": { "displayName": "Body", "purpose": "Paragraph copy, max 60ch, font-stretch 87.5%." },
-      "label": { "displayName": "Label", "purpose": "Eyebrows, tags, meta keys, stat captions, footer credit — always mono, uppercase, tracked wide." }
+      "label": { "displayName": "Label", "purpose": "Eyebrows, tags, meta keys, stat captions, footer credit — always mono, uppercase, tracked wide." },
+      "cta": { "displayName": "CTA", "purpose": "The two contact buttons only (Download CV / email), 40px at hero/footer scale or 18px inline." }
     },
     "shadows": [
       { "name": "sticker-lift", "value": "0 8px 20px rgba(0,0,0,0.14)", "purpose": "The system's only shadow — lifts the rotated sticker badge off its block." }
@@ -69,6 +72,22 @@
       "description": "Two-column mono key/value row for dense facts on dark blocks; collapses to one column under 720px.",
       "html": "<ul class=\"ds-colophon\"><li><span class=\"ds-colophon-key\">Роль</span><span>Product Designer · Design Engineer</span></li></ul>",
       "css": ".ds-colophon { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; } .ds-colophon li { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid rgba(245,243,236,0.18); font-size: 0.98rem; color: #ffffff; } .ds-colophon-key { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: #f0b429; } @media (max-width: 720px) { .ds-colophon li { grid-template-columns: 1fr; gap: 0.3rem; } }"
+    },
+    {
+      "name": "CTA Button (blue)",
+      "kind": "button",
+      "refersTo": "button-cta",
+      "description": "Download CV — the site's only blue button. Appears at 300px/40px in the footer and flex-grown/18px inline in the hero.",
+      "html": "<a class=\"ds-btn-cta\" href=\"#\">Download CV</a>",
+      "css": ".ds-btn-cta { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.4; letter-spacing: -0.04em; background: #3765f7; color: #ffffff; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 300px; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-cta:hover { background: #1b1620; color: #ffffff; }"
+    },
+    {
+      "name": "CTA Button (gray)",
+      "kind": "button",
+      "refersTo": "button-cta-light",
+      "description": "Email contact — paired with CTA Button (blue), same hover inversion to ink.",
+      "html": "<a class=\"ds-btn-cta-light\" href=\"mailto:anastasiia.sihetii@gmail.com\">anastasiia.sihetii@gmail.com</a>",
+      "css": ".ds-btn-cta-light { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.4; letter-spacing: -0.04em; background: #f3f4f6; color: #1b1620; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 140px; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-cta-light:hover { background: #1b1620; color: #ffffff; }"
     }
   ],
   "narrative": {

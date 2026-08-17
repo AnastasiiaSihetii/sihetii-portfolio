@@ -9,6 +9,8 @@ colors:
   ink: "#1b1620"
   canvas: "#ffffff"
   card: "#f5f3ec"
+  cta-blue: "#3765f7"
+  cta-gray: "#f3f4f6"
 typography:
   display:
     fontFamily: "Fixel Variable, system-ui, sans-serif"
@@ -32,6 +34,18 @@ typography:
     fontSize: "0.72rem"
     fontWeight: 500
     letterSpacing: "0.14em"
+  cta:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "40px"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-0.04em"
+  cta-sm:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "18px"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-0.04em"
 rounded:
   sm: "8px"
   md: "10px"
@@ -47,6 +61,16 @@ components:
     textColor: "{colors.canvas}"
     rounded: "{rounded.pill}"
     padding: "0 2rem"
+  button-cta:
+    backgroundColor: "{colors.cta-blue}"
+    textColor: "{colors.canvas}"
+    typography: "{typography.cta}"
+    rounded: "{rounded.pill}"
+  button-cta-light:
+    backgroundColor: "{colors.cta-gray}"
+    textColor: "{colors.ink}"
+    typography: "{typography.cta}"
+    rounded: "{rounded.pill}"
   tag:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
@@ -89,6 +113,10 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 - **Canvas White** (`#ffffff`): page background outside the blocks; text-on-ink for buttons and tags.
 - **Invitation Card Cream** (`#f5f3ec`): the warm off-white block background used for index/listing content (case-study cards); softer than pure canvas, evokes card stock.
 
+### CTA (contact call-to-action, outside the block palette)
+- **CTA Blue** (`#3765f7`): the primary "Download CV" pill, in both its hero-scale and footer-scale instances. A separate blue from Streamer Sky Blue — this one is reserved for the single contact action, never a block background.
+- **CTA Gray** (`#f3f4f6`): the secondary "email" pill paired with CTA Blue. Both invert to ink on hover — see the Named Rule below.
+
 ### Named Rules
 **The One Hue Per Block Rule.** A `.block` owns exactly one background color from the palette and applies it full-bleed to the whole section — colors are never mixed within a single block or scattered as small accents across a neutral ground.
 
@@ -106,6 +134,7 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 - **Title** (500 weight, letter-spacing -0.02em): `h3`-level subheads, used sparingly.
 - **Body** (400 weight, 1rem, line-height 1.6, max 60ch): paragraph copy; font-stretch 87.5% throughout.
 - **Label** (500 weight, 0.72–0.76rem, uppercase, letter-spacing 0.14em, mono): eyebrows, tags, meta keys, stat captions, footer credit.
+- **CTA** (600 weight, 40px hero/footer scale or 18px inline scale, line-height 1.4, letter-spacing -0.04em): the two contact buttons only (Download CV / email), at whichever scale the surface calls for.
 
 ### Named Rules
 **The Mono-Label Rule.** Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.
@@ -137,6 +166,12 @@ Playful and loose: components read as pieces of party ephemera — a sticker, a 
 - **Primary:** ink background, canvas text, `0 2rem` padding, mono font at 700 weight
 - **Hover:** `translateY(-2px)` lift, no shadow or color change
 - **On dark blocks:** an available `.btn--on-dark` swaps to wax background / ink text for contrast against ink or forest
+
+### CTA buttons (signature component — the site's only two contact actions)
+- **Shape:** same 999px pill as `.btn`, but its own type scale (CTA typography role) instead of the mono `.btn` label style.
+- **Download CV** (`.btn--cta`): CTA Blue background, canvas text. Appears twice — 300px tall / 40px text in the footer, `flex:1` height / 18px text (`.btn--cta-sm`) inline in the hero — always the same color pair.
+- **Email** (`.btn--cta-light`): CTA Gray background, ink text. 140px tall in the footer, 80px tall inline in the hero.
+- **Hover:** both invert to ink background / canvas text — no lift, unlike `.btn`.
 
 ### Tags
 - **Style:** outlined pill — transparent ink fill (`rgba(27,22,32,0.08)`) with a hairline ink border on light blocks; on dark blocks (`.block--ink`, `.block--forest`), flips to a translucent white fill (`rgba(245,243,236,0.12)`) with a hairline white-ish border. Every tag on the site — hero, case-study card, footer — shares this one component; none render as a solid fill.
