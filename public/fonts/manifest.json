@@ -7,41 +7,5 @@
     "urange": null,
     "file": "fixel-variable-100900-var-0.woff2",
     "size": 108296
-  },
-  {
-    "family": "JetBrains Mono",
-    "weight": "500",
-    "style": "normal",
-    "stretch": null,
-    "urange": "U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116",
-    "file": "jetbrains-mono-500-cyr-1.woff2",
-    "size": 5392
-  },
-  {
-    "family": "JetBrains Mono",
-    "weight": "500",
-    "style": "normal",
-    "stretch": null,
-    "urange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
-    "file": "jetbrains-mono-500-lat-2.woff2",
-    "size": 21876
-  },
-  {
-    "family": "JetBrains Mono",
-    "weight": "700",
-    "style": "normal",
-    "stretch": null,
-    "urange": "U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116",
-    "file": "jetbrains-mono-700-cyr-3.woff2",
-    "size": 5340
-  },
-  {
-    "family": "JetBrains Mono",
-    "weight": "700",
-    "style": "normal",
-    "stretch": null,
-    "urange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
-    "file": "jetbrains-mono-700-lat-4.woff2",
-    "size": 21964
   }
 ]

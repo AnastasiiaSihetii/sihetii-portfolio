@@ -30,7 +30,9 @@ typography:
     fontWeight: 400
     lineHeight: 1.6
   label:
-    fontFamily: "JetBrains Mono, ui-monospace, SF Mono, Menlo, monospace"
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontStretch: "87.5%"
+    fontVariantNumeric: "tabular-nums"
     fontSize: "0.72rem"
     fontWeight: 500
     letterSpacing: "0.14em"
@@ -108,7 +110,7 @@ The system reads as a physical invitation card, not a web app: one full-bleed co
 **Key Characteristics:**
 - Full-bleed color blocks, one hue per topic, stacked vertically with generous rounded corners
 - Huge geometric display numerals and headlines set in a variable display face
-- Dev-tool monospace for every label, tag, stat, and footer credit line
+- Fixel Variable at a condensed 87.5% width for every label, tag, stat, and footer credit line, with tabular figures standing in for the old dev-tool monospace
 - Exactly one rotated sticker badge per surface, carrying the single most important stat
 - Flat by default; the sticker's drop shadow is the system's only elevation device
 - Single-theme commitment — no `prefers-color-scheme` or `data-theme` branching anywhere
@@ -144,22 +146,22 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 
 **Display Font:** Fixel Variable (variable weight 100–900, width 87.5–100%), with `system-ui, sans-serif` fallback
 **Body Font:** Fixel Variable at body weight, with `-apple-system, BlinkMacSystemFont, sans-serif` fallback
-**Label/Mono Font:** JetBrains Mono, with `ui-monospace, SF Mono, Menlo, monospace` fallback
+**Label/Mono Font:** Fixel Variable at 87.5% width with `tabular-nums`, with `system-ui, sans-serif` fallback
 
-**Character:** A single variable family carries both display and body duty — display type stretches to 100% width and pushes to 900 weight for huge geometric numerals; body text relaxes to 87.5% width for a warmer, slightly condensed reading rhythm. JetBrains Mono is the system's "receipt printer" voice: every label, tag, and stat is monospace, uppercase, and tracked wide.
+**Character:** A single variable family carries display, body, and label duty — display type stretches to 100% width and pushes to 900 weight for huge geometric numerals; body and label text relax to 87.5% width for a warmer, slightly condensed reading rhythm. Labels keep the system's "receipt printer" voice through uppercase, wide tracking, and `font-variant-numeric: tabular-nums` for aligned figures — the one glyph-level trace of the retired JetBrains Mono — rather than a true monospace face.
 
 ### Hierarchy
 - **Display** (600–900 weight, `clamp(3.1rem, 7.6vw, 5.8rem)`, line-height 1.05): the case-study page's own title (`h1.hero-title`), and standalone stat numerals inside dark blocks (900 weight, gold). The homepage's own name/wordmark now lives in the cover-hero image instead of an `h1.hero-title` element.
 - **Headline** (600 weight, `clamp(2.3rem, 5vw, 3.5rem)`, line-height 1.05): section headings within a block (`h2.sec-title`).
 - **Title** (500 weight, letter-spacing -0.02em): `h3`-level subheads, used sparingly.
 - **Body** (400 weight, 1rem, line-height 1.6, max 60ch): paragraph copy; font-stretch 87.5% throughout.
-- **Label** (500 weight, 0.72–0.76rem, uppercase, letter-spacing 0.14em, mono): eyebrows, tags, meta keys, stat captions, footer credit.
+- **Label** (500 weight, 0.72–0.76rem, uppercase, letter-spacing 0.14em, Fixel at 87.5% width + tabular-nums): eyebrows, tags, meta keys, stat captions, footer credit.
 - **CTA** (600 weight, 40px hero/footer scale or 18px inline scale, line-height 1.4, letter-spacing -0.04em): the two contact buttons only (Download CV / email), at whichever scale the surface calls for.
 - **Section Heading** (600 weight, fluid up to 40px or a 32px sub-scale, line-height 1.4, letter-spacing -0.04em): plain-white section headers outside the block system ("Public", "Articles") — shares CTA's numeric ceiling but a distinct semantic role.
 - **Item Title** (500 weight, fluid up to 28px, line-height 1.2, letter-spacing -2px flat, not a percentage): the clickable heading on a public-item or article row. No underline at rest; underlines in ink on hover only.
 
 ### Named Rules
-**The Mono-Label Rule.** Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.
+**The Mono-Label Rule.** Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is Fixel Variable at 87.5% width with `tabular-nums`, uppercase, tracked wide — never the display-stretch (100%) or body-weight face, however short the string.
 
 **The Rest-State Link Rule.** Every plain-text link (item titles, footer social links) carries no underline at rest — a `currentColor` underline is a hover-only reveal, never a permanent decoration. The footer itself is unblocked (plain canvas white, ink text, not a `.block--ink` panel), so item titles and footer social links (LinkedIn, GitHub, Dou, Behance, Dribbble, WhatsApp) both render the underline in ink — `currentColor` is used so the rule still holds if either link ever sits on a dark surface. Footer links match the Item Title's 18px scale.
 
@@ -226,7 +228,7 @@ No persistent nav chrome exists in this system; wayfinding is scroll-based withi
 
 ### Do:
 - **Do** give every block exactly one palette color, full-bleed, with no gradient or mixing.
-- **Do** keep every label, tag, meta key, and stat caption in JetBrains Mono, uppercase, tracked wide.
+- **Do** keep every label, tag, meta key, and stat caption in Fixel at 87.5% width with tabular-nums, uppercase, tracked wide.
 - **Do** reserve the sticker badge for a single, real, load-bearing stat — never decorative.
 - **Do** constrain block content to a 40–44rem inner column even at full block width, so text stays readable against the color field.
 - **Do** use 900-weight display numerals (wax-gold on dark blocks) for standalone stats.

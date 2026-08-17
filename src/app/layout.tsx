@@ -13,7 +13,8 @@ const DIRECTION_CONTRACT = `
   refusing the standard hero -> work grid -> about -> contact scroll.
   OWN-WORLD: Inherited verbatim from the shipped case study -- full-bleed color
   blocks (candle coral, ink near-black, forest, sky, card cream), Fixel Variable
-  display type at huge geometric scale, JetBrains Mono for labels/stats, one
+  display type at huge geometric scale, Fixel Variable (condensed, tabular-nums)
+  for labels/stats, one
   rotated sticker badge, single-theme poster commitment, no light/dark branching.
   STORY: Visitor reads name/role in one glance, gets hard facts (stack, contact)
   the way a book states its printer and edition, opens the one real case study as
@@ -29,7 +30,7 @@ const DIRECTION_CONTRACT = `
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="uk">
+    <html lang="en">
       <body>
         <div
           style={{ display: "contents" }}

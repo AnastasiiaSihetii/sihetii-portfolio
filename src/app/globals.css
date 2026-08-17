@@ -9,39 +9,6 @@
   font-display: swap;
   src: url('/fonts/fixel-variable-100900-var-0.woff2') format('woff2-variations');
 }
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-  src: url('/fonts/jetbrains-mono-500-cyr-1.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  src: url('/fonts/jetbrains-mono-500-lat-2.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-  src: url('/fonts/jetbrains-mono-700-cyr-3.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  src: url('/fonts/jetbrains-mono-700-lat-4.woff2') format('woff2');
-}
-
 /* ---------- Design tokens (inherited verbatim from the shipped case study) ---------- */
 :root {
   color-scheme: light;
@@ -58,7 +25,7 @@
 
   --font-display: 'Fixel Variable', system-ui, sans-serif;
   --font-body: 'Fixel Variable', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: 'Fixel Variable', system-ui, sans-serif;
 }
 
 @theme inline {
@@ -106,6 +73,8 @@ h3 { font-weight: 500; letter-spacing: -0.02em; }
 
 .eyebrow {
   font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
   font-size: 0.72rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -159,6 +128,8 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tag {
   font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
   font-size: 0.76rem;
   font-weight: 500;
   background: rgba(27,22,32,0.08);
@@ -172,6 +143,8 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 
 .btn {
   font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
   font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
@@ -188,6 +161,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   cursor: pointer;
 }
 .btn:hover { transform: translateY(-2px); }
+.btn-arrow { font-size: 1.5em; line-height: 1; }
 .btn--on-dark { background: var(--wax); color: var(--ink); }
 .btn--on-candle { background: var(--ink); color: var(--canvas); }
 
@@ -225,6 +199,33 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   flex: 1 0 0;
 }
 .btn--cta-sm.btn--cta-light { height: 80px; flex: none; }
+
+/* ---------- Language toggle ---------- */
+.lang-toggle {
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.lang-toggle button {
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.lang-toggle button:hover { color: var(--ink); }
+.lang-toggle button.active { background: var(--ink); color: var(--canvas); }
+.lang-toggle button.active:hover { color: var(--canvas); }
 
 /* ---------- Cover hero: full-bleed wordmark + bio + CTAs ---------- */
 .hero-cover-image { width: 100%; line-height: 0; }
@@ -389,6 +390,8 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   background: var(--wax);
   color: var(--ink);
   font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
   font-weight: 700;
   font-size: 0.74rem;
   text-transform: uppercase;
@@ -410,6 +413,8 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .meta-item .meta-k {
   display: block;
   font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -430,6 +435,8 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .colophon-list li:last-child { border-bottom: 1px solid var(--line-on-dark); }
 .colophon-key {
   font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
   font-weight: 700;
   font-size: 0.76rem;
   text-transform: uppercase;
@@ -450,10 +457,12 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
-.stat-cap { font-family: var(--font-mono); font-size: 0.74rem; opacity: 0.85; margin-top: 0.5rem; display: block; }
+.stat-cap { font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.74rem; opacity: 0.85; margin-top: 0.5rem; display: block; }
 
 footer.colophon {
   font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
   font-size: 0.76rem;
   color: var(--ink);
   opacity: 0.5;
