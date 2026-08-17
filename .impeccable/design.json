@@ -19,7 +19,7 @@
       "display": { "displayName": "Display", "purpose": "Hero title-page numerals and names; standalone stat numerals on dark blocks." },
       "headline": { "displayName": "Headline", "purpose": "Section headings within a block." },
       "body": { "displayName": "Body", "purpose": "Paragraph copy, max 60ch, font-stretch 87.5%." },
-      "label": { "displayName": "Label", "purpose": "Eyebrows, tags, meta keys, stat captions, footer credit — always mono, uppercase, tracked wide." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, tags, meta keys, stat captions, footer credit — always Fixel at 87.5% width with tabular-nums, uppercase, tracked wide." },
       "cta": { "displayName": "CTA", "purpose": "The two contact buttons only (Download CV / email), 40px at hero/footer scale or 18px inline." },
       "section-heading": { "displayName": "Section Heading", "purpose": "Plain-white section headers outside the block system (\"Public\", \"Articles\")." },
       "item-title": { "displayName": "Item Title", "purpose": "Clickable heading on a public-item or article row; underlines in ink on hover only." }
@@ -40,17 +40,17 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Ink-on-canvas mono button with a hover lift; the system's only call-to-action shape.",
+      "description": "Ink-on-canvas label-face button with a hover lift; the system's only call-to-action shape.",
       "html": "<a class=\"ds-btn\" href=\"#\">Відкрити кейс →</a>",
-      "css": ".ds-btn { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.85rem; font-weight: 700; text-decoration: none; background: #1b1620; color: #ffffff; padding: 0.9rem 1.4rem; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.15s ease; } .ds-btn:hover { transform: translateY(-2px); } .ds-btn:focus-visible { outline: 3px solid #f0b429; outline-offset: 3px; }"
+      "css": ".ds-btn { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.85rem; font-weight: 700; text-decoration: none; background: #1b1620; color: #ffffff; padding: 0.9rem 1.4rem; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.15s ease; } .ds-btn:hover { transform: translateY(-2px); } .ds-btn:focus-visible { outline: 3px solid #f0b429; outline-offset: 3px; }"
     },
     {
       "name": "Tag",
       "kind": "chip",
       "refersTo": "tag",
-      "description": "Small mono pill labeling a stack item or attribute; flips to translucent white on dark blocks.",
+      "description": "Small label-face pill naming a stack item or attribute; flips to translucent white on dark blocks.",
       "html": "<span class=\"ds-tag\">Next.js</span>",
-      "css": ".ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.76rem; font-weight: 500; background: #1b1620; color: #ffffff; padding: 0.5rem 0.85rem; border-radius: 8px; white-space: nowrap; }"
+      "css": ".ds-tag { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.76rem; font-weight: 500; background: #1b1620; color: #ffffff; padding: 0.5rem 0.85rem; border-radius: 8px; white-space: nowrap; }"
     },
     {
       "name": "Sticker Badge",
@@ -58,7 +58,7 @@
       "refersTo": "sticker",
       "description": "Rotated stat badge, the system's single loudest device — one per surface, carrying one real number.",
       "html": "<div class=\"ds-sticker\"><strong>4</strong>дні від ідеї до релізу</div>",
-      "css": ".ds-sticker { position: relative; display: inline-block; background: #f0b429; color: #1b1620; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.85rem 1rem; border-radius: 999px; transform: rotate(-6deg); box-shadow: 0 8px 20px rgba(0,0,0,0.14); text-align: center; line-height: 1.3; width: 8rem; } .ds-sticker strong { display: block; font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }"
+      "css": ".ds-sticker { position: relative; display: inline-block; background: #f0b429; color: #1b1620; font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.85rem 1rem; border-radius: 999px; transform: rotate(-6deg); box-shadow: 0 8px 20px rgba(0,0,0,0.14); text-align: center; line-height: 1.3; width: 8rem; } .ds-sticker strong { display: block; font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }"
     },
     {
       "name": "Block Card (candle)",
@@ -66,15 +66,15 @@
       "refersTo": "block-candle",
       "description": "Full-bleed color-block container, candle variant, 32px radius, no shadow, no border.",
       "html": "<section class=\"ds-block ds-block--candle\"><p class=\"ds-eyebrow\">Portfolio</p><h2>Заголовок</h2></section>",
-      "css": ".ds-block { border-radius: 32px; padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 4.25rem); position: relative; overflow: hidden; } .ds-block--candle { background: #ff5000; color: #1b1620; } .ds-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; display: inline-block; margin-bottom: 0.85rem; }"
+      "css": ".ds-block { border-radius: 32px; padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 4.25rem); position: relative; overflow: hidden; } .ds-block--candle { background: #ff5000; color: #1b1620; } .ds-eyebrow { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; display: inline-block; margin-bottom: 0.85rem; }"
     },
     {
       "name": "Colophon List Row",
       "kind": "custom",
       "refersTo": "colophon-list",
-      "description": "Two-column mono key/value row for dense facts on dark blocks; collapses to one column under 720px.",
+      "description": "Two-column label-face key/value row for dense facts on dark blocks; collapses to one column under 720px.",
       "html": "<ul class=\"ds-colophon\"><li><span class=\"ds-colophon-key\">Роль</span><span>Product Designer · Design Engineer</span></li></ul>",
-      "css": ".ds-colophon { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; } .ds-colophon li { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid rgba(245,243,236,0.18); font-size: 0.98rem; color: #ffffff; } .ds-colophon-key { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: #f0b429; } @media (max-width: 720px) { .ds-colophon li { grid-template-columns: 1fr; gap: 0.3rem; } }"
+      "css": ".ds-colophon { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; } .ds-colophon li { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid rgba(245,243,236,0.18); font-size: 0.98rem; color: #ffffff; } .ds-colophon-key { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: #f0b429; } @media (max-width: 720px) { .ds-colophon li { grid-template-columns: 1fr; gap: 0.3rem; } }"
     },
     {
       "name": "CTA Button (blue)",
