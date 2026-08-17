@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T20:15:00Z",
+  "generatedAt": "2026-08-17T21:30:00Z",
   "title": "Design System: sihetii-portfolio",
   "extensions": {
     "colorMeta": {
@@ -111,24 +111,24 @@
   ],
   "narrative": {
     "northStar": "The Printed Invitation",
-    "overview": "The system reads as a physical invitation card, not a web app: one full-bleed color block per topic, stacked like the sections of a paper program, each holding a huge geometric numeral or headline that could be printed on card stock. A single rotated sticker badge carries the one number worth remembering per viewport. Labels and stats speak in a dev-tool monospace, a knowing wink that this printed object was actually generated in days, not weeks. The system deliberately commits to one printed world rather than an adaptive UI: no light/dark branching, no theme switching.",
+    "overview": "The system reads as a physical invitation card, not a web app: one full-bleed color block per topic, stacked like the sections of a paper program, each holding a huge geometric numeral or headline that could be printed on card stock. A single rotated sticker badge carries the one number worth remembering per viewport. Labels and stats speak in a condensed, tabular-figure voice — a knowing wink that this printed object was actually generated in days, not weeks. The system deliberately commits to one printed world rather than an adaptive UI: no light/dark branching, no theme switching.",
     "keyCharacteristics": [
       "Full-bleed color blocks, one hue per topic, stacked vertically with generous rounded corners",
       "Huge geometric display numerals and headlines set in a variable display face",
-      "Dev-tool monospace for every label, tag, stat, and footer credit line",
+      "Fixel Variable at a condensed 87.5% width for every label, tag, stat, and footer credit line, with tabular figures standing in for the old dev-tool monospace",
       "Exactly one rotated sticker badge per surface, carrying the single most important stat",
       "Flat by default; the sticker's drop shadow is the system's only elevation device",
       "Single-theme commitment — no prefers-color-scheme or data-theme branching anywhere"
     ],
     "rules": [
       { "name": "The One Hue Per Block Rule", "body": "A .block owns exactly one background color from the palette and applies it full-bleed to the whole section — colors are never mixed within a single block or scattered as small accents across a neutral ground.", "section": "colors" },
-      { "name": "The Mono-Label Rule", "body": "Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.", "section": "typography" },
+      { "name": "The Mono-Label Rule", "body": "Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is Fixel Variable at 87.5% width with tabular-nums, uppercase, tracked wide — never the display-stretch (100%) or body-weight face, however short the string.", "section": "typography" },
       { "name": "The Sticker-Only Shadow Rule", "body": "Shadow is reserved for the one rotated sticker badge per surface. No other component — button, tag, card, block — ever carries a box-shadow.", "section": "elevation" },
       { "name": "The Rest-State Link Rule", "body": "Every plain-text link (item titles, footer social links) carries no underline at rest — a currentColor underline is a hover-only reveal, never a permanent decoration. The footer is unblocked (plain canvas white, ink text, not a dark panel), so both item titles and footer social links render the underline in ink; currentColor keeps the rule correct if either ever sits on a dark surface.", "section": "typography" }
     ],
     "dos": [
       "Do give every block exactly one palette color, full-bleed, with no gradient or mixing.",
-      "Do keep every label, tag, meta key, and stat caption in JetBrains Mono, uppercase, tracked wide.",
+      "Do keep every label, tag, meta key, and stat caption in Fixel at 87.5% width with tabular-nums, uppercase, tracked wide.",
       "Do reserve the sticker badge for a single, real, load-bearing stat — never decorative.",
       "Do constrain block content to a 40–44rem inner column even at full block width, so text stays readable against the color field.",
       "Do use 900-weight display numerals (wax-gold on dark blocks) for standalone stats."

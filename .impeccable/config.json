@@ -56,6 +56,12 @@
         "value": "2.9rem",
         "createdAt": "2026-08-17T13:00:41.973Z",
         "reason": "Inherited verbatim from shipped case study (.stat-num clamp endpoint)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "13px",
+        "createdAt": "2026-08-17T13:14:29.587Z",
+        "reason": "Compact EN/UA language-toggle pill — deliberately smaller than the type ramp for a tiny secondary control"
       }
     ]
   }

@@ -221,6 +221,9 @@ A two-column key/value list (`.colophon-list`, mirrors the case study's `.tech-l
 ### Public / Article row (signature component)
 A plain-white, non-block list pattern for external proof (talks, articles): a photo (public-item cover, 40px radius, or a fixed 179×122 hard-cornered thumbnail), a Muted Slate source/date meta stack, an Item Title link, and Muted Slate description text — one inline link (e.g. a publication credit) may appear inside the description itself. The title is the only clickable heading in this pattern and carries no underline until hover.
 
+### Language toggle (signature component)
+A compact EN/UA segmented pill (`.lang-toggle`) in the footer: a 2px-gap track on CTA Gray, two buttons at 13px/600 weight — deliberately below the type ramp, since this is a small secondary control, not content. The active language gets an ink pill; the inactive one sits transparent in Muted Slate until hover. Switching it re-renders the whole page's copy from `lang-content.tsx` and updates `<html lang>`.
+
 ### Navigation
 No persistent nav chrome exists in this system; wayfinding is scroll-based within a single page, reinforced by mono "↓ [next section name]" cues rather than a nav bar.
 
