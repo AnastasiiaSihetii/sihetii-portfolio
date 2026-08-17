@@ -46,10 +46,29 @@ typography:
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: "-0.04em"
+  section-heading:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.9rem, 4.5vw, 2.5rem)"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-0.04em"
+  section-heading-sm:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.6rem, 4vw, 2rem)"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-1.28px"
+  item-title:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.35rem, 3.5vw, 1.75rem)"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-2px"
 rounded:
   sm: "8px"
   md: "10px"
   lg: "32px"
+  xl: "40px"
   pill: "999px"
 spacing:
   sm: "0.5rem"
@@ -112,6 +131,7 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 - **Deep Wick Ink** (`#1b1620`): primary text color everywhere; background for the system's dark blocks; text-on-canvas for buttons and tags.
 - **Canvas White** (`#ffffff`): page background outside the blocks; text-on-ink for buttons and tags.
 - **Invitation Card Cream** (`#f5f3ec`): the warm off-white block background used for index/listing content (case-study cards); softer than pure canvas, evokes card stock.
+- **Muted Slate** (`#616e80`): secondary text on plain-white sections (article/public-item descriptions, source/date meta) — the one place body text isn't full-opacity ink, matching the hero cover's plainer, non-block typographic world.
 
 ### CTA (contact call-to-action, outside the block palette)
 - **CTA Blue** (`#134bff`): the primary "Download CV" pill, in both its hero-scale and footer-scale instances. A separate blue from Streamer Sky Blue — this one is reserved for the single contact action, never a block background.
@@ -135,6 +155,8 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 - **Body** (400 weight, 1rem, line-height 1.6, max 60ch): paragraph copy; font-stretch 87.5% throughout.
 - **Label** (500 weight, 0.72–0.76rem, uppercase, letter-spacing 0.14em, mono): eyebrows, tags, meta keys, stat captions, footer credit.
 - **CTA** (600 weight, 40px hero/footer scale or 18px inline scale, line-height 1.4, letter-spacing -0.04em): the two contact buttons only (Download CV / email), at whichever scale the surface calls for.
+- **Section Heading** (600 weight, fluid up to 40px or a 32px sub-scale, line-height 1.4, letter-spacing -0.04em): plain-white section headers outside the block system ("Public", "Articles") — shares CTA's numeric ceiling but a distinct semantic role.
+- **Item Title** (500 weight, fluid up to 28px, line-height 1.2, letter-spacing -2px flat, not a percentage): the clickable heading on a public-item or article row. No underline at rest; underlines in ink on hover only.
 
 ### Named Rules
 **The Mono-Label Rule.** Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.
@@ -153,6 +175,8 @@ Flat by default — blocks, tags, buttons, and cards carry no shadow at rest. Th
 ## Shapes
 
 Large, confident rounding throughout: blocks round at 32px (22px on mobile), and every pill-shaped element — buttons, tags, the sticker, the eyebrow chip — goes fully round at 999px. No hard corners appear anywhere in the system — every rectangle is at minimum an 8px radius, and anything small enough to read as a label or control is a full pill. No borders separate blocks from the page; separation comes entirely from the color change itself. Inside dark blocks, hairline dividers (`--line-on-dark`, 18% white) separate list rows (colophon, tech-list); inside light blocks, the equivalent is `--line-on-light` (14% ink).
+
+Photographic media gets its own, softer step: the public-item cover photo rounds at 40px — larger than any block, reserved for full-width imagery rather than a color field. Small article thumbnails (179×122) stay hard-cornered by design; not every image is a rounded card.
 
 ### Named Rules
 **The Pill Rule.** Any interactive or label-sized element — button, tag, sticker, eyebrow chip — is a full 999px pill, never an intermediate radius. Only the large full-bleed blocks use the softer 32px/22px block radius.
@@ -189,6 +213,9 @@ A rotated (-6°) pill badge, wax-gold by default (candle-on-candle for the hero 
 
 ### Colophon list (signature component)
 A two-column key/value list (`.colophon-list`, mirrors the case study's `.tech-list`) used for dense factual rows on dark blocks — mono, uppercase, wax-colored keys on the left in a fixed-width column, canvas-colored values on the right, hairline dividers between rows. Collapses to a single stacked column under 720px.
+
+### Public / Article row (signature component)
+A plain-white, non-block list pattern for external proof (talks, articles): a photo (public-item cover, 40px radius, or a fixed 179×122 hard-cornered thumbnail), a Muted Slate source/date meta stack, an Item Title link, and Muted Slate description text — one inline link (e.g. a publication credit) may appear inside the description itself. The title is the only clickable heading in this pattern and carries no underline until hover.
 
 ### Navigation
 No persistent nav chrome exists in this system; wayfinding is scroll-based within a single page, reinforced by mono "↓ [next section name]" cues rather than a nav bar.

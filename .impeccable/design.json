@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T18:00:00Z",
+  "generatedAt": "2026-08-17T19:30:00Z",
   "title": "Design System: sihetii-portfolio",
   "extensions": {
     "colorMeta": {
@@ -12,14 +12,17 @@
       "canvas": { "role": "neutral", "displayName": "Canvas White", "canonical": "#ffffff", "tonalRamp": ["#c9c9c9", "#d9d9d9", "#e8e8e8", "#f4f4f4", "#ffffff", "#ffffff", "#ffffff", "#ffffff"] },
       "card": { "role": "neutral", "displayName": "Invitation Card Cream", "canonical": "#f5f3ec", "tonalRamp": ["#3a3626", "#5e5842", "#847c61", "#b6ac8e", "#f5f3ec", "#f8f6f0", "#faf9f4", "#fdfcfa"] },
       "cta-blue": { "role": "cta", "displayName": "CTA Blue", "canonical": "#134bff", "tonalRamp": ["#0a1442", "#132870", "#1d3c9e", "#2850c8", "#134bff", "#6288f9", "#93adfb", "#c6d3fd"] },
-      "cta-gray": { "role": "cta", "displayName": "CTA Gray", "canonical": "#f3f4f6", "tonalRamp": ["#26282c", "#404448", "#5a6066", "#84898f", "#f3f4f6", "#f6f7f8", "#f9fafb", "#fcfcfd"] }
+      "cta-gray": { "role": "cta", "displayName": "CTA Gray", "canonical": "#f3f4f6", "tonalRamp": ["#26282c", "#404448", "#5a6066", "#84898f", "#f3f4f6", "#f6f7f8", "#f9fafb", "#fcfcfd"] },
+      "muted": { "role": "neutral", "displayName": "Muted Slate", "canonical": "#616e80", "tonalRamp": ["#12141a", "#232833", "#3a414f", "#4c5566", "#616e80", "#8790a0", "#b0b6c0", "#dadde0"] }
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "Hero title-page numerals and names; standalone stat numerals on dark blocks." },
       "headline": { "displayName": "Headline", "purpose": "Section headings within a block." },
       "body": { "displayName": "Body", "purpose": "Paragraph copy, max 60ch, font-stretch 87.5%." },
       "label": { "displayName": "Label", "purpose": "Eyebrows, tags, meta keys, stat captions, footer credit — always mono, uppercase, tracked wide." },
-      "cta": { "displayName": "CTA", "purpose": "The two contact buttons only (Download CV / email), 40px at hero/footer scale or 18px inline." }
+      "cta": { "displayName": "CTA", "purpose": "The two contact buttons only (Download CV / email), 40px at hero/footer scale or 18px inline." },
+      "section-heading": { "displayName": "Section Heading", "purpose": "Plain-white section headers outside the block system (\"Public\", \"Articles\")." },
+      "item-title": { "displayName": "Item Title", "purpose": "Clickable heading on a public-item or article row; underlines in ink on hover only." }
     },
     "shadows": [
       { "name": "sticker-lift", "value": "0 8px 20px rgba(0,0,0,0.14)", "purpose": "The system's only shadow — lifts the rotated sticker badge off its block." }
@@ -88,6 +91,22 @@
       "description": "Email contact — paired with CTA Button (blue), same hover inversion to ink.",
       "html": "<a class=\"ds-btn-cta-light\" href=\"mailto:anastasiia.sihetii@gmail.com\">anastasiia.sihetii@gmail.com</a>",
       "css": ".ds-btn-cta-light { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.4; letter-spacing: -0.04em; background: #f3f4f6; color: #1b1620; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 140px; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-cta-light:hover { background: #1b1620; color: #ffffff; }"
+    },
+    {
+      "name": "Item Title Link",
+      "kind": "custom",
+      "refersTo": "item-title",
+      "description": "The clickable heading on a public-item or article row. No underline at rest; ink underline on hover only.",
+      "html": "<a class=\"ds-item-title\" href=\"#\">AI tools in UX/UI daily design process: practical cases</a>",
+      "css": ".ds-item-title { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 500; font-size: 28px; line-height: 1.2; letter-spacing: -2px; color: #1b1620; text-decoration: none; } .ds-item-title:hover { text-decoration: underline; text-decoration-color: #1b1620; text-underline-offset: 4px; }"
+    },
+    {
+      "name": "Article Thumbnail",
+      "kind": "custom",
+      "refersTo": "article-thumb",
+      "description": "Fixed 179x122 hard-cornered image, center-cropped — deliberately not rounded, unlike the 40px public-item cover photo.",
+      "html": "<img class=\"ds-article-thumb\" src=\"/article-image.png\" alt=\"\" />",
+      "css": ".ds-article-thumb { width: 179px; height: 122px; object-fit: cover; object-position: center; flex-shrink: 0; }"
     }
   ],
   "narrative": {

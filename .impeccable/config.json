@@ -44,6 +44,12 @@
         "value": "22px",
         "createdAt": "2026-08-17T12:35:31.865Z",
         "reason": "Mobile block radius (720px breakpoint), inherited from shipped case study"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.85rem",
+        "createdAt": "2026-08-17T12:50:02.265Z",
+        "reason": "Inherited verbatim from shipped case study (.btn mono label)"
       }
     ]
   }
