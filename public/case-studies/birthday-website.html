@@ -58,6 +58,7 @@
 }
 
 :root {
+  color-scheme: light;
   --ink: #1b1620;
   --canvas: #ffffff;
   --card: #f5f3ec;
@@ -165,10 +166,11 @@ h1.hero-title {
   font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 500;
-  background: var(--ink);
-  color: var(--canvas);
-  padding: 0.5rem 0.85rem;
-  border-radius: 8px;
+  background: rgba(27,22,32,0.08);
+  border: 1px solid var(--line-on-light);
+  color: var(--ink);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
   white-space: nowrap;
 }
 .hero-actions {
@@ -382,7 +384,7 @@ footer.colophon {
 
   <section class="block block--ink block-wide" id="process">
     <span class="eyebrow">Процес</span>
-    <h2 class="sec-title">Дев'ять кроків. Чотири дні.</h2>
+    <h2 class="sec-title">Повний цикл пройдено за чотири календарні дні, ≈20 годин активної роботи:</h2>
     <div class="flow">
       <span class="flow-step">Idea &amp; Goal</span><span class="flow-arrow">→</span>
       <span class="flow-step">Requirements</span><span class="flow-arrow">→</span>
@@ -467,7 +469,6 @@ footer.colophon {
     </div>
   </section>
 
-  <footer class="colophon">sweet27.vercel.app · зроблено в Claude Code за 4 дні</footer>
 
 </div>
 

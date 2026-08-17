@@ -129,7 +129,6 @@ export default function Home() {
             LinkedIn
           </a>
         </p>
-        <p style={{ margin: 0 }}>sihetii-portfolio · зроблено в Claude Code</p>
       </footer>
     </div>
   );
