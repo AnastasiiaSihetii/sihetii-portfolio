@@ -136,7 +136,7 @@ h3 { font-weight: 500; letter-spacing: -0.02em; }
 .block--ink { background: var(--ink); color: var(--canvas); }
 .block--forest { background: var(--forest); color: var(--canvas); }
 .block--sky { background: var(--sky); color: var(--card); }
-.block--card { background: var(--card); color: var(--ink); }
+.block--card { background: #f3f4f6; color: var(--ink); }
 
 .block--candle .eyebrow { color: var(--ink); opacity: 0.6; }
 .block--ink .eyebrow, .block--forest .eyebrow { color: var(--wax); }
@@ -366,10 +366,10 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 3rem;
   padding-top: 1.5rem;
 }
-.footer-link-group { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-link-group { display: flex; flex-direction: column; gap: 1.25rem; }
 .footer-link-group a {
   font-family: var(--font-body);
   font-weight: 600;
@@ -380,7 +380,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .footer-badge { width: clamp(7rem, 12vw, 8.5rem); height: auto; margin-left: auto; }
 
 @media (max-width: 720px) {
-  .footer-links { gap: 1.5rem; }
+  .footer-links { gap: 2rem; }
   .footer-badge { margin-left: 0; }
 }
 

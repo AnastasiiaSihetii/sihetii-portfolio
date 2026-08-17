@@ -50,6 +50,12 @@
         "value": "0.85rem",
         "createdAt": "2026-08-17T12:50:02.265Z",
         "reason": "Inherited verbatim from shipped case study (.btn mono label)"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.9rem",
+        "createdAt": "2026-08-17T13:00:41.973Z",
+        "reason": "Inherited verbatim from shipped case study (.stat-num clamp endpoint)"
       }
     ]
   }

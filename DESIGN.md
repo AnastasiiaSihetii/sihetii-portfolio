@@ -118,7 +118,7 @@ The system reads as a physical invitation card, not a web app: one full-bleed co
 A warm cream-and-ink base punctuated by one loud accent per section, borrowed from birthday-party materials: candle flame, melted wax, party ribbon, streamer blue.
 
 ### Primary
-- **Candle Flame Coral** (`#ff5000`): the hero/title-page block and every primary call-to-action button's implied energy. Used at full-bleed block scale, never as a small accent — this color owns a whole section or nothing.
+- **Candle Flame Coral** (`#ff5000`): the case-study page's own hero/title-page block (`public/case-studies/birthday-website.html`) and every primary call-to-action button's implied energy. The homepage's own hero has since moved to the plain-white cover design (see Overview) and no longer uses this color, but it remains this system's primary accent wherever a full-bleed block calls for one. Used at full-bleed block scale, never as a small accent — this color owns a whole section or nothing.
 
 ### Secondary
 - **Melted Wax Gold** (`#f0b429`): the sticker badge and any "wax"-role highlight (stat numerals inside dark blocks). Reserved for the one number per viewport that must not be missed.
@@ -149,7 +149,7 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 **Character:** A single variable family carries both display and body duty — display type stretches to 100% width and pushes to 900 weight for huge geometric numerals; body text relaxes to 87.5% width for a warmer, slightly condensed reading rhythm. JetBrains Mono is the system's "receipt printer" voice: every label, tag, and stat is monospace, uppercase, and tracked wide.
 
 ### Hierarchy
-- **Display** (600–900 weight, `clamp(3.1rem, 7.6vw, 5.8rem)`, line-height 1.05): page/section title numerals and names (`h1.hero-title`), and standalone stat numerals inside dark blocks (900 weight, gold).
+- **Display** (600–900 weight, `clamp(3.1rem, 7.6vw, 5.8rem)`, line-height 1.05): the case-study page's own title (`h1.hero-title`), and standalone stat numerals inside dark blocks (900 weight, gold). The homepage's own name/wordmark now lives in the cover-hero image instead of an `h1.hero-title` element.
 - **Headline** (600 weight, `clamp(2.3rem, 5vw, 3.5rem)`, line-height 1.05): section headings within a block (`h2.sec-title`).
 - **Title** (500 weight, letter-spacing -0.02em): `h3`-level subheads, used sparingly.
 - **Body** (400 weight, 1rem, line-height 1.6, max 60ch): paragraph copy; font-stretch 87.5% throughout.
@@ -161,7 +161,7 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 ### Named Rules
 **The Mono-Label Rule.** Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.
 
-**The Rest-State Link Rule.** Every plain-text link (item titles, footer social links) carries no underline at rest — a `currentColor` underline is a hover-only reveal, never a permanent decoration. Item titles render this in ink on a light surface; the footer's social links (LinkedIn, GitHub, Dou, Behance, Dribbble, WhatsApp) render it in canvas white, since they sit on the dark footer block — same interaction, color follows context. Footer links match the Item Title's 18px scale.
+**The Rest-State Link Rule.** Every plain-text link (item titles, footer social links) carries no underline at rest — a `currentColor` underline is a hover-only reveal, never a permanent decoration. The footer itself is unblocked (plain canvas white, ink text, not a `.block--ink` panel), so item titles and footer social links (LinkedIn, GitHub, Dou, Behance, Dribbble, WhatsApp) both render the underline in ink — `currentColor` is used so the rule still holds if either link ever sits on a dark surface. Footer links match the Item Title's 18px scale.
 
 ## Layout
 
@@ -200,7 +200,7 @@ Playful and loose: components read as pieces of party ephemera — a sticker, a 
 - **Hover:** both invert to ink background / canvas text — no lift, unlike `.btn`.
 
 ### Tags
-- **Style:** outlined pill — transparent ink fill (`rgba(27,22,32,0.08)`) with a hairline ink border on light blocks; on dark blocks (`.block--ink`, `.block--forest`), flips to a translucent white fill (`rgba(245,243,236,0.12)`) with a hairline white-ish border. Every tag on the site — hero, case-study card, footer — shares this one component; none render as a solid fill.
+- **Style:** outlined pill — transparent ink fill (`rgba(27,22,32,0.08)`) with a hairline ink border on light blocks; on dark blocks (`.block--ink`, `.block--forest`), flips to a translucent white fill (`rgba(245,243,236,0.12)`) with a hairline white-ish border. Currently used on the case-study card's stack tag-row; every tag on the site shares this one component, none render as a solid fill.
 - **State:** static only — tags are labels, not interactive filters, in this system
 
 ### Cards / Containers (`.block` and its color variants)

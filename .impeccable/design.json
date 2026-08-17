@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T19:30:00Z",
+  "generatedAt": "2026-08-17T20:15:00Z",
   "title": "Design System: sihetii-portfolio",
   "extensions": {
     "colorMeta": {
@@ -123,7 +123,8 @@
     "rules": [
       { "name": "The One Hue Per Block Rule", "body": "A .block owns exactly one background color from the palette and applies it full-bleed to the whole section — colors are never mixed within a single block or scattered as small accents across a neutral ground.", "section": "colors" },
       { "name": "The Mono-Label Rule", "body": "Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.", "section": "typography" },
-      { "name": "The Sticker-Only Shadow Rule", "body": "Shadow is reserved for the one rotated sticker badge per surface. No other component — button, tag, card, block — ever carries a box-shadow.", "section": "elevation" }
+      { "name": "The Sticker-Only Shadow Rule", "body": "Shadow is reserved for the one rotated sticker badge per surface. No other component — button, tag, card, block — ever carries a box-shadow.", "section": "elevation" },
+      { "name": "The Rest-State Link Rule", "body": "Every plain-text link (item titles, footer social links) carries no underline at rest — a currentColor underline is a hover-only reveal, never a permanent decoration. The footer is unblocked (plain canvas white, ink text, not a dark panel), so both item titles and footer social links render the underline in ink; currentColor keeps the rule correct if either ever sits on a dark surface.", "section": "typography" }
     ],
     "dos": [
       "Do give every block exactly one palette color, full-bleed, with no gradient or mixing.",
