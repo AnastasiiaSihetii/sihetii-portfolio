@@ -213,6 +213,59 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .btn--cta-light { height: 140px; background: #f3f4f6; color: var(--ink); }
 .btn--cta:hover, .btn--cta-light:hover { background: var(--ink); color: var(--canvas); }
 
+/* Small CTA variant used in the cover hero (Figma spec: 18px / -4% tracking) */
+.btn--cta-sm {
+  height: auto;
+  padding: 0.75rem 1.25rem;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  flex: 1 0 0;
+}
+.btn--cta-sm.btn--cta-light { height: 80px; flex: none; }
+
+/* ---------- Cover hero: full-bleed wordmark + bio + CTAs ---------- */
+.hero-cover-image { width: 100%; line-height: 0; }
+.hero-cover-img { width: 100%; height: auto; display: block; }
+.hero-cover-header {
+  background: var(--canvas);
+  display: flex;
+  gap: 33px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem clamp(20px, 10vw, 160px) 5rem;
+}
+.hero-cover-bio {
+  flex: 1 0 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  max-width: 60ch;
+}
+.hero-cover-bio strong { font-weight: 700; }
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1 0 0;
+  align-self: stretch;
+  min-width: 280px;
+  max-width: 420px;
+}
+
+@media (max-width: 900px) {
+  .hero-cover-header { flex-direction: column; padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .hero-cta-group { max-width: none; }
+  .btn--cta-sm { flex: none; }
+  .btn--cta-sm.btn--cta-light { height: 80px; }
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;

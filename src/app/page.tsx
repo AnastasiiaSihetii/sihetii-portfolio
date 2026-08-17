@@ -2,43 +2,51 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="page">
-      {/* ---------- Title page ---------- */}
-      <section className="block block--candle hero">
-        <div className="sticker sticker--hero">
-          <strong>4</strong>
-          дні від ідеї до релізу
+    <>
+      {/* ---------- Cover hero (Figma: Portfolio 2026, node 99:628) ---------- */}
+      <section className="hero-cover">
+        <div className="hero-cover-image">
+          <Image
+            src="/sihetii-wordmark.svg"
+            alt="Sihetii"
+            width={1440}
+            height={356}
+            priority
+            className="hero-cover-img"
+          />
         </div>
-        <div className="block-inner">
-          <p className="eyebrow">Portfolio</p>
-          <h1 className="hero-title">Anastasiia Sihetii</h1>
-          <p className="lead" style={{ fontWeight: 600, marginBottom: "1.4rem" }}>
-            Product Designer · Design Engineer
+        <div className="hero-cover-header">
+          <p className="hero-cover-bio">
+            Hi there 👋
+            <br />
+            <br />
+            {"I'm a "}
+            <strong>product designer</strong>
+            {" moving into "}
+            <strong>design engineering</strong>
+            {
+              ". That shift comes from 5+ years designing product interfaces across agency, startup, and enterprise environments—most recently at OneReach.ai, where I designed a UI builder and an agent/skills-based task platform for enterprise users."
+            }
+            <br />
+            <br />
+            {"I've since advised another product team on AI-integrated design workflows and write about AI in design for DOU."}
           </p>
-          <p className="hero-context" style={{ fontSize: "1.02rem", maxWidth: "48ch", opacity: 0.92 }}>
-            Проєктую і збираю продукти сама — від ідеї до продакшену, без передачі
-            розробнику. Працюю на швидкості AI-інструментів: рішення, які раніше
-            займали тижні, тепер займають дні.
-          </p>
-          <div className="meta-row" style={{ marginTop: "1.8rem", paddingTop: "1.5rem", borderTop: "1px solid var(--line-on-light)" }}>
-            <div className="meta-item">
-              <span className="meta-k">Фокус</span>
-              Product Design · Design Engineering
-            </div>
-            <div className="meta-item">
-              <span className="meta-k">Доступна для</span>
-              Full-time ролі · Проєкти
-            </div>
+          <div className="hero-cta-group">
+            {/* TODO: swap href for the Google Drive CV link once it's ready */}
+            <a href="#" className="btn btn--cta btn--cta-sm">
+              Download CV
+            </a>
+            <a
+              href="mailto:anastasiia.sihetii@gmail.com"
+              className="btn btn--cta btn--cta-light btn--cta-sm"
+            >
+              anastasiia.sihetii@gmail.com
+            </a>
           </div>
         </div>
-        <p
-          className="eyebrow"
-          style={{ marginTop: "2.5rem", marginBottom: 0, opacity: 0.55, background: "none", padding: 0 }}
-        >
-          ↓ Кейс
-        </p>
       </section>
 
+      <div className="page">
       {/* ---------- Case study ---------- */}
       <section className="block block--card">
         <div className="block-inner" style={{ maxWidth: "44rem" }}>
@@ -114,6 +122,7 @@ export default function Home() {
           />
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
