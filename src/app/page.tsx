@@ -45,8 +45,8 @@ export default function Home() {
 
       <div className="page">
       {/* ---------- Case study ---------- */}
-      <section className="block block--card">
-        <div className="block-inner" style={{ maxWidth: "44rem" }}>
+      <section className="block block--card block-wide">
+        <div className="block-inner">
           <p className="eyebrow">{t.caseStudy.eyebrow}</p>
           <h2 className="sec-title">{t.caseStudy.title}</h2>
           <p style={{ marginBottom: "1.6rem" }}>{t.caseStudy.desc}</p>
@@ -73,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Public: talks + articles (Figma: Portfolio 2026, node 98:90) ---------- */}
+      {/* ---------- Public: talks (Figma: Portfolio 2026, node 98:90) ---------- */}
       <section className="public-section">
         <div className="public-group">
           <h2 className="section-heading">{t.public.heading}</h2>
@@ -106,38 +106,43 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
 
+      {/* ---------- Articles ---------- */}
+      <section className="articles-section">
         <div className="articles-group">
-          <h2 className="section-heading section-heading--sm">{t.articlesHeading}</h2>
+          <h2 className="section-heading">{t.articlesHeading}</h2>
 
-          {articles.map((article) => (
-            <div className="article-row" key={article.href}>
-              <div className="article-thumb-group">
-                <Image
-                  src="/article-image.png"
-                  alt=""
-                  width={179}
-                  height={122}
-                  className="article-thumb"
-                />
-                <div className="article-meta">
-                  <span>[{article.source}]</span>
-                  <span>[{article.date[lang]}]</span>
+          <div className="article-list">
+            {articles.map((article) => (
+              <div className="article-row" key={article.href}>
+                <div className="article-thumb-group">
+                  <Image
+                    src="/article-image.png"
+                    alt=""
+                    width={179}
+                    height={122}
+                    className="article-thumb"
+                  />
+                  <div className="article-meta">
+                    <span>[{article.source}]</span>
+                    <span>[{article.date[lang]}]</span>
+                  </div>
+                </div>
+                <div className="article-body">
+                  <a
+                    href={article.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="item-title"
+                  >
+                    {article.title[lang]}
+                  </a>
+                  <p className="article-desc">{article.desc[lang]}</p>
                 </div>
               </div>
-              <div className="article-body">
-                <a
-                  href={article.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="item-title"
-                >
-                  {article.title[lang]}
-                </a>
-                <p className="article-desc">{article.desc[lang]}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -174,31 +179,33 @@ export default function Home() {
               WhatsApp
             </a>
           </div>
-          <div className="lang-toggle" role="group" aria-label="Language">
-            <button
-              type="button"
-              className={lang === "en" ? "active" : undefined}
-              aria-pressed={lang === "en"}
-              onClick={() => setLang("en")}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              className={lang === "uk" ? "active" : undefined}
-              aria-pressed={lang === "uk"}
-              onClick={() => setLang("uk")}
-            >
-              UA
-            </button>
+          <div className="footer-badge-group">
+            <Image
+              src="/badges/stand-with-ukraine.svg"
+              alt="Stand with Ukraine"
+              width={205}
+              height={85}
+              className="footer-badge"
+            />
+            <div className="lang-toggle" role="group" aria-label="Language">
+              <button
+                type="button"
+                className={lang === "en" ? "active" : undefined}
+                aria-pressed={lang === "en"}
+                onClick={() => setLang("en")}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                className={lang === "uk" ? "active" : undefined}
+                aria-pressed={lang === "uk"}
+                onClick={() => setLang("uk")}
+              >
+                UA
+              </button>
+            </div>
           </div>
-          <Image
-            src="/badges/stand-with-ukraine.svg"
-            alt="Stand with Ukraine"
-            width={205}
-            height={85}
-            className="footer-badge"
-          />
         </div>
       </footer>
       </div>
