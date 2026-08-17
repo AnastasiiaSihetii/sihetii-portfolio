@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="page">
@@ -70,48 +72,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Footer: role, stack, contacts ---------- */}
-      <footer className="block block--ink">
-        <div className="block-inner" style={{ maxWidth: "44rem" }}>
-          <ul className="colophon-list">
-            <li>
-              <span className="colophon-key">Роль</span>
-              <span className="colophon-val">Product Designer · Design Engineer</span>
-            </li>
-            <li>
-              <span className="colophon-key">Інструменти</span>
-              <span className="colophon-val">
-                <div className="tag-row">
-                  <span className="tag">Claude Code</span>
-                  <span className="tag">Figma</span>
-                  <span className="tag">Next.js</span>
-                  <span className="tag">Impeccable</span>
-                </div>
-              </span>
-            </li>
-            <li>
-              <span className="colophon-key">Email</span>
-              <span className="colophon-val">
-                <a href="mailto:sihetii.ai@gmail.com">sihetii.ai@gmail.com</a>
-              </span>
-            </li>
-            <li>
-              <span className="colophon-key">GitHub</span>
-              <span className="colophon-val">
-                <a href="https://github.com/AnastasiiaSihetii" target="_blank" rel="noopener noreferrer">
-                  github.com/AnastasiiaSihetii
-                </a>
-              </span>
-            </li>
-            <li>
-              <span className="colophon-key">LinkedIn</span>
-              <span className="colophon-val">
-                <a href="https://www.linkedin.com/in/anastasiia-sihetii/" target="_blank" rel="noopener noreferrer">
-                  linkedin.com/in/anastasiia-sihetii
-                </a>
-              </span>
-            </li>
-          </ul>
+      {/* ---------- Footer: CTAs, grouped links, badge ---------- */}
+      <footer className="site-footer">
+        {/* TODO: swap href for the Google Drive CV link once it's ready */}
+        <a href="#" className="btn btn--cta">
+          Download CV
+        </a>
+        <a href="mailto:anastasiia.sihetii@gmail.com" className="btn btn--cta btn--cta-light">
+          anastasiia.sihetii@gmail.com
+        </a>
+
+        <div className="footer-links">
+          <div className="footer-link-group">
+            <a href="https://www.linkedin.com/in/anastasiia-sihetii/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href="https://github.com/AnastasiiaSihetii" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a href="https://dou.ua/users/anastasiya-sigetij/" target="_blank" rel="noopener noreferrer">
+              Dou
+            </a>
+          </div>
+          <div className="footer-link-group">
+            <a href="https://www.behance.net/anastasiiasihetii" target="_blank" rel="noopener noreferrer">
+              Behance
+            </a>
+            <a href="https://dribbble.com/anastasiia_sihetii" target="_blank" rel="noopener noreferrer">
+              Dribbble
+            </a>
+            <a href="https://wa.me/380683540164" target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+          </div>
+          <Image
+            src="/badges/stand-with-ukraine.svg"
+            alt="Stand with Ukraine"
+            width={205}
+            height={85}
+            className="footer-badge"
+          />
         </div>
       </footer>
     </div>

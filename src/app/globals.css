@@ -182,13 +182,57 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
   border: none;
   cursor: pointer;
 }
 .btn:hover { transform: translateY(-2px); }
 .btn--on-dark { background: var(--wax); color: var(--ink); }
 .btn--on-candle { background: var(--ink); color: var(--canvas); }
+
+/* ---------- Footer CTAs + grouped links ---------- */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem 0 clamp(1.5rem, 4vw, 2.5rem);
+}
+.btn--cta {
+  width: 100%;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+}
+.btn--cta-light { background: var(--card); color: var(--ink); }
+.btn--cta:hover, .btn--cta-light:hover { background: var(--sky); color: var(--canvas); }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 1.5rem;
+}
+.footer-link-group { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-link-group a {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--line-on-light);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.footer-link-group a:hover { color: var(--sky); text-decoration-color: var(--sky); }
+.footer-badge { width: clamp(7rem, 12vw, 8.5rem); height: auto; margin-left: auto; }
+
+@media (max-width: 720px) {
+  .footer-links { gap: 1.5rem; }
+  .footer-badge { margin-left: 0; }
+}
 
 .sticker {
   position: absolute;
