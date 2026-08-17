@@ -160,13 +160,14 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 500;
-  background: var(--ink);
-  color: var(--canvas);
-  padding: 0.5rem 0.85rem;
-  border-radius: 8px;
+  background: rgba(27,22,32,0.08);
+  border: 1px solid var(--line-on-light);
+  color: var(--ink);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
   white-space: nowrap;
 }
-.block--ink .tag, .block--forest .tag { background: rgba(245,243,236,0.12); border: 1px solid var(--line-on-dark); }
+.block--ink .tag, .block--forest .tag { background: rgba(245,243,236,0.12); border: 1px solid var(--line-on-dark); color: var(--canvas); }
 
 .btn {
   font-family: var(--font-mono);
@@ -175,8 +176,9 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   text-decoration: none;
   background: var(--ink);
   color: var(--canvas);
-  padding: 0.9rem 1.4rem;
-  border-radius: 10px;
+  height: 80px;
+  padding: 0 2rem;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;

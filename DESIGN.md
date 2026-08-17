@@ -45,13 +45,13 @@ components:
   button-primary:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.canvas}"
-    rounded: "{rounded.md}"
-    padding: "0.9rem 1.4rem"
+    rounded: "{rounded.pill}"
+    padding: "0 2rem"
   tag:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.canvas}"
-    rounded: "{rounded.sm}"
-    padding: "0.5rem 0.85rem"
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    padding: "0.6rem 1rem"
 ---
 
 # Design System: sihetii-portfolio
@@ -123,20 +123,23 @@ Flat by default — blocks, tags, buttons, and cards carry no shadow at rest. Th
 
 ## Shapes
 
-Large, confident rounding throughout: blocks round at 32px (22px on mobile), tags and buttons at 8–10px, and the sticker/eyebrow/pill elements go fully round at 999px. No hard corners appear anywhere in the system — every rectangle is at minimum an 8px radius. No borders separate blocks from the page; separation comes entirely from the color change itself. Inside dark blocks, hairline dividers (`--line-on-dark`, 18% white) separate list rows (colophon, tech-list); inside light blocks, the equivalent is `--line-on-light` (14% ink).
+Large, confident rounding throughout: blocks round at 32px (22px on mobile), and every pill-shaped element — buttons, tags, the sticker, the eyebrow chip — goes fully round at 999px. No hard corners appear anywhere in the system — every rectangle is at minimum an 8px radius, and anything small enough to read as a label or control is a full pill. No borders separate blocks from the page; separation comes entirely from the color change itself. Inside dark blocks, hairline dividers (`--line-on-dark`, 18% white) separate list rows (colophon, tech-list); inside light blocks, the equivalent is `--line-on-light` (14% ink).
+
+### Named Rules
+**The Pill Rule.** Any interactive or label-sized element — button, tag, sticker, eyebrow chip — is a full 999px pill, never an intermediate radius. Only the large full-bleed blocks use the softer 32px/22px block radius.
 
 ## Components
 
 Playful and loose: components read as pieces of party ephemera — a sticker, a stamped tag, a stapled program — rather than a polished SaaS UI kit. Nothing is precisely aligned to a strict grid line; the sticker's -6° rotation is the clearest signal that this system prizes charm over rigidity.
 
 ### Buttons
-- **Shape:** 10px radius (`.btn`), 8px for the smaller `.tag` pill
-- **Primary:** ink background, canvas text, `0.9rem 1.4rem` padding, mono font at 700 weight
+- **Shape:** fully round pill, 999px radius (`.btn`, 80px fixed height; `.tag`, sized to content)
+- **Primary:** ink background, canvas text, `0 2rem` padding, mono font at 700 weight
 - **Hover:** `translateY(-2px)` lift, no shadow or color change
 - **On dark blocks:** an available `.btn--on-dark` swaps to wax background / ink text for contrast against ink or forest
 
 ### Tags
-- **Style:** ink background, canvas text on light blocks; on dark blocks (`.block--ink`, `.block--forest`), tags flip to a translucent white fill (`rgba(245,243,236,0.12)`) with a hairline border instead of solid ink-on-ink
+- **Style:** outlined pill — transparent ink fill (`rgba(27,22,32,0.08)`) with a hairline ink border on light blocks; on dark blocks (`.block--ink`, `.block--forest`), flips to a translucent white fill (`rgba(245,243,236,0.12)`) with a hairline white-ish border. Every tag on the site — hero, case-study card, footer — shares this one component; none render as a solid fill.
 - **State:** static only — tags are labels, not interactive filters, in this system
 
 ### Cards / Containers (`.block` and its color variants)

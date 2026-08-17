@@ -33,55 +33,8 @@ export default function Home() {
           className="eyebrow"
           style={{ marginTop: "2.5rem", marginBottom: 0, opacity: 0.55, background: "none", padding: 0 }}
         >
-          ↓ Вихідні дані
+          ↓ Кейс
         </p>
-      </section>
-
-      {/* ---------- Colophon: printed-imprint facts ---------- */}
-      <section className="block block--ink">
-        <div className="block-inner" style={{ maxWidth: "44rem" }}>
-          <p className="eyebrow">Вихідні дані</p>
-          <h2 className="sec-title">Як зроблено це портфоліо</h2>
-          <ul className="colophon-list">
-            <li>
-              <span className="colophon-key">Роль</span>
-              <span className="colophon-val">Product Designer · Design Engineer</span>
-            </li>
-            <li>
-              <span className="colophon-key">Інструменти</span>
-              <span className="colophon-val">
-                <div className="tag-row">
-                  <span className="tag">Claude Code</span>
-                  <span className="tag">Figma</span>
-                  <span className="tag">Next.js</span>
-                  <span className="tag">Impeccable</span>
-                </div>
-              </span>
-            </li>
-            <li>
-              <span className="colophon-key">Контакти</span>
-              <span className="colophon-val">
-                <a href="mailto:sihetii.ai@gmail.com">sihetii.ai@gmail.com</a>
-                {" · "}
-                <a
-                  href="https://github.com/AnastasiiaSihetii"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-                {" · "}
-                <a
-                  href="https://www.linkedin.com/in/anastasiia-sihetii/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </span>
-            </li>
-          </ul>
-        </div>
       </section>
 
       {/* ---------- Case study ---------- */}
@@ -117,18 +70,49 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="colophon">
-        <p style={{ margin: "0 0 0.4rem" }}>
-          <a href="mailto:sihetii.ai@gmail.com">sihetii.ai@gmail.com</a>
-          {" · "}
-          <a href="https://github.com/AnastasiiaSihetii" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          {" · "}
-          <a href="https://www.linkedin.com/in/anastasiia-sihetii/" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-        </p>
+      {/* ---------- Footer: role, stack, contacts ---------- */}
+      <footer className="block block--ink">
+        <div className="block-inner" style={{ maxWidth: "44rem" }}>
+          <ul className="colophon-list">
+            <li>
+              <span className="colophon-key">Роль</span>
+              <span className="colophon-val">Product Designer · Design Engineer</span>
+            </li>
+            <li>
+              <span className="colophon-key">Інструменти</span>
+              <span className="colophon-val">
+                <div className="tag-row">
+                  <span className="tag">Claude Code</span>
+                  <span className="tag">Figma</span>
+                  <span className="tag">Next.js</span>
+                  <span className="tag">Impeccable</span>
+                </div>
+              </span>
+            </li>
+            <li>
+              <span className="colophon-key">Email</span>
+              <span className="colophon-val">
+                <a href="mailto:sihetii.ai@gmail.com">sihetii.ai@gmail.com</a>
+              </span>
+            </li>
+            <li>
+              <span className="colophon-key">GitHub</span>
+              <span className="colophon-val">
+                <a href="https://github.com/AnastasiiaSihetii" target="_blank" rel="noopener noreferrer">
+                  github.com/AnastasiiaSihetii
+                </a>
+              </span>
+            </li>
+            <li>
+              <span className="colophon-key">LinkedIn</span>
+              <span className="colophon-val">
+                <a href="https://www.linkedin.com/in/anastasiia-sihetii/" target="_blank" rel="noopener noreferrer">
+                  linkedin.com/in/anastasiia-sihetii
+                </a>
+              </span>
+            </li>
+          </ul>
+        </div>
       </footer>
     </div>
   );
