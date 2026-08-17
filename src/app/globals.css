@@ -321,7 +321,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   color: var(--ink);
   text-decoration: none;
 }
-.item-title:hover { text-decoration: underline; text-decoration-color: var(--ink); text-underline-offset: 4px; }
+.item-title:hover { text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 4px; }
 
 .item-subtitle, .article-desc {
   font-family: var(--font-display);
@@ -335,13 +335,15 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .article-desc a:hover { color: var(--ink); }
 
 .article-row { display: flex; gap: 0.75rem; align-items: center; }
-.article-thumb-group { display: flex; gap: 1rem; align-items: stretch; flex-shrink: 0; }
-.article-thumb { width: 179px; height: 122px; object-fit: cover; object-position: center; flex-shrink: 0; }
+.article-thumb-group { position: relative; width: 179px; height: 122px; flex-shrink: 0; }
+.article-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .article-meta {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.5rem;
+  position: absolute;
+  inset: 0;
+}
+.article-meta span {
+  position: absolute;
+  left: 20px;
   font-family: var(--font-display);
   font-stretch: 100%;
   font-size: 1rem;
@@ -349,6 +351,8 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   color: var(--muted);
   white-space: nowrap;
 }
+.article-meta span:first-child { top: 31px; }
+.article-meta span:last-child { top: 69px; }
 .article-body { display: flex; flex-direction: column; gap: 0.75rem; flex: 1 0 0; min-width: 0; }
 
 @media (max-width: 720px) {
@@ -369,13 +373,10 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 .footer-link-group a {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 1rem;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--line-on-light);
-  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  font-size: 18px;
+  text-decoration: none;
 }
-.footer-link-group a:hover { color: var(--sky); text-decoration-color: var(--sky); }
+.footer-link-group a:hover { text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 4px; }
 .footer-badge { width: clamp(7rem, 12vw, 8.5rem); height: auto; margin-left: auto; }
 
 @media (max-width: 720px) {

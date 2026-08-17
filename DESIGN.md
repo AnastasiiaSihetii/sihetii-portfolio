@@ -161,6 +161,8 @@ A warm cream-and-ink base punctuated by one loud accent per section, borrowed fr
 ### Named Rules
 **The Mono-Label Rule.** Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.
 
+**The Rest-State Link Rule.** Every plain-text link (item titles, footer social links) carries no underline at rest — a `currentColor` underline is a hover-only reveal, never a permanent decoration. Item titles render this in ink on a light surface; the footer's social links (LinkedIn, GitHub, Dou, Behance, Dribbble, WhatsApp) render it in canvas white, since they sit on the dark footer block — same interaction, color follows context. Footer links match the Item Title's 18px scale.
+
 ## Layout
 
 A single centered column (`max-width: 1180px`) of full-bleed blocks stacked vertically with `clamp(1.5rem, 4vw, 2.75rem)` gaps between them — there is no side-by-side multi-column grid; "bento" describes the color-block rhythm of the stack, not a literal grid layout. Each block pads its content with `clamp(2.25rem, 5vw, 4.5rem)` vertical and `clamp(1.5rem, 6vw, 4.25rem)` horizontal space, and most block content constrains to a `40rem` (or occasionally `44rem`) inner column even inside a full-width block, so line length stays readable against the full-bleed color. Below 720px, block padding tightens, block radius drops from 32px to 22px, and the sticker badge leaves its absolute top-right position to sit static above the block content.
