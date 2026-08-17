@@ -207,9 +207,11 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-size: 40px;
   font-weight: 600;
   letter-spacing: -0.04em;
+  background: #3765f7;
+  color: var(--canvas);
 }
-.btn--cta-light { height: 140px; background: var(--card); color: var(--ink); }
-.btn--cta:hover, .btn--cta-light:hover { background: var(--sky); color: var(--canvas); }
+.btn--cta-light { height: 140px; background: #f3f4f6; color: var(--ink); }
+.btn--cta:hover, .btn--cta-light:hover { background: var(--ink); color: var(--canvas); }
 
 .footer-links {
   display: flex;
