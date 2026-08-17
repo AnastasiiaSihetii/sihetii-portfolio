@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-17T00:00:00Z",
+  "title": "Design System: sihetii-portfolio",
+  "extensions": {
+    "colorMeta": {
+      "candle": { "role": "primary", "displayName": "Candle Flame Coral", "canonical": "#ff5000", "tonalRamp": ["#3d1200", "#661d00", "#992c00", "#cc3b00", "#ff5000", "#ff7a3d", "#ffa373", "#ffd4bd"] },
+      "wax": { "role": "secondary", "displayName": "Melted Wax Gold", "canonical": "#f0b429", "tonalRamp": ["#3d2c05", "#664a08", "#996f0c", "#cc9410", "#f0b429", "#f4c455", "#f8d585", "#fbe6b8"] },
+      "forest": { "role": "tertiary", "displayName": "Party Forest Green", "canonical": "#1e4a3a", "tonalRamp": ["#050d0a", "#0e1f18", "#173225", "#1e4a3a", "#2c6b54", "#3e8c70", "#6bb096", "#a6d5c1"] },
+      "sky": { "role": "tertiary", "displayName": "Streamer Sky Blue", "canonical": "#4c6bd6", "tonalRamp": ["#0e1530", "#1a2657", "#273a83", "#3550ab", "#4c6bd6", "#7690e0", "#a0b3ea", "#cbd7f4"] },
+      "ink": { "role": "neutral", "displayName": "Deep Wick Ink", "canonical": "#1b1620", "tonalRamp": ["#050406", "#0b090d", "#120e16", "#1b1620", "#382e40", "#564760", "#8a7f92", "#c3bcc7"] },
+      "canvas": { "role": "neutral", "displayName": "Canvas White", "canonical": "#ffffff", "tonalRamp": ["#c9c9c9", "#d9d9d9", "#e8e8e8", "#f4f4f4", "#ffffff", "#ffffff", "#ffffff", "#ffffff"] },
+      "card": { "role": "neutral", "displayName": "Invitation Card Cream", "canonical": "#f5f3ec", "tonalRamp": ["#3a3626", "#5e5842", "#847c61", "#b6ac8e", "#f5f3ec", "#f8f6f0", "#faf9f4", "#fdfcfa"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero title-page numerals and names; standalone stat numerals on dark blocks." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings within a block." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy, max 60ch, font-stretch 87.5%." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, tags, meta keys, stat captions, footer credit — always mono, uppercase, tracked wide." }
+    },
+    "shadows": [
+      { "name": "sticker-lift", "value": "0 8px 20px rgba(0,0,0,0.14)", "purpose": "The system's only shadow — lifts the rotated sticker badge off its block." }
+    ],
+    "motion": [
+      { "name": "block-rise", "value": "translateY(10px) -> translateY(0), opacity 0 -> 1, 0.55s ease-out", "purpose": "Blocks rise in on load, respecting prefers-reduced-motion." },
+      { "name": "btn-lift", "value": "translateY(-2px), 0.15s ease", "purpose": "Button hover state — the only interactive motion in the system." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "720px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink-on-canvas mono button with a hover lift; the system's only call-to-action shape.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Відкрити кейс →</a>",
+      "css": ".ds-btn { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.85rem; font-weight: 700; text-decoration: none; background: #1b1620; color: #ffffff; padding: 0.9rem 1.4rem; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.15s ease; } .ds-btn:hover { transform: translateY(-2px); } .ds-btn:focus-visible { outline: 3px solid #f0b429; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Small mono pill labeling a stack item or attribute; flips to translucent white on dark blocks.",
+      "html": "<span class=\"ds-tag\">Next.js</span>",
+      "css": ".ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.76rem; font-weight: 500; background: #1b1620; color: #ffffff; padding: 0.5rem 0.85rem; border-radius: 8px; white-space: nowrap; }"
+    },
+    {
+      "name": "Sticker Badge",
+      "kind": "custom",
+      "refersTo": "sticker",
+      "description": "Rotated stat badge, the system's single loudest device — one per surface, carrying one real number.",
+      "html": "<div class=\"ds-sticker\"><strong>4</strong>дні від ідеї до релізу</div>",
+      "css": ".ds-sticker { position: relative; display: inline-block; background: #f0b429; color: #1b1620; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.85rem 1rem; border-radius: 999px; transform: rotate(-6deg); box-shadow: 0 8px 20px rgba(0,0,0,0.14); text-align: center; line-height: 1.3; width: 8rem; } .ds-sticker strong { display: block; font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }"
+    },
+    {
+      "name": "Block Card (candle)",
+      "kind": "card",
+      "refersTo": "block-candle",
+      "description": "Full-bleed color-block container, candle variant, 32px radius, no shadow, no border.",
+      "html": "<section class=\"ds-block ds-block--candle\"><p class=\"ds-eyebrow\">Portfolio</p><h2>Заголовок</h2></section>",
+      "css": ".ds-block { border-radius: 32px; padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 4.25rem); position: relative; overflow: hidden; } .ds-block--candle { background: #ff5000; color: #1b1620; } .ds-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; display: inline-block; margin-bottom: 0.85rem; }"
+    },
+    {
+      "name": "Colophon List Row",
+      "kind": "custom",
+      "refersTo": "colophon-list",
+      "description": "Two-column mono key/value row for dense facts on dark blocks; collapses to one column under 720px.",
+      "html": "<ul class=\"ds-colophon\"><li><span class=\"ds-colophon-key\">Роль</span><span>Product Designer · Design Engineer</span></li></ul>",
+      "css": ".ds-colophon { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; } .ds-colophon li { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid rgba(245,243,236,0.18); font-size: 0.98rem; color: #ffffff; } .ds-colophon-key { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: #f0b429; } @media (max-width: 720px) { .ds-colophon li { grid-template-columns: 1fr; gap: 0.3rem; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Printed Invitation",
+    "overview": "The system reads as a physical invitation card, not a web app: one full-bleed color block per topic, stacked like the sections of a paper program, each holding a huge geometric numeral or headline that could be printed on card stock. A single rotated sticker badge carries the one number worth remembering per viewport. Labels and stats speak in a dev-tool monospace, a knowing wink that this printed object was actually generated in days, not weeks. The system deliberately commits to one printed world rather than an adaptive UI: no light/dark branching, no theme switching.",
+    "keyCharacteristics": [
+      "Full-bleed color blocks, one hue per topic, stacked vertically with generous rounded corners",
+      "Huge geometric display numerals and headlines set in a variable display face",
+      "Dev-tool monospace for every label, tag, stat, and footer credit line",
+      "Exactly one rotated sticker badge per surface, carrying the single most important stat",
+      "Flat by default; the sticker's drop shadow is the system's only elevation device",
+      "Single-theme commitment — no prefers-color-scheme or data-theme branching anywhere"
+    ],
+    "rules": [
+      { "name": "The One Hue Per Block Rule", "body": "A .block owns exactly one background color from the palette and applies it full-bleed to the whole section — colors are never mixed within a single block or scattered as small accents across a neutral ground.", "section": "colors" },
+      { "name": "The Mono-Label Rule", "body": "Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is JetBrains Mono, uppercase, tracked wide — never the display or body face, however short the string.", "section": "typography" },
+      { "name": "The Sticker-Only Shadow Rule", "body": "Shadow is reserved for the one rotated sticker badge per surface. No other component — button, tag, card, block — ever carries a box-shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do give every block exactly one palette color, full-bleed, with no gradient or mixing.",
+      "Do keep every label, tag, meta key, and stat caption in JetBrains Mono, uppercase, tracked wide.",
+      "Do reserve the sticker badge for a single, real, load-bearing stat — never decorative.",
+      "Do constrain block content to a 40–44rem inner column even at full block width, so text stays readable against the color field.",
+      "Do use 900-weight display numerals (wax-gold on dark blocks) for standalone stats."
+    ],
+    "donts": [
+      "Don't add prefers-color-scheme or data-theme branching — this system commits to one printed world, not an adaptive UI.",
+      "Don't add a shadow to anything except the sticker badge.",
+      "Don't use more than one sticker badge per viewport.",
+      "Don't introduce hard square corners; every rectangle carries at least an 8px radius.",
+      "Don't number case studies or index entries in a way that implies a series (\"Кейс · 01\") until a second entry actually exists."
+    ]
+  }
+}
