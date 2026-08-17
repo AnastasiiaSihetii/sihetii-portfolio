@@ -199,13 +199,14 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 }
 .btn--cta {
   width: 100%;
+  height: 300px;
   justify-content: center;
   font-family: var(--font-display);
   font-stretch: 100%;
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   font-weight: 700;
 }
-.btn--cta-light { background: var(--card); color: var(--ink); }
+.btn--cta-light { height: 140px; background: var(--card); color: var(--ink); }
 .btn--cta:hover, .btn--cta-light:hover { background: var(--sky); color: var(--canvas); }
 
 .footer-links {
