@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import { articles, content, type Lang } from "./lang-content";
 
@@ -11,6 +11,22 @@ export default function Home() {
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  const caseCards = [
+    {
+      ...t.cases.birthday,
+      href: "/case-studies/birthday-website.html",
+      accent: "case-card--ink",
+      image: "/case-birthday.png",
+    },
+    {
+      ...t.cases.loops,
+      // TODO: swap href for the Loops case-study page once it exists
+      href: "#",
+      accent: "case-card--blue",
+      image: "/case-loops.png",
+    },
+  ];
 
   return (
     <>
@@ -44,56 +60,92 @@ export default function Home() {
       </section>
 
       <div className="page">
-      {/* ---------- Case study ---------- */}
-      <section className="block block--card block-wide">
-        <div className="block-inner">
-          {/* TODO: swap for the real case-study cover photo */}
-          <div className="case-study-photo" aria-hidden="true" />
-          <p className="eyebrow">{t.caseStudy.eyebrow}</p>
-          <h2 className="sec-title">{t.caseStudy.title}</h2>
-          <p style={{ marginBottom: "1.6rem" }}>{t.caseStudy.desc}</p>
-          <div className="tag-row" style={{ marginBottom: "2rem" }}>
-            <span className="tag">Next.js</span>
-            <span className="tag">Supabase</span>
-            <span className="tag">Claude Code</span>
-            <span className="tag">Figma</span>
-            <span className="tag">Vercel</span>
+      {/* ---------- Cases (Figma: Portfolio 2026, node 98:102) ---------- */}
+      <section className="cases-section">
+        <div className="cases-group">
+          <h2 className="section-heading">{t.cases.heading}</h2>
+          <div className="cases-grid">
+            {caseCards.map((card) => (
+              <article className={`case-card ${card.accent}`} key={card.image}>
+                <div className="case-card-head">
+                  <div className="case-card-text">
+                    <a href={card.href} className="case-card-title">
+                      <span className="link-mark">{card.title}</span>
+                    </a>
+                    <p className="case-card-desc">{card.desc}</p>
+                  </div>
+                  <Image
+                    src="/case-arrow.svg"
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="case-card-arrow"
+                  />
+                </div>
+                <div className="case-card-media">
+                  <Image
+                    src={card.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 900px) 100vw, 540px"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              </article>
+            ))}
           </div>
-          <a href="/case-studies/birthday-website.html" className="btn">
-            {t.caseStudy.linkLabel} <span className="btn-arrow">→</span>
-          </a>
         </div>
       </section>
 
-      {/* ---------- Public: talks (Figma: Portfolio 2026, node 98:90) ---------- */}
+      {/* ---------- Public: talks (Figma: Portfolio 2026, node 99:625) ---------- */}
       <section className="public-section">
         <div className="public-group">
           <h2 className="section-heading">{t.public.heading}</h2>
-          <div className="public-item">
-            <div className="public-item-media">
-              <Image
-                src="/public-item-image.png"
-                alt="Виступ на UX/UI Design Meetup"
-                fill
-                sizes="(max-width: 900px) 100vw, 1120px"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <div className="public-item-row">
-              <div className="public-item-text">
-                <a
-                  href="https://itct.com.ua/news/ux-ui-design-meetup-rinok-dizainu-2026-ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="item-title"
-                >
-                  {t.public.itemTitle}
-                </a>
-                <p className="item-subtitle">{t.public.itemSubtitle}</p>
+          <div className="public-grid">
+            <div className="public-item">
+              <div className="public-item-media public-item-media--dark">
+                <Image
+                  src="/projector-logo-white.svg"
+                  alt=""
+                  width={246}
+                  height={30}
+                  className="public-item-logo"
+                />
               </div>
-              <div className="public-item-meta">
-                <span>{t.public.itemMeta[0]}</span>
-                <span>{t.public.itemMeta[1]}</span>
+              <div className="public-item-body">
+                <div className="public-item-text">
+                  <h3 className="item-title">{t.public.projectorTitle}</h3>
+                  <p className="item-subtitle">{t.public.projectorMeta}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="public-item">
+              <div className="public-item-media">
+                <Image
+                  src="/public-item-image.png"
+                  alt="Виступ на UX/UI Design Meetup"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 548px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="public-item-body">
+                <div className="public-item-text">
+                  <a
+                    href="https://itct.com.ua/news/ux-ui-design-meetup-rinok-dizainu-2026-ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="item-title"
+                  >
+                    <span className="link-mark">{t.public.itemTitle}</span>
+                  </a>
+                  <p className="item-subtitle">{t.public.itemSubtitle}</p>
+                </div>
+                <div className="public-item-meta">
+                  <span>{t.public.itemMeta[0]}</span>
+                  <span>{t.public.itemMeta[1]}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -116,10 +168,14 @@ export default function Home() {
                     height={122}
                     className="article-thumb"
                   />
-                  <div className="article-meta">
-                    <span>[{article.source}]</span>
-                    <span>[{article.date[lang]}]</span>
-                  </div>
+                  <Image
+                    src={article.logo.src}
+                    alt={article.source}
+                    width={article.logo.width}
+                    height={article.logo.height}
+                    className="article-logo"
+                    style={{ "--logo-scale": article.logo.scale } as CSSProperties}
+                  />
                 </div>
                 <div className="article-body">
                   <a
@@ -128,9 +184,12 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="item-title"
                   >
-                    {article.title[lang]}
+                    <span className="link-mark">{article.title[lang]}</span>
                   </a>
                   <p className="article-desc">{article.desc[lang]}</p>
+                  <div className="article-meta">
+                    <span>[{article.date[lang]}]</span>
+                  </div>
                 </div>
               </div>
             ))}

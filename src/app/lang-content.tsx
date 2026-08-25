@@ -4,10 +4,14 @@ export type Lang = "en" | "uk";
 
 type Article = {
   href: string;
+  /* Platform name. Not printed in the copy any more — the masthead below says it —
+     so this is what the logo announces to a screen reader. */
   source: string;
-  /* Card preview, laid over the newsprint thumbnail. Taken from each article's
-     og:image; null until the piece has a cover of its own. */
-  preview: string | null;
+  /* Masthead of the platform the piece ran on, printed onto the newsprint
+     thumbnail. `width`/`height` are the file's own pixels; `scale` is the share of
+     the sheet it sets to, tuned per mark so three wordmarks of very different
+     proportion (2.8:1 to 4.7:1) still land at roughly one optical height. */
+  logo: { src: string; width: number; height: number; scale: number };
   date: Record<Lang, string>;
   title: Record<Lang, string>;
   desc: Record<Lang, ReactNode>;
@@ -17,7 +21,7 @@ export const articles: Article[] = [
   {
     href: "/articles/design-engineer-2026.html",
     source: "sihetii.com",
-    preview: null,
+    logo: { src: "/articles/logos/sihetii.svg", width: 1734, height: 479, scale: 0.7 },
     date: { en: "August 2026", uk: "Серпень 2026" },
     title: {
       en: "Design Engineer in 2026: the role, the pay, and the way in",
@@ -44,7 +48,7 @@ export const articles: Article[] = [
   {
     href: "https://journal.gen.tech/post/claude-design-figma-make-canva-magic",
     source: "High Bar Journal",
-    preview: "/articles/previews/high-bar-journal.webp",
+    logo: { src: "/articles/logos/high-bar-journal.png", width: 1020, height: 216, scale: 0.9 },
     date: { en: "May 2026", uk: "Травень 2026" },
     title: {
       en: "Claude Design, Figma Make, and Canva Magic: a big test drive of AI tools",
@@ -84,7 +88,7 @@ export const articles: Article[] = [
   {
     href: "https://dou.ua/forums/topic/58654/",
     source: "DOU",
-    preview: "/articles/previews/dou-figma-mcp.jpg",
+    logo: { src: "/articles/logos/dou.svg", width: 58, height: 21, scale: 0.53 },
     date: { en: "April 2026", uk: "Квітень 2026" },
     title: {
       en: "Design system with Figma MCP and Claude Code: how to reduce manual work",
@@ -98,7 +102,7 @@ export const articles: Article[] = [
   {
     href: "https://dou.ua/forums/topic/58173/",
     source: "DOU",
-    preview: "/articles/previews/dou-ai-daily.jpg",
+    logo: { src: "/articles/logos/dou.svg", width: 58, height: 21, scale: 0.53 },
     date: { en: "March 2026", uk: "Березень 2026" },
     title: {
       en: "AI in everyday design tasks: from brief to prototype in hours",

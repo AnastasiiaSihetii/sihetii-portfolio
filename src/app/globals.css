@@ -55,11 +55,42 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+/* Hovering a link fills it rather than underlining it: the words invert into a solid
+   rectangle, the move the CTA buttons already make. The padding only appears on hover
+   and the negative margin cancels it, so the block gets its breathing room without
+   nudging the text under it. box-decoration-break: clone gives a title that wraps one
+   rectangle per line instead of a single slab with a ragged edge past the short line.
+   The fill has to sit on an inline box to hug the words at all, which is why the two
+   titles carry an inner .link-mark span -- their <a> is a flex item and a background
+   on it would stretch the full column. */
+.case-card:hover .case-card-title .link-mark,
+.case-card-title:focus-visible .link-mark,
+a.item-title:hover .link-mark,
+a.item-title:focus-visible .link-mark,
+.article-desc a:hover,
+.article-desc a:focus-visible,
+.footer-link-group a:hover,
+.footer-link-group a:focus-visible {
+  padding-inline: 0.2em;
+  margin-inline: -0.2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.case-card-title .link-mark,
+a.item-title .link-mark,
+.article-desc a,
+.footer-link-group a {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+/* Wax reads at 11:1 on the near-black card and 3.2:1 on the blue one, but only
+   1.9:1 against the white page -- under the 3:1 a focus indicator owes its
+   surroundings. So the page rings in ink and only the cards keep wax. */
 a:focus-visible, button:focus-visible, .btn:focus-visible {
-  outline: 3px solid var(--wax);
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
   border-radius: 2px;
 }
+.case-card-title:focus-visible { outline-color: var(--wax); }
 
 h1, h2, h3 {
   font-family: var(--font-display);
@@ -104,14 +135,6 @@ h3 { font-weight: 500; letter-spacing: -0.02em; }
 /* Matches the public-item photo radius (40px) so the case-study card and the photo
    block right below it read as the same rounding, at every viewport. */
 .block--card { border-radius: 40px; }
-.case-study-photo {
-  width: 100%;
-  aspect-ratio: 1120 / 560;
-  border-radius: 32px;
-  background: rgba(27, 22, 32, 0.08);
-  margin-bottom: 1.8rem;
-}
-
 .block--candle { background: var(--candle); color: var(--ink); }
 .block--ink { background: var(--ink); color: var(--canvas); }
 .block--forest { background: var(--forest); color: var(--canvas); }
@@ -173,7 +196,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   border: none;
   cursor: pointer;
 }
-.btn:hover { transform: translateY(-2px); }
+.btn:hover, .btn:focus-visible { transform: translateY(-2px); }
 .btn-arrow { font-size: 1.5em; line-height: 1; }
 .btn--on-dark { background: var(--wax); color: var(--ink); }
 .btn--on-candle { background: var(--ink); color: var(--canvas); }
@@ -199,7 +222,8 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   color: var(--canvas);
 }
 .btn--cta-light { height: 140px; background: #f3f4f6; color: var(--ink); }
-.btn--cta:hover, .btn--cta-light:hover { background: var(--ink); color: var(--canvas); }
+.btn--cta:hover, .btn--cta-light:hover,
+.btn--cta:focus-visible, .btn--cta-light:focus-visible { background: var(--ink); color: var(--canvas); }
 
 @media (max-width: 600px) {
   /* The footer email address is long; shrink its type so the pill keeps side padding
@@ -242,9 +266,10 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
-.lang-toggle button:hover { color: var(--ink); }
+.lang-toggle button:hover, .lang-toggle button:focus-visible { color: var(--ink); }
 .lang-toggle button.active { background: var(--ink); color: var(--canvas); }
-.lang-toggle button.active:hover { color: var(--canvas); }
+.lang-toggle button.active:hover,
+.lang-toggle button.active:focus-visible { color: var(--canvas); }
 
 /* ---------- Cover hero: full-bleed wordmark + bio + CTAs ---------- */
 .hero-cover-image { width: 100%; line-height: 0; overflow: hidden; }
@@ -292,13 +317,87 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   .hero-cover-img { width: 145%; max-width: none; }
 }
 
+/* ---------- Cases (Figma node 98:102) ---------- */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+/* The 4px frame is the whole trick: copy sits on the card colour, the screenshot
+   below it is inset just enough to read as a slide tucked into the card. */
+.case-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 560px;
+  padding: 2rem 4px 4px;
+  border-radius: 32px;
+  overflow: hidden;
+  color: #ffffff;
+}
+.case-card--ink { background: #010101; }
+.case-card--blue { background: #134bff; }
+
+.case-card-head { display: flex; gap: 1rem; align-items: flex-start; padding: 0 2rem; }
+.case-card-text { display: flex; flex-direction: column; gap: 1rem; flex: 1 0 0; min-width: 0; }
+.case-card-title {
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 4.5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -2px;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0;
+}
+/* One link per card: the title carries the accessible name, its overlay turns the
+   whole card into the hit target without adding a second tab stop. */
+.case-card-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 32px;
+}
+.case-card:hover .case-card-title .link-mark,
+.case-card-title:focus-visible .link-mark {
+  background: var(--canvas);
+  color: var(--ink);
+}
+.case-card-desc {
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #ecedee;
+  margin: 0;
+  max-width: none;
+}
+.case-card-arrow {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+.case-card:hover .case-card-arrow,
+.case-card:has(.case-card-title:focus-visible) .case-card-arrow { transform: translate(3px, -3px); }
+.case-card-media {
+  position: relative;
+  flex: 1 0 0;
+  min-height: 0;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
 /* ---------- Public: talks (Figma node 98:90) ---------- */
-.public-section, .articles-section {
+.cases-section, .public-section, .articles-section {
   display: flex;
   flex-direction: column;
   padding: clamp(1rem, 4vw, 2.5rem) 0;
 }
-.public-group, .articles-group { display: flex; flex-direction: column; gap: 1.5rem; }
+.cases-group, .public-group, .articles-group { display: flex; flex-direction: column; gap: 1.5rem; }
 .article-list { display: flex; flex-direction: column; gap: 2.5rem; }
 
 .section-heading {
@@ -313,17 +412,46 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 }
 .section-heading--sm { font-size: clamp(1.6rem, 4vw, 2rem); letter-spacing: -1.28px; }
 
+.public-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
 .public-item { display: flex; flex-direction: column; gap: 1.5rem; }
 .public-item-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 1120 / 560;
+  aspect-ratio: 548 / 320;
   border-radius: 40px;
   overflow: hidden;
 }
-.public-item-row { display: flex; gap: 0.75rem; align-items: flex-start; }
-.public-item-text { display: flex; flex-direction: column; gap: 0.75rem; flex: 1 0 0; min-width: 0; }
-.public-item-meta {
+/* Teaser tile for work that isn't public yet: the partner wordmark sits blurred on
+   black, so the card reads as "coming" rather than as a finished item. Blurring the
+   logo directly (instead of a backdrop-filter layer, as in Figma) is identical here
+   — the backdrop behind it is flat black — and avoids the compositing cost. Dialled
+   back from Figma's 4px so the wordmark still reads as Projector. */
+.public-item-media--dark {
+  background: #010101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.public-item-media--dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+}
+.public-item-logo {
+  width: 67%;
+  height: auto;
+  filter: blur(2.5px);
+}
+.public-item-body { display: flex; flex-direction: column; gap: 0.75rem; }
+.public-item-text { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+.public-item-meta, .article-meta {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -333,7 +461,6 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   line-height: 1.3;
   color: var(--muted);
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .item-title {
@@ -345,8 +472,10 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   letter-spacing: -2px;
   color: var(--ink);
   text-decoration: none;
+  margin: 0;
 }
-.item-title:hover { text-decoration: underline; text-decoration-color: currentColor; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+a.item-title:hover .link-mark,
+a.item-title:focus-visible .link-mark { background: var(--ink); color: var(--canvas); }
 
 .item-subtitle, .article-desc {
   font-family: var(--font-display);
@@ -358,32 +487,51 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   max-width: none;
 }
 .article-desc a { color: inherit; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
-.article-desc a:hover { color: var(--ink); }
+.article-desc a:hover,
+.article-desc a:focus-visible { background: var(--ink); color: var(--canvas); text-decoration: none; }
 
-.article-row { display: flex; gap: 0.75rem; align-items: center; }
+/* Top-aligned, not centred: once a title wraps and the description runs to three
+   lines the sheet would otherwise drift down the row, away from the thing it
+   belongs to. The mobile rule below stacks the row, where this no longer applies. */
+.article-row { display: flex; gap: 0.75rem; align-items: flex-start; }
 .article-thumb-group { position: relative; width: 179px; height: 122px; flex-shrink: 0; }
 .article-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.article-meta {
+/* The -1.6deg matches the photographed sheet's own tilt (its top edge rises 3.4% of
+   the frame from left to right), so the mark sits square to the newsprint rather than
+   across it. The box is the largest rotated rectangle of the sheet's own 179:122
+   proportion that still clears the alpha mask by ~1.5px on every side — solved
+   against the PNG, not eyeballed. Inside it the mark is contained, not covered, and
+   centred like a masthead. Every mark here is wider than the box is tall, so contain
+   makes it set to the full box width; giving them all one width would then leave the
+   squat marks a third the height of the tall ones, so each is scaled about that
+   centre by its own --logo-scale (the `scale` field on each article) and they meet at
+   one optical height instead. Scale is therefore the share of the sheet the mark sets
+   to. Each logo carries its own transparency, so the paper still reads around it. */
+.article-logo {
   position: absolute;
-  inset: 0;
+  top: 5.1%;
+  left: 4.2%;
+  width: 88.8%;
+  height: 88.8%;
+  object-fit: contain;
+  transform: rotate(-1.6deg) scale(var(--logo-scale, 0.7));
 }
-.article-meta span {
-  position: absolute;
-  left: 20px;
-  font-family: var(--font-display);
-  font-stretch: 100%;
-  font-size: 1rem;
-  line-height: 1.3;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.article-meta span:first-child { top: 31px; }
-.article-meta span:last-child { top: 69px; }
 .article-body { display: flex; flex-direction: column; gap: 0.75rem; flex: 1 0 0; min-width: 0; }
 
+/* Two cards side by side get cramped before the page itself does — stack them early
+   and open the gap so they stop reading as one block. */
+@media (max-width: 900px) {
+  .public-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .cases-grid { grid-template-columns: minmax(0, 1fr); }
+  /* Stacked, a locked 560px card would crush the screenshot — let the copy set the
+     height and hold the shot at its desktop proportion. */
+  .case-card { height: auto; }
+  .case-card-media { flex: none; aspect-ratio: 540 / 337; }
+}
+
 @media (max-width: 720px) {
-  .public-item-row { flex-direction: column; gap: 0.5rem; }
   .article-row { flex-direction: column; align-items: flex-start; }
+  .case-card-head { padding: 0 1.5rem; }
 }
 
 .footer-links {
@@ -400,8 +548,12 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-weight: 600;
   font-size: 18px;
   text-decoration: none;
+  /* One short word each, so the flex item can shrink to it and the hover block ends
+     at the word instead of running the width of the column. */
+  align-self: flex-start;
 }
-.footer-link-group a:hover { text-decoration: underline; text-decoration-color: currentColor; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.footer-link-group a:hover,
+.footer-link-group a:focus-visible { background: var(--ink); color: var(--canvas); }
 .footer-badge-group { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; align-self: stretch; gap: 1rem; }
 .footer-badge { width: clamp(7.75rem, 13vw, 9.5rem); height: auto; }
 
