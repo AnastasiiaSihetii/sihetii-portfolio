@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Design Engineer у 2026: хто це, скільки платять і як туди переходять</title>
+<title>Design Engineer у 2026: хто це, хто наймає і скільки платять</title>
 <meta name="description" content="Дослідження ролі design engineer за даними 2026 року. Глобальні вакансії з вилками, зведений профіль вимог, текстовий аналіз 250 дизайнерських вакансій DOU і шлях переходу з продуктового дизайну.">
 <meta property="og:title" content="Design Engineer у 2026: дослідження ролі">
 <meta property="og:description" content="Глобальні вакансії Anthropic, Vercel, Cursor і Ramp, профіль вимог і глибокий зріз українського ринку за 250 вакансіями DOU.">
@@ -46,7 +46,7 @@ h1{font-size:clamp(2rem,5vw,2.9rem);font-weight:600;line-height:1.12;letter-spac
 
 /* ── Текстовий ритм ── */
 h2{font-size:1.65rem;font-weight:600;line-height:1.25;letter-spacing:-.02em;margin-top:3.2rem;margin-bottom:1rem}
-h2:first-of-type{margin-top:0}
+h2:first-of-type{margin-top:2.4rem}
 h3{font-size:1.25rem;font-weight:600;line-height:1.3;letter-spacing:-.015em;margin-top:2.4rem;margin-bottom:.8rem}
 h2 + h3{margin-top:1.2rem}
 p{margin-bottom:1.4rem}
@@ -81,7 +81,6 @@ figure.shot figcaption{font-size:.85rem;color:var(--muted);margin:.8rem auto 0;l
 .sep{display:flex;justify-content:center;gap:1rem;margin:3rem auto 2.6rem;color:var(--ink);font-size:1.1rem;letter-spacing:.4em}
 
 /* ── Футер ── */
-.sources{font-size:.95rem}
 .sources li{margin-bottom:.6rem}
 .foot{border-top:1px solid var(--hair);margin-top:3.5rem;padding-top:2rem;padding-bottom:4rem;font-size:.9rem;color:var(--muted)}
 </style>
@@ -97,60 +96,63 @@ figure.shot figcaption{font-size:.85rem;color:var(--muted);margin:.8rem auto 0;l
 
 <article>
   <header class="article-head">
-    <h1>Design Engineer у 2026: хто це, скільки платять і як туди переходять</h1>
-    <p class="lead">Мене звати Настя, я продуктова дизайнерка з понад п'ятирічним досвідом розробки інтерфейсів для агенцій, стартапів і корпоративних продуктів. Зараз я переходжу в дизайн-інженерію і вже поєдную дизайн із фронтендом на комерційному проєкті.</p>
-    <p class="lead">Design engineer проєктує інтерфейс і сам доводить його до продакшн-коду. У 2026 році цю роль масово відкривають AI-компанії й devtools, а в Україні вона тільки з'являється.</p>
-    <p class="lead">У цій статті я порівнюю два ринки. Глобальний, де роль уже устоялась і де її наймають Anthropic, Vercel, Cursor, Ramp і Lovable: що вони вимагають, скільки платять і як проводять співбесіди. І український, де роль ще ховається під іншими назвами: що просять у вакансіях, скільки платять, яка конкуренція і хто вже працює в цій ролі. Наприкінці про те, як у це переходять і що з цим робити дизайнеру. Дослідження я робила з допомогою моделі Claude Fable 5.</p>
+    <h1>Design Engineer у 2026: хто це, хто наймає і скільки платять</h1>
+    <p class="lead">Design engineer проєктує інтерфейс і сам доводить його до продакшн-коду. У 2026 році цю роль відкривають Anthropic, Vercel, Cursor, Ramp і Lovable, а в Україні вона ще ховається під назвами UX Designer чи Product Designer.</p>
+    <p class="lead">Я порівняла глобальний ринок з українським. Глобальний задає стандарт: хто наймає, що вимагає, скільки платить, як проводить співбесіду. І український: що показали тексти 408 дизайнерських і 146 фронтенд-вакансій з DOU та Djinni. Скільки заробляють дизайнери проти розробників, хто вже працює в цій ролі і як я шукала таку роботу. Наприкінці зведений список вимог до професії і висновки, що з усім цим робити. Дослідження я робила з допомогою моделі Claude Fable 5.</p>
   </header>
   <div class="byline">
     <img class="avatar" src="/articles/img/author.jpg" alt="" width="44" height="44">
     <div class="who"><b>Анастасія Сігетій</b><span>25 серпня 2026</span></div>
   </div>
 
-  <h2>Хто такий design engineer</h2>
-  <p>Design engineer поєднує продуктовий дизайн і фронтенд-розробку. Він проєктує інтерфейс і сам доводить його до продакшн-коду. Дизайнер на цьому місці передав би макет у розробку. Фронтенд-розробник отримав би готові дизайн-рішення від дизайнера. Design engineer прибирає цю передачу. Рішення про те, як інтерфейс виглядає і як він поводиться, ухвалює одна людина, і вона ж відповідає за результат у продакшені: за стани, анімацію, доступність і за те, що між макетом і живим продуктом нічого не загубилось. Тому у вакансіях цю роль описують словами ownership і крафт, а планку ставлять на рівні senior.</p>
-  <p>Термін має коротку історію, <a href="https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/" target="_blank" rel="noopener">її хронологію зібрав Девід Лур</a>. У 2010-х схожі гібридні ролі ховалися під назвами design technologist і UX engineer у великих компаніях. У 2020-му Наталя Шелберн зі співавторами випустила <a href="https://designbetterpodcast.com/p/design-engineering-handbook" target="_blank" rel="noopener">Design Engineering Handbook</a>, першу системну спробу описати професію. Того ж року вона розповіла, як придумала термін разом з Аароном Волтером. У 2022-му індустрією розійшлося есе Джима Нільсена <a href="https://blog.jim-nielsen.com/2022/the-case-for-design-engineers/" target="_blank" rel="noopener">«The Case for Design Engineers»</a>, а у 2024-му Vercel <a href="https://vercel.com/blog/design-engineering-at-vercel" target="_blank" rel="noopener">публічно описав</a> роботу власної design engineering команди. Масовою назва стала у 2024–2026, коли дизайнери отримали інструменти, з якими макет можна самому довести до робочого коду, навіть не вміючи його писати.</p>
+  <p>Мене звати Настя, я продуктова дизайнерка з понад п'ятирічним досвідом розробки інтерфейсів для агенцій, стартапів і корпоративних продуктів. Зараз я переходжу в дизайн-інженерію і вже поєдную дизайн із фронтендом на комерційному проєкті.</p>
+  <p>Зміст</p>
+  <ol class="toc">
+    <li><a href="#who">Хто такий design engineer</a></li>
+    <li><a href="#change">Що змінилось у роботі дизайнера за останній рік</a></li>
+    <li><a href="#hiring">Хто наймає і скільки платить</a></li>
+    <li><a href="#ukraine">А що в Україні</a></li>
+    <li><a href="#requirements">Вимоги до професії: зведений список</a></li>
+    <li><a href="#interview">Співбесіда і портфоліо</a></li>
+    <li><a href="#summary">Підсумуємо</a></li>
+  </ol>
+
+  <h2 id="who">Хто такий design engineer</h2>
+  <p>Design engineer працює на стику продуктового дизайну і фронтенду, і результат його роботи інший, ніж у дизайнера. Дизайнер здає макет і опис станів, які далі збирає розробник. Design engineer здає готовий компонент у кодовій базі: зі станами, анімацією, доступністю і поведінкою на різних екранах. Проміжних артефактів для передачі в такій роботі немає, бо передавати нікому. Звідси й слова, якими описують роль у вакансіях: ownership, крафт і senior-планка.</p>
+  <p>Термін має коротку історію, <a href="https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/" target="_blank" rel="noopener">її хронологію зібрав Девід Лур</a>. У 2010-х схожі гібридні ролі ховалися під назвами design technologist і UX engineer у великих компаніях. Перша книжка про професію, <a href="https://designbetterpodcast.com/p/design-engineering-handbook" target="_blank" rel="noopener">Design Engineering Handbook</a>, вийшла у 2020 році. Її написали Наталя Шелберн і колеги з New York Times, Mailchimp, Minted та Indeed. Сам термін, за словами Шелберн, вона придумала разом з Аароном Волтером на конференції в Сіднеї. У 2022-му індустрією розійшлося есе Джима Нільсена <a href="https://blog.jim-nielsen.com/2022/the-case-for-design-engineers/" target="_blank" rel="noopener">«The Case for Design Engineers»</a>, а у 2024-му Vercel <a href="https://vercel.com/blog/design-engineering-at-vercel" target="_blank" rel="noopener">розповів у блозі</a>, як його design engineers працюють у трьох режимах: поруч із дизайнерами, всередині продуктових команд і самостійно, від ескізу до релізу. Масовою назва стала у 2024–2026, коли дизайнери отримали інструменти, з якими макет можна самому довести до робочого коду, навіть не вміючи його писати.</p>
 
   <div class="sep" aria-hidden="true">· · ·</div>
 
-  <h2>Що змінилось у роботі дизайнера за останній рік</h2>
+  <h2 id="change">Що змінилось у роботі дизайнера за останній рік</h2>
   <p>У серпні 2026 року Designer Fund і Foundation Capital опублікували <a href="https://stateofaidesign.com/" target="_blank" rel="noopener">AI in Design Report</a>, опитування 900+ дизайнерів із 60+ країн.</p>
   <div class="stats">
     <div class="stat"><b>50%</b><span>дизайнерів уже відправляли AI-згенерований код у продакшн</span></div>
     <div class="stat"><b>65%</b><span>кажуть, що виконують більше інженерних і PM-задач, ніж рік тому</span></div>
     <div class="stat"><b>20%</b><span>опитаних називають себе design engineer</span></div>
   </div>
-  <p>Порівняння з торішнім заміром показує швидкість зміни. Щотижневе використання AI у дизайні зросло з 54% у 2025 до 91% у 2026. У 43% компаній робочий прототип уже входить в очікуваний результат роботи дизайнера. Є і зворотний бік: частка дизайнерів, які відзначають зниження співпраці в команді, зросла з 5% до 20%, бо час перетікає з живих обговорень у промпти й термінали.</p>
+  <p>Порівняння з торішнім заміром показує швидкість зміни. Щотижневе використання AI у дизайні зросло з 54% у 2025 до 91% у 2026. У 43% компаній робочий прототип уже входить в очікуваний результат роботи дизайнера. Є і зворотний бік. Частка дизайнерів, які відзначають зниження співпраці в команді, зросла з 5% до 20%. Час перетікає з живих обговорень у промпти й термінали.</p>
 <p>Виробництво інтерфейсу подешевшало, бо агент генерує компонент за хвилини. Дизайн при цьому не подешевшав: 80% дизайнерів довіряють власному чуттю якості більше, ніж AI, і лише 5% керівників стали менше цінувати якість виконання. Половина керівників наймає насамперед за AI-навички.</p>
-  <p>Figma підтверджує цей вектор в іншому дослідженні. У <a href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank" rel="noopener">лютневому опитуванні наймальних менеджерів</a> 82% кажуть, що потреба в дизайнерах зросла або стабільна, 73% бачать зростання потреби у володінні AI-інструментами, а попит на senior-дизайнерів росте у 56% компаній проти 25% на джуніорів.</p>
+  <p>Figma підтверджує цей вектор в іншому дослідженні. У <a href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank" rel="noopener">лютневому опитуванні наймальних менеджерів</a> 82% кажуть, що потреба в дизайнерах зросла або стабільна, а 73% бачать зростання потреби у володінні AI-інструментами. Попит на senior-дизайнерів росте у 56% компаній, на джуніорів у 25%.</p>
 
   <div class="sep" aria-hidden="true">· · ·</div>
 
-  <h2>Хто наймає і скільки платить</h2>
+  <h2 id="hiring">Хто наймає і скільки платить</h2>
   <p>В інтернеті я натрапляла на кілька дошок, де збирають вакансії саме для design engineers. Для прикладу візьмемо <a href="https://www.designengineerjob.com/" target="_blank" rel="noopener">designengineerjob.com</a> разом із кар'єрними сторінками компаній, зріз на кінець серпня 2026 року, ролі у вебі та продукті. Це вакансії Anthropic, Vercel, Cursor, Replit, Ramp, Lovable, Supabase, Runway, Cloudflare, Airtable, Meta та інших. Тексти вакансій аналізувала модель Claude Fable 5. Більшість оголошень на дошці датовані травнем, тож повної картини ринку зріз не дає, але ґрунт для розуміння позиції зібрати можна.</p>
   <figure class="shot breakout">
-    <img src="/articles/img/board-designengineerjob.jpg" alt="Скріншот дошки designengineerjob.com: список вакансій design engineer у Runway, Mintlify, Console, OpenAI, Hex, Vercel з зарплатними вилками" loading="lazy" width="1040" height="662">
+    <img src="/articles/img/board-designengineerjob.jpg" alt="Скріншот дошки designengineerjob.com: список вакансій design engineer у Runway, Mintlify, Console, OpenAI, Hex, Vercel з зарплатними вилками" loading="lazy" width="2272" height="1538">
     <figcaption>Дошка designengineerjob.com, 24.08.2026: Runway $250–310k, Console $200–350k, Mintlify $145–200k.</figcaption>
   </figure>
   <p>Тайтл «Design Engineer» стоїть у більшості вакансій, варіанти на кшталт Design Technologist чи Creative Coder трапляються поодиноко. Повністю віддалених ролей третина, джуніорських нуль. У частині тайтлів прямо стоїть Senior, Staff, Lead або Principal, у решті рівень захований у вимоги на 4–7+ років досвіду.</p>
   <p>Вимоги в цих вакансіях повторюються майже дослівно. Cursor шукає людину, «equally comfortable in Figma and your code editor», зі стеком TypeScript, React, CSS і анімаціями. Vercel чекає від кандидата «highest level of polish». Anthropic записує доступність і performance budgets у зону його відповідальності. Lovable просить «sharp eye for craft», а на технічному скринінгу оцінює кандидата на рівні product engineer. Ramp ставить «Claude» тегом навички поруч із React. Повний профіль вимог, зведений з усіх вакансій, буде нижче в окремому розділі.</p>
-  <p>Окремо варто подивитись на фріланс-маркетплейси, наприклад <a href="https://cadence.withremote.ai/about" target="_blank" rel="noopener">Cadence</a>, де стартапи бронюють перевірених інженерів за тижневою ставкою. У <a href="https://cadence.withremote.ai/blog/hire-design-engineer" target="_blank" rel="noopener">статті про найм design engineers</a> Cadence наводить свої тижневі ставки за рівнями:</p>
-  <ul>
-    <li>Junior, $500 на тиждень: чистка коду, залежності, інтеграції за хорошою документацією.</li>
-    <li>Mid, $1 000 на тиждень: стандартні фічі, доведення до релізу, рефакторинг.</li>
-    <li>Senior, $1 500 на тиждень: сам веде обсяг, архітектуру і крайні випадки без підказок. Саме цей рівень Cadence називає правильним для більшості задач дизайн-інженерії.</li>
-    <li>Lead, $2 000 на тиждень: архітектурні рішення, складні системи, робота як fractional CTO.</li>
-  </ul>
-  <p>У <a href="https://cadence.withremote.ai/blog/best-countries-hire-engineers" target="_blank" rel="noopener">рейтингу країн</a>, звідки Cadence радить наймати інженерів, Україна на шостому місці після Індії, Польщі, Аргентини, Бразилії та Мексики.</p>
 
   <div class="sep" aria-hidden="true">· · ·</div>
 
-  <h2>А що в Україні</h2>
-  <p><a href="https://jobs.dou.ua/vacancies/?search=design+engineer" target="_blank" rel="noopener">Пошук «design engineer» на DOU</a> повертає 39 вакансій. Майже всі це інженери-конструктори з miltech: БпЛА, електроніка, RF-системи. Профільних три: дві з назвою design engineer у тайтлі, третя захована під «UX Designer». Окремої категорії «Design Engineer» ще немає ні на DOU, ні на <a href="https://djinni.co/jobs/" target="_blank" rel="noopener">Djinni</a>.</p>
-  <p>На Djinni пошук «design engineer» дає 59 вакансій, але профільних тільки дві. Glorium, та сама вакансія, що на DOU. І <a href="https://djinni.co/jobs/844161-product-design-engineer/" target="_blank" rel="noopener">DOOR3</a>, американська компанія, яка 20 серпня відкрила ремоут-позицію Product Design Engineer із формулюванням «one craft, not two stages with a handoff between them». Але в полі країн стоїть EU, тобто з профілем «Україна» подати заявку не вийде.</p>
+  <h2 id="ukraine">А що в Україні</h2>
+  <p><a href="https://jobs.dou.ua/vacancies/?search=design+engineer" target="_blank" rel="noopener">Пошук «design engineer» на DOU</a> повертає 39 вакансій. Майже всі це інженери-конструктори з miltech: БпЛА, електроніка, RF-системи. Профільних дві: одна з назвою design engineer у тайтлі, друга захована під «UX Designer». Окремої категорії «Design Engineer» ще немає ні на DOU, ні на <a href="https://djinni.co/jobs/" target="_blank" rel="noopener">Djinni</a>.</p>
+  <p>На Djinni пошук «design engineer» дає 59 вакансій, але профільна тільки одна: <a href="https://djinni.co/jobs/844161-product-design-engineer/" target="_blank" rel="noopener">DOOR3</a>, американська компанія, яка 20 серпня відкрила ремоут-позицію Product Design Engineer із формулюванням «one craft, not two stages with a handoff between them». Але в полі країн стоїть EU, тобто з профілем «Україна» подати заявку не вийде.</p>
   <p>Модель проаналізувала тексти 250 вакансій категорії Design на DOU та 88 категорії Front End, а також 158 дизайнерських і 58 фронтенд-вакансій із Djinni.</p>
   <div class="stats">
-    <div class="stat"><b>5 із 408</b><span>дизайнерських вакансій на DOU і Djinni просять design engineer по суті: дизайн і код в одній ролі</span></div>
+    <div class="stat"><b>4 із 408</b><span>дизайнерських вакансій на DOU і Djinni просять design engineer по суті: дизайн і код в одній ролі</span></div>
     <div class="stat"><b>37 із 408</b><span>згадують Claude, ще 17 Cursor, 9 v0 або Bolt, 4 Lovable. AI як інструмент для коду є у 9% описів</span></div>
     <div class="stat"><b>214 із 408</b><span>містять слово AI в будь-якій формі. Половина ринку вже пише про AI, але здебільшого як про генерацію картинок</span></div>
   </div>
@@ -158,7 +160,7 @@ figure.shot figcaption{font-size:.85rem;color:var(--muted);margin:.8rem auto 0;l
   <p>На Djinni 110 дизайнерських вакансій зі 158 повністю віддалені, на DOU лише 8 із 250. Єдина трейні-вакансія: <a href="https://djinni.co/jobs/820758-trainee-ux-ui-engineer/" target="_blank" rel="noopener">jito.dev шукає Trainee UX/UI engineer</a>, стажера, який працюватиме з Claude Code і Storybook, щоб «розуміти і правити фронтенд» під власні макети. Формулювання з опису: «You shouldn't fear that AI will take your job; you should be the one who uses AI to do the work of three people». На цю вакансію 202 відгуки.</p>
 
   <figure class="shot breakout">
-    <img src="/articles/img/cieden-dou.jpg" alt="Скріншот вакансії Cieden UX Designer (AI-Native / Design Engineer) на DOU: вимоги Pet Projects with real code, Claude Code Mastery, Prototyping in Figma, Claude Code, Stitch" loading="lazy" width="1503" height="920">
+    <img src="/articles/img/cieden-dou.jpg" alt="Скріншот вакансії Cieden UX Designer (AI-Native / Design Engineer) на DOU: вимоги Pet Projects with real code, Claude Code Mastery, Prototyping in Figma, Claude Code, Stitch" loading="lazy" width="1834" height="1518">
     <figcaption>Cieden на DOU: «Pet Projects: This is huge for us. We want to see your deployed side projects with real code» і «Claude Code Mastery: Custom commands, agents, and workflow scripting».</figcaption>
   </figure>
   <p><a href="https://jobs.dou.ua/companies/cieden/vacancies/367320/" target="_blank" rel="noopener">Cieden, UX Designer (AI-Native / Design Engineer)</a>, львівська дизайн-агенція 2016 року заснування, зараз розподілена команда на 40+ людей. Рівень middle, два-три роки досвіду. «Your delivery is a Vercel link, not just a deck». «Pet Projects: This is huge for us. We want to see your deployed side projects with real code». «Claude Code Mastery: Custom commands, agents, and workflow scripting». Figma в їхньому стеку описана як інструмент «for strategy and assets, not as the source of truth».</p>
@@ -174,16 +176,16 @@ figure.shot figcaption{font-size:.85rem;color:var(--muted);margin:.8rem auto 0;l
   </div>
   <p>Різниця понад тисячу доларів на місяць, і з досвідом вона не зникає. Дизайнер із 10+ роками досвіду має медіану $3 550, senior-розробник $4 500, техлід $5 500. Українських вилок для design engineer поки немає, але на глобальному ринку цю роль оплачують за інженерною шкалою, бо людина відповідає за код у продакшені. Для дизайнера це рух у бік вищої вилки.</p>
 
-  <h3>Роль тільки формується, а люди в ній уже працюють</h3>
-  <p>За 2026 рік на DOU вийшло щонайменше чотири матеріали від дизайнерів, які працюють у коді: <a href="https://dou.ua/forums/topic/60864/" target="_blank" rel="noopener">Марія Нечипорук</a> про скіли для Claude Code, <a href="https://dou.ua/forums/topic/61294/" target="_blank" rel="noopener">Денис Осадчий</a> про власний міст між Figma і Claude Code, <a href="https://dou.ua/forums/topic/59081/" target="_blank" rel="noopener">Олена Івлєва</a> про межу між генерацією і продуктом, <a href="https://dou.ua/forums/topic/60149/" target="_blank" rel="noopener">Яна Лізгова</a> про магазин, зібраний з Claude Code. І трохи пишу про це я.</p>
-  <p>Поруч з'являються курси. <a href="https://volomydyr.com/" target="_blank" rel="noopener">Володимир Мерленко</a> з Cieden випустив плагін Design Engineer для Claude Code, <a href="https://blog.ithillel.ua/videos/claude-design" target="_blank" rel="noopener">Hillel</a> має відеокурс про дизайн із Claude, <a href="https://prjctr.com/course/build-your-startup-with-ai" target="_blank" rel="noopener">Projector</a> запускає «Build Your Startup with AI», а <a href="https://neoversity.com.ua/product-design-m" target="_blank" rel="noopener">Neoversity</a> відкрила магістратуру з UX і фронтендом в одній програмі.</p>
+  <h3>Сфера в Україні вже розвивається</h3>
+  <p>За 2026 рік на DOU вийшло щонайменше чотири матеріали від дизайнерів, які працюють у коді. <a href="https://dou.ua/forums/topic/60864/" target="_blank" rel="noopener">Марія Нечипорук</a> пише про скіли для Claude Code, <a href="https://dou.ua/forums/topic/61294/" target="_blank" rel="noopener">Денис Осадчий</a> про власний міст між Figma і Claude Code, <a href="https://dou.ua/forums/topic/59081/" target="_blank" rel="noopener">Олена Івлєва</a> про межу між генерацією і продуктом, <a href="https://dou.ua/forums/topic/60149/" target="_blank" rel="noopener">Яна Лізгова</a> про магазин, зібраний з Claude Code. І трохи пишу про це я.</p>
+  <p>Поруч з'являються курси. <a href="https://volomydyr.com/" target="_blank" rel="noopener">Володимир Мерленко</a> з Cieden випустив плагін Design Engineer для Claude Code, <a href="https://blog.ithillel.ua/videos/claude-design" target="_blank" rel="noopener">Hillel</a> має відеокурс про дизайн із Claude. <a href="https://prjctr.com/course/build-your-startup-with-ai" target="_blank" rel="noopener">Projector</a> запускає «Build Your Startup with AI», а <a href="https://neoversity.com.ua/product-design-m" target="_blank" rel="noopener">Neoversity</a> відкрила магістратуру з UX і фронтендом в одній програмі.</p>
 
   <h3>Як я шукала роботу інженером</h3>
-  <p>Вакансій із назвою «design engineer» таки досить мало, як ви бачите. Тому я почала зі старого доброго способу: писала людям, з якими раніше працювала, і питала, чи є у них або в їхніх знайомих задача, де потрібен саме дизайн-інженер. Так знайшовся проєкт, який я зараз веду вже другий місяць. Та проєкт має кінець, і шлях пошуку фултайму ще попереду.</p>
+  <p>Вакансій із назвою «design engineer» таки досить мало, як ви бачите. Тому я почала зі старого доброго способу і писала людям, з якими раніше працювала. Питала, чи є у них або в їхніх знайомих задача, де потрібен саме дизайн-інженер. Так знайшовся проєкт, який я зараз веду вже другий місяць. Та проєкт має кінець, і шлях пошуку фултайму ще попереду.</p>
 
   <div class="sep" aria-hidden="true">· · ·</div>
 
-  <h2>Вимоги до професії: зведений список</h2>
+  <h2 id="requirements">Вимоги до професії: зведений список</h2>
   <p>За американськими, європейськими та українськими вакансіями, розділено за тим, як часто повторюються.</p>
 
   <h3>Повторюється майже в кожній вакансії</h3>
@@ -228,65 +230,51 @@ figure.shot figcaption{font-size:.85rem;color:var(--muted);margin:.8rem auto 0;l
 
   <div class="sep" aria-hidden="true">· · ·</div>
 
-  <h2>Як у це переходять</h2>
-
-  <h3>Як виглядає співбесіда</h3>
-  <p>Спільний знаменник у компаній, які публічно описують процес, один: вас просять щось збудувати, а не розповісти про збудоване. Форми різні.</p>
-  <p>Linear проводить три-чотири розмови, а потім <a href="https://linear.app/now/why-and-how-we-do-work-trials-at-linear" target="_blank" rel="noopener">оплачуваний work trial</a> на два-п'ять днів, де кандидат робить робочу задачу команди з доступом до Figma, Slack і GitHub. Оцінюють чотири речі: craft, judgment, ownership і clarity. Lovable у вакансії <a href="https://jobs.ashbyhq.com/lovable/51885ae5-4f4c-46c4-abd3-d7aad1c8d9c0" target="_blank" rel="noopener">Staff Design Engineer</a> описує кілька технічних інтерв'ю зі скринінгом на рівні product engineer, а «в окремих випадках» теж оплачувану тестову роботу. За оглядами процесів для інженерних ролей, Vercel дає take-home на три-п'ять годин, а потім живий code review з двома інженерами. Replit проводить годинну парну сесію просто у своєму продукті і денний міні-проєкт на фінальному етапі. Ці два описи стосуються інженерного треку, і для design engineer формат може відрізнятись.</p>
-  <p>Рекрутери Cadence радять компаніям <a href="https://cadence.withremote.ai/blog/hire-design-engineer" target="_blank" rel="noopener">оплачуваний п'ятиденний тест</a> на один відполірований інтерактивний компонент. Шість критеріїв оцінки варто запам'ятати, бо вони і є профілем ролі: візуальна точність, motion і easing, глибина мікроінтеракцій, доступність, якість коду і продуктивність.</p>
-  <p>Тобто «портфоліо-рев'ю» у класичному вигляді, коли ви гортаєте кейси, тут майже не буває. Дизайн-рекрутер Том Скотт у <a href="https://verifiedinsider.substack.com/p/faq-design-hiring-in-2026" target="_blank" rel="noopener">огляді найму 2026</a> помічає той самий зсув: команди просять показати незакінчені файли й живий процес замість підготовленої презентації, а робота з AI оцінюється як окрема компетенція.</p>
-
-  <h3>Що має бути в портфоліо</h3>
-  <p>Портфоліо design engineer відрізняється від дизайнерського одним словом: воно працює. Живі продукти замість макетів, лінки замість скріншотів. Рекомендації з різних джерел сходяться в кількох речах.</p>
-  <p>Перше, власний сайт як демонстрація. Cadence називає це головним індикатором: персональний сайт із власними інтеракціями, а не шаблон. Друге, компоненти, які ви зробили самі, а не взяли з бібліотеки, з порожніми станами, станами помилки і доступністю з першого комміту. Гайд <a href="https://uithings.com/design-engineering" target="_blank" rel="noopener">Design Engineering: The Complete Guide</a> радить публічний Storybook із задокументованими доступними React-компонентами: він показує результат роботи design engineer краще за будь-який кейс. Третє, історія комітів, з якої видно, як ви доводили деталі. Четверте, свіжа робота замість найкращої старої. Том Скотт прямо радить показувати останнє, особливо якщо там видно AI у щоденному процесі.</p>
-  <p>Практичний рецепт, який я зустріла в одній з історій переходу і яким скористалась сама: взяти три найкращі концепти з Figma і збудувати їх як живі проєкти в браузері. Хостинг безкоштовний, лінк готовий за пів години. Три живих речі важать більше, ніж десять кейсів у PDF.</p>
+  <h2 id="interview">Співбесіда і портфоліо</h2>
+  <p>У компаній, які публічно описують процес, спільне одне: вас просять щось збудувати. Linear після трьох-чотирьох розмов дає <a href="https://linear.app/now/why-and-how-we-do-work-trials-at-linear" target="_blank" rel="noopener">оплачуваний work trial</a> на два-п'ять днів з доступом до Figma, Slack і GitHub. Оцінюють craft, judgment, ownership і clarity. <a href="https://jobs.ashbyhq.com/lovable/51885ae5-4f4c-46c4-abd3-d7aad1c8d9c0" target="_blank" rel="noopener">Lovable</a> проводить технічні інтерв'ю зі скринінгом на рівні product engineer і «в окремих випадках» оплачувану тестову роботу. Класичного портфоліо-рев'ю з гортанням кейсів майже не буває. За спостереженням рекрутера <a href="https://verifiedinsider.substack.com/p/faq-design-hiring-in-2026" target="_blank" rel="noopener">Тома Скотта</a>, команди просять незакінчені файли й процес роботи, а роботу з AI оцінюють як окрему компетенцію.</p>
+  <p>Портфоліо design engineer — власний сайт, зроблений самостійно, з власними інтеракціями. Далі власні компоненти. У них мають бути порожні стани, стани помилки й доступність, закладена від початку. <a href="https://uithings.com/design-engineering" target="_blank" rel="noopener">Гайд Design Engineering: The Complete Guide</a> радить показати їх у публічному Storybook із документацією. І історія комітів, з якої видно, як ви доводили деталі.</p>
 
   <div class="sep" aria-hidden="true">· · ·</div>
 
-  <h2>Чи протримається ця роль</h2>
-  <p>Найсильніше заперечення до всього написаного вище звучить так. Якщо AI зробив дизайнера здатним доводити інтерфейс до коду, то за пару років це вміння матимуть усі. А те, що мають усі, не оплачується з премією. Тоді design engineer сьогодні виглядає як вебмайстер у двохтисячних. Назва, яка протрималась кілька років, поки ринок не розібрав її функції по звичних ролях.</p>
-  <p>Заперечення серйозне, і в мене немає даних, щоб його закрити. Але у звіті є цифра, яка натякає на відповідь. Компанії вже переклали на дизайнерів більше інженерної роботи, бо 65% кажуть, що виконують більше інженерних і PM-задач, ніж рік тому. Компенсацію під це переглянули 8% керівників. Тобто нову продуктивність ринок поки отримує майже безкоштовно, і премія тримається тільки там, де людину складно замінити. Запустити агента вміє вже майже кожен. Дефіцитним лишається інше: вміння вирішити, що саме будувати і коли зупинитись.</p>
-  <p>Друга перевірка на міцність, це думки самих дизайнерів. У <a href="https://www.figma.com/blog/state-of-the-designer-2026/" target="_blank" rel="noopener">Figma State of the Designer 2026</a> (906 дизайнерів, разом із NewtonX) вони розділились майже навпіл: 36% вважають, що професія за рік стала кращою, 35% що гіршою. Одностайного тріумфу нової ролі тут не видно. Видно професію в русі, де виграш залежить від того, з якого боку ви в неї заходите.</p>
+  <h2 id="summary">Підсумуємо</h2>
+  <ul>
+    <li>Ринок говорить про AI більше, ніж наймає під нього. В Україні половина дизайнерських вакансій згадує AI, 9% просять Claude чи Cursor, 4% React і лише 1% шукає design engineer по суті. У вакансіях уже просять дизайнера з інженерними навичками, але окремої посади й категорії під це ще не з'явилось.</li>
+    <li>В Україні у роль можна зайти раніше, ніж на глобальному ринку. Там джуніорських вакансій нуль і планка 4–7+ років. Тут middle бере Cieden, junior Spaceberry, трейні jito.dev, хоч і без слова engineer у посаді.</li>
+    <li>Медіана розробника в Україні на тисячу доларів вища за медіану дизайнера, і з досвідом розрив не зникає. На глобальному ринку design engineer оплачується за інженерною шкалою, українських даних по цій ролі поки немає.</li>
+  </ul>
+  <p>Що з цим робити:</p>
+  <ul>
+    <li>Шукайте вакансії за словами в описі: Claude Code, Cursor, React, prototype.</li>
+    <li>Переводьте портфоліо в лінки: власний сайт, свої компоненти зі станами, Storybook, історія комітів.</li>
+    <li>Починайте практикувати. Візьміть маленький власний біль, який давно хотілось закрити, і зберіть його як робочу річ без Figma, одразу через генерацію. Так ви звикнете до процесу, коли інтерфейс народжується з промпту. Anthropic щойно відкрила <a href="https://academy.claude.com/" target="_blank" rel="noopener">Claude Academy</a>, безкоштовні курси з практичними вправами по Claude Code, там можна перевірити на собі все, що описано вище.</li>
+  </ul>
 
   <div class="sep" aria-hidden="true">· · ·</div>
 
-  <h2>Що з цим робити дизайнеру</h2>
-  <p>Роль існує, компанії під неї наймають, а вимоги зводяться до знайомого дизайнерам. Крафт, системність, motion, доступність і вміння керувати AI-виробництвом.</p>
-  <p>Тепер два «але». Перше: ринок хоче senior-зрілості. Джуніорських вакансій design engineer на глобальній дошці нуль, а за даними Figma попит на senior-дизайнерів росте вдвічі частіше, ніж на джуніорів. В Україні вхід виглядає інакше: Spaceberry, inVerita і Cieden просять будувати з агентами вже на junior- і middle-рівні, тільки без назви design engineer у посаді. Якщо ви на початку шляху, швидше буде рости в продуктовому дизайні в такій команді й паралельно доводити пет-проєкти до живих версій.</p>
-  <p>Друге: у цієї роботи є ціна, про яку вакансії мовчать. Ви відповідаєте за код, якого не читаєте, і тримаєте кілька потоків виробництва одночасно. Smashing Magazine у <a href="https://www.smashingmagazine.com/2026/04/production-ready-becomes-design-deliverable-ux/" target="_blank" rel="noopener">квітневій статті</a> про production-ready як новий дизайнерський deliverable зводить це до одного правила: не віддавайте код, який не можете пояснити. Це зовсім інше навантаження, ніж робота в макетах.</p>
-  <p>Дизайн-мислення в цій ролі не зникає. Воно дорожчає.</p>
-
-  <div class="sep" aria-hidden="true">· · ·</div>
-
-  <h2 style="font-size:1.3rem">Джерела</h2>
+  <h2>Джерела</h2>
   <ol class="sources">
     <li><a href="https://stateofaidesign.com/" target="_blank" rel="noopener">AI in Design Report 2026</a> (Designer Fund × Foundation Capital, серпень 2026), розділи Tools, Craft, Teams</li>
-    <li><a href="https://designerfund.com/blog/ai-in-design-2026" target="_blank" rel="noopener">Designer Fund: AI in Design 2026, the inflection point is here</a></li>
-    <li><a href="https://www.figma.com/blog/state-of-the-designer-2026/" target="_blank" rel="noopener">Figma State of the Designer 2026</a> (Figma × NewtonX, 906 дизайнерів)</li>
     <li><a href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank" rel="noopener">Figma: Why Demand for Designers Is on the Rise</a> (опитування наймальних менеджерів, 10.02.2026)</li>
     <li><a href="https://vercel.com/blog/design-engineering-at-vercel" target="_blank" rel="noopener">Design Engineering at Vercel</a> (29.03.2024)</li>
     <li><a href="https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/" target="_blank" rel="noopener">The Origins of Design Engineering</a> (David Luhr), хронологія терміну</li>
+    <li><a href="https://designbetterpodcast.com/p/design-engineering-handbook" target="_blank" rel="noopener">Design Engineering Handbook</a> (Natalya Shelburne, Adekunle Oduye, Kim Williams, Eddie Lou, 2020)</li>
+    <li><a href="https://blog.jim-nielsen.com/2022/the-case-for-design-engineers/" target="_blank" rel="noopener">Jim Nielsen: The Case for Design Engineers</a> (2022)</li>
     <li><a href="https://www.designengineerjob.com/" target="_blank" rel="noopener">designengineerjob.com</a>, курована дошка вакансій</li>
     <li><a href="https://jobs.generalcatalyst.com/companies/anthropic/jobs/79329265-design-engineer-web" target="_blank" rel="noopener">Anthropic: Design Engineer, Web</a></li>
     <li><a href="https://www.welcometothejungle.com/en/companies/ramp/jobs/design-engineer_fr_wxsz6zrh" target="_blank" rel="noopener">Ramp: Design Engineer (Brand)</a></li>
     <li><a href="https://jobs.ashbyhq.com/lovable/51885ae5-4f4c-46c4-abd3-d7aad1c8d9c0" target="_blank" rel="noopener">Lovable: Staff / Principal Design Engineer, Web</a></li>
     <li><a href="https://cursor.com/careers/design-engineer" target="_blank" rel="noopener">Cursor: Design Engineer</a></li>
-    <li><a href="https://jobs.ashbyhq.com/ashby" target="_blank" rel="noopener">Ashby: Design Engineer EU, Staff Design Engineer EU</a></li>
     <li><a href="https://builtin.com/job/lead-design-technologist/6957812" target="_blank" rel="noopener">Atlassian: Lead Design Technologist</a> (Sydney)</li>
-    <li><a href="https://linear.app/now/how-we-hire-at-linear" target="_blank" rel="noopener">Linear: How we hire</a> і <a href="https://linear.app/now/why-and-how-we-do-work-trials-at-linear" target="_blank" rel="noopener">Why and how we do work trials</a></li>
-    <li><a href="https://cadence.withremote.ai/blog/hire-design-engineer" target="_blank" rel="noopener">Cadence: How to hire a design engineer</a> (14.05.2026)</li>
     <li><a href="https://verifiedinsider.substack.com/p/faq-design-hiring-in-2026" target="_blank" rel="noopener">Tom Scott, Verified Insider: FAQ, Design Hiring in 2026</a></li>
     <li><a href="https://uithings.com/design-engineering" target="_blank" rel="noopener">Design Engineering: The Complete Guide for 2026</a> (Tomas Laurinavicius)</li>
-    <li><a href="https://x.com/kaushik_murali/status/2011455766813675583" target="_blank" rel="noopener">Kaushik Murali: Product Designer → Design Engineer</a>, історія переходу</li>
     <li><a href="https://dou.ua/lenta/articles/salary-report-non-tech-summer-2026/" target="_blank" rel="noopener">DOU: Зарплати фахівців з Design та інших, літо 2026</a></li>
     <li><a href="https://dou.ua/lenta/articles/salary-report-devs-summer-2026/" target="_blank" rel="noopener">DOU: Зарплати українських розробників, літо 2026</a></li>
     <li><a href="https://jobs.dou.ua/vacancies/?search=design+engineer" target="_blank" rel="noopener">DOU Jobs: пошук «design engineer»</a>, а також повний текстовий аналіз 250 вакансій категорії Design і 88 категорії Front End (зріз 25.08.2026)</li>
-    <li><a href="https://jobs.dou.ua/companies/cieden/vacancies/367320/" target="_blank" rel="noopener">Cieden: UX Designer (AI-Native / Design Engineer)</a>, <a href="https://jobs.dou.ua/companies/onepage-gmbh/vacancies/369135/" target="_blank" rel="noopener">Onepage: Senior Product Designer</a>, <a href="https://jobs.dou.ua/companies/universe/vacancies/367879/" target="_blank" rel="noopener">Universe Group: Product Designer (FORMA)</a>, <a href="https://jobs.dou.ua/companies/spaceberry/vacancies/367616/" target="_blank" rel="noopener">Spaceberry Studio: Strong Junior UX/UI Designer</a></li>
-    <li>Djinni: пошук «design engineer» і текстовий аналіз 158 вакансій категорії Design та 58 категорії JavaScript / Front-End, зріз 25.08.2026. Окремо: <a href="https://djinni.co/jobs/844161-product-design-engineer/" target="_blank" rel="noopener">DOOR3, Product Design Engineer</a>, <a href="https://djinni.co/jobs/820758-trainee-ux-ui-engineer/" target="_blank" rel="noopener">jito.dev, Trainee UX/UI engineer</a>, <a href="https://djinni.co/jobs/825043-design-system-lead-design-ops/" target="_blank" rel="noopener">jito.dev, Design System Lead</a>, <a href="https://djinni.co/jobs/835370-claude-code-ai-prototyping-hr-saas-specialist/" target="_blank" rel="noopener">alpview, Claude Code AI Prototyping Specialist</a></li>
-    <li><a href="https://dou.ua/lenta/articles/job-market-2026-part-2/" target="_blank" rel="noopener">DOU: Як айтівці шукають роботу в 2026 році</a> (опитування, березень–квітень 2026)</li>
+    <li><a href="https://jobs.dou.ua/companies/cieden/vacancies/367320/" target="_blank" rel="noopener">Cieden: UX Designer (AI-Native / Design Engineer)</a>, <a href="https://jobs.dou.ua/companies/onepage-gmbh/vacancies/369135/" target="_blank" rel="noopener">Onepage: Senior Product Designer</a>, <a href="https://jobs.dou.ua/companies/spaceberry/vacancies/367616/" target="_blank" rel="noopener">Spaceberry Studio: Strong Junior UX/UI Designer</a></li>
+    <li>Djinni: пошук «design engineer» і текстовий аналіз 158 вакансій категорії Design та 58 категорії JavaScript / Front-End, зріз 25.08.2026. Окремо: <a href="https://djinni.co/jobs/844161-product-design-engineer/" target="_blank" rel="noopener">DOOR3, Product Design Engineer</a>, <a href="https://djinni.co/jobs/820758-trainee-ux-ui-engineer/" target="_blank" rel="noopener">jito.dev, Trainee UX/UI engineer</a></li>
     <li>DOU, матеріали українських design engineers 2026: <a href="https://dou.ua/forums/topic/60864/" target="_blank" rel="noopener">Марія Нечипорук</a>, <a href="https://dou.ua/forums/topic/61294/" target="_blank" rel="noopener">Денис Осадчий</a>, <a href="https://dou.ua/forums/topic/59081/" target="_blank" rel="noopener">Олена Івлєва</a>, <a href="https://dou.ua/forums/topic/60149/" target="_blank" rel="noopener">Яна Лізгова</a></li>
     <li><a href="https://volomydyr.com/" target="_blank" rel="noopener">Володимир Мерленко: Design Engineer plugin для Claude Code</a>; <a href="https://blog.ithillel.ua/videos/claude-design" target="_blank" rel="noopener">Hillel: Як дизайнити з Claude у 2026</a>; <a href="https://prjctr.com/course/build-your-startup-with-ai" target="_blank" rel="noopener">Projector: Build Your Startup with AI</a>; <a href="https://neoversity.com.ua/product-design-m" target="_blank" rel="noopener">Neoversity: HCI &amp; Design для епохи AI</a></li>
-    <li><a href="https://www.smashingmagazine.com/2026/04/production-ready-becomes-design-deliverable-ux/" target="_blank" rel="noopener">Smashing Magazine: When "Production-Ready" Becomes a Design Deliverable</a> (квітень 2026)</li>
+    <li><a href="https://academy.claude.com/" target="_blank" rel="noopener">Claude Academy</a>, безкоштовні курси Anthropic по Claude Code (серпень 2026)</li>
   </ol>
 
   <div class="foot">© 2026 Anastasiia Sihetii · <a href="/">sihetii.com</a> · Дані вакансій актуальні на 24–25.08.2026 і можуть змінюватись.</div>
