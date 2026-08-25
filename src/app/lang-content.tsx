@@ -5,6 +5,9 @@ export type Lang = "en" | "uk";
 type Article = {
   href: string;
   source: string;
+  /* Card preview, laid over the newsprint thumbnail. Taken from each article's
+     og:image; null until the piece has a cover of its own. */
+  preview: string | null;
   date: Record<Lang, string>;
   title: Record<Lang, string>;
   desc: Record<Lang, ReactNode>;
@@ -12,8 +15,36 @@ type Article = {
 
 export const articles: Article[] = [
   {
+    href: "/articles/design-engineer-2026.html",
+    source: "sihetii.com",
+    preview: null,
+    date: { en: "August 2026", uk: "Серпень 2026" },
+    title: {
+      en: "Design Engineer in 2026: the role, the pay, and the way in",
+      uk: "Design Engineer у 2026: хто це, скільки платять і як туди переходять",
+    },
+    desc: {
+      en: (
+        <>
+          A research piece on the design engineer role built on 2026 data only: current openings with
+          salary ranges, the shared requirements across Anthropic, Ramp, Vercel and Lovable
+          postings, a snapshot of the Ukrainian market, and the typical transition path from product
+          design.
+        </>
+      ),
+      uk: (
+        <>
+          Дослідження ролі design engineer лише на даних 2026 року: відкриті вакансії з вилками,
+          спільний знаменник вимог у постингах Anthropic, Ramp, Vercel і Lovable, зріз українського
+          ринку та типовий шлях переходу з продуктового дизайну.
+        </>
+      ),
+    },
+  },
+  {
     href: "https://journal.gen.tech/post/claude-design-figma-make-canva-magic",
     source: "High Bar Journal",
+    preview: "/articles/previews/high-bar-journal.webp",
     date: { en: "May 2026", uk: "Травень 2026" },
     title: {
       en: "Claude Design, Figma Make, and Canva Magic: a big test drive of AI tools",
@@ -51,8 +82,9 @@ export const articles: Article[] = [
     },
   },
   {
-    href: "https://dou.ua/forums/topic/58173/",
+    href: "https://dou.ua/forums/topic/58654/",
     source: "DOU",
+    preview: "/articles/previews/dou-figma-mcp.jpg",
     date: { en: "April 2026", uk: "Квітень 2026" },
     title: {
       en: "Design system with Figma MCP and Claude Code: how to reduce manual work",
@@ -64,8 +96,9 @@ export const articles: Article[] = [
     },
   },
   {
-    href: "https://dou.ua/forums/topic/58654/",
+    href: "https://dou.ua/forums/topic/58173/",
     source: "DOU",
+    preview: "/articles/previews/dou-ai-daily.jpg",
     date: { en: "March 2026", uk: "Березень 2026" },
     title: {
       en: "AI in everyday design tasks: from brief to prototype in hours",
@@ -83,17 +116,18 @@ export const content: Record<
   {
     downloadCv: string;
     bio: ReactNode;
-    caseStudy: {
-      eyebrow: string;
-      title: string;
-      desc: string;
-      linkLabel: string;
+    cases: {
+      heading: string;
+      birthday: { title: string; desc: string };
+      loops: { title: string; desc: string };
     };
     public: {
       heading: string;
       itemTitle: string;
       itemSubtitle: string;
       itemMeta: [string, string];
+      projectorTitle: string;
+      projectorMeta: string;
     };
     articlesHeading: string;
   }
@@ -119,17 +153,24 @@ export const content: Record<
         }
       </>
     ),
-    caseStudy: {
-      eyebrow: "Case study",
-      title: "A website for my birthday",
-      desc: "For my birthday, I built a website for friends with a celebration schedule and a wishlist where gifts can be reserved anonymously in one click.",
-      linkLabel: "Open the case study",
+    cases: {
+      heading: "Cases",
+      birthday: {
+        title: "A website for my birthday",
+        desc: "For my birthday, I built a website for friends with a celebration schedule and a wishlist where gifts can be reserved anonymously in one click.",
+      },
+      loops: {
+        title: "Habit Tracking Mobile App",
+        desc: "A mobile app built around spaced repetition. Designed end-to-end in a 2-week sprint: from a chaotic set of developer wireframes to a complete, gamified learning.",
+      },
     },
     public: {
       heading: "Public",
       itemTitle: "AI tools in UX/UI daily design process: practical cases",
       itemSubtitle: "Speaker at UX/UI Design Meetup by IT Cluster Transcarpathia",
       itemMeta: ["[Offline]", "[Feb 2026]"],
+      projectorTitle: "Collaboration with Projector Library",
+      projectorMeta: "[Soon]",
     },
     articlesHeading: "Articles",
   },
@@ -154,17 +195,24 @@ export const content: Record<
         }
       </>
     ),
-    caseStudy: {
-      eyebrow: "Кейс",
-      title: "Сайт на мій день народження",
-      desc: "До свого дня народження я створила сайт для друзів із програмою святкування та wishlist-ом, де подарунки можна анонімно забронювати в один клік.",
-      linkLabel: "Відкрити кейс",
+    cases: {
+      heading: "Кейси",
+      birthday: {
+        title: "Сайт на мій день народження",
+        desc: "До свого дня народження я створила сайт для друзів із програмою святкування та wishlist-ом, де подарунки можна анонімно забронювати в один клік.",
+      },
+      loops: {
+        title: "Habit Tracking Mobile App",
+        desc: "Мобільний застосунок, побудований на інтервальному повторенні. Спроєктувала end-to-end за двотижневий спринт: від хаотичного набору девелоперських вайрфреймів до цілісного гейміфікованого навчання.",
+      },
     },
     public: {
       heading: "Публічна активність",
       itemTitle: "AI-інструменти у щоденному UX/UI-процесі: практичні кейси",
       itemSubtitle: "Спікерка на UX/UI Design Meetup від IT Cluster Transcarpathia",
       itemMeta: ["[Офлайн]", "[Лют 2026]"],
+      projectorTitle: "Співпраця з Projector Library",
+      projectorMeta: "[Незабаром]",
     },
     articlesHeading: "Статті",
   },
