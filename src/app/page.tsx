@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { articles, content, type Lang } from "./lang-content";
+import { ArticleCard } from "./article-card";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
@@ -87,7 +88,9 @@ export default function Home() {
                     src={card.image}
                     alt=""
                     fill
-                    sizes="(max-width: 900px) 100vw, 540px"
+                    /* One card per row now, so the shot is served at the column
+                       width rather than at half of it. */
+                    sizes="(max-width: 1200px) 100vw, 1120px"
                     style={{ objectFit: "cover" }}
                   />
                 </div>
@@ -136,7 +139,7 @@ export default function Home() {
                     href="https://itct.com.ua/news/ux-ui-design-meetup-rinok-dizainu-2026-ai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="item-title"
+                    className="item-title item-title--external"
                   >
                     <span className="link-mark">{t.public.itemTitle}</span>
                   </a>
@@ -159,39 +162,7 @@ export default function Home() {
 
           <div className="article-list">
             {articles.map((article) => (
-              <div className="article-row" key={article.href}>
-                <div className="article-thumb-group">
-                  <Image
-                    src="/article-image.png"
-                    alt=""
-                    width={179}
-                    height={122}
-                    className="article-thumb"
-                  />
-                  <Image
-                    src={article.logo.src}
-                    alt={article.source}
-                    width={article.logo.width}
-                    height={article.logo.height}
-                    className="article-logo"
-                    style={{ "--logo-scale": article.logo.scale } as CSSProperties}
-                  />
-                </div>
-                <div className="article-body">
-                  <a
-                    href={article.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="item-title"
-                  >
-                    <span className="link-mark">{article.title[lang]}</span>
-                  </a>
-                  <p className="article-desc">{article.desc[lang]}</p>
-                  <div className="article-meta">
-                    <span>[{article.date[lang]}]</span>
-                  </div>
-                </div>
-              </div>
+              <ArticleCard key={article.href} article={article} lang={lang} />
             ))}
           </div>
         </div>

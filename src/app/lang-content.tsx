@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export type Lang = "en" | "uk";
 
-type Article = {
+export type Article = {
   href: string;
   /* Platform name. Not printed in the copy any more — the masthead below says it —
      so this is what the logo announces to a screen reader. */

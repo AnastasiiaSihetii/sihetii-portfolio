@@ -320,7 +320,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 /* ---------- Cases (Figma node 98:102) ---------- */
 .cases-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
 }
 /* The 4px frame is the whole trick: copy sits on the card colour, the screenshot
@@ -330,7 +330,10 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  height: 560px;
+  /* One card per row at every width, so the copy sets the height and the shot holds
+     its own proportion -- a locked height would letterbox the screenshot once the
+     card runs the full column. */
+  height: auto;
   padding: 2rem 4px 4px;
   border-radius: 32px;
   overflow: hidden;
@@ -383,10 +386,14 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 }
 .case-card:hover .case-card-arrow,
 .case-card:has(.case-card-title:focus-visible) .case-card-arrow { transform: translate(3px, -3px); }
+.case-card-media img { object-position: top; }
 .case-card-media {
   position: relative;
-  flex: 1 0 0;
-  min-height: 0;
+  flex: none;
+  /* Wider than the screenshot's own 1.43:1 -- full-column cards would otherwise run
+     to ~700px of image. The difference comes off the bottom rather than off both
+     edges, so each shot keeps the header it opens with. */
+  aspect-ratio: 2 / 1;
   border-radius: 28px;
   overflow: hidden;
 }
@@ -476,6 +483,27 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 }
 a.item-title:hover .link-mark,
 a.item-title:focus-visible .link-mark { background: var(--ink); color: var(--canvas); }
+/* A title that leaves the site says so with an arrow. It sits in the flow at zero
+   opacity rather than being inserted on hover, so revealing it can never reflow the
+   line under the pointer -- it only fades and nudges, the move the card arrow makes. */
+a.item-title--external::after {
+  content: "";
+  display: inline-block;
+  width: 0.78em;
+  height: 0.78em;
+  margin-left: 0.28em;
+  vertical-align: -0.06em;
+  /* The card arrow, masked rather than drawn, so it takes the link's own colour --
+     ink on the page, white if it ever sits on a dark block. */
+  background-color: currentColor;
+  -webkit-mask: url(/case-arrow.svg) center / contain no-repeat;
+  mask: url(/case-arrow.svg) center / contain no-repeat;
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+a.item-title--external:hover::after,
+a.item-title--external:focus-visible::after { opacity: 1; transform: translate(0, 0); }
 
 .item-subtitle, .article-desc {
   font-family: var(--font-display);
@@ -522,11 +550,9 @@ a.item-title:focus-visible .link-mark { background: var(--ink); color: var(--can
    and open the gap so they stop reading as one block. */
 @media (max-width: 900px) {
   .public-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
-  .cases-grid { grid-template-columns: minmax(0, 1fr); }
-  /* Stacked, a locked 560px card would crush the screenshot — let the copy set the
-     height and hold the shot at its desktop proportion. */
-  .case-card { height: auto; }
-  .case-card-media { flex: none; aspect-ratio: 540 / 337; }
+  /* A 2:1 shot that reads fine across a 1050px card goes thin on a phone -- give it
+     back the taller proportion the card used to hold. */
+  .case-card-media { aspect-ratio: 540 / 337; }
 }
 
 @media (max-width: 720px) {
