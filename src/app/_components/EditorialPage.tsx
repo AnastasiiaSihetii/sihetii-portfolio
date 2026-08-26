@@ -61,7 +61,7 @@ export function EditorialPage({
   lang = "en",
 }: EditorialPageProps) {
   /* Ліміт у дві рекомендації живе в other-work.ts, а не тут. */
-  const more = otherWorkExcept(href);
+  const more = otherWorkExcept(href, lang);
 
   const heroShot = hero ? (
     <figure
@@ -91,7 +91,7 @@ export function EditorialPage({
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <SiteHeader />
+      <SiteHeader lang={lang} />
       <main id="main">
       <article
         lang={lang}
@@ -135,14 +135,11 @@ export function EditorialPage({
         ))}
 
         {more.length > 0 && (
-          <aside className={styles.more} aria-labelledby="more-h">
+          /* Смуга прочитаного в шапці міряє дистанцію до цієї межі: далі йдуть
+             рекомендації, а не текст сторінки. */
+          <aside data-reading-end className={styles.more} aria-labelledby="more-h">
             <h2 id="more-h">{moreHeading}</h2>
-            {/* Записи «Інших робіт» ведуться англійською незалежно від мови
-                сторінки. В українській статті це вкраплення чужої мови, і його
-                треба назвати: інакше скрінрідер прочитає англійські назви
-                українським голосом, а браузер перенесе їх за українським
-                словником. */}
-            <ul className={styles.moreList} lang="en">
+            <ul className={styles.moreList}>
               {more.map((w) => (
                 <li key={w.href}>
                   <div className={styles.moreRow}>

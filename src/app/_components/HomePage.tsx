@@ -5,8 +5,11 @@ import Image from "next/image";
 import { articles, content, type Lang } from "../lang-content";
 import { EMAIL } from "../_content/site";
 import { birthday } from "../_content/birthday";
+import { birthdayUk } from "../_content/birthday.uk";
 import { careerPlatform } from "../_content/career-platform";
+import { careerPlatformUk } from "../_content/career-platform.uk";
 import { napa } from "../_content/napa";
+import { napaUk } from "../_content/napa.uk";
 import { ArticleCard } from "../article-card";
 import { typo } from "./typo";
 import { setCreativeCursor, useCreativeCursor, useCursorSupported } from "../cursor-pref";
@@ -31,13 +34,21 @@ export function HomePage({ lang }: { lang: Lang }) {
 
   /* Адреса й кадр беруться з файлів контенту самих кейсів: онови картку там —
      і головна оновиться сама. Кадр картки окремий від героя сторінки, бо
-     плитка тут 2:1, а на сторінці кадр вищий. */
+     плитка тут 2:1, а на сторінці кадр вищий.
+
+     Кейс існує двома мовами, тож картка веде на версію тією мовою, якою
+     людина зараз читає головну: інакше вона обіцяє одну мову й відкриває
+     іншу. Кадр у обох версій той самий. */
+  const cases = lang === "uk"
+    ? { career: careerPlatformUk, birthday: birthdayUk, napa: napaUk }
+    : { career: careerPlatform, birthday, napa };
+
   const caseCards = [
     /* Найновіша робота йде першою. Кейс під NDA: кадру немає, тому замість
        плитки зображення — той самий слот із поясненням, чому він порожній. */
     {
       ...t.cases.career,
-      href: careerPlatform.href,
+      href: cases.career.href,
       accent: "case-card--gray",
       image: null,
       /* Стрілка в ассеті залита білим — на світлій картці потрібна темна копія */
@@ -45,15 +56,15 @@ export function HomePage({ lang }: { lang: Lang }) {
     },
     {
       ...t.cases.birthday,
-      href: birthday.href,
+      href: cases.birthday.href,
       accent: "case-card--ink",
-      image: birthday.card.src,
+      image: cases.birthday.card.src,
     },
     {
       ...t.cases.loops,
-      href: napa.href,
+      href: cases.napa.href,
       accent: "case-card--blue",
-      image: napa.card.src,
+      image: cases.napa.card.src,
     },
   ];
 
