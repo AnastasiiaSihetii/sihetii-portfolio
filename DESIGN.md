@@ -1,34 +1,111 @@
 ---
 name: sihetii-portfolio
-description: Bento-grid of full-bleed color blocks in a single-theme printed-invitation world
+description: A plain-white cover and a quiet reading page, punctuated by poster-scale colour
 colors:
+  ink: "#1b1620"
+  canvas: "#ffffff"
+  muted: "#616e80"
+  cta-blue: "#134bff"
+  cta-gray: "#f3f4f6"
+  media-black: "#010101"
+  desc-on-dark: "#ecedee"
+  line-on-light: "rgba(27, 22, 32, 0.14)"
+  line-on-dark: "rgba(245, 243, 236, 0.18)"
+  # ── Палітра лабораторії /cursor ───────────────────────────────────────────
+  # Повнобічні кольорові блоки лишились рівно однією сторінкою — службовою,
+  # закритою від індексації, де курсор перевіряють на полях різного кольору.
+  # Це вже не палітра публічних поверхонь, але значення живі й лишаються тут.
   candle: "#ff5000"
   wax: "#f0b429"
   forest: "#1e4a3a"
   sky: "#4c6bd6"
-  ink: "#1b1620"
-  canvas: "#ffffff"
   card: "#f5f3ec"
-  cta-blue: "#134bff"
-  cta-gray: "#f3f4f6"
+  # ── Курсор ────────────────────────────────────────────────────────────────
+  # Свідомий виняток із системи: п'ять флуоресцентних відтінків належать
+  # намальованому курсору й більше нічому. Див. правило нижче.
+  cursor-violet: "#7c1aff"
+  cursor-golden: "#ffcc00"
+  cursor-turquoise: "#00ffd1"
+  cursor-magenta: "#ff0090"
+  cursor-green: "#39ff14"
 typography:
+  # Єдина шкала кеглів. Кожен font-size на сайті посилається на один із цих
+  # токенів через var(--fs-*); літеральних значень у CSS немає.
+  scale:
+    fs-3xs: ".75rem"        # 12px    мікропідписи
+    fs-2xs: ".875rem"       # 14px    мета, дати
+    fs-xs: "1rem"           # 16px    допоміжний текст, підписи, кнопки
+    fs-sm: "1.125rem"       # 18px    основний текст лонгріду
+    fs-md: "1.3rem"         # 20.8px  лід
+    fs-lg: "1.5rem"         # 24px    цитата
+    fs-xl: "1.65rem"        # 26.4px  заголовок розділу в статті
+    fs-2xl: "1.9rem"        # 30.4px
+    fs-3xl: "2.5rem"        # 40px    CTA, номер картки етапу
+    fs-4xl: "3rem"          # 48px    статистичні цифри
+    fs-display: "clamp(3.1rem,7.6vw,5.8rem)"
+    fs-headline: "clamp(2.4rem,5vw,3.5rem)"
+    fs-h1-case: "clamp(2.35rem,8.6vw,2.9rem)"
+    fs-h1-article: "clamp(2rem,5vw,2.9rem)"
+    fs-stat: "clamp(2rem,4.4vw,2.9rem)"
+    fs-section: "clamp(2.25rem,4.5vw,2.5rem)"
+    fs-chapter: "clamp(1.95rem,4vw,2.5rem)"
+    fs-section-md: "clamp(1.75rem,4.5vw,2rem)"
+    fs-section-sm: "clamp(1.6rem,4vw,2rem)"
+    fs-step: "clamp(1.6rem,3vw,1.85rem)"
+    fs-item: "clamp(1.6rem,3.5vw,1.75rem)"
+    fs-sub: "clamp(1.3rem,2.4vw,1.35rem)"
+    fs-lead: "clamp(1.15rem,3.6vw,1.3rem)"
+  section-heading:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "clamp(2.25rem, 4.5vw, 2.5rem)"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-0.04em"
+  item-title:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.6rem, 3.5vw, 1.75rem)"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-2px"
+  cta:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "2.5rem"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-0.04em"
+  cta-sm:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "-0.04em"
+  h1-case:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "clamp(2.35rem, 8.6vw, 2.9rem)"
+    fontWeight: 600
+    lineHeight: 1.12
+    letterSpacing: "-0.03em"
+  body:
+    fontFamily: "Fixel Variable, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.6
+  body-long:
+    fontFamily: "Fixel Variable, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.7
+  meta:
+    fontFamily: "Fixel Variable, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.3
   display:
     fontFamily: "Fixel Variable, system-ui, sans-serif"
     fontSize: "clamp(3.1rem, 7.6vw, 5.8rem)"
     fontWeight: 600
     lineHeight: 1.05
     letterSpacing: "-0.04em"
-  headline:
-    fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "clamp(2.5rem, 5vw, 3.5rem)"
-    fontWeight: 600
-    lineHeight: 1.05
-    letterSpacing: "-0.04em"
-  body:
-    fontFamily: "Fixel Variable, -apple-system, BlinkMacSystemFont, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.6
   label:
     fontFamily: "Fixel Variable, system-ui, sans-serif"
     fontStretch: "87.5%"
@@ -36,230 +113,279 @@ typography:
     fontSize: "0.72rem"
     fontWeight: 500
     letterSpacing: "0.14em"
-  cta:
-    fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "40px"
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: "-0.04em"
-  cta-sm:
-    fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "18px"
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: "-0.04em"
-  cta-light-sm:
-    fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "22px"
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: "-0.04em"
-  section-heading:
-    fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "clamp(2.25rem, 4.5vw, 2.5rem)"
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: "-0.04em"
-  section-heading-sm:
-    fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "clamp(1.6rem, 4vw, 2rem)"
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: "-1.28px"
-  item-title:
-    fontFamily: "Fixel Variable, system-ui, sans-serif"
-    fontSize: "clamp(1.6rem, 3.5vw, 1.75rem)"
-    fontWeight: 500
-    lineHeight: 1.2
-    letterSpacing: "-2px"
 rounded:
+  xs: "2px"
   sm: "8px"
-  md: "10px"
+  md: "24px"
+  media-inset: "28px"
   lg: "32px"
   xl: "40px"
+  circle: "50%"
   pill: "999px"
 spacing:
-  sm: "0.5rem"
+  gutter: "clamp(20px, 3vw, 32px)"
+  stack: "clamp(2rem, 5vw, 3.5rem)"
+  sm: "0.75rem"
   md: "1.5rem"
-  lg: "clamp(2.25rem, 5vw, 4.5rem)"
+  lg: "2.5rem"
 components:
-  button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.canvas}"
-    rounded: "{rounded.pill}"
-    padding: "0 2rem"
   button-cta:
     backgroundColor: "{colors.cta-blue}"
     textColor: "{colors.canvas}"
     typography: "{typography.cta}"
     rounded: "{rounded.pill}"
+    height: "300px"
   button-cta-light:
     backgroundColor: "{colors.cta-gray}"
     textColor: "{colors.ink}"
     typography: "{typography.cta}"
     rounded: "{rounded.pill}"
-  tag:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
+    height: "140px"
+  button-cta-hover:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
+  header-cta:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
     rounded: "{rounded.pill}"
-    padding: "0.6rem 1rem"
+    padding: "0 1.15rem"
+  header-cta-hover:
+    backgroundColor: "{colors.cta-blue}"
+    textColor: "{colors.canvas}"
+  close-cta:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
+    rounded: "{rounded.pill}"
+    padding: "0 1.5rem"
+    height: "56px"
+  case-card:
+    backgroundColor: "{colors.media-black}"
+    textColor: "{colors.canvas}"
+    rounded: "{rounded.lg}"
+    padding: "2rem 4px 4px"
+  case-card-blue:
+    backgroundColor: "{colors.cta-blue}"
+    textColor: "{colors.canvas}"
+    rounded: "{rounded.lg}"
+  case-card-gray:
+    backgroundColor: "{colors.cta-gray}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.lg}"
+  stat-tile:
+    backgroundColor: "{colors.cta-gray}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.md}"
+    padding: "2rem 1.9rem"
+  switch-track:
+    backgroundColor: "{colors.cta-gray}"
+    rounded: "{rounded.pill}"
+    padding: "4px"
+  skip-link:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
+    padding: "0.85rem 1.5rem"
 ---
 
 # Design System: sihetii-portfolio
 
 ## Overview
 
-**Creative North Star: "The Printed Invitation"**
+**Creative North Star: "The Poster and the Page"**
 
-The system reads as a physical invitation card, not a web app: one full-bleed color block per topic, stacked like the sections of a paper program, each holding a huge geometric numeral or headline that could be printed on card stock. A single rotated sticker badge — the kind pressed onto an envelope — carries the one number worth remembering per viewport. Labels and stats speak in a dev-tool monospace, a knowing wink that this "printed" object was actually generated in days, not weeks. The system deliberately commits to one printed world rather than an adaptive UI: no light/dark branching, no theme switching. It was proven first on the birthday-website case study (sweet27.vercel.app) and the homepage inherits it verbatim rather than reinterpreting it.
+Сайт ходить між двома регістрами й нічого між ними не змішує. **Плакат** — це обкладинка на весь екран, де марка йде під зріз; стос повнобічних карток, кожна одного суцільного кольору з кадром усередині; і два слаби CTA у підвалі, у 300 і 140 пікселів заввишки, набрані сорока пікселями. **Сторінка** — це все, що читають: кейси і статті в одній колонці 42rem на білому, списки публічних виступів і публікацій без жодної рамки, приглушена мета в квадратних дужках. Плакат каже ім'я і показує роботу; сторінка її пояснює.
+
+Раніше система була одна на всі поверхні — повнобічні кольорові блоки з наліпкою й моношириними мітками, успадковані з першого кейсу. Публічні сторінки з неї вийшли: обкладинка стала білою, кейси переїхали в редакційну колонку, а блоковий світ лишився рівно однією службовою сторінкою `/cursor`, де на полях різного кольору перевіряють намальований курсор. Його стилі живуть тепер там же, у `cursor-lab.css`, а не в глобальному аркуші.
+
+Єдине, що проходить крізь обидва регістри, — **намальований курсор**. Це те місце, де друкований світ поступається екранному: синя стрілка з флуоресцентним слідом із геометричних фігур, яка ніколи не сидить *у* композиції, тільки *над* нею.
 
 **Key Characteristics:**
-- Full-bleed color blocks, one hue per topic, stacked vertically with generous rounded corners
-- Huge geometric display numerals and headlines set in a variable display face
-- Fixel Variable at a condensed 87.5% width for every label, tag, stat, and footer credit line, with tabular figures standing in for the old dev-tool monospace
-- Exactly one rotated sticker badge per surface, carrying the single most important stat
-- Flat by default; the sticker's drop shadow is the system's only elevation device
-- Single-theme commitment — no `prefers-color-scheme` or `data-theme` branching anywhere
+- Один шрифт на все — Fixel Variable, від 400 у тексті до 600 у плакатних кеглях
+- Обкладинка на весь екран замість героя з кнопкою: марка як h1, під нею біо і дві дії
+- Повнобічні картки кейсів, по одній на рядок, кожна одного кольору, з кадром, втопленим у 4-піксельну рамку
+- Читання — окремий світ: одна колонка, брейк-аути кадрів, жодних карток
+- Пласко скрізь; єдина тінь у системі — липка пігулка шапки
+- Одна тема, без `prefers-color-scheme` і без перемикання
 
 ## Colors
 
-A warm cream-and-ink base punctuated by one loud accent per section, borrowed from birthday-party materials: candle flame, melted wax, party ribbon, streamer blue.
+Біле полотно, майже чорний текст і рівно один синій на дії. Кольорові поля з'являються тільки там, де картка кейсу займає повну ширину.
 
 ### Primary
-- **Candle Flame Coral** (`#ff5000`): the case-study page's own hero/title-page block (`public/case-studies/birthday-website.html`) and every primary call-to-action button's implied energy. The homepage's own hero has since moved to the plain-white cover design (see Overview) and no longer uses this color, but it remains this system's primary accent wherever a full-bleed block calls for one. Used at full-bleed block scale, never as a small accent — this color owns a whole section or nothing.
-
-### Secondary
-- **Melted Wax Gold** (`#f0b429`): the sticker badge and any "wax"-role highlight (stat numerals inside dark blocks). Reserved for the one number per viewport that must not be missed.
-
-### Tertiary
-- **Party Forest Green** (`#1e4a3a`): an alternate full-bleed topic block (process/stat sections) when a page needs a second dark block distinct from ink.
-- **Streamer Sky Blue** (`#4c6bd6`): an alternate full-bleed topic block for a third, cooler section when a page needs more than two hues in rotation.
+- **CTA Blue** (`#134bff`): єдина дія системи. Дві кнопки контакту на головній, кнопка шапки на ховері, картка кейсу Napa цілим полем, маркер перемикача курсора в активному стані й сам намальований курсор. Це той самий синій у всіх п'яти місцях — не відтінки одного, а один.
 
 ### Neutral
-- **Deep Wick Ink** (`#1b1620`): primary text color everywhere; background for the system's dark blocks; text-on-canvas for buttons and tags.
-- **Canvas White** (`#ffffff`): page background outside the blocks; text-on-ink for buttons and tags.
-- **Invitation Card Cream** (`#f5f3ec`): the warm off-white block background used for index/listing content (case-study cards); softer than pure canvas, evokes card stock.
-- **Muted Slate** (`#616e80`): secondary text on plain-white sections (article/public-item descriptions, source/date meta) — the one place body text isn't full-opacity ink, matching the hero cover's plainer, non-block typographic world.
+- **Deep Wick Ink** (`#1b1620`): текст скрізь; фон темних пігулок (кнопка шапки, закриття сторінки, skip-link); заливка слів на ховері посилань.
+- **Canvas White** (`#ffffff`): полотно сторінки й текст на темному.
+- **Muted Slate** (`#616e80`): другорядний текст на білому — описи, джерела, дати, підписи під кадрами. Єдине місце, де текст не повної щільності.
+- **CTA Gray** (`#f3f4f6`): світла пара до синього. Друга кнопка контакту, шасі обох перемикачів, плитки статистики й етапів у лонгріді, картка кейсу під NDA. Псевдонім `--case-gray` вказує на це саме значення й існує тільки щоб назвати роль слота під NDA.
+- **Media Black** (`#010101`): підкладка під кадри й марки — картка кейсу Sweet27, плитка з розмитим лого Projector. Глибший за ink навмисно: це фон зображення, а не колір тексту.
+- **Desc on Dark** (`#ecedee`): опис на темній чи синій картці. Не повний білий, щоб не сперечатися з назвою над ним.
 
-### CTA (contact call-to-action, outside the block palette)
-- **CTA Blue** (`#134bff`): the primary "Download CV" pill, in both its hero-scale and footer-scale instances. A separate blue from Streamer Sky Blue — this one is reserved for the single contact action, never a block background.
-- **CTA Gray** (`#f3f4f6`): the secondary "email" pill paired with CTA Blue. Both invert to ink on hover — see the Named Rule below.
+### Lab palette (`/cursor` only)
+**Candle Flame Coral** (`#ff5000`), **Melted Wax Gold** (`#f0b429`), **Party Forest Green** (`#1e4a3a`), **Streamer Sky Blue** (`#4c6bd6`), **Invitation Card Cream** (`#f5f3ec`). Це палітра блокової системи, яка лишилась на службовій сторінці. Публічна поверхня жодного з цих кольорів не показує — з одним винятком: `--wax` дає кільце фокуса на темних картках, бо ink на майже-чорному не читався б.
+
+### Cursor palette (outside the system, deliberately)
+`#7c1aff` violet · `#ffcc00` golden · `#00ffd1` turquoise · `#ff0090` magenta · `#39ff14` green
+
+П'ять флуоресцентних відтінків на стелі насиченості своїх тонів, упорядковані так, щоб сусідні вибори конфліктували. Вони належать сліду курсора й гліфу в перемикачі, який цей слід зображує, — і більше нічому.
 
 ### Named Rules
-**The One Hue Per Block Rule.** A `.block` owns exactly one background color from the palette and applies it full-bleed to the whole section — colors are never mixed within a single block or scattered as small accents across a neutral ground.
+
+**The One Field Per Card Rule.** Картка кейсу тримає рівно один колір фону на всю себе. Колір не змішується всередині картки й не розсипається дрібними акцентами по білому: або поле, або нічого.
+
+**The One Blue Rule.** `#134bff` — єдиний синій у системі й позначає дію або курсор. Він може бути полем картки (і є ним), але ніколи не стає декоративним акцентом: якщо синій десь з'явився, там або клікають, або це вказівник.
+
+**The Cursor Palette Stays Out.** П'ять флуоресцентних відтінків не з'являються в жодній поверхні, рамці чи тексті. Виняток один і він же пояснення правила: гліф у перемикачі курсора бере ці кольори, поки курсор увімкнений, бо в цю мить гліф — легенда до того, що на екрані, а не акцент у композиції. Фіолетовий із цього прогону випадає: єдиний із п'яти, що не тримається проти `#134bff`.
 
 ## Typography
 
-**Display Font:** Fixel Variable (variable weight 100–900, width 87.5–100%), with `system-ui, sans-serif` fallback
-**Body Font:** Fixel Variable at body weight, with `-apple-system, BlinkMacSystemFont, sans-serif` fallback
-**Label/Mono Font:** Fixel Variable at 87.5% width with `tabular-nums`, with `system-ui, sans-serif` fallback
+**Одна гарнітура на все:** Fixel Variable (змінна вага 100–900, ширина 87.5–100%), з `system-ui, sans-serif` у запасі. Файл один, локальний, `font-display: swap`.
 
-**Character:** A single variable family carries display, body, and label duty — display type stretches to 100% width and pushes to 900 weight for huge geometric numerals; body and label text relax to 87.5% width for a warmer, slightly condensed reading rhythm. Labels keep the system's "receipt printer" voice through uppercase, wide tracking, and `font-variant-numeric: tabular-nums` for aligned figures — the one glyph-level trace of the retired JetBrains Mono — rather than a true monospace face.
+**Character:** Плакатні кеглі йдуть на ширині 100% і вазі 600; текст розслабляється до 87.5% ширини й ваги 400. Це не два шрифти, а два стани одного — тому обкладинка й лонгрід читаються як одна річ, попри різницю в масштабі вчетверо.
 
 ### Hierarchy
-- **Display** (600–900 weight, `clamp(3.1rem, 7.6vw, 5.8rem)`, line-height 1.05): the case-study page's own title (`h1.hero-title`), and standalone stat numerals inside dark blocks (900 weight, gold). The homepage's own name/wordmark now lives in the cover-hero image instead of an `h1.hero-title` element.
-- **Headline** (600 weight, `clamp(2.5rem, 5vw, 3.5rem)`, line-height 1.05): section headings within a block (`h2.sec-title`).
-- **Title** (500 weight, letter-spacing -0.02em): `h3`-level subheads, used sparingly.
-- **Body** (400 weight, 1rem, line-height 1.6, max 60ch): paragraph copy; font-stretch 87.5% throughout.
-- **Label** (500 weight, 0.72–0.76rem, uppercase, letter-spacing 0.14em, Fixel at 87.5% width + tabular-nums): eyebrows, tags, meta keys, stat captions, footer credit.
-- **CTA** (600 weight, 40px hero/footer scale or 18px inline scale, line-height 1.4, letter-spacing -0.04em): the two contact buttons only (Download CV / email), at whichever scale the surface calls for.
-- **Section Heading** (600 weight, fluid up to 40px or a 32px sub-scale, line-height 1.4, letter-spacing -0.04em): plain-white section headers outside the block system ("Public", "Articles") — shares CTA's numeric ceiling but a distinct semantic role.
-- **Item Title** (500 weight, fluid up to 28px, line-height 1.2, letter-spacing -2px flat, not a percentage): the clickable heading on a public-item or article row. No underline at rest; underlines in ink on hover only.
+- **Display** (600, `clamp(3.1rem, 7.6vw, 5.8rem)`, LH 1.05): плакатний кегль. На публічних сторінках його місце займає намальована марка обкладинки; сам токен лишається для службової сторінки.
+- **Section heading** (600, до 40px, LH 1.4, tracking -0.04em): «Cases», «Public», «Articles» — заголовки секцій головної.
+- **Case h1** (600, `clamp(2.35rem, 8.6vw, 2.9rem)`, LH 1.12): заголовок кейсу чи статті. Єдиний h1 внутрішньої сторінки.
+- **Item title** (500, до 28px, LH 1.2, tracking -2px пласким значенням, не відсотком): назва роботи, виступу або статті в списку. Це h3, а не посилання: клікає `<a>` всередині нього.
+- **Lead** (400, `clamp(1.15rem, 3.6vw, 1.3rem)`, LH 1.55, muted): абзац-лід під заголовком кейсу.
+- **Body long** (400, 18px, LH 1.7, міра 42rem): текст лонгріду.
+- **Body** (400, 16px, LH 1.6, міра 60ch): біо на обкладинці й будь-який абзац поза колонкою читання.
+- **Meta** (400, 16px, LH 1.3, muted): дати, джерела, стан роботи. Завжди у квадратних дужках.
+- **Label** (500, 12px, uppercase, tracking 0.14em, tabular-nums): мітка з «касовим» голосом. На публічних поверхнях не використовується — лишилась у лабораторії.
 
 ### Named Rules
-**The Mono-Label Rule.** Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is Fixel Variable at 87.5% width with `tabular-nums`, uppercase, tracked wide — never the display-stretch (100%) or body-weight face, however short the string.
 
-**The Rest-State Link Rule.** Every plain-text link (item titles, footer social links) carries no underline at rest — a `currentColor` underline is a hover-only reveal, never a permanent decoration. The footer itself is unblocked (plain canvas white, ink text, not a `.block--ink` panel), so item titles and footer social links (LinkedIn, GitHub, Dou, Behance, Dribbble, WhatsApp) both render the underline in ink — `currentColor` is used so the rule still holds if either link ever sits on a dark surface. Footer links match the Item Title's 18px scale.
+**The One Scale Rule.** Кожен `font-size` на сайті — головна, кейси, статті, шапка, лабораторія — бере значення з мапи `typography.scale` через `var(--fs-*)`. Літерального `rem` чи `px` у CSS немає. Кегль, якого на шкалі немає, — це запит розширити шкалу, а не написати разове значення.
+
+**The Bracketed Meta Rule.** Усе, що датує або позначає стан, стоїть у квадратних дужках і набране тим самим кеглем, що й допоміжний текст: `[August 2026]`, `[Offline]`, `[Soon]`, `[In progress, since July 2026]`. Дужки — і є мітка; ні верхнього регістру, ні розрядки система для цього не використовує. Це те, що замінило моношириний голос старої системи, і замінило свідомо: розряджений капс на білому аркуші читався як інтерфейс, а не як приписка.
+
+**The Rest-State Link Rule.** Жодне текстове посилання не підкреслене у спокої. Ховер не підкреслює, а **заливає слова прямокутником** — ink під білим текстом, з `box-decoration-break: clone`, щоб перенесений заголовок дав по прямокутнику на рядок, а не одну плиту з рваним краєм. Виняток один: посилання всередині прози лонгріду підкреслені у спокої, бо в суцільному тексті їх інакше не видно, — і на ховері підкреслення гасне, а заливка приходить.
+
+**The Leaves-the-Site Arrow.** Посилання, що веде геть, показує стрілку. Вона стоїть у потоці з нульовою прозорістю й тільки проявляється — щоб її поява ніколи не зсувала рядок під курсором. Внутрішні переходи стрілки не мають і відкриваються в тій самій вкладці.
 
 ## Layout
 
-A single centered column (`max-width: 1120px`) of full-bleed blocks stacked vertically with `clamp(2rem, 5vw, 3.5rem)` gaps between them — every content row on the page, including the cover-hero's bio/CTA row outside `.page`, shares this same 1120px cap; only intentionally full-bleed elements (the cover wordmark image, a block's own background color) are allowed past it — there is no side-by-side multi-column grid; "bento" describes the color-block rhythm of the stack, not a literal grid layout. Each block pads its content with `clamp(2.25rem, 5vw, 4.5rem)` vertical and `clamp(1.5rem, 6vw, 4.25rem)` horizontal space, and most block content constrains to a `40rem` (or occasionally `44rem`) inner column even inside a full-width block, so line length stays readable against the full-bleed color. Below 720px, block padding tightens, block radius drops from 32px to 22px, and the sticker badge leaves its absolute top-right position to sit static above the block content. The case-study card (`.block--card`) is the one exception: it holds a flat 40px radius at every viewport, matching the public-item photo radius rather than the standard block scale, so the two adjacent full-bleed elements read as one rounding system. It also carries its own cover photo (`.case-study-photo`, 1120:560 aspect ratio, 32px radius) as the first item inside `.block-inner`, sitting inset within the same padding as the rest of the card's content rather than bleeding to the card's edges.
+**Головна.** Обкладинка йде на всю ширину вікна й нічим не обмежена — марка навмисно зрізається краями (на вузьких екранах ще й розтягується до 145%, щоб літери лишались великими). Усе решта тримається в колонці 1120px із полями `clamp(20px, 3vw, 32px)`: рядок біо з кнопками, три секції й підвал. Між секціями `clamp(2rem, 5vw, 3.5rem)`.
+
+Секція «Cases» — стос на всю ширину колонки, по одній картці в рядку на будь-якому екрані: копія задає висоту, кадр тримає власну пропорцію. «Public» — дві колонки, які згортаються в одну на 900px. «Articles» — рядки «аркуш + текст», що стають вертикальними на 720px.
+
+**Підвал** стоїть поза `<main>` і центрує себе сам тими самими значеннями, що й колонка сторінки. Вище 720px він ділиться надвоє: марка ліворуч, усе, що можна натиснути, — праворуч у фіксованій колонці 20rem, у порядку «профілі → перемикачі → бейдж → копірайт». Колонка з діями йде першою в DOM, а `flex-direction: row-reverse` ставить її праворуч, — щоб той, хто читає в порядку джерела, зустрів посилання раніше за підпис.
+
+**Внутрішні сторінки.** Одна колонка 42rem (`--col`), центрована, з полями 1.25rem. Кадри виходять за неї явно: 52rem для одиничного знімка (`--col-mid`) і 70rem для брейк-ауту на всю сітку (`--col-wide`). Липка пігулка шапки за замовчуванням завширшки рівно з набраним текстом — 39.5rem, тобто колонка мінус її поля.
+
+**Порядок читання.** Документ починається з `skip-link`, далі `<main id="main">`. На головній у `<main>` лежить усе, крім підвалу; на внутрішній сторінці — уся стаття разом із блоком рекомендацій і закриттям.
 
 ## Elevation & Depth
 
-Flat by default — blocks, tags, buttons, and cards carry no shadow at rest. The sole shadow in the system belongs to the sticker badge (`0 8px 20px rgba(0,0,0,0.14)`), which needs to visually lift off the block behind it since it is sometimes the same hue as its background. Buttons signal interactivity through a small `translateY(-2px)` lift on hover, not a shadow change.
+Пласко за замовчуванням: картки, кнопки, плитки й кадри не мають тіні у спокої. Глибину дає колір поля, а не шар.
+
+Виняток рівно один — **липка пігулка шапки** (`0 1px 2px rgba(27,22,32,0.05), 0 6px 20px rgba(27,22,32,0.09)`). Вона єдина в системі проїжджає поверх чужого вмісту, і без тіні заголовок під нею читався б крізь неї. Двошарова: щільний контактний шар і м'який навколишній.
+
+Раніше цю роль тримала повернута наліпка з блокової системи. Наліпки на публічних поверхнях більше немає, і тінь перейшла до єдиного елемента, який її справді потребує.
+
+Взаємодія сигналить рухом, а не тінню: кнопки підводяться на `translateY(-2px)`, стрілка картки зсувається на 3px по діагоналі, маркер перемикача їде між комірками.
 
 ### Named Rules
-**The Sticker-Only Shadow Rule.** Shadow is reserved for the one rotated sticker badge per surface. No other component — button, tag, card, block — ever carries a `box-shadow`.
+
+**The One Shadow Rule.** Тінь має рівно один власник — пігулка шапки, і рівно одну причину — вона перекриває вміст. Ніщо інше в системі тіні не носить.
 
 ## Shapes
 
-Large, confident rounding throughout: blocks round at 32px (22px on mobile), and every pill-shaped element — buttons, tags, the sticker, the eyebrow chip — goes fully round at 999px. No hard corners appear anywhere in the system — every rectangle is at minimum an 8px radius, and anything small enough to read as a label or control is a full pill. No borders separate blocks from the page; separation comes entirely from the color change itself. Inside dark blocks, hairline dividers (`--line-on-dark`, 18% white) separate list rows (colophon, tech-list); inside light blocks, the equivalent is `--line-on-light` (14% ink).
+Велике впевнене заокруглення. Гострих кутів немає ніде: найменший радіус у системі — 2px на кільці фокуса.
 
-Photographic media gets its own, softer step: the public-item cover photo rounds at 40px — larger than a standard block, reserved for full-width imagery rather than a color field. Small article thumbnails (179×122) stay hard-cornered by design; not every image is a rounded card. The case-study card (`.block--card`) borrows this 40px photo radius instead of the standard block radius, since it sits directly above the public-item photo and the two need to read as one rounding scale.
+- **8px** — плитка-аркуш статті в списку «Інші роботи»
+- **24px** — плитки статистики й етапів у лонгріді
+- **28px** — кадр усередині картки кейсу. Не довільне значення: картка має радіус 32px і 4-піксельну рамку, тож 32 − 4 дає концентричний кут, за якого внутрішній кадр і зовнішній край картки лишаються паралельними
+- **32px** — картка кейсу, кадр у лонгріді
+- **40px** — фотографія в «Public» і картка кейсу під NDA
+- **50%** — аватар у байлайні
+- **999px** — усе, що натискають або що є міткою
+
+Skip-link заокруглений тільки знизу (`0 0 999px 999px`): він виїжджає з-під верхньої кромки вікна, і зверху заокруглювати нічого.
+
+Рамок між елементами система не ставить: межу дає зміна кольору. Хайрлайни лишились у двох місцях і обидва обґрунтовані — вертикальна лінія цитати (3px, ink) і тонка рамка навколо чужих скріншотів у статтях, без якої світлий знімок розтікався б по білому полотну.
 
 ### Named Rules
-**The Pill Rule.** Any interactive or label-sized element — button, tag, sticker, eyebrow chip — is a full 999px pill, never an intermediate radius. Only the large full-bleed blocks use the softer 32px/22px block radius.
+
+**The Pill Rule.** Усе, що натискають або що читається як мітка, — повна пігулка 999px, без проміжних радіусів. Великі поверхні беруть 32px або 40px.
+
+**The Concentric Inset Rule.** Кадр, втоплений у картку, бере радіус картки мінус ширину рамки. Око бачить два паралельні кути, а не два різні.
+
+**The No-Rules Rule.** Ця поверхня не малює горизонтальних лінійок-роздільників, ні під заголовками, ні між рядками списку. Де потрібен розрив, його дає простір.
 
 ## Components
 
-Playful and loose: components read as pieces of party ephemera — a sticker, a stamped tag, a stapled program — rather than a polished SaaS UI kit. Nothing is precisely aligned to a strict grid line; the sticker's -6° rotation is the clearest signal that this system prizes charm over rigidity.
+### CTA buttons (signature — дві єдині дії сайту)
+- **Форма:** пігулка 999px, власна шкала кеглю (40px у підвалі, 18px у рядку обкладинки)
+- **Download CV** (`.btn--cta`): CTA Blue, білий текст. У підвалі 300px заввишки; в обкладинці ділить висоту з рядком біо
+- **Email** (`.btn--cta-light`): CTA Gray, ink. У підвалі 140px; нижче 600px — 96px і кегль 20.8px, бо адреса довга й інакше пігулка втрачає бічні поля
+- **Ховер і фокус:** обидві перевертаються в ink на білому. Без підйому — на такому розмірі він читався б як смикання
 
-### Buttons
-- **Shape:** fully round pill, 999px radius (`.btn`, 80px fixed height; `.tag`, sized to content)
-- **Primary:** ink background, canvas text, `0 2rem` padding, mono font at 700 weight
-- **Hover:** `translateY(-2px)` lift, no shadow or color change
-- **On dark blocks:** an available `.btn--on-dark` swaps to wax background / ink text for contrast against ink or forest
+### Header CTA
+Пігулка ink у правій половині липкої шапки. На ховері стає CTA Blue й підводиться на 2px. Кегль 16px, ніколи не зменшується разом із шапкою — меншає вся пігулка одним трансформом.
 
-### CTA buttons (signature component — the site's only two contact actions)
-- **Shape:** same 999px pill as `.btn`, but its own type scale (CTA typography role) instead of the mono `.btn` label style.
-- **Download CV** (`.btn--cta`): CTA Blue background, canvas text. Appears twice — 300px tall / 40px text in the footer, `flex:1` height / 18px text (`.btn--cta-sm`) inline in the hero — always the same color pair.
-- **Email** (`.btn--cta-light`): CTA Gray background, ink text. 140px tall / 40px text in the footer, 80px tall inline in the hero. Below 600px the footer instance drops to 96px tall / 22px text — the address is long, so it needs its own mobile step to keep side padding instead of running edge-to-edge.
-- **Hover:** both invert to ink background / canvas text — no lift, unlike `.btn`.
+### Case card (signature)
+Повнобічна картка, по одній у рядку. Копія лежить на кольорі картки, кадр під нею втоплений 4-піксельною рамкою — так знімок читається як слайд, вкладений у картку.
+- **Три варіанти:** `--ink` (Media Black), `--blue` (CTA Blue), `--gray` (CTA Gray). Сіра — єдина світла, і в ній перевизначені всі чотири місця, де колір тексту зашитий: сама картка, назва, підпис і стрілка
+- **Одне посилання на картку:** назва — це `h3`, клікає `<a>` всередині неї, а його оверлей `::after` робить мішенню всю картку, не додаючи другої зупинки для Tab
+- **Ховер:** назва заливається прямокутником, стрілка зсувається на `translate(3px, -3px)`
+- **Фокус:** кільце `--wax` на темних картках, ink — на світлій
+- **Порожній слот:** кейс під NDA не має кадру. Замість плитки — той самий слот, затемнений на 5%, із одним рядком пояснення, чому він порожній. Висота за вмістом, а не 2:1: без кадру пропорція лишила б півекрана порожнечі
 
-### Tags
-- **Style:** outlined pill — transparent ink fill (`rgba(27,22,32,0.08)`) with a hairline ink border on light blocks; on dark blocks (`.block--ink`, `.block--forest`), flips to a translucent white fill (`rgba(245,243,236,0.12)`) with a hairline white-ish border. Currently used on the case-study card's stack tag-row; every tag on the site shares this one component, none render as a solid fill.
-- **State:** static only — tags are labels, not interactive filters, in this system
+### Public / Article row
+Плаский рядок без картки: кадр (фото 40px або аркуш 179×122 із надрукованою маркою платформи), назва як `h3` з посиланням усередині, приглушений опис, мета в дужках. Аркуш статті — сфотографований папір, на який марку друкують під кутом -1.6°, що збігається з власним нахилом знімка; кожна марка масштабується власним `--logo-scale`, щоб три вордмарки різної пропорції зійшлися на одній оптичній висоті.
 
-### Cards / Containers (`.block` and its color variants)
-- **Corner Style:** 32px radius (22px mobile); the case-study card (`.block--card`) is a flat 40px at every viewport, matching the public-item photo radius instead
-- **Background:** one full palette color per block — candle, ink, forest, sky, or card
-- **Shadow Strategy:** none (see Elevation)
-- **Border:** none; color change is the only boundary
-- **Internal Padding:** `clamp(2.25rem, 5vw, 4.5rem)` vertical / `clamp(1.5rem, 6vw, 4.25rem)` horizontal
+### Instrument switch (signature)
+Двостанний перемикач підвалу — мова (EN/UA) і курсор (Creative/Plain).
+- **Речення, а не мітка.** Текст комірок — 16px, sentence case, без розрядки. Це названий виняток із голосу міток: правило керує текстом, що називає *вміст*, а не текстом, що називає *контрол*. `EN`/`UA` лишаються капсом як абревіатури
+- **Без підпису й без лінійки.** Назва живе тільки в `aria-label`; дві комірки називають контрол між собою
+- **За шириною власних слів.** Трек — `inline-grid`, тобто завширшки зі свою ширшу комірку подвоєну, а не з колонку. Комірки тримають мінімум 44px висоти й 3.75rem ширини
+- **Маркер, що їде.** Активний стан — лозанж, який `translateX` переносить за 420ms по експоненційному ease-out. Комірки примусово однакової ширини, тож дорога завжди рівно одна комірка. Під `prefers-reduced-motion` перехід знімається, маркер стрибає
+- **The Live-Legend Rule.** Маркер перемикача курсора — CTA Blue, поки намальований курсор увімкнений, і ink, коли вимкнений. Комірка Creative несе намальований слід із тих самих чотирьох фігур, що й курсор, і бере його флуоресцентні кольори тільки в активному стані
+- Перемикач курсора рендериться тільки там, де є `(pointer: fine)`; вибір лежить у `localStorage` під `sihetii:cursor`. Мова — під `sihetii:lang`, тією ж механікою
 
-### Sticker (signature component)
-A rotated (-6°) pill badge, wax-gold by default (candle-on-candle for the hero variant), carrying one huge display numeral (`<strong>`, 800 weight, 1.5rem) plus a mono caption underneath. Exactly one per surface — it is the system's single loudest device, and using more than one per viewport would flatten its impact.
+### Cursor (signature)
+Єдине місце, де друкований світ поступається екранному. На точному вказівнику рідний курсор ховається, і його місце займає намальований у CTA Blue: стрілка у спокої, вказівна рука над усім, що натискають. **Заміна форми і є сигналом ховера.** Обидві форми тримають гарячу точку в початку координат, тому зміна форми не зсуває приціл.
 
-### Colophon list (signature component)
-A two-column key/value list (`.colophon-list`, mirrors the case study's `.tech-list`) used for dense factual rows on dark blocks — mono, uppercase, wax-colored keys on the left in a fixed-width column, canvas-colored values on the right, hairline dividers between rows. Collapses to a single stacked column under 720px.
+За головою тягнеться слід із дрібних геометричних фігур — коло, ромб, квадрат, трикутник — по одній кожні 20px дороги, до бюджету 700px, кожна дрібніша й блідіша за попередню. Коли рука спиняється, слід змотується в голову приблизно за сім десятих секунди.
 
-### Public / Article row (signature component)
-A plain-white, non-block list pattern for external proof (talks, articles): a photo (public-item cover, 40px radius, or a fixed 179×122 hard-cornered thumbnail), a Muted Slate source/date meta stack, an Item Title link, and Muted Slate description text — one inline link (e.g. a publication credit) may appear inside the description itself. The title is the only clickable heading in this pattern and carries no underline until hover.
+- **The Keyline Rule.** Голова несе білу обводку 3px, обведену по контуру й залиту зверху. `#134bff` — не лише колір курсора, а й поверхня (обидві сині кнопки, синя картка кейсу): без обводки голова зникала б у цьому полі, все ще затуляючи текст під собою
+- **The Index-Finger Rule.** Піднятий палець стоїть біля **лівого краю** кулака, з трьома зігнутими кісточками за ним праворуч, і виступає приблизно на **42%** висоти руки. По центру кулака це читається як інший жест; вище половини — палець сам стає жестом; нижче 35% — перестає читатися піднятим
+- Над текстовим полем намальований курсор відступає, і працює рідна каретка. На грубому вказівнику вимкнений цілком. Під `prefers-reduced-motion` голова малюється, слід — ні
+- Рідний курсор ховається тільки тоді, коли намальованому справді є чим малювати: без 2D-контексту атрибут не ставиться, щоб сторінка не лишилась узагалі без вказівника
 
-### Language toggle (signature component)
-A compact EN/UA segmented pill (`.lang-toggle`) in the footer: a 2px-gap track on CTA Gray, two buttons at 13px/600 weight — deliberately below the type ramp, since this is a small secondary control, not content. The active language gets an ink pill; the inactive one sits transparent in Muted Slate until hover. Switching it re-renders the whole page's copy from `lang-content.tsx` and updates `<html lang>`.
+### Page close (внутрішні сторінки)
+Кінець довгого читання — єдине місце, де людина вже все прочитала й може щось зробити. Після блоку рекомендацій стоїть пігулка ink із адресою (56px, за розміром напису, а не на всю колонку — слаб на 300px тут розтягнувся б на всю ширину тексту) і поруч дорога назад до решти робіт.
 
-### Cursor (signature component — `src/app/site-cursor.tsx`)
+### Skip link
+Перше посилання документа. Лежить фіксовано над усім, виїжджає з-під верхньої кромки тільки у фокусі, тим самим експоненційним ease-out, що й маркер перемикача. Потрібне тому, що на головній перший екран займає обкладинка, а на внутрішній — липка шапка.
 
-The only place in this system where the printed world gives way to something screen-native. On a fine pointer the native cursor is replaced by a drawn one in **CTA Blue** (`#134bff`) — the site's own blue, borrowed from the Download CV pill. It is a pointer proper, not an ornament: an arrow at rest, swapping to a pointing hand over anything interactive, both drawn a little larger than the system originals to sit with the rest of this world. Both keep their hotspot at the origin — the arrow's tip, the hand's fingertip — so the shape can change without the aim shifting. **The swap is the hover signal**; an earlier build grew the pointer a few pixels instead, which was far too quiet to read. Behind it trails a run of small geometric figures. Circle, diamond, square and triangle cycle at random, one dropped every 20px of travel, each smaller and eventually fainter than the one ahead of it, up to a 700px budget of path. Nearer figures simply cover further ones: no knockout, no blend mode, so each keeps its whole colour and hue alone holds neighbours apart. When the hand stops the run reels itself into the head along its own path in about seven tenths of a second.
+### Other-work footer (signature)
+Кожна внутрішня сторінка закривається однаковим блоком рекомендацій: записи з `OTHER_WORK` мінус сама сторінка. Нова сторінка з'являється в підвалі решти без жодної другої правки.
 
-**The cursor palette is deliberately outside this system.** Five fluorescent hues carry the trail and none of them is a `colors` token:
-
-`#7c1aff` violet · `#ffcc00` golden · `#00ffd1` turquoise · `#ff0090` magenta · `#39ff14` green
-
-They sit at the chroma ceiling for their hue and are ordered so consecutive picks clash. This is the one sanctioned exception to the palette — it exists because the cursor is the single element that never sits *in* a composition, only over one, so it answers to legibility against every block colour rather than to the block palette itself.
-
-**The Keyline Rule.** The pointer carries a 3px white keyline, stroked along its outline and then filled over, so it follows the arrow and the hand alike. `#134bff` is not only the cursor's colour but also a surface here — both Download CV pills and the blue case card. The pills invert to ink on hover so the head still reads, but the case card is a large field of the exact same blue, and without the keyline the head disappears into it while still hiding the text underneath. On the cream and white sections, where the blue already reads, white on white is invisible; on blue, ink, forest and candle it is what keeps the cursor on screen.
-
-Over a text field the drawn pointer stands down and the native I-beam takes over, rather than the two stacking. Turned off entirely on coarse pointers, so touch keeps its native behaviour. Under `prefers-reduced-motion` the head is drawn and the trail is not. The animation loop stops itself once the hand is still and the trail has cleared, and wakes on the next pointer move.
+**The Two Recommendations Rule.** Показуються **щонайбільше дві**, на всьому сайті, хоч би яка була сторінка. Третій рядок після довгого тексту перестає бути рекомендацією і починає читатися як список посилань. Ліміт живе в `otherWorkExcept()`, а не на сторінці.
 
 ### Navigation
-No persistent nav chrome exists in this system; wayfinding is scroll-based within a single page, reinforced by mono "↓ [next section name]" cues rather than a nav bar.
+Постійної навігації немає. На головній орієнтування — скролом; на внутрішніх сторінках єдина шапка: марка веде на головну, кнопка — на пошту.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** give every block exactly one palette color, full-bleed, with no gradient or mixing.
-- **Do** keep every label, tag, meta key, and stat caption in Fixel at 87.5% width with tabular-nums, uppercase, tracked wide.
-- **Do** reserve the sticker badge for a single, real, load-bearing stat — never decorative.
-- **Do** constrain block content to a 40–44rem inner column even at full block width, so text stays readable against the color field.
-- **Do** use 900-weight display numerals (wax-gold on dark blocks) for standalone stats.
+- **Do** брати кожен `font-size` із мапи `typography.scale` через `var(--fs-*)`.
+- **Do** давати картці кейсу рівно один колір поля на всю себе.
+- **Do** ставити дати й стани у квадратні дужки: `[August 2026]`, `[Soon]`.
+- **Do** робити назву роботи чи статті заголовком `h3` із посиланням усередині, а не посиланням замість заголовка.
+- **Do** заливати посилання прямокутником на ховері замість підкреслення.
+- **Do** рахувати радіус втопленого кадру як радіус картки мінус рамку.
+- **Do** починати документ зі `skip-link` і класти вміст у `<main id="main">`.
 
 ### Don't:
-- **Don't** add `prefers-color-scheme` or `data-theme` branching — this system commits to one printed world, not an adaptive UI.
-- **Don't** add a shadow to anything except the sticker badge.
-- **Don't** use more than one sticker badge per viewport.
-- **Don't** reach for the five fluorescent cursor colors anywhere else — they are cursor-only and belong to no surface, border, or type in this system.
-- **Don't** introduce hard square corners; every rectangle carries at least an 8px radius.
-- **Don't** number case studies or index entries in a way that implies a series ("Кейс · 01") until a second entry actually exists.
+- **Don't** додавати `prefers-color-scheme` чи `data-theme`: система тримає один світ.
+- **Don't** вішати тінь на будь-що, крім пігулки шапки.
+- **Don't** брати п'ять флуоресцентних кольорів курсора будь-де, крім самого курсора й гліфа-легенди в його перемикачі.
+- **Don't** повертати повнобічні кольорові блоки, наліпку чи розряджений капс на публічні сторінки: цей світ лишився на `/cursor` і його стилі живуть у `cursor-lab.css`.
+- **Don't** ставити ярлик-надзаголовок над заголовком. Заголовок несе себе сам.
+- **Don't** відкривати внутрішні переходи в новій вкладці й показувати їм стрілку «геть із сайту».
+- **Don't** малювати горизонтальні лінійки-роздільники.
+- **Don't** вводити гострі кути: найменший радіус у системі — 2px.

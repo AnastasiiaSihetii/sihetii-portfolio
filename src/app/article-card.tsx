@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 
 import type { Article, Lang } from "./lang-content";
+import { typo } from "./_components/typo";
 
 /* Anything off sihetii.com is flagged so its title can show the leaves-the-site arrow. */
 const isExternal = (href: string) => /^https?:\/\//.test(href);
@@ -10,6 +11,8 @@ const isExternal = (href: string) => /^https?:\/\//.test(href);
    masthead printed on it, then the title, blurb and date. Kept in its own file so the
    article pages can render the same card instead of restating its markup. */
 export function ArticleCard({ article, lang }: { article: Article; lang: Lang }) {
+  const external = isExternal(article.href);
+
   return (
     <div className="article-row">
       <div className="article-thumb-group">
@@ -30,19 +33,20 @@ export function ArticleCard({ article, lang }: { article: Article; lang: Lang })
         />
       </div>
       <div className="article-body">
-        <a
-          href={article.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={
-            isExternal(article.href)
-              ? "item-title item-title--external"
-              : "item-title"
-          }
-        >
-          <span className="link-mark">{article.title[lang]}</span>
-        </a>
-        <p className="article-desc">{article.desc[lang]}</p>
+        {/* Заголовок рядка — h3, як і в кейсах: перелік статей має стояти в
+            структурі сторінки, а не лежати набором посилань поза нею. */}
+        <h3 className="item-title">
+          <a
+            href={article.href}
+            /* Нова вкладка — тільки тому, що лишаєш сайт. Власна стаття
+               відкривається в цій самій, як і будь-який внутрішній перехід. */
+            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            className={external ? "item-link item-link--external" : "item-link"}
+          >
+            <span className="link-mark">{typo(article.title[lang])}</span>
+          </a>
+        </h3>
+        <p className="article-desc">{typo(article.desc[lang])}</p>
         <div className="article-meta">
           <span>[{article.date[lang]}]</span>
         </div>

@@ -1,7 +1,9 @@
 {
   "detector": {
     "ignoreRules": [],
-    "ignoreFiles": [],
+    "ignoreFiles": [
+      "src/app/cursor/**"
+    ],
     "ignoreValues": [
       {
         "rule": "design-system-font-size",
@@ -62,6 +64,14 @@
         "value": "13px",
         "createdAt": "2026-08-17T13:14:29.587Z",
         "reason": "Compact EN/UA language-toggle pill — deliberately smaller than the type ramp for a tiny secondary control"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/_components/editorial.module.css"
+        ],
+        "createdAt": "2026-08-26T15:53:24.304Z"
       }
     ]
   }

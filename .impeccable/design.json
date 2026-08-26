@@ -1,144 +1,179 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T21:30:00Z",
+  "generatedAt": "2026-08-26T15:20:00Z",
   "title": "Design System: sihetii-portfolio",
   "extensions": {
     "colorMeta": {
-      "candle": { "role": "primary", "displayName": "Candle Flame Coral", "canonical": "#ff5000", "tonalRamp": ["#3d1200", "#661d00", "#992c00", "#cc3b00", "#ff5000", "#ff7a3d", "#ffa373", "#ffd4bd"] },
-      "wax": { "role": "secondary", "displayName": "Melted Wax Gold", "canonical": "#f0b429", "tonalRamp": ["#3d2c05", "#664a08", "#996f0c", "#cc9410", "#f0b429", "#f4c455", "#f8d585", "#fbe6b8"] },
-      "forest": { "role": "tertiary", "displayName": "Party Forest Green", "canonical": "#1e4a3a", "tonalRamp": ["#050d0a", "#0e1f18", "#173225", "#1e4a3a", "#2c6b54", "#3e8c70", "#6bb096", "#a6d5c1"] },
-      "sky": { "role": "tertiary", "displayName": "Streamer Sky Blue", "canonical": "#4c6bd6", "tonalRamp": ["#0e1530", "#1a2657", "#273a83", "#3550ab", "#4c6bd6", "#7690e0", "#a0b3ea", "#cbd7f4"] },
-      "ink": { "role": "neutral", "displayName": "Deep Wick Ink", "canonical": "#1b1620", "tonalRamp": ["#050406", "#0b090d", "#120e16", "#1b1620", "#382e40", "#564760", "#8a7f92", "#c3bcc7"] },
-      "canvas": { "role": "neutral", "displayName": "Canvas White", "canonical": "#ffffff", "tonalRamp": ["#c9c9c9", "#d9d9d9", "#e8e8e8", "#f4f4f4", "#ffffff", "#ffffff", "#ffffff", "#ffffff"] },
-      "card": { "role": "neutral", "displayName": "Invitation Card Cream", "canonical": "#f5f3ec", "tonalRamp": ["#3a3626", "#5e5842", "#847c61", "#b6ac8e", "#f5f3ec", "#f8f6f0", "#faf9f4", "#fdfcfa"] },
-      "cta-blue": { "role": "cta", "displayName": "CTA Blue", "canonical": "#134bff", "tonalRamp": ["#0a1442", "#132870", "#1d3c9e", "#2850c8", "#134bff", "#6288f9", "#93adfb", "#c6d3fd"] },
-      "cta-gray": { "role": "cta", "displayName": "CTA Gray", "canonical": "#f3f4f6", "tonalRamp": ["#26282c", "#404448", "#5a6066", "#84898f", "#f3f4f6", "#f6f7f8", "#f9fafb", "#fcfcfd"] },
-      "muted": { "role": "neutral", "displayName": "Muted Slate", "canonical": "#616e80", "tonalRamp": ["#12141a", "#232833", "#3a414f", "#4c5566", "#616e80", "#8790a0", "#b0b6c0", "#dadde0"] }
+      "ink": { "role": "neutral", "displayName": "Deep Wick Ink", "canonical": "#1b1620", "tonalRamp": ["#0a080c", "#120f15", "#1b1620", "#3a3142", "#5c5066", "#87798f", "#b6acbb", "#e4dfe7"] },
+      "canvas": { "role": "neutral", "displayName": "Canvas White", "canonical": "#ffffff", "tonalRamp": ["#2b2b2b", "#4d4d4d", "#6f6f6f", "#919191", "#b3b3b3", "#d5d5d5", "#f2f2f2", "#ffffff"] },
+      "muted": { "role": "neutral", "displayName": "Muted Slate", "canonical": "#616e80", "tonalRamp": ["#161a1f", "#242b33", "#333d48", "#47535f", "#616e80", "#8794a3", "#b2bcc7", "#dde2e8"] },
+      "cta-blue": { "role": "primary", "displayName": "CTA Blue", "canonical": "#134bff", "tonalRamp": ["#04143f", "#062066", "#0a3199", "#0e3ecc", "#134bff", "#4a75ff", "#87a2ff", "#c6d3ff"] },
+      "cta-gray": { "role": "neutral", "displayName": "CTA Gray", "canonical": "#f3f4f6", "tonalRamp": ["#33353a", "#4d5057", "#6a6e77", "#8b8f98", "#adb1b9", "#cfd2d8", "#f3f4f6", "#fbfbfc"] },
+      "media-black": { "role": "neutral", "displayName": "Media Black", "canonical": "#010101", "tonalRamp": ["#010101", "#141414", "#2b2b2b", "#454545", "#636363", "#8a8a8a", "#b9b9b9", "#e8e8e8"] },
+      "desc-on-dark": { "role": "neutral", "displayName": "Desc on Dark", "canonical": "#ecedee", "tonalRamp": ["#2f3133", "#474a4d", "#616468", "#7d8185", "#9ca0a4", "#bec1c4", "#ecedee", "#f8f8f9"] },
+      "line-on-light": { "role": "neutral", "displayName": "Hairline on Light", "canonical": "rgba(27, 22, 32, 0.14)" },
+      "line-on-dark": { "role": "neutral", "displayName": "Hairline on Dark", "canonical": "rgba(245, 243, 236, 0.18)" },
+      "candle": { "role": "tertiary", "displayName": "Candle Flame Coral (lab only)", "canonical": "#ff5000", "tonalRamp": ["#3d1200", "#661d00", "#992c00", "#cc3b00", "#ff5000", "#ff7a3d", "#ffa373", "#ffd4bd"] },
+      "wax": { "role": "tertiary", "displayName": "Melted Wax Gold (lab + dark-card focus ring)", "canonical": "#f0b429", "tonalRamp": ["#3d2c05", "#664a08", "#996f0c", "#cc9410", "#f0b429", "#f4c455", "#f8d585", "#fbe6b8"] },
+      "forest": { "role": "tertiary", "displayName": "Party Forest Green (lab only)", "canonical": "#1e4a3a", "tonalRamp": ["#08130f", "#0d1f19", "#132f25", "#183b2f", "#1e4a3a", "#357f65", "#5cb894", "#a7ddc9"] },
+      "sky": { "role": "tertiary", "displayName": "Streamer Sky Blue (lab only)", "canonical": "#4c6bd6", "tonalRamp": ["#111a37", "#1c2b5c", "#293f87", "#3853b0", "#4c6bd6", "#7b91e3", "#a9b8ee", "#d7dff8"] },
+      "card": { "role": "neutral", "displayName": "Invitation Card Cream (lab only)", "canonical": "#f5f3ec", "tonalRamp": ["#35332c", "#4e4b41", "#6b6759", "#8b8676", "#aca797", "#cdc9bd", "#f5f3ec", "#fbfaf6"] },
+      "cursor-violet": { "role": "tertiary", "displayName": "Cursor Violet", "canonical": "#7c1aff" },
+      "cursor-golden": { "role": "tertiary", "displayName": "Cursor Golden", "canonical": "#ffcc00" },
+      "cursor-turquoise": { "role": "tertiary", "displayName": "Cursor Turquoise", "canonical": "#00ffd1" },
+      "cursor-magenta": { "role": "tertiary", "displayName": "Cursor Magenta", "canonical": "#ff0090" },
+      "cursor-green": { "role": "tertiary", "displayName": "Cursor Green", "canonical": "#39ff14" }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero title-page numerals and names; standalone stat numerals on dark blocks." },
-      "headline": { "displayName": "Headline", "purpose": "Section headings within a block." },
-      "body": { "displayName": "Body", "purpose": "Paragraph copy, max 60ch, font-stretch 87.5%." },
-      "label": { "displayName": "Label", "purpose": "Eyebrows, tags, meta keys, stat captions, footer credit — always Fixel at 87.5% width with tabular-nums, uppercase, tracked wide." },
-      "cta": { "displayName": "CTA", "purpose": "The two contact buttons only (Download CV / email), 40px at hero/footer scale or 18px inline." },
-      "section-heading": { "displayName": "Section Heading", "purpose": "Plain-white section headers outside the block system (\"Public\", \"Articles\")." },
-      "item-title": { "displayName": "Item Title", "purpose": "Clickable heading on a public-item or article row; underlines in ink on hover only." }
+      "section-heading": { "displayName": "Section heading", "purpose": "Заголовки секцій головної: Cases, Public, Articles." },
+      "h1-case": { "displayName": "Case / article h1", "purpose": "Єдиний h1 внутрішньої сторінки." },
+      "item-title": { "displayName": "Item title", "purpose": "Назва роботи, виступу або статті в списку. Завжди h3 із посиланням усередині." },
+      "cta": { "displayName": "CTA", "purpose": "Дві кнопки контакту в підвалі, 40px." },
+      "cta-sm": { "displayName": "CTA inline", "purpose": "Ті самі кнопки в рядку обкладинки, 18px." },
+      "body-long": { "displayName": "Body (long-form)", "purpose": "Текст лонгріду: 18px, LH 1.7, міра 42rem." },
+      "body": { "displayName": "Body", "purpose": "Біо на обкладинці й будь-який абзац поза колонкою читання." },
+      "meta": { "displayName": "Meta", "purpose": "Дати, джерела, стани. Завжди у квадратних дужках." },
+      "display": { "displayName": "Display", "purpose": "Плакатний кегль. На публічних сторінках його місце займає намальована марка обкладинки." },
+      "label": { "displayName": "Label", "purpose": "Розряджений капс із tabular-nums. Лишився в лабораторії /cursor; публічні поверхні використовують дужкову мету." }
     },
     "shadows": [
-      { "name": "sticker-lift", "value": "0 8px 20px rgba(0,0,0,0.14)", "purpose": "The system's only shadow — lifts the rotated sticker badge off its block." }
+      { "name": "header-pill", "value": "0 1px 2px rgba(27, 22, 32, 0.05), 0 6px 20px rgba(27, 22, 32, 0.09)", "purpose": "Єдина тінь у системі. Липка пігулка шапки — єдиний елемент, що проїжджає поверх чужого вмісту." }
     ],
     "motion": [
-      { "name": "block-rise", "value": "translateY(10px) -> translateY(0), opacity 0 -> 1, 0.55s ease-out", "purpose": "Blocks rise in on load, respecting prefers-reduced-motion." },
-      { "name": "btn-lift", "value": "translateY(-2px), 0.15s ease", "purpose": "Button hover state — the only interactive motion in the system." }
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Маркер перемикача (420ms) і виїзд skip-link (240ms): рух іде швидко й осідає." },
+      { "name": "ease-spring", "value": "cubic-bezier(0.34, 1.28, 0.64, 1)", "purpose": "Стиснення пігулки шапки (440ms). Невеликий переліт — CSS-відповідник пружини." },
+      { "name": "ease-state", "value": "ease", "purpose": "Стани за 150ms: заливка посилання, підйом кнопки, зсув стрілки картки." },
+      { "name": "cursor-reel", "value": "~700ms", "purpose": "Слід курсора змотується в голову по власній дорозі, коли рука спиняється." }
     ],
     "breakpoints": [
-      { "name": "mobile", "value": "720px" }
+      { "name": "xs", "value": "360px" },
+      { "name": "sm", "value": "420px" },
+      { "name": "md", "value": "600px" },
+      { "name": "lg", "value": "720px" },
+      { "name": "xl", "value": "900px" },
+      { "name": "container", "value": "1120px" }
     ]
   },
   "components": [
     {
-      "name": "Primary Button",
-      "kind": "button",
-      "refersTo": "button-primary",
-      "description": "Ink-on-canvas label-face button with a hover lift; the system's only call-to-action shape.",
-      "html": "<a class=\"ds-btn\" href=\"#\">Відкрити кейс →</a>",
-      "css": ".ds-btn { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.85rem; font-weight: 700; text-decoration: none; background: #1b1620; color: #ffffff; padding: 0.9rem 1.4rem; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.15s ease; } .ds-btn:hover { transform: translateY(-2px); } .ds-btn:focus-visible { outline: 3px solid #f0b429; outline-offset: 3px; }"
-    },
-    {
-      "name": "Tag",
-      "kind": "chip",
-      "refersTo": "tag",
-      "description": "Small label-face pill naming a stack item or attribute; flips to translucent white on dark blocks.",
-      "html": "<span class=\"ds-tag\">Next.js</span>",
-      "css": ".ds-tag { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.76rem; font-weight: 500; background: #1b1620; color: #ffffff; padding: 0.5rem 0.85rem; border-radius: 8px; white-space: nowrap; }"
-    },
-    {
-      "name": "Sticker Badge",
-      "kind": "custom",
-      "refersTo": "sticker",
-      "description": "Rotated stat badge, the system's single loudest device — one per surface, carrying one real number.",
-      "html": "<div class=\"ds-sticker\"><strong>4</strong>дні від ідеї до релізу</div>",
-      "css": ".ds-sticker { position: relative; display: inline-block; background: #f0b429; color: #1b1620; font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.85rem 1rem; border-radius: 999px; transform: rotate(-6deg); box-shadow: 0 8px 20px rgba(0,0,0,0.14); text-align: center; line-height: 1.3; width: 8rem; } .ds-sticker strong { display: block; font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }"
-    },
-    {
-      "name": "Block Card (candle)",
-      "kind": "card",
-      "refersTo": "block-candle",
-      "description": "Full-bleed color-block container, candle variant, 32px radius, no shadow, no border.",
-      "html": "<section class=\"ds-block ds-block--candle\"><p class=\"ds-eyebrow\">Portfolio</p><h2>Заголовок</h2></section>",
-      "css": ".ds-block { border-radius: 32px; padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 4.25rem); position: relative; overflow: hidden; } .ds-block--candle { background: #ff5000; color: #1b1620; } .ds-eyebrow { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; display: inline-block; margin-bottom: 0.85rem; }"
-    },
-    {
-      "name": "Colophon List Row",
-      "kind": "custom",
-      "refersTo": "colophon-list",
-      "description": "Two-column label-face key/value row for dense facts on dark blocks; collapses to one column under 720px.",
-      "html": "<ul class=\"ds-colophon\"><li><span class=\"ds-colophon-key\">Роль</span><span>Product Designer · Design Engineer</span></li></ul>",
-      "css": ".ds-colophon { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; } .ds-colophon li { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid rgba(245,243,236,0.18); font-size: 0.98rem; color: #ffffff; } .ds-colophon-key { font-family: 'Fixel Variable', system-ui, sans-serif; font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: #f0b429; } @media (max-width: 720px) { .ds-colophon li { grid-template-columns: 1fr; gap: 0.3rem; } }"
-    },
-    {
       "name": "CTA Button (blue)",
       "kind": "button",
       "refersTo": "button-cta",
-      "description": "Download CV — the site's only blue button. Appears at 300px/40px in the footer and flex-grown/18px inline in the hero.",
-      "html": "<a class=\"ds-btn-cta\" href=\"#\">Download CV</a>",
-      "css": ".ds-btn-cta { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.4; letter-spacing: -0.04em; background: #134bff; color: #ffffff; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 300px; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-cta:hover { background: #1b1620; color: #ffffff; }"
+      "description": "Головна дія сайту. У підвалі 300px заввишки, кегль 40px; на ховері перевертається в ink.",
+      "html": "<a class=\"ds-cta\" href=\"#\">Download CV</a>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 300px; padding: 0 2rem; border-radius: 999px; background: var(--cta-blue, #134bff); color: var(--canvas, #fff); font-family: 'Fixel Variable', system-ui, sans-serif; font-size: 2.5rem; font-weight: 600; line-height: 1.4; letter-spacing: -0.04em; text-decoration: none; transition: background-color .15s ease, color .15s ease; } .ds-cta:hover, .ds-cta:focus-visible { background: var(--ink, #1b1620); color: var(--canvas, #fff); }"
     },
     {
       "name": "CTA Button (gray)",
       "kind": "button",
       "refersTo": "button-cta-light",
-      "description": "Email contact — paired with CTA Button (blue), same hover inversion to ink.",
-      "html": "<a class=\"ds-btn-cta-light\" href=\"mailto:anastasiia.sihetii@gmail.com\">anastasiia.sihetii@gmail.com</a>",
-      "css": ".ds-btn-cta-light { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.4; letter-spacing: -0.04em; background: #f3f4f6; color: #1b1620; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 140px; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-cta-light:hover { background: #1b1620; color: #ffffff; }"
+      "description": "Пара до синьої: адреса пошти. 140px, і власний мобільний крок на 96px, бо адреса довга.",
+      "html": "<a class=\"ds-cta-light\" href=\"mailto:anastasiia.sihetii@gmail.com\">anastasiia.sihetii@gmail.com</a>",
+      "css": ".ds-cta-light { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 140px; padding: 0 2rem; border-radius: 999px; background: var(--cta-gray, #f3f4f6); color: var(--ink, #1b1620); font-family: 'Fixel Variable', system-ui, sans-serif; font-size: 2.5rem; font-weight: 600; line-height: 1.4; letter-spacing: -0.04em; text-decoration: none; transition: background-color .15s ease, color .15s ease; } .ds-cta-light:hover, .ds-cta-light:focus-visible { background: var(--ink, #1b1620); color: var(--canvas, #fff); } @media (max-width: 600px) { .ds-cta-light { height: 96px; font-size: 1.3rem; } }"
+    },
+    {
+      "name": "Header CTA",
+      "kind": "button",
+      "refersTo": "header-cta",
+      "description": "Права половина липкої пігулки шапки. На ховері стає CTA Blue й підводиться на 2px.",
+      "html": "<a class=\"ds-header-cta\" href=\"mailto:anastasiia.sihetii@gmail.com\">Get in touch</a>",
+      "css": ".ds-header-cta { display: inline-flex; align-items: center; padding: 0 1.15rem; min-height: 41px; border-radius: 999px; background: var(--ink, #1b1620); color: var(--canvas, #fff); font-family: 'Fixel Variable', system-ui, sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.4; white-space: nowrap; text-decoration: none; transition: transform .15s ease, background-color .15s ease; } .ds-header-cta:hover, .ds-header-cta:focus-visible { background: var(--cta-blue, #134bff); transform: translateY(-2px); }"
+    },
+    {
+      "name": "Case Card",
+      "kind": "card",
+      "refersTo": "case-card",
+      "description": "Повнобічна картка кейсу: копія на кольорі картки, кадр втоплений 4-піксельною рамкою, назва — h3 з посиланням, оверлей якого робить мішенню всю картку.",
+      "html": "<article class=\"ds-case\"><div class=\"ds-case-head\"><div><h3 class=\"ds-case-title\"><a class=\"ds-case-link\" href=\"#\"><span class=\"ds-mark\">A website for my birthday</span></a></h3><p class=\"ds-case-desc\">For my birthday, I built a website for friends with a celebration schedule and a wishlist.</p></div><svg class=\"ds-case-arrow\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"M9 23L23 9M23 9H12M23 9v11\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></div><div class=\"ds-case-media\"></div></article>",
+      "css": ".ds-case { position: relative; display: flex; flex-direction: column; gap: 2rem; padding: 2rem 4px 4px; border-radius: 32px; overflow: hidden; background: var(--media-black, #010101); color: var(--canvas, #fff); font-family: 'Fixel Variable', system-ui, sans-serif; } .ds-case-head { display: flex; gap: 1rem; align-items: flex-start; padding: 0 2rem; } .ds-case-head > div { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 1rem; } .ds-case-title { margin: 0; font-size: 2rem; font-weight: 500; line-height: 1.2; letter-spacing: -2px; } .ds-case-link { color: inherit; text-decoration: none; } .ds-case-link::after { content: \"\"; position: absolute; inset: 0; z-index: 1; border-radius: 32px; } .ds-mark { transition: background-color .15s ease, color .15s ease; } .ds-case:hover .ds-mark, .ds-case-link:focus-visible .ds-mark { background: var(--canvas, #fff); color: var(--ink, #1b1620); padding-inline: .2em; margin-inline: -.2em; box-decoration-break: clone; -webkit-box-decoration-break: clone; } .ds-case-link:focus-visible { outline: 3px solid #f0b429; outline-offset: 3px; border-radius: 2px; } .ds-case-desc { margin: 0; font-size: 1rem; line-height: 1.3; color: var(--desc-on-dark, #ecedee); } .ds-case-arrow { flex-shrink: 0; transition: transform .15s ease; } .ds-case:hover .ds-case-arrow { transform: translate(3px, -3px); } .ds-case-media { aspect-ratio: 2/1; border-radius: 28px; overflow: hidden; background: linear-gradient(120deg, #2a2a2a, #4a4a4a); }"
     },
     {
       "name": "Item Title Link",
       "kind": "custom",
       "refersTo": "item-title",
-      "description": "The clickable heading on a public-item or article row. No underline at rest; ink underline on hover only.",
-      "html": "<a class=\"ds-item-title\" href=\"#\">AI tools in UX/UI daily design process: practical cases</a>",
-      "css": ".ds-item-title { font-family: 'Fixel Variable', system-ui, sans-serif; font-weight: 500; font-size: 28px; line-height: 1.2; letter-spacing: -2px; color: #1b1620; text-decoration: none; } .ds-item-title:hover { text-decoration: underline; text-decoration-color: #1b1620; text-underline-offset: 4px; }"
+      "description": "Назва роботи чи статті в списку: h3 із посиланням усередині. У спокої без підкреслення; ховер заливає слова, а стрілка каже, що лінк веде геть.",
+      "html": "<h3 class=\"ds-item-title\"><a class=\"ds-item-link\" href=\"#\"><span class=\"ds-mark2\">AI tools in UX/UI daily design process</span></a></h3>",
+      "css": ".ds-item-title { margin: 0; font-family: 'Fixel Variable', system-ui, sans-serif; font-size: 1.75rem; font-weight: 500; line-height: 1.2; letter-spacing: -2px; color: var(--ink, #1b1620); } .ds-item-link { color: inherit; text-decoration: none; } .ds-mark2 { transition: background-color .15s ease, color .15s ease; } .ds-item-link:hover .ds-mark2, .ds-item-link:focus-visible .ds-mark2 { background: var(--ink, #1b1620); color: var(--canvas, #fff); padding-inline: .2em; margin-inline: -.2em; box-decoration-break: clone; -webkit-box-decoration-break: clone; } .ds-item-link::after { content: \"\"; display: inline-block; width: .78em; height: .78em; margin-left: .28em; vertical-align: -.06em; background: currentColor; clip-path: polygon(20% 0, 100% 0, 100% 80%, 82% 80%, 82% 31%, 13% 100%, 0 87%, 69% 18%, 20% 18%); opacity: 0; transform: translate(-3px, 3px); transition: opacity .15s ease, transform .15s ease; } .ds-item-link:hover::after, .ds-item-link:focus-visible::after { opacity: 1; transform: translate(0, 0); }"
     },
     {
-      "name": "Article Thumbnail",
+      "name": "Instrument Switch",
       "kind": "custom",
-      "refersTo": "article-thumb",
-      "description": "Fixed 179x122 hard-cornered image, center-cropped — deliberately not rounded, unlike the 40px public-item cover photo.",
-      "html": "<img class=\"ds-article-thumb\" src=\"/article-image.png\" alt=\"\" />",
-      "css": ".ds-article-thumb { width: 179px; height: 122px; object-fit: cover; object-position: center; flex-shrink: 0; }"
+      "refersTo": "switch-track",
+      "description": "Двостанний перемикач підвалу. Sentence case замість голосу міток, без підпису й лінійки, з маркером, що їде між комірками за 420ms.",
+      "html": "<div class=\"ds-switch\" role=\"group\" aria-label=\"Language\"><span class=\"ds-switch-marker\"></span><button class=\"ds-switch-cell\" type=\"button\" aria-pressed=\"true\">EN</button><button class=\"ds-switch-cell\" type=\"button\" aria-pressed=\"false\">UA</button></div>",
+      "css": ".ds-switch { position: relative; display: inline-grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; padding: 4px; border-radius: 999px; background: var(--cta-gray, #f3f4f6); font-family: 'Fixel Variable', system-ui, sans-serif; } .ds-switch-marker { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; width: calc((100% - 10px) / 2); border-radius: 999px; background: var(--ink, #1b1620); transition: transform .42s cubic-bezier(.16,1,.3,1); } .ds-switch-cell { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 3.75rem; padding: 0 .9rem; border: none; background: none; cursor: pointer; border-radius: 999px; font-family: inherit; font-size: 1rem; font-weight: 600; color: var(--muted, #616e80); transition: color .3s ease; } .ds-switch-cell:hover { color: var(--ink, #1b1620); } .ds-switch-cell[aria-pressed=\"true\"] { color: var(--canvas, #fff); } .ds-switch-cell:focus-visible { outline: 2px solid var(--ink, #1b1620); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-switch-marker { transition: none; } }"
+    },
+    {
+      "name": "Stat Tile",
+      "kind": "card",
+      "refersTo": "stat-tile",
+      "description": "Сіра плитка в колонці читання: цифра акцентним кольором, підпис під нею. Той самий шаблон несуть картки етапів.",
+      "html": "<div class=\"ds-stat\"><b>84</b><span>компоненти в дизайн-системі</span></div>",
+      "css": ".ds-stat { background: var(--cta-gray, #f3f4f6); border-radius: 24px; padding: 2rem 1.9rem; font-family: 'Fixel Variable', system-ui, sans-serif; } .ds-stat b { display: block; font-size: 3rem; font-weight: 600; line-height: 1.05; letter-spacing: -.03em; margin-bottom: .6rem; color: var(--cta-blue, #134bff); } .ds-stat span { display: block; font-size: 1.125rem; line-height: 1.7; color: var(--ink, #1b1620); }"
+    },
+    {
+      "name": "Skip Link",
+      "kind": "custom",
+      "refersTo": "skip-link",
+      "description": "Перше посилання документа. Виїжджає з-під верхньої кромки тільки у фокусі; заокруглене лише знизу.",
+      "html": "<a class=\"ds-skip\" href=\"#main\">Skip to content</a>",
+      "css": ".ds-skip { position: absolute; top: 0; left: 50%; transform: translate(-50%, -120%); background: var(--ink, #1b1620); color: var(--canvas, #fff); font-family: 'Fixel Variable', system-ui, sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: .85rem 1.5rem; border-radius: 0 0 999px 999px; transition: transform .24s cubic-bezier(.16,1,.3,1); } .ds-skip:focus-visible, .ds-skip:hover { transform: translate(-50%, 0); } @media (prefers-reduced-motion: reduce) { .ds-skip { transition: none; } }"
+    },
+    {
+      "name": "Page Close",
+      "kind": "custom",
+      "refersTo": "close-cta",
+      "description": "Закриття внутрішньої сторінки: пігулка з адресою за розміром напису плюс дорога назад до решти робіт.",
+      "html": "<div class=\"ds-close\"><a class=\"ds-close-cta\" href=\"mailto:anastasiia.sihetii@gmail.com\">anastasiia.sihetii@gmail.com</a><a class=\"ds-close-home\" href=\"/\"><span class=\"ds-mark3\">All work</span></a></div>",
+      "css": ".ds-close { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; font-family: 'Fixel Variable', system-ui, sans-serif; } .ds-close-cta { display: inline-flex; align-items: center; min-height: 56px; padding: 0 1.5rem; border-radius: 999px; background: var(--ink, #1b1620); color: var(--canvas, #fff); font-size: 1rem; font-weight: 600; text-decoration: none; transition: transform .15s ease, background-color .15s ease; } .ds-close-cta:hover, .ds-close-cta:focus-visible { background: var(--cta-blue, #134bff); transform: translateY(-2px); } .ds-close-home { font-size: 1rem; font-weight: 600; color: var(--ink, #1b1620); text-decoration: none; } .ds-mark3 { transition: background-color .15s ease, color .15s ease; } .ds-close-home:hover .ds-mark3 { background: var(--ink, #1b1620); color: var(--canvas, #fff); padding-inline: .2em; margin-inline: -.2em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }"
     }
   ],
   "narrative": {
-    "northStar": "The Printed Invitation",
-    "overview": "The system reads as a physical invitation card, not a web app: one full-bleed color block per topic, stacked like the sections of a paper program, each holding a huge geometric numeral or headline that could be printed on card stock. A single rotated sticker badge carries the one number worth remembering per viewport. Labels and stats speak in a condensed, tabular-figure voice — a knowing wink that this printed object was actually generated in days, not weeks. The system deliberately commits to one printed world rather than an adaptive UI: no light/dark branching, no theme switching.",
+    "northStar": "The Poster and the Page",
+    "overview": "Сайт ходить між двома регістрами й нічого між ними не змішує. Плакат — це обкладинка на весь екран, де марка йде під зріз; стос повнобічних карток, кожна одного суцільного кольору з кадром усередині; і два слаби CTA у підвалі, у 300 і 140 пікселів заввишки, набрані сорока пікселями. Сторінка — це все, що читають: кейси і статті в одній колонці 42rem на білому, списки без жодної рамки, приглушена мета у квадратних дужках. Плакат каже ім'я і показує роботу; сторінка її пояснює.\n\nРаніше система була одна на всі поверхні — повнобічні кольорові блоки з наліпкою й моношириними мітками, успадковані з першого кейсу. Публічні сторінки з неї вийшли: обкладинка стала білою, кейси переїхали в редакційну колонку, а блоковий світ лишився рівно однією службовою сторінкою /cursor, і його стилі живуть тепер у cursor-lab.css.\n\nЄдине, що проходить крізь обидва регістри, — намальований курсор: те місце, де друкований світ поступається екранному.",
     "keyCharacteristics": [
-      "Full-bleed color blocks, one hue per topic, stacked vertically with generous rounded corners",
-      "Huge geometric display numerals and headlines set in a variable display face",
-      "Fixel Variable at a condensed 87.5% width for every label, tag, stat, and footer credit line, with tabular figures standing in for the old dev-tool monospace",
-      "Exactly one rotated sticker badge per surface, carrying the single most important stat",
-      "Flat by default; the sticker's drop shadow is the system's only elevation device",
-      "Single-theme commitment — no prefers-color-scheme or data-theme branching anywhere"
+      "Один шрифт на все — Fixel Variable, від 400 у тексті до 600 у плакатних кеглях",
+      "Обкладинка на весь екран замість героя з кнопкою: марка як h1, під нею біо і дві дії",
+      "Повнобічні картки кейсів, по одній на рядок, кожна одного кольору, з кадром у 4-піксельній рамці",
+      "Читання — окремий світ: одна колонка, брейк-аути кадрів, жодних карток",
+      "Пласко скрізь; єдина тінь у системі — липка пігулка шапки",
+      "Одна тема, без prefers-color-scheme і без перемикання"
     ],
     "rules": [
-      { "name": "The One Hue Per Block Rule", "body": "A .block owns exactly one background color from the palette and applies it full-bleed to the whole section — colors are never mixed within a single block or scattered as small accents across a neutral ground.", "section": "colors" },
-      { "name": "The Mono-Label Rule", "body": "Any text that names, tags, or measures something (eyebrow, tag, meta key, stat caption) is Fixel Variable at 87.5% width with tabular-nums, uppercase, tracked wide — never the display-stretch (100%) or body-weight face, however short the string.", "section": "typography" },
-      { "name": "The Sticker-Only Shadow Rule", "body": "Shadow is reserved for the one rotated sticker badge per surface. No other component — button, tag, card, block — ever carries a box-shadow.", "section": "elevation" },
-      { "name": "The Rest-State Link Rule", "body": "Every plain-text link (item titles, footer social links) carries no underline at rest — a currentColor underline is a hover-only reveal, never a permanent decoration. The footer is unblocked (plain canvas white, ink text, not a dark panel), so both item titles and footer social links render the underline in ink; currentColor keeps the rule correct if either ever sits on a dark surface.", "section": "typography" }
+      { "name": "The One Field Per Card Rule", "body": "Картка кейсу тримає рівно один колір фону на всю себе. Колір не змішується всередині картки й не розсипається дрібними акцентами по білому.", "section": "colors" },
+      { "name": "The One Blue Rule", "body": "#134bff — єдиний синій у системі й позначає дію або курсор. Він може бути полем картки, але ніколи не стає декоративним акцентом.", "section": "colors" },
+      { "name": "The Cursor Palette Stays Out", "body": "П'ять флуоресцентних відтінків не з'являються в жодній поверхні, рамці чи тексті. Виняток один: гліф у перемикачі курсора, поки курсор увімкнений, — бо там він легенда до того, що на екрані.", "section": "colors" },
+      { "name": "The One Scale Rule", "body": "Кожен font-size бере значення з мапи typography.scale через var(--fs-*). Літерального rem чи px у CSS немає.", "section": "typography" },
+      { "name": "The Bracketed Meta Rule", "body": "Усе, що датує або позначає стан, стоїть у квадратних дужках тим самим кеглем, що й допоміжний текст. Дужки і є мітка; верхнього регістру й розрядки система для цього не використовує.", "section": "typography" },
+      { "name": "The Rest-State Link Rule", "body": "Жодне текстове посилання не підкреслене у спокої. Ховер заливає слова прямокутником з box-decoration-break: clone. Виняток — посилання всередині прози лонгріду.", "section": "typography" },
+      { "name": "The Leaves-the-Site Arrow", "body": "Посилання, що веде геть, показує стрілку — вона стоїть у потоці з нульовою прозорістю й лише проявляється, тому ніколи не зсуває рядок під курсором. Внутрішні переходи стрілки не мають.", "section": "typography" },
+      { "name": "The One Shadow Rule", "body": "Тінь має рівно один власник — пігулка шапки, і рівно одну причину: вона перекриває вміст.", "section": "elevation" },
+      { "name": "The Pill Rule", "body": "Усе, що натискають або що читається як мітка, — повна пігулка 999px. Великі поверхні беруть 32px або 40px.", "section": "shapes" },
+      { "name": "The Concentric Inset Rule", "body": "Кадр, втоплений у картку, бере радіус картки мінус ширину рамки: 32 − 4 = 28. Око бачить два паралельні кути, а не два різні.", "section": "shapes" },
+      { "name": "The No-Rules Rule", "body": "Ця поверхня не малює горизонтальних лінійок-роздільників. Де потрібен розрив, його дає простір.", "section": "shapes" },
+      { "name": "The Two Recommendations Rule", "body": "Блок «Інші роботи» показує щонайбільше дві, на всьому сайті. Третій рядок після довгого тексту перестає бути рекомендацією.", "section": "components" },
+      { "name": "The Live-Legend Rule", "body": "Маркер перемикача курсора — CTA Blue, поки курсор увімкнений, і ink, коли вимкнений; комірка Creative несе намальований слід у кольорах курсора тільки в активному стані.", "section": "components" },
+      { "name": "The Keyline Rule", "body": "Голова курсора несе білу обводку 3px: #134bff — не лише колір курсора, а й поверхня, і без обводки голова зникала б у цьому полі, все ще затуляючи текст під собою.", "section": "components" },
+      { "name": "The Index-Finger Rule", "body": "Піднятий палець стоїть біля лівого краю кулака й виступає приблизно на 42% висоти руки. По центру це інший жест; вище половини палець сам стає жестом; нижче 35% перестає читатися піднятим.", "section": "components" }
     ],
     "dos": [
-      "Do give every block exactly one palette color, full-bleed, with no gradient or mixing.",
-      "Do keep every label, tag, meta key, and stat caption in Fixel at 87.5% width with tabular-nums, uppercase, tracked wide.",
-      "Do reserve the sticker badge for a single, real, load-bearing stat — never decorative.",
-      "Do constrain block content to a 40–44rem inner column even at full block width, so text stays readable against the color field.",
-      "Do use 900-weight display numerals (wax-gold on dark blocks) for standalone stats."
+      "Do брати кожен font-size із мапи typography.scale через var(--fs-*).",
+      "Do давати картці кейсу рівно один колір поля на всю себе.",
+      "Do ставити дати й стани у квадратні дужки: [August 2026], [Soon].",
+      "Do робити назву роботи чи статті заголовком h3 із посиланням усередині, а не посиланням замість заголовка.",
+      "Do заливати посилання прямокутником на ховері замість підкреслення.",
+      "Do рахувати радіус втопленого кадру як радіус картки мінус рамку.",
+      "Do починати документ зі skip-link і класти вміст у <main id=\"main\">."
     ],
     "donts": [
-      "Don't add prefers-color-scheme or data-theme branching — this system commits to one printed world, not an adaptive UI.",
-      "Don't add a shadow to anything except the sticker badge.",
-      "Don't use more than one sticker badge per viewport.",
-      "Don't introduce hard square corners; every rectangle carries at least an 8px radius.",
-      "Don't number case studies or index entries in a way that implies a series (\"Кейс · 01\") until a second entry actually exists."
+      "Don't додавати prefers-color-scheme чи data-theme: система тримає один світ.",
+      "Don't вішати тінь на будь-що, крім пігулки шапки.",
+      "Don't брати п'ять флуоресцентних кольорів курсора будь-де, крім самого курсора й гліфа-легенди в його перемикачі.",
+      "Don't повертати повнобічні кольорові блоки, наліпку чи розряджений капс на публічні сторінки.",
+      "Don't ставити ярлик-надзаголовок над заголовком.",
+      "Don't відкривати внутрішні переходи в новій вкладці й показувати їм стрілку «геть із сайту».",
+      "Don't малювати горизонтальні лінійки-роздільники.",
+      "Don't вводити гострі кути: найменший радіус у системі — 2px."
     ]
   }
 }

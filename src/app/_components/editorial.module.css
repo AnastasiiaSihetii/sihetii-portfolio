@@ -1,0 +1,463 @@
+/* ──────────────────────────────────────────────────────────────
+   Редакційна сторінка: кейси й статті.
+
+   Усе всередині .article, тому глобальні стилі головної сюди не
+   протікають, а ці не протікають назовні. Токени кольору беруться
+   з globals.css, свої додаються тут.
+   ────────────────────────────────────────────────────────────── */
+.article {
+  /* --cta-blue живе в :root разом з рештою палітри: він потрібен і шапці, і
+     картці кейсу на головній, тобто поза цією сторінкою теж. Тут лишається
+     тільки те, що справді належить редакційній колонці. */
+  /* Колір виділених цифр. Сторінка може перевизначити під свій кейс. */
+  --accent: var(--cta-blue);
+  --muted: rgba(27, 22, 32, 0.62);
+  --gray: #f3f4f6;
+  --hair: rgba(27, 22, 32, 0.12);
+  --col: 42rem;      /* основна колонка читання, ~672px */
+  --col-mid: 52rem;  /* одиничні кадри: досить велика, щоб роздивитись */
+  --col-wide: 70rem; /* брейк-аут, 1120px — як сітка на кейсі birthday */
+
+  font-family: var(--font-body);
+  font-stretch: 100%;
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* Браузерні поля скидаємо, інакше типовий margin блокових елементів
+   б'ється з автоцентруванням колонки нижче. :where — нульова вага,
+   тому будь-яке правило далі перекриває його без боротьби. */
+.article :where(h1, h2, h3, h4, p, ul, ol, li, dl, dt, dd, figure, figcaption, blockquote, cite) {
+  margin: 0;
+  padding: 0;
+}
+
+/* Одна колонка: все тече по центру, брейк-аути явні */
+.article > * {
+  max-width: var(--col);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.article > .wide { max-width: var(--col-wide); }
+.article > .mid { max-width: var(--col-mid); }
+
+/* Tailwind preflight знімає підкреслення з усіх <a>, тому в прозі повертаємо його явно.
+   Заголовки й кнопки-посилання знімають його назад у себе нижче. */
+.article a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.article a:focus-visible {
+  outline: 3px solid var(--cta-blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Хедер сторінки ── */
+.head { padding-top: clamp(2.5rem, 7vw, 4.5rem); padding-bottom: 0.5rem; }
+.article h1 {
+  font-size: var(--fs-h1-case);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.2rem;
+}
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--muted);
+  letter-spacing: -0.01em;
+  margin: 0 0 1.1rem;
+}
+.lead:last-child { margin-bottom: 1.6rem; }
+
+/* ── Факти проєкту ── */
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem 3.5rem;
+  margin: 2rem auto 2.8rem;
+}
+.facts dt { font-size: var(--fs-xs); line-height: 1.4; color: var(--muted); margin-bottom: 0.1rem; }
+.facts dd { font-size: var(--fs-sm); line-height: 1.45; margin: 0; }
+@media (max-width: 560px) { .facts { gap: 1.3rem 2.5rem; } }
+
+/* ── Байлайн статті ── */
+.byline {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.4rem;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  margin-bottom: 2.4rem;
+}
+.byline img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.byline b { display: block; font-weight: 600; }
+.byline span { color: var(--muted); }
+
+/* ── Текстовий ритм ── */
+.article h2 {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-top: 3.2rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 4.5rem;
+}
+/* Розділ, що відкриває нумеровану серію: єдиний заголовок, більший за свої кроки */
+.article h2.chapter {
+  font-size: var(--fs-chapter);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-top: clamp(5rem, 10vw, 7rem);
+  margin-bottom: 1.1rem;
+}
+/* Крок процесу: підпорядкований своєму розділу, тому менший за нього */
+.article h2.step {
+  font-size: var(--fs-step);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+}
+.article h3 {
+  font-size: var(--fs-sub);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-top: 3rem;
+  margin-bottom: 0.8rem;
+  scroll-margin-top: 4.5rem;
+}
+/* ── Перенос і рвань правого краю ──
+   Українське слово помітно довше за англійське, а колонка тут 42rem: без
+   переносів правий край на вузькому екрані розходиться дірками в півслова.
+   Переноси браузер робить за словником мови, тому працюють вони лише там,
+   де мова оголошена, — саме тому <article> несе свій lang.
+
+   hyphenate-limit-chars тримає перенос стриманим: слово від восьми літер,
+   і не менше трьох по кожен бік розриву. Шість було замало — англійська
+   рвала на «web-site», хоча коротке слово краще перенести цілим. Українські
+   слова, яким перенос справді потрібен, майже всі довші за вісім.
+
+   text-wrap: pretty окремо доглядає останній рядок абзацу, щоб він не
+   лишався одним коротким словом. */
+.article :is(p, li, dd, figcaption) {
+  hyphens: auto;
+  hyphenate-limit-chars: 8 3 3;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+/* Заголовки не переносяться ніколи: розрив у заголовку читається як помилка
+   друку, а не як типографіка. Їм — балансування рядків. */
+.article :is(h1, h2, h3), .lead {
+  hyphens: manual;
+  text-wrap: balance;
+}
+.article p { margin-bottom: 1.4rem; }
+.article b, .article strong { font-weight: 600; }
+.note { font-size: var(--fs-xs); color: var(--muted); line-height: 1.6; }
+
+.article ul, .article ol {
+  margin-bottom: 1.4rem;
+  padding-left: 1.25rem;
+  list-style: none;
+}
+.article li { margin-bottom: 0.7rem; position: relative; padding-left: 1.9em; }
+.article ol { counter-reset: li; }
+.article ol > li { counter-increment: li; }
+.article ol > li::before {
+  content: counter(li) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.article ul > li::before { content: "—"; position: absolute; left: 0; top: 0; }
+
+/* ── Цитата ── */
+.article blockquote {
+  border-left: 3px solid var(--ink);
+  padding: 0.1rem 0 0.1rem 1.4rem;
+  margin: 2.2rem auto;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+.article blockquote cite {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted);
+  margin-top: 0.7rem;
+  font-style: normal;
+}
+
+/* ── Стат-картки ── */
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin: 2.2rem auto; }
+.stat { background: var(--gray); border-radius: 24px; padding: 2rem 1.9rem; }
+.stat b {
+  display: block;
+  font-size: var(--fs-4xl);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+}
+.statArrow {
+  font-size: 0.6em;
+  padding-inline: 0.22em;
+  vertical-align: 0.12em;
+}
+
+/* Прямий нащадок: усередині <b> тепер теж живуть span-и розбитого значення */
+.stat > span { font-size: var(--fs-sm); line-height: 1.7; display: block; color: var(--ink); }
+@media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
+
+/* ── Кадри ── */
+.shot { margin: 2.8rem auto; }
+.shot + .shot { margin-top: 3.6rem; }
+.shot img { width: 100%; height: auto; display: block; border-radius: 32px; }
+/* У статтях кадри — це скріншоти чужих сторінок, часто зі світлим фоном: без
+   волосяної рамки вони розтікаються по полотну. У кейсах кадри самодостатні,
+   там рамка зайва. */
+.framedShots .shot img { border: 1px solid var(--hair); }
+.shot figcaption { font-size: var(--fs-xs); color: var(--muted); margin: 0.8rem auto 0; line-height: 1.5; max-width: 39.5rem; }
+.hero { margin-top: 1.4rem; }
+/* Кадр над заголовком ділить перший екран із h1, тож висоту задає сам кадр:
+   намальований пласким (2240x722, ~3.1:1), на повну ширину колонки він дає
+   ~348px, і разом із хедером, відступами та двома рядками h1 вкладається у
+   вікно від 600px заввишки. Пропорцію тут не нав'язуємо — у кадрі слова, і
+   будь-який фіксований ratio різав би або перший рядок, або поля з боків.
+   Стеля у vh лишається запобіжником для зовсім низьких вікон. */
+.shot.heroTop { margin: 2.5rem auto 1.75rem; }
+/* .head тримає власний padding-top до 72px, щоб відбитися від хедера сайту.
+   Коли над ним стоїть кадр, ці два відступи складались і заголовок відпливав
+   майже на 100px від картинки. З кадром відстань задає тільки він. */
+.heroTop + .head { padding-top: 0; }
+.heroTop img {
+  max-height: 60vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Роздільник секцій у статтях */
+.sep {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem auto 2.6rem;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.4em;
+}
+
+/* ── Інші роботи: верстка й типографіка один в один із секцій на головній ── */
+.more { margin-top: 6rem; padding-bottom: 4rem; }
+.more h2 { margin: 0 0 1.8rem; }
+/* Скидання під .article, а не голим класом: проза статті вже стилізує списки —
+   .article ul (0,1,1) дає padding-left 1.25rem, а .article ul > li::before
+   (0,1,2) малює тире. Одного .moreList (0,1,0) не вистачало, тому блок
+   рекомендацій успадковував відступ переліку в тексті й з'їжджав праворуч від
+   власного заголовка. Це список карток, а не перелік у прозі. */
+.article .moreList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.article .moreList li { margin: 0; padding-left: 0; }
+.article .moreList li::before { content: none; }
+.moreRow { display: flex; gap: 0.75rem; align-items: flex-start; }
+.moreThumb {
+  position: relative;
+  width: 179px;
+  height: 122px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.moreThumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Кейс виводить свій кадр як є: ширина колонки, висота за власною пропорцією.
+   Слот 179x122 намальовано під сфотографований аркуш статті (article-image.png
+   має рівно цю пропорцію), і кейсовий кадр 16:9 у ньому обрізало з боків. */
+.moreThumbPlain { height: auto; }
+.moreThumbPlain img { position: static; width: 100%; height: auto; object-fit: contain; }
+
+/* Кейс під NDA: та сама плитка, але з написом замість кадру. Сірий той самий,
+   що й у картки на головній, щоб дві появи одного кейсу читались як одне. */
+.moreThumbEmpty {
+  display: grid;
+  place-items: center;
+  background: var(--case-gray);
+  color: var(--muted);
+  font-size: var(--fs-3xs);
+  letter-spacing: 0.01em;
+}
+/* Марка друкується на аркуші: -1.6deg збігається з нахилом сфотографованого паперу */
+.moreLogo {
+  position: absolute;
+  top: 5.1%;
+  left: 4.2%;
+  width: 88.8%;
+  height: 88.8%;
+  object-fit: contain;
+  transform: rotate(-1.6deg) scale(var(--logo-scale, 0.7));
+}
+.moreBody { display: flex; flex-direction: column; gap: 0.75rem; flex: 1 0 0; min-width: 0; }
+.moreTitle {
+  display: block;
+  font-stretch: 100%;
+  font-weight: 500;
+  font-size: var(--fs-item);
+  /* 1.35, не 1.2: заливка ховера малюється по контентній області кожного рядка
+     (31px при кеглі 28px), тож на 1.2 між двома прямокутниками лишалося 3px і
+     вони зливалися в один суцільний блок. На 1.35 розрив ~7px — заголовок з
+     двох рядків підсвічується двома окремими смугами, як і має. */
+  line-height: 1.35;
+  letter-spacing: -2px;
+  color: var(--ink);
+}
+.article .moreTitle { text-decoration: none; }
+.moreTitle:hover, .moreTitle:focus-visible { color: var(--ink); }
+/* Проза заливає будь-яке посилання всередині p/li (.article :is(p, li) a:hover,
+   специфічність 0,2,2), а заголовок картки — це теж <a> всередині li. Він
+   display:block, тому та заливка малювала одну суцільну плиту на обидва рядки
+   замість смуги на кожен. Фон тут несе виключно внутрішній .mark, який inline і
+   тому розпадається по рядках. */
+.article .moreList .moreTitle:hover,
+.article .moreList .moreTitle:focus-visible {
+  background: none;
+  /* Колір теж звідти: стрілка ::after малюється currentColor посилання, і поки
+     проза робила його білим, стрілка була біла на білому. */
+  color: var(--ink);
+  padding-inline: 0;
+  margin-inline: 0;
+}
+.moreDesc { font-stretch: 100%; font-size: var(--fs-xs); line-height: 1.3; color: var(--muted); margin: 0; }
+.moreDate { display: flex; gap: 1rem; font-stretch: 100%; font-size: var(--fs-xs); line-height: 1.3; color: var(--muted); white-space: nowrap; }
+/* Ховер заливає слова прямокутником, як на головній; стрілка каже, що лінк веде геть */
+.mark { transition: background-color 0.15s ease, color 0.15s ease; }
+.moreTitle:hover .mark, .moreTitle:focus-visible .mark {
+  background: var(--ink);
+  color: var(--canvas);
+  padding-inline: 0.2em;
+  margin-inline: -0.2em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.moreTitle::after {
+  content: "";
+  display: inline-block;
+  width: 0.78em;
+  height: 0.78em;
+  margin-left: 0.28em;
+  vertical-align: -0.06em;
+  background-color: currentColor;
+  -webkit-mask: url(/case-arrow.svg) center / contain no-repeat;
+  mask: url(/case-arrow.svg) center / contain no-repeat;
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.moreTitle:hover::after, .moreTitle:focus-visible::after { opacity: 1; transform: translate(0, 0); }
+@media (max-width: 640px) { .moreRow { flex-direction: column; align-items: flex-start; } }
+
+/* ── Картки етапів: та сама сіра плитка, що й стат-картки ──
+   Два шари замість чотирьох. Номер і дата стоять в один рядок: це одна думка
+   «коли». Далі речення про те, що зроблено, воно й читається. Перелік кроків
+   іде останнім, дрібним і приглушеним — це підпис, а не текст. */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin: 2.2rem auto; }
+.card { background: var(--gray); border-radius: 24px; padding: 1.9rem; }
+.cardHead { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem; }
+.cardNum {
+  font-size: var(--fs-3xl);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--accent);
+}
+.cardMeta { font-size: var(--fs-xs); line-height: 1.4; color: var(--muted); }
+.card p { margin-bottom: 0; font-size: var(--fs-xs); line-height: 1.5; }
+.cardSteps {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: var(--fs-xs);
+  line-height: 1.45;
+  color: var(--muted);
+}
+@media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+
+/* ── Пари «назва — навіщо»: без ліній, як блок фактів угорі ── */
+.defs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem 3rem; margin: 2.2rem auto; }
+.defs dt { font-weight: 600; line-height: 1.4; margin-bottom: 0.15rem; }
+.defs dd { margin: 0; font-size: var(--fs-xs); line-height: 1.5; color: var(--muted); }
+@media (max-width: 640px) { .defs { grid-template-columns: 1fr; gap: 1.4rem; } }
+
+/* ── Посилання назовні ──
+   Поведінка один в один із головною: слова заливаються прямокутником, а не
+   синіють, і стрілка каже, що лінк веде геть. Стрілка стоїть у потоці з нульовою
+   прозорістю, тому її поява не зрушує рядок під курсором. */
+.article .link { text-decoration: none; }
+.link .mark { transition: background-color 0.15s ease, color 0.15s ease; }
+.article .link:hover,
+.article .link:focus-visible { color: inherit; }
+.link:hover .mark,
+.link:focus-visible .mark {
+  background: var(--ink);
+  color: var(--canvas);
+  padding-inline: 0.2em;
+  margin-inline: -0.2em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.link::after {
+  content: "";
+  display: inline-block;
+  width: 0.78em;
+  height: 0.78em;
+  margin-left: 0.28em;
+  vertical-align: -0.06em;
+  background-color: currentColor;
+  -webkit-mask: url(/case-arrow.svg) center / contain no-repeat;
+  mask: url(/case-arrow.svg) center / contain no-repeat;
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.link:hover::after,
+.link:focus-visible::after { opacity: 1; transform: translate(0, 0); }
+
+/* ── Ховер посилань у прозі: той самий, що на решті сайту ──
+   Заливка сидить прямо на <a>: в абзаці він і так інлайновий бокс, тож
+   внутрішній span, потрібний заголовкам-флексам, тут зайвий.
+   box-decoration-break: clone дає посиланню, що переноситься, по прямокутнику
+   на рядок, а не одну плиту з рваним краєм.
+   Підкреслення на ховері гасимо — заливка каже те саме голосніше.
+   Стрілки навмисне немає: вона стоїть у потоці з нульовою прозорістю, і
+   71 прихована стрілка розсунула б текст статті. */
+.article :is(p, li) a {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.article :is(p, li) a:hover,
+.article :is(p, li) a:focus-visible {
+  background: var(--ink);
+  color: var(--canvas);
+  text-decoration-color: transparent;
+  padding-inline: 0.2em;
+  margin-inline: -0.2em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}

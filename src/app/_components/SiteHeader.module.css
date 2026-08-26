@@ -1,0 +1,144 @@
+/* Шапка внутрішніх сторінок: пігулка, що липне до верху.
+
+   Ширину задає сторінка через --sh-width. За замовчуванням пігулка збігається
+   з текстовою колонкою: 39.5rem — це --col (42rem) мінус бічні паддінги
+   колонки (2 × 1.25rem), тобто рівно та ширина, по якій набраний текст.
+   Те саме число вже стоїть у editorial.module.css під підписами до кадрів.
+   Кейс зі своєю широкою сіткою може передати власне значення. */
+.header {
+  --sh-width: 39.5rem;
+  /* Стиснутий стан — два значення на весь ефект: масштаб пігулки і те,
+     наскільки вона підтягується до верхньої кромки. Підйом іде трансформом,
+     а не паддінгом: паддінг змінив би висоту липкого блоку, і решта сторінки
+     смикалась би вгору рівно в момент стиснення. */
+  --sh-scale: 1;
+  --sh-lift: 0rem;
+  display: block;
+  position: sticky;
+  top: 0.75rem;
+  z-index: 10;
+  padding: 0.75rem 1.25rem 0;
+}
+
+.header[data-compact="true"] {
+  --sh-scale: 0.9;
+  --sh-lift: -0.375rem;
+}
+
+.inner {
+  max-width: var(--sh-width);
+  margin: 0 auto;
+  padding: 4px 4px 4px 1.25rem;
+  min-height: 49px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--canvas);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(27, 22, 32, 0.05), 0 6px 20px rgba(27, 22, 32, 0.09);
+  /* Масштабується вся пігулка одним шматком — марка, кнопка, відступи разом,
+     а не кожне зі своїм розміром. Точка відліку — верхня кромка, інакше
+     пігулка з'їжджала б по вертикалі, поки меншає.
+
+     Трансформ живе тут, на внутрішньому елементі: на самому sticky-блоці він
+     ламає прилипання в частині браузерів.
+
+     Крива й тривалість ті самі, що в решти рухів на сайті (globals.css):
+     експоненційне сповільнення без перельоту. */
+  transform: translateY(var(--sh-lift)) scale(var(--sh-scale));
+  transform-origin: top center;
+  /* will-change тут не стоїть навмисно: підказка має вмикатись перед відомою
+     дорогою анімацією й гаснути після неї, а на липкому елементі вона висіла
+     б увесь час життя сторінки. Пігулка й так на власному шарі — її тримає
+     там і sticky, і власний transform. */
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inner a { text-decoration: none; }
+
+/* Зона кліку розтягнута паддінгом, від'ємний марджин лишає марку на тому ж місці */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin: -0.75rem -1rem;
+  border-radius: 999px;
+  transition: transform 0.15s ease;
+}
+.brand:hover,
+.brand:focus-visible { transform: translateY(-2px); }
+.brand img { height: 24px; width: auto; display: block; }
+
+/* Права половина: спершу дорога назад до робіт, потім дія */
+.actions {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Заливка на ховері замість підкреслення, як на решті сайту. Мішень не менша
+   за 44px: посилання стоїть поруч із пігулкою, тож це контрол, а не слово в
+   реченні. */
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.6rem;
+  /* Кегль і насиченість ті самі, що в кнопці поруч: два контроли в одному
+     рядку мають читатись як одна пара, різниця лише в заливці. */
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.navLink .mark {
+  padding-inline: 0.2em;
+  margin-inline: -0.2em;
+  border-radius: 2px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.navLink:hover .mark,
+.navLink:focus-visible .mark {
+  background: var(--ink);
+  color: var(--canvas);
+}
+
+/* Права половина: дія, заради якої сторінку й читають */
+.cta {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--canvas);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.cta:hover,
+.cta:focus-visible {
+  background: var(--cta-blue);
+  color: var(--canvas);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner { transition: none; }
+  .brand, .cta { transition: none; }
+  .brand:hover, .brand:focus-visible,
+  .cta:hover, .cta:focus-visible { transform: none; }
+}
+
+@media (max-width: 560px) {
+  /* На вузькому екрані пігулка й так майже на всю ширину — стискати її
+     сильно нема куди, тому крок менший. */
+  .header[data-compact="true"] { --sh-scale: 0.94; }
+  .inner { padding-left: 1rem; }
+  .brand img { height: 20px; }
+  .cta { font-size: var(--fs-xs); padding: 0 0.95rem; }
+}

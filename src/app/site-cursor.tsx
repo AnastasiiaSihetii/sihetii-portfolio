@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useCreativeCursor } from "./cursor-pref";
 import "./site-cursor.css";
 
 /* ------------------------------------------------------------------
@@ -145,13 +146,27 @@ function arrowPath(ctx: CanvasRenderingContext2D, h: number) {
 function handPath(ctx: CanvasRenderingContext2D, h: number) {
   const s = h;
   ctx.beginPath();
-  // Half the height is bare index finger before the fist begins -- the first pass
-  // had the fist starting too high and the whole thing read as a mitten.
-  roundRect(ctx, -0.10 * s, 0, 0.20 * s, 0.62 * s, 0.10 * s); // index finger
-  roundRect(ctx, 0.09 * s, 0.36 * s, 0.13 * s, 0.24 * s, 0.065 * s); // middle
-  roundRect(ctx, 0.19 * s, 0.41 * s, 0.12 * s, 0.20 * s, 0.06 * s); // ring
-  roundRect(ctx, -0.30 * s, 0.54 * s, 0.16 * s, 0.24 * s, 0.08 * s); // thumb
-  roundRect(ctx, -0.23 * s, 0.50 * s, 0.50 * s, 0.48 * s, 0.12 * s); // fist
+  // Which finger is raised is decided by where it sits on the fist, not by its
+  // shape. The first pass centred it -- index at x 0, fist spanning -0.23 to
+  // 0.27 -- and a finger rising from the middle of a fist reads as exactly the
+  // gesture you would expect. The raised finger now stands at the fist's left
+  // edge with all three curled knuckles behind it, which is what makes it an
+  // index finger. The fingertip stays at the origin, so the hotspot is
+  // unchanged and the fist moved right instead.
+  //
+  // The finger clears the fist by 42% of the height. At the 52% it had before,
+  // a lone finger that long was itself the gesture, whatever the fist did.
+  // Lower than about 35% and it stops reading as raised at all.
+  roundRect(ctx, -0.10 * s, 0, 0.19 * s, 0.54 * s, 0.095 * s); // index finger
+  // Three knuckles stepping down and away to the right: the curl of a hand seen
+  // from the side. Two of them left the silhouette ambiguous.
+  roundRect(ctx, 0.09 * s, 0.30 * s, 0.14 * s, 0.28 * s, 0.07 * s); // middle
+  roundRect(ctx, 0.21 * s, 0.35 * s, 0.13 * s, 0.23 * s, 0.065 * s); // ring
+  roundRect(ctx, 0.32 * s, 0.40 * s, 0.12 * s, 0.18 * s, 0.06 * s); // little
+  // Tucked and low, not splayed: an overhanging thumb puts weight back on the
+  // left and re-centres the finger by eye, which is the thing being fixed.
+  roundRect(ctx, -0.18 * s, 0.54 * s, 0.13 * s, 0.22 * s, 0.065 * s); // thumb
+  roundRect(ctx, -0.13 * s, 0.42 * s, 0.65 * s, 0.56 * s, 0.13 * s); // fist
 }
 
 export default function SiteCursor() {
@@ -160,7 +175,11 @@ export default function SiteCursor() {
   // cursor on top of them would be two cursors at once.
   const onLabPage = pathname?.startsWith("/cursor") ?? false;
 
-  const [enabled, setEnabled] = useState(false);
+  const [hasPointer, setHasPointer] = useState(false);
+  // The footer switch. Off means the visitor asked for their own system cursor
+  // back, so nothing here draws and nothing here hides the native one.
+  const creative = useCreativeCursor();
+  const enabled = hasPointer && creative;
 
   const canvas = useRef<HTMLCanvasElement>(null);
   const raw = useRef({ x: -300, y: -300 });
@@ -180,7 +199,7 @@ export default function SiteCursor() {
     const fine = window.matchMedia("(pointer: fine)");
     const rm = window.matchMedia("(prefers-reduced-motion: reduce)");
     const sync = () => {
-      setEnabled(fine.matches);
+      setHasPointer(fine.matches);
       reduced.current = rm.matches;
     };
     sync();
@@ -194,7 +213,12 @@ export default function SiteCursor() {
 
   useEffect(() => {
     const root = document.documentElement;
-    if (enabled) root.dataset.siteCursor = "on";
+    /* Рідний вказівник ховається тільки тоді, коли намальованому справді є
+       чим малювати. Без 2D-контексту — а його може не бути — атрибут лишався
+       б на місці, і сторінка стояла б узагалі без курсора: рідний схований,
+       намальований не запустився. */
+    const drawable = enabled && Boolean(canvas.current?.getContext("2d"));
+    if (drawable) root.dataset.siteCursor = "on";
     else delete root.dataset.siteCursor;
     return () => {
       delete root.dataset.siteCursor;

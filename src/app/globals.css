@@ -11,6 +11,31 @@
 }
 /* ---------- Design tokens (inherited verbatim from the shipped case study) ---------- */
 :root {
+  /* ── Шкала кеглів: єдина на весь сайт. Фіксовані кроки + названі плинні ── */
+  --fs-3xs:.75rem;      /* 12px    мікропідписи, теги */
+  --fs-2xs:.875rem;     /* 14px    мета, дати, дрібні кнопки */
+  --fs-xs:1rem;         /* 16px    допоміжний текст */
+  --fs-sm:1.125rem;     /* 18px    основний текст */
+  --fs-md:1.3rem;       /* 20.8px  лід */
+  --fs-lg:1.5rem;       /* 24px */
+  --fs-xl:1.65rem;      /* 26.4px  малий заголовок розділу */
+  --fs-2xl:1.9rem;      /* 30.4px */
+  --fs-3xl:2.5rem;      /* 40px */
+  --fs-4xl:3rem;        /* 48px    статистичні цифри */
+  --fs-display:clamp(3.1rem,7.6vw,5.8rem);
+  --fs-headline:clamp(2.4rem,5vw,3.5rem);
+  --fs-h1-case:clamp(2.35rem,8.6vw,2.9rem);
+  --fs-h1-article:clamp(2rem,5vw,2.9rem);
+  --fs-stat:clamp(2rem,4.4vw,2.9rem);
+  --fs-section:clamp(2.25rem,4.5vw,2.5rem);
+  --fs-chapter:clamp(1.95rem,4vw,2.5rem);
+  --fs-section-md:clamp(1.75rem,4.5vw,2rem);
+  --fs-section-sm:clamp(1.6rem,4vw,2rem);
+  --fs-step:clamp(1.6rem,3vw,1.85rem);
+  --fs-item:clamp(1.6rem,3.5vw,1.75rem);
+  --fs-sub:clamp(1.3rem,2.4vw,1.35rem);
+  --fs-lead:clamp(1.15rem,3.6vw,1.3rem);
+
   color-scheme: light;
   --ink: #1b1620;
   --canvas: #ffffff;
@@ -19,6 +44,22 @@
   --forest: #1e4a3a;
   --sky: #4c6bd6;
   --wax: #f0b429;
+  /* Картка кейсу під NDA, без кадру. Той самий сірий, що й у світлої CTA-кнопки
+     в підвалі — значення вже в системі, а не третій новий колір. Картка світла,
+     тому весь текст на ній перевернутий у темний: див. .case-card--gray нижче. */
+  /* Дві дії-контакти. Синій живе тільки на них і на картці кейсу, сірий — на
+     парній до неї кнопці й на шасі перемикачів. */
+  --cta-blue: #134bff;
+  --cta-gray: #f3f4f6;
+  /* Той самий сірий під ім'ям своєї ролі: слот кейсу під NDA, де мав би
+     лежати кадр. Псевдонім, а не друге значення. */
+  --case-gray: var(--cta-gray);
+  /* Чорний, на якому лежать кадри й марки: глибший за --ink, бо це підкладка
+     зображення, а не текстовий колір. */
+  --media-black: #010101;
+  /* Опис на темній картці: не повний --canvas, щоб не сперечатись із назвою
+     над ним. */
+  --desc-on-dark: #ecedee;
   --line-on-light: rgba(27, 22, 32, 0.14);
   --line-on-dark: rgba(245, 243, 236, 0.18);
   --muted: #616e80;
@@ -49,7 +90,7 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-stretch: 87.5%;
-  font-size: 1rem;
+  font-size:var(--fs-xs);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -64,9 +105,9 @@ a { color: inherit; }
    titles carry an inner .link-mark span -- their <a> is a flex item and a background
    on it would stretch the full column. */
 .case-card:hover .case-card-title .link-mark,
-.case-card-title:focus-visible .link-mark,
-a.item-title:hover .link-mark,
-a.item-title:focus-visible .link-mark,
+.case-card-link:focus-visible .link-mark,
+.item-link:hover .link-mark,
+.item-link:focus-visible .link-mark,
 .article-desc a:hover,
 .article-desc a:focus-visible,
 .footer-link-group a:hover,
@@ -77,7 +118,7 @@ a.item-title:focus-visible .link-mark,
   -webkit-box-decoration-break: clone;
 }
 .case-card-title .link-mark,
-a.item-title .link-mark,
+.item-link .link-mark,
 .article-desc a,
 .footer-link-group a {
   transition: background-color 0.15s ease, color 0.15s ease;
@@ -90,7 +131,51 @@ a:focus-visible, button:focus-visible, .btn:focus-visible {
   outline-offset: 3px;
   border-radius: 2px;
 }
-.case-card-title:focus-visible { outline-color: var(--wax); }
+.case-card-link:focus-visible { outline-color: var(--wax); }
+
+/* Тільки для скрінрідера: лишається в потоці й читається вголос, але не
+   займає місця. Не display:none — його б не озвучили. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Перше посилання документа. Лежить над обкладинкою й виїжджає згори тільки
+   у фокусі — це єдиний стан, у якому воно комусь потрібне. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 10000;
+  transform: translate(-50%, -120%);
+  background: var(--ink);
+  color: var(--canvas);
+  font-family: var(--font-body);
+  font-stretch: 87.5%;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 0 0 999px 999px;
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* :focus, а не тільки :focus-visible. До skip-link доходять лише клавіатурою,
+   тож звужувати показ до евристики браузера тут нема сенсу — а вона ж у
+   частині випадків не спрацьовує, і посилання лишається за кромкою вікна,
+   маючи фокус. */
+.skip-link:focus { transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}
+/* Ціль skip-link: фокус їде на <main>, і заголовок під ним має лишитись видимим. */
+main:focus { outline: none; }
 
 h1, h2, h3 {
   font-family: var(--font-display);
@@ -102,86 +187,54 @@ h1, h2, h3 {
 h1, h2 { font-weight: 600; letter-spacing: -0.04em; }
 h3 { font-weight: 500; letter-spacing: -0.02em; }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-stretch: 87.5%;
-  font-variant-numeric: tabular-nums;
-  font-size: 0.72rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  display: inline-block;
-  margin-bottom: 0.85rem;
-}
-
 .page {
   max-width: 1120px;
   margin: 0 auto;
-  padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px) 48px;
+  padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px) 0;
   display: flex;
   flex-direction: column;
   gap: clamp(2rem, 5vw, 3.5rem);
 }
 
-.block {
-  border-radius: 32px;
-  padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 4.25rem);
-  position: relative;
-  overflow: hidden;
+section p { margin: 0 0 1.05rem; max-width: 60ch; }
+section p:last-child { margin-bottom: 0; }
+
+/* ── Двомовний набір ──
+   Сторінка перемикається між українською та англійською, і <html lang>
+   іде за перемикачем. Від цього залежить словник переносів: українське
+   слово вдвічі довше за англійське, і на картці завширшки 343px без
+   переносів правий край розходиться дірками в півслова.
+
+   Ліміт 8/3/3 лишає перенос стриманим — слово від восьми літер, не менше
+   трьох по кожен бік розриву. Шість було замало: англійська рвала навіть
+   «web-site», хоча коротке слово краще перенести цілим. Українські слова,
+   яким перенос потрібен, майже всі довші за вісім.
+
+   Заголовки не переносяться: у них розрив читається як брак, а не як
+   набір. Їм — балансування рядків. */
+.hero-cover-bio,
+.case-card-desc,
+.case-card-meta,
+.item-subtitle,
+.article-desc,
+.case-card-media--empty p {
+  hyphens: auto;
+  hyphenate-limit-chars: 8 3 3;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
 }
-.block-inner { max-width: 40rem; }
-.block-wide .block-inner { max-width: 100%; }
-
-/* Matches the public-item photo radius (40px) so the case-study card and the photo
-   block right below it read as the same rounding, at every viewport. */
-.block--card { border-radius: 40px; }
-.block--candle { background: var(--candle); color: var(--ink); }
-.block--ink { background: var(--ink); color: var(--canvas); }
-.block--forest { background: var(--forest); color: var(--canvas); }
-.block--sky { background: var(--sky); color: var(--card); }
-.block--card { background: #f3f4f6; color: var(--ink); }
-
-.block--candle .eyebrow { color: var(--ink); opacity: 0.6; }
-.block--ink .eyebrow, .block--forest .eyebrow { color: var(--wax); }
-.block--sky .eyebrow { color: var(--card); opacity: 0.85; }
-.block--card .eyebrow { color: var(--ink); opacity: 0.55; }
-.hero .eyebrow { color: var(--ink); opacity: 1; background: rgba(27,22,32,0.1); padding: 0.4rem 0.75rem; border-radius: 999px; }
-
-/* ---------- Title-page / section headline scale (inherited from the case study) ---------- */
-h1.hero-title {
-  font-size: clamp(3.1rem, 7.6vw, 5.8rem);
-  max-width: 14ch;
-  margin: 0 0 1.5rem;
+.section-heading,
+.item-title,
+.case-card-title {
+  hyphens: manual;
+  text-wrap: balance;
 }
-h2.sec-title { font-size: clamp(2.5rem, 5vw, 3.5rem); margin: 0 0 2rem; }
-
-section p, .block p { margin: 0 0 1.05rem; max-width: 60ch; }
-section p:last-child, .block p:last-child { margin-bottom: 0; }
-.lead { font-size: 1.12rem; line-height: 1.55; }
-
-.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.tag {
-  font-family: var(--font-mono);
-  font-stretch: 87.5%;
-  font-variant-numeric: tabular-nums;
-  font-size: 0.76rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  background: rgba(27,22,32,0.08);
-  border: 1px solid var(--line-on-light);
-  color: var(--ink);
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.block--ink .tag, .block--forest .tag { background: rgba(245,243,236,0.12); border: 1px solid var(--line-on-dark); color: var(--canvas); }
 
 .btn {
   font-family: var(--font-mono);
   font-stretch: 87.5%;
   font-variant-numeric: tabular-nums;
-  font-size: 0.85rem;
+  font-size:var(--fs-2xs);
   font-weight: 700;
   text-decoration: none;
   background: var(--ink);
@@ -197,16 +250,22 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   cursor: pointer;
 }
 .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
-.btn-arrow { font-size: 1.5em; line-height: 1; }
-.btn--on-dark { background: var(--wax); color: var(--ink); }
-.btn--on-candle { background: var(--ink); color: var(--canvas); }
 
 /* ---------- Footer CTAs + grouped links ---------- */
+/* Підвал стоїть поза <main>, тому колонку й поля тримає сам, тими самими
+   значеннями, що й .page. Верхній відступ дорівнює міжсекційному проміжку
+   всередині .page — раніше його давав її ж gap. */
 .site-footer {
+  max-width: 1120px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: clamp(1rem, 4vw, 2.5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+  padding:
+    clamp(1rem, 4vw, 2.5rem)
+    clamp(20px, 3vw, 32px)
+    calc(48px + clamp(1.5rem, 4vw, 2.5rem));
+  margin-top: clamp(2rem, 5vw, 3.5rem);
 }
 .btn--cta {
   width: 100%;
@@ -215,27 +274,32 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-display);
   font-stretch: 100%;
   line-height: 1.4;
-  font-size: 40px;
+  font-size:var(--fs-3xl);
   font-weight: 600;
   letter-spacing: -0.04em;
-  background: #134bff;
+  background: var(--cta-blue);
   color: var(--canvas);
 }
-.btn--cta-light { height: 140px; background: #f3f4f6; color: var(--ink); }
+.btn--cta-light { height: 140px; background: var(--cta-gray); color: var(--ink); }
 .btn--cta:hover, .btn--cta-light:hover,
 .btn--cta:focus-visible, .btn--cta-light:focus-visible { background: var(--ink); color: var(--canvas); }
 
 @media (max-width: 600px) {
+  /* Слаб на 300px розрахований на колонку 1120px. На телефоні кнопка вужча за
+     себе саму заввишки, і радіус 999px перетворює її з пігулки на синє коло —
+     форма, якої в системі немає. Висота йде за шириною, щоб пігулка лишалась
+     пігулкою; синя й далі помітно більша за сіру, тож ієрархія дій ціла. */
+  .site-footer .btn--cta { height: 168px; }
   /* The footer email address is long; shrink its type so the pill keeps side padding
      instead of running edge-to-edge on narrow phones. */
-  .site-footer .btn--cta-light { font-size: 22px; height: 96px; }
+  .site-footer .btn--cta-light { font-size:var(--fs-md); height: 96px; }
 }
 
 /* Small CTA variant used in the cover hero (Figma spec: 18px / -4% tracking) */
 .btn--cta-sm {
   height: auto;
   padding: 0.75rem 1.25rem;
-  font-size: 18px;
+  font-size:var(--fs-sm);
   line-height: 1.4;
   letter-spacing: -0.04em;
   font-weight: 600;
@@ -243,36 +307,106 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
 }
 .btn--cta-sm.btn--cta-light { height: 80px; flex: none; }
 
-/* ---------- Language toggle ---------- */
-.lang-toggle {
-  display: flex;
+/* ---------- Instrument switch (footer language + cursor) ---------- */
+/* Chassis is still the system's 999px pill. What makes it this site's rather
+   than any site's: the Mono-Label voice in the cells and a marker that travels.
+   The label carries no rule beside it — no rules on this surface. */
+.switch { display: flex; }
+.switch-track {
+  position: relative;
+  /* inline-grid, so the track is as wide as its own two words rather than as
+     wide as the column it sits in. */
+  display: inline-grid;
+  grid-auto-flow: column;
+  /* minmax(0,1fr), not 1fr: a bare 1fr keeps a min-content floor, so the longer
+     of the two words (Ukrainian "Креативний") widened its own cell and the
+     marker — sized at exactly half the track — stopped matching it. */
+  grid-auto-columns: minmax(0, 1fr);
   gap: 2px;
   padding: 4px;
-  background: #f3f4f6;
+  background: var(--cta-gray);
   border-radius: 999px;
-  flex-shrink: 0;
 }
-.lang-toggle button {
-  font-family: var(--font-display);
-  font-stretch: 100%;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: -0.01em;
-  padding: 8px 14px;
+.switch-marker {
+  position: absolute;
+  z-index: 0;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc((100% - 10px) / 2);
   border-radius: 999px;
+  background: var(--ink);
+  transform: translateX(calc(var(--i) * (100% + 2px)));
+  /* Exponential ease-out: the marker leaves fast and settles, so the switch
+     reads as thrown rather than faded. */
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
+}
+/* Blue only while the blue cursor is actually on — the marker is the state,
+   not decoration. */
+.switch-track[data-accent="blue"] .switch-marker { background: var(--cta-blue); }
+
+.switch-cell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  /* A floor under the short pair, so EN/UA does not collapse to a stub beside
+     the wider cursor switch. */
+  min-width: 3.75rem;
+  padding: 0 0.9rem;
   border: none;
   background: none;
-  color: var(--muted);
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  font-family: var(--font-body);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+  font-size:var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--muted);
+  white-space: nowrap;
+  border-radius: 999px;
+  transition: color 0.3s ease;
 }
-.lang-toggle button:hover, .lang-toggle button:focus-visible { color: var(--ink); }
-.lang-toggle button.active { background: var(--ink); color: var(--canvas); }
-.lang-toggle button.active:hover,
-.lang-toggle button.active:focus-visible { color: var(--canvas); }
+.switch-cell:hover { color: var(--ink); }
+.switch-cell[data-active],
+.switch-cell[data-active]:hover { color: var(--canvas); }
+.switch-cell { text-decoration: none; }
+.switch-cell:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.switch-glyph { display: flex; line-height: 0; }
+.switch-glyph svg { display: block; height: 12px; width: auto; fill: currentColor; }
+/* The trail takes the cursor's own hues only while the creative cursor is on:
+   at that moment the glyph is a live legend for what is on screen, which is the
+   same argument that puts these five outside the palette in the first place.
+   Violet is the one the run drops here — it is the only one of the five that
+   does not hold against #134bff. */
+.switch-cell[data-active] .glyph-trail circle { fill: #ffcc00; }
+.switch-cell[data-active] .glyph-trail path:first-of-type { fill: #00ffd1; }
+.switch-cell[data-active] .glyph-trail rect { fill: #ff0090; }
+.switch-cell[data-active] .glyph-trail path:last-of-type { fill: #39ff14; }
+
+/* The cells are sized by the longest label in either language, so the narrowest
+   phones buy their room back from the padding first and the glyph last. */
+@media (max-width: 420px) {
+  .switch-cell { padding: 0 0.6rem; gap: 0.35rem; }
+}
+@media (max-width: 360px) {
+  .switch-glyph { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch-marker { transition: none; }
+}
 
 /* ---------- Cover hero: full-bleed wordmark + bio + CTAs ---------- */
-.hero-cover-image { width: 100%; line-height: 0; overflow: hidden; }
+/* h1 сторінки — це марка. Заголовкова типографіка тут не потрібна жодна:
+   елемент лише тримає зображення й зрізає його краї. */
+.hero-cover-title { margin: 0; width: 100%; line-height: 0; overflow: hidden; }
 .hero-cover-img { width: 100%; height: auto; display: block; }
 .hero-cover-header {
   background: var(--canvas);
@@ -290,7 +424,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-display);
   font-stretch: 100%;
   font-weight: 400;
-  font-size: 16px;
+  font-size:var(--fs-xs);
   line-height: 1.4;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -337,10 +471,26 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   padding: 2rem 4px 4px;
   border-radius: 32px;
   overflow: hidden;
-  color: #ffffff;
+  color: var(--canvas);
 }
-.case-card--ink { background: #010101; }
-.case-card--blue { background: #134bff; }
+.case-card--ink { background: var(--media-black); }
+.case-card--blue { background: var(--cta-blue); }
+/* Єдина світла картка в сітці. Дві сусідні тримаються на білому тексті, тому
+   тут перевизначено всі чотири місця, де він зашитий: сама картка, заголовок,
+   підпис і стрілка. Ховер і фокус теж: заливка ховера — --canvas, невидима на
+   світлому, а wax у фокусі дає 1.9:1 проти цього фону (той самий аргумент, що
+   вже стоїть біля правила фокуса вище). */
+.case-card--gray { background: var(--case-gray); color: var(--ink); }
+.case-card--gray .case-card-title { color: var(--ink); }
+.case-card--gray .case-card-desc { color: var(--muted); }
+/* Компаундний селектор: базова заливка ховера оголошена в цьому файлі нижче,
+   тож за однакової специфічності виграла б вона. */
+.case-card.case-card--gray:hover .case-card-title .link-mark,
+.case-card.case-card--gray .case-card-link:focus-visible .link-mark {
+  background: var(--ink);
+  color: var(--canvas);
+}
+.case-card--gray .case-card-link:focus-visible { outline-color: var(--ink); }
 
 .case-card-head { display: flex; gap: 1rem; align-items: flex-start; padding: 0 2rem; }
 .case-card-text { display: flex; flex-direction: column; gap: 1rem; flex: 1 0 0; min-width: 0; }
@@ -348,16 +498,18 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-display);
   font-stretch: 100%;
   font-weight: 500;
-  font-size: clamp(1.75rem, 4.5vw, 2rem);
+  font-size:var(--fs-section-md);
   line-height: 1.2;
   letter-spacing: -2px;
-  color: #ffffff;
+  color: var(--canvas);
   text-decoration: none;
   margin: 0;
 }
-/* One link per card: the title carries the accessible name, its overlay turns the
-   whole card into the hit target without adding a second tab stop. */
-.case-card-title::after {
+/* Заголовок картки — h3, а клікає посилання всередині нього: доступну назву
+   несе воно, а його оверлей робить мішенню всю картку, не додаючи другої
+   зупинки для Tab. */
+.case-card-link { color: inherit; text-decoration: none; }
+.case-card-link::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -365,19 +517,30 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   border-radius: 32px;
 }
 .case-card:hover .case-card-title .link-mark,
-.case-card-title:focus-visible .link-mark {
+.case-card-link:focus-visible .link-mark {
   background: var(--canvas);
   color: var(--ink);
 }
 .case-card-desc {
   font-family: var(--font-display);
   font-stretch: 100%;
-  font-size: 1rem;
+  font-size:var(--fs-xs);
   line-height: 1.3;
-  color: #ecedee;
+  color: var(--desc-on-dark);
   margin: 0;
   max-width: none;
 }
+/* Рядок стану під підписом: коротший за підпис і приглушений, щоб читався як
+   мета, а не як друге речення опису. */
+.case-card-meta {
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  font-size: var(--fs-2xs);
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.75);
+  margin: -0.25rem 0 0;
+}
+.case-card--gray .case-card-meta { color: var(--muted); }
 .case-card-arrow {
   width: 32px;
   height: 32px;
@@ -385,14 +548,42 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   transition: transform 0.15s ease;
 }
 .case-card:hover .case-card-arrow,
-.case-card:has(.case-card-title:focus-visible) .case-card-arrow { transform: translate(3px, -3px); }
-.case-card-media img { object-position: top; }
+.case-card:has(.case-card-link:focus-visible) .case-card-arrow { transform: translate(3px, -3px); }
+/* Кейс під NDA: слот кадру лишається на місці й тримає ритм сітки, але замість
+   зображення в ньому напис. Коли з'явиться закритий паролем візуал, сюди
+   повертається <Image> — сітка при цьому не зрушиться. */
+.case-card-media.case-card-media--empty {
+  display: grid;
+  place-items: center;
+  /* Пропорцію 2:1 тримає кадр, а не слот. Без кадру вона лишила б півекрана
+     порожнечі, тому тут висота по вмісту: смуга рівно під один рядок пояснення. */
+  aspect-ratio: auto;
+  min-height: 8.5rem;
+  padding: 2rem 1.5rem;
+  /* Затемнення, а не висвітлення: слот має читатись як заглиблення, де мав би
+     лежати кадр. */
+  background: rgba(0, 0, 0, 0.05);
+}
+.case-card-media.case-card-media--empty p {
+  margin: 0;
+  /* Два обмеження тримали напис вужчим за слот: міра 60ch із `section p` вище
+     (від неї так само відв'язаний .case-card-desc) і place-items: center, яке
+     робить елемент завширшки з вміст. Знімаємо обидва — рядок іде на всю картку. */
+  max-width: none;
+  justify-self: stretch;
+  text-align: center;
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+  /* --muted не дотягує до AA на затемненому слоті (4.1:1), тому приглушений ink */
+  color: rgba(27, 22, 32, 0.7);
+}
+.case-card-media img { object-position: center; }
 .case-card-media {
   position: relative;
   flex: none;
-  /* Wider than the screenshot's own 1.43:1 -- full-column cards would otherwise run
-     to ~700px of image. The difference comes off the bottom rather than off both
-     edges, so each shot keeps the header it opens with. */
+  /* Wider than the shots' own 16:9 -- full-column cards would otherwise run to
+     ~630px of image. The difference is taken off the top and bottom equally, so
+     the subject sits in the middle of the tile instead of hanging from its edge. */
   aspect-ratio: 2 / 1;
   border-radius: 28px;
   overflow: hidden;
@@ -411,13 +602,13 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-display);
   font-stretch: 100%;
   font-weight: 600;
-  font-size: clamp(2.25rem, 4.5vw, 2.5rem);
+  font-size:var(--fs-section);
   line-height: 1.4;
   letter-spacing: -0.04em;
   color: var(--ink);
   margin: 0;
 }
-.section-heading--sm { font-size: clamp(1.6rem, 4vw, 2rem); letter-spacing: -1.28px; }
+.section-heading--sm { font-size:var(--fs-section-sm); letter-spacing: -1.28px; }
 
 .public-grid {
   display: grid;
@@ -439,7 +630,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
    — the backdrop behind it is flat black — and avoids the compositing cost. Dialled
    back from Figma's 4px so the wordmark still reads as Projector. */
 .public-item-media--dark {
-  background: #010101;
+  background: var(--media-black);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -464,7 +655,7 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   align-items: flex-start;
   font-family: var(--font-display);
   font-stretch: 100%;
-  font-size: 1rem;
+  font-size:var(--fs-xs);
   line-height: 1.3;
   color: var(--muted);
   white-space: nowrap;
@@ -474,19 +665,20 @@ section p:last-child, .block p:last-child { margin-bottom: 0; }
   font-family: var(--font-display);
   font-stretch: 100%;
   font-weight: 500;
-  font-size: clamp(1.6rem, 3.5vw, 1.75rem);
+  font-size:var(--fs-item);
   line-height: 1.2;
   letter-spacing: -2px;
   color: var(--ink);
   text-decoration: none;
   margin: 0;
 }
-a.item-title:hover .link-mark,
-a.item-title:focus-visible .link-mark { background: var(--ink); color: var(--canvas); }
+.item-link { color: inherit; text-decoration: none; }
+.item-link:hover .link-mark,
+.item-link:focus-visible .link-mark { background: var(--ink); color: var(--canvas); }
 /* A title that leaves the site says so with an arrow. It sits in the flow at zero
    opacity rather than being inserted on hover, so revealing it can never reflow the
    line under the pointer -- it only fades and nudges, the move the card arrow makes. */
-a.item-title--external::after {
+.item-link--external::after {
   content: "";
   display: inline-block;
   width: 0.78em;
@@ -502,13 +694,13 @@ a.item-title--external::after {
   transform: translate(-3px, 3px);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
-a.item-title--external:hover::after,
-a.item-title--external:focus-visible::after { opacity: 1; transform: translate(0, 0); }
+.item-link--external:hover::after,
+.item-link--external:focus-visible::after { opacity: 1; transform: translate(0, 0); }
 
 .item-subtitle, .article-desc {
   font-family: var(--font-display);
   font-stretch: 100%;
-  font-size: 1rem;
+  font-size:var(--fs-xs);
   line-height: 1.3;
   color: var(--muted);
   margin: 0;
@@ -560,19 +752,41 @@ a.item-title--external:focus-visible::after { opacity: 1; transform: translate(0
   .case-card-head { padding: 0 1.5rem; }
 }
 
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 3rem;
-  padding-top: 3rem;
+/* Сітка, а не флекс: копірайт мусить стояти в різних місцях на різних ширинах
+   — у правій колонці під бейджем на широкому екрані й найостаннішим рядком на
+   вузькому, вже під маркою. Порядок у потоці цього не дає, іменовані області
+   дають. */
+.footer-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "side"
+    "signoff"
+    "notice";
+  gap: 3.5rem;
+  /* The two CTA slabs are 300px and 140px of solid colour; landing straight into
+     small type read as an overrun rather than as a new register. The gap is now
+     large enough to be a break in the page. */
+  padding-top: clamp(4rem, 8vw, 7rem);
 }
-.footer-link-group { display: flex; flex-direction: column; gap: 1.25rem; }
+.footer-side { grid-area: side; }
+.footer-signoff { grid-area: signoff; }
+.footer-copyright { grid-area: notice; }
+/* The controls column: links, badge and switches read as one stack, spaced from
+   each other more than any of them is spaced internally. */
+.footer-side { display: flex; flex-direction: column; align-items: flex-start; gap: 2.5rem; }
+/* One column, hard left. Six destinations stacked read in one pass; split across
+   two columns they invited a wrong reading order (down, then back up). */
+.footer-link-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
 .footer-link-group a {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 18px;
+  font-size:var(--fs-sm);
   text-decoration: none;
   /* One short word each, so the flex item can shrink to it and the hover block ends
      at the word instead of running the width of the column. */
@@ -580,106 +794,79 @@ a.item-title--external:focus-visible::after { opacity: 1; transform: translate(0
 }
 .footer-link-group a:hover,
 .footer-link-group a:focus-visible { background: var(--ink); color: var(--canvas); }
-.footer-badge-group { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; align-self: stretch; gap: 1rem; }
+/* На дотик, а не на вузькому екрані: шість посилань заввишки 29px — це рядки
+   для курсора, не мішені для пальця. Питаємо саме про пристрій вводу, бо
+   ноутбук із сенсорним екраном теж широкий. Ховера тут немає за визначенням,
+   тож вища заливка нікому не покажеться. */
+@media (pointer: coarse) {
+  .footer-link-group { gap: 0.5rem; }
+  .footer-link-group a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 0.2em;
+    margin-inline: -0.2em;
+  }
+}
 .footer-badge { width: clamp(7.75rem, 13vw, 9.5rem); height: auto; }
 
-@media (max-width: 720px) {
-  /* Same gap as the in-group links (1.25rem) so the two link columns read as one
-     continuous list instead of two unevenly-spaced clusters. */
-  .footer-links { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-  .footer-badge-group {
-    align-self: auto;
-    width: 100%;
-    margin-top: 0.5rem;
-    gap: 1.5rem;
+/* ---------- Footer preferences: language + cursor ---------- */
+/* Both are site settings rather than content, so they sit together in one
+   cluster and share the segmented-pill form. */
+/* The two switches read as one instrument strip, so they share a width and sit
+   closer to each other than either sits to the badge above. */
+.footer-prefs { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+
+/* ---------- Sign-off: mark, then the notice ---------- */
+/* The left column carries the mark and nothing else. */
+.footer-signoff { display: flex; align-items: flex-start; }
+
+/* Two columns once there is room for them: the sign-off takes the left, the
+   controls column the right at the width its longest switch label needs. */
+@media (min-width: 721px) {
+  .footer-body {
+    /* Марка ліворуч через дві рядки, права колонка — контроли, під ними
+       копірайт. Ширина правої колонки — за найдовшою міткою перемикача в
+       обох мовах подвоєною; вужче — і українська копія обрізається. */
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    grid-template-areas:
+      "signoff side"
+      "signoff notice";
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    column-gap: 3rem;
+    /* Той самий крок, що й між пунктами всередині правої колонки, — щоб
+       копірайт читався її останнім рядком, а не окремим блоком. */
+    row-gap: 2.5rem;
   }
+}
+/* A signature, not a slab: large enough to close the page on the name, small
+   enough that the sign-off stays a sign-off. */
+.footer-logo { width: 44.4%; height: auto; }
+@media (min-width: 721px) {
+  /* Re-anchored to the half-column it now sits in, so the mark draws at the same
+     size it did when it ran across the full width. */
+  .footer-logo { width: 68%; max-width: 29.5rem; }
+}
+.footer-copyright {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .footer-side { gap: 2rem; width: 100%; }
+  /* Копірайт закриває підвал: на вузькому екрані він іде після марки, а не
+     перед нею. Ближче до марки, ніж до решти стосу, — це її підпис. */
+  .footer-body { gap: 2rem; }
+  .footer-copyright { margin-top: -0.5rem; }
   .footer-badge { width: 6rem; }
 }
 
-.sticker {
-  position: absolute;
-  background: var(--wax);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-stretch: 87.5%;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 0.85rem 1rem;
-  border-radius: 999px;
-  transform: rotate(-6deg);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.14);
-  text-align: center;
-  line-height: 1.3;
-  width: 8rem;
-  z-index: 2;
-}
-.sticker strong { display: block; font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: 1.5rem; line-height: 1; margin-bottom: 0.15rem; }
-.sticker--hero { right: clamp(-0.5rem, 2vw, 1rem); top: -1.2rem; background: var(--candle); color: var(--ink); box-shadow: 0 8px 20px rgba(27,22,32,0.22); }
-
-/* ---------- Colophon list (imprint-style facts, dark block) ---------- */
-.colophon-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.colophon-list li {
-  display: grid;
-  grid-template-columns: 10rem 1fr;
-  gap: 1rem;
-  padding: 1.3rem 0;
-  border-top: 1px solid var(--line-on-dark);
-  font-size: 0.98rem;
-}
-.colophon-list li:last-child { border-bottom: 1px solid var(--line-on-dark); }
-.colophon-key {
-  font-family: var(--font-mono);
-  font-stretch: 87.5%;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--wax);
-  padding-top: 0.15rem;
-}
-.colophon-val a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-on-dark); }
-.colophon-val a:hover { text-decoration-color: currentColor; }
-
-/* ---------- Stat numeral ---------- */
-.stat-num {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 100%;
-  font-size: clamp(2rem, 4.4vw, 2.9rem);
-  color: var(--wax);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.stat-cap { font-family: var(--font-mono); font-stretch: 87.5%; font-variant-numeric: tabular-nums; font-size: 0.74rem; opacity: 0.85; margin-top: 0.5rem; display: block; }
-
-footer.colophon {
-  font-family: var(--font-mono);
-  font-stretch: 87.5%;
-  font-variant-numeric: tabular-nums;
-  font-size: 0.76rem;
-  color: var(--ink);
-  opacity: 0.5;
-  text-align: center;
-  padding: 1rem 0 0.5rem;
-}
-
 @media (max-width: 720px) {
-  .page { padding: 16px 16px 36px; }
-  .block { border-radius: 22px; padding: 2.5rem 1.5rem; }
-  .block--card { border-radius: 40px; padding: 2rem; }
-  .block--card .btn { width: 100%; justify-content: center; }
-  .colophon-list li { grid-template-columns: 1fr; gap: 0.3rem; }
-  .sticker { position: static; transform: rotate(-3deg); margin: 0 0 1.4rem; width: fit-content; }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .block { animation: rise 0.55s ease-out both; }
-}
-@keyframes rise {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  .page { padding: 16px 16px 0; }
+  .site-footer { padding-left: 16px; padding-right: 16px; padding-bottom: calc(36px + clamp(1.5rem, 4vw, 2.5rem)); }
 }

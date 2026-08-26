@@ -19,13 +19,13 @@ export type Article = {
 
 export const articles: Article[] = [
   {
-    href: "/articles/design-engineer-2026.html",
+    href: "/articles/design-engineer-2026",
     source: "sihetii.com",
     logo: { src: "/articles/logos/sihetii.svg", width: 1734, height: 479, scale: 0.7 },
     date: { en: "August 2026", uk: "Серпень 2026" },
     title: {
-      en: "Design Engineer in 2026: the role, the pay, and the way in",
-      uk: "Design Engineer у 2026: хто це, скільки платять і як туди переходять",
+      en: "Design Engineer in 2026: the role and who is hiring",
+      uk: "Design Engineer у 2026: хто це і хто наймає",
     },
     desc: {
       en: (
@@ -119,25 +119,41 @@ export const content: Record<
   Lang,
   {
     downloadCv: string;
+    /** Перше посилання на сторінці: веде повз обкладинку до вмісту. */
+    skipToContent: string;
     bio: ReactNode;
     cases: {
       heading: string;
       birthday: { title: string; desc: string };
       loops: { title: string; desc: string };
+      /** Кейс під NDA: без кадру, тому має ще й підпис у слоті зображення. */
+      career: { title: string; desc: string; status: string; noVisuals: string };
     };
     public: {
       heading: string;
       itemTitle: string;
       itemSubtitle: string;
       itemMeta: [string, string];
+      /** Опис кадру виступу. Йде за мовою інтерфейсу, а не лишається одною. */
+      itemPhotoAlt: string;
       projectorTitle: string;
       projectorMeta: string;
     };
     articlesHeading: string;
+    footer: {
+      langLabel: string;
+      profilesLabel: string;
+      cursorLabel: string;
+      cursorCreative: string;
+      cursorPlain: string;
+      copyright: string;
+      logoAlt: string;
+    };
   }
 > = {
   en: {
     downloadCv: "Download CV",
+    skipToContent: "Skip to content",
     bio: (
       <>
         Hi there 👋
@@ -153,7 +169,7 @@ export const content: Record<
         <br />
         <br />
         {
-          "I've since advised another product team on AI-integrated design workflows and write about AI in design for DOU."
+          "Beyond the work: I've mentored two designers and advised a product team at Yappi Global on AI-integrated design workflows. I write about AI in design for DOU and High Bar Journal, publish my own research, and speak at meetups—most recently with IT Cluster Transcarpathia. A collaboration with Projector Library is coming up."
         }
       </>
     ),
@@ -161,11 +177,17 @@ export const content: Record<
       heading: "Cases",
       birthday: {
         title: "A website for my birthday",
-        desc: "For my birthday, I built a website for friends with a celebration schedule and a wishlist where gifts can be reserved anonymously in one click.",
+        desc: "For my birthday, I built a website for friends with a celebration schedule and a wishlist where gifts can be reserved anonymously.",
       },
       loops: {
         title: "Habit Tracking Mobile App",
         desc: "A mobile app built around spaced repetition. Designed end-to-end in a 2-week sprint: from a chaotic set of developer wireframes to a complete, gamified learning.",
+      },
+      career: {
+        title: "Design engineering for an AI career platform",
+        desc: "I design and build the front end of an AI career-guidance platform for the German market: 22 product screens, a design system of 84 components, and the German and English locales.",
+        status: "[In progress, since July 2026]",
+        noVisuals: "The project is under NDA, so there are no screens here. The work itself is on the case page.",
       },
     },
     public: {
@@ -173,13 +195,24 @@ export const content: Record<
       itemTitle: "AI tools in UX/UI daily design process: practical cases",
       itemSubtitle: "Speaker at UX/UI Design Meetup by IT Cluster Transcarpathia",
       itemMeta: ["[Offline]", "[Feb 2026]"],
+      itemPhotoAlt: "Anastasiia speaking at the UX/UI Design Meetup, at a lectern beside a projection screen",
       projectorTitle: "Collaboration with Projector Library",
       projectorMeta: "[Soon]",
     },
     articlesHeading: "Articles",
+    footer: {
+      langLabel: "Language",
+      profilesLabel: "Profiles",
+      cursorLabel: "Cursor",
+      cursorCreative: "Creative",
+      cursorPlain: "Plain",
+      copyright: "\u00A9 2026 Anastasiia Sihetii",
+      logoAlt: "Sihetii",
+    },
   },
   uk: {
     downloadCv: "Завантажити CV",
+    skipToContent: "Перейти до вмісту",
     bio: (
       <>
         Привіт 👋
@@ -195,7 +228,7 @@ export const content: Record<
         <br />
         <br />
         {
-          "Відтоді я консультувала іншу продуктову команду з інтеграції AI в дизайн-процеси та пишу про AI в дизайні для DOU."
+          "Крім проєктів: я менторила двох дизайнерів і консультувала продуктову команду Yappi Global з інтеграції AI в дизайн-процеси. Пишу про AI в дизайні для DOU і High Bar Journal, публікую власні дослідження і виступаю на мітапах — востаннє з IT Cluster Закарпаття. Попереду співпраця з Projector Library."
         }
       </>
     ),
@@ -203,11 +236,17 @@ export const content: Record<
       heading: "Кейси",
       birthday: {
         title: "Сайт на мій день народження",
-        desc: "До свого дня народження я створила сайт для друзів із програмою святкування та wishlist-ом, де подарунки можна анонімно забронювати в один клік.",
+        desc: "До свого дня народження я створила сайт для друзів із програмою святкування та wishlist-ом, де подарунки можна анонімно забронювати.",
       },
       loops: {
         title: "Habit Tracking Mobile App",
         desc: "Мобільний застосунок, побудований на інтервальному повторенні. Спроєктувала end-to-end за двотижневий спринт: від хаотичного набору девелоперських вайрфреймів до цілісного гейміфікованого навчання.",
+      },
+      career: {
+        title: "Дизайн-інженерія для AI-платформи кар'єри",
+        desc: "Проєктую і будую фронтенд AI-платформи кар'єрного орієнтування для німецького ринку: 22 продуктові екрани, дизайн-система на 84 компоненти, локалізація німецькою та англійською.",
+        status: "[У роботі, з липня 2026]",
+        noVisuals: "Проєкт під NDA, тому екранів тут немає. Сама робота — на сторінці кейсу.",
       },
     },
     public: {
@@ -215,9 +254,19 @@ export const content: Record<
       itemTitle: "AI-інструменти у щоденному UX/UI-процесі: практичні кейси",
       itemSubtitle: "Спікерка на UX/UI Design Meetup від IT Cluster Transcarpathia",
       itemMeta: ["[Офлайн]", "[Лют 2026]"],
+      itemPhotoAlt: "Анастасія виступає на UX/UI Design Meetup: за трибуною, поруч екран із проєкцією",
       projectorTitle: "Співпраця з Projector Library",
       projectorMeta: "[Незабаром]",
     },
     articlesHeading: "Статті",
+    footer: {
+      langLabel: "Мова",
+      profilesLabel: "Профілі",
+      cursorLabel: "Курсор",
+      cursorCreative: "Креативний",
+      cursorPlain: "Звичайний",
+      copyright: "\u00A9 2026 Anastasiia Sihetii",
+      logoAlt: "Sihetii",
+    },
   },
 };

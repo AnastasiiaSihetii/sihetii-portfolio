@@ -1,0 +1,434 @@
+/* ============================================================
+   Cursor lab — /cursor
+   Six pointer instruments drawn from the printed-invitation
+   world. The layer is fixed at viewport level because .block
+   sets overflow:hidden and would clip anything drawn inside it.
+   ============================================================ */
+
+.lab {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem) clamp(7rem, 14vw, 10rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.lab-head h1 {
+  font-size:var(--fs-display);
+  max-width: 12ch;
+  margin: 0 0 1.5rem;
+}
+.lab-lead {
+  font-size:var(--fs-xs);
+  max-width: 46ch;
+  margin: 0;
+  color: var(--ink);
+}
+.lab-lead + .lab-lead { margin-top: 0.9rem; color: var(--muted); }
+
+/* ---------- one variant zone ---------- */
+.lab-zone .block-inner { max-width: 44rem; }
+.lab-zone h2 {
+  font-size:var(--fs-section);
+  line-height: 1.15;
+  margin: 0 0 0.9rem;
+}
+.lab-zone p.zone-lead {
+  margin: 0 0 1.75rem;
+  font-size:var(--fs-xs);
+  max-width: 42ch;
+}
+.block--ink .zone-lead,
+.block--forest .zone-lead { color: rgba(245, 243, 236, 0.82); }
+.block--sky .zone-lead { color: rgba(245, 243, 236, 0.92); }
+.block--candle .zone-lead { color: rgba(27, 22, 32, 0.78); }
+
+.zone-meta {
+  font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+  font-size:var(--fs-3xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  opacity: 0.65;
+}
+.zone-meta i { font-style: normal; }
+.zone-meta i + i::before { content: "· "; opacity: 0.55; margin-right: 0.55rem; }
+
+/* the try-it row: real controls, so each cursor is judged on hover behaviour */
+.zone-play {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line-on-light);
+}
+.block--ink .zone-play,
+.block--forest .zone-play,
+.block--sky .zone-play { border-top-color: var(--line-on-dark); }
+.block--candle .zone-play { border-top-color: rgba(27, 22, 32, 0.24); }
+
+.zone-btn {
+  font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+  font-size:var(--fs-3xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  height: 56px;
+  padding: 0 1.6rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--ink);
+  color: var(--canvas);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.zone-btn:hover { transform: translateY(-2px); }
+.block--ink .zone-btn,
+.block--forest .zone-btn { background: var(--wax); color: var(--ink); }
+.block--sky .zone-btn { background: var(--card); color: var(--ink); }
+.block--candle .zone-btn { background: var(--ink); color: var(--canvas); }
+.zone-btn[aria-pressed="true"] { background: transparent; box-shadow: inset 0 0 0 1.5px currentColor; }
+.block--ink .zone-btn[aria-pressed="true"],
+.block--forest .zone-btn[aria-pressed="true"] { color: var(--wax); }
+.block--sky .zone-btn[aria-pressed="true"] { color: var(--card); }
+.zone-btn[aria-pressed="true"]:hover { transform: none; }
+
+.zone-link {
+  font-size:var(--fs-xs);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+}
+.zone-swatch {
+  width: 92px;
+  height: 56px;
+  border-radius: 10px;
+  background: currentColor;
+  opacity: 0.16;
+}
+
+/* ---------- footer summary ---------- */
+.lab-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.lab-foot-note {
+  font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+  font-size:var(--fs-3xs);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin: 0;
+  flex-basis: 100%;
+}
+.lab-chip {
+  font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+  font-size:var(--fs-3xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-on-light);
+  background: transparent;
+  color: var(--ink);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.lab-chip:hover { background: var(--ink); color: var(--canvas); }
+.lab-chip[aria-pressed="true"] { background: var(--ink); color: var(--canvas); border-color: var(--ink); }
+
+/* ---------- native pointer suppression ---------- */
+[data-cur="on"] .lab-zone,
+[data-cur="on"] .lab-zone * { cursor: none; }
+[data-cur="on"][data-cur-pinned="1"],
+[data-cur="on"][data-cur-pinned="1"] * { cursor: none; }
+
+/* ============================================================
+   The instruments
+   Every variant hangs off a zero-size anchor that carries the
+   pointer transform; children place themselves around it.
+   ============================================================ */
+.cur-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  contain: strict;
+}
+.cur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+.cur[hidden] { display: none; }
+
+/* --- 01 Стікер: the site's own sticker badge, shrunk to a pointer --- */
+.st-dot {
+  contain: layout style;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -50%;
+  rotate: -6deg;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--wax);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(27, 22, 32, 0.28), 0 8px 20px rgba(0, 0, 0, 0.3);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+  font-size:var(--fs-3xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease;
+}
+.st-dot span { opacity: 0; transition: opacity 0.12s ease; }
+/* Inverts on hover the same way the site's links do -- the fill flips to ink and
+   the label comes up in wax. Candle is barred from this by the palette's own rule
+   (it owns a whole block or nothing), and wax-on-wax would vanish over a wax button. */
+.cur.is-hot .st-dot {
+  width: 116px;
+  height: 42px;
+  background: var(--ink);
+  color: var(--wax);
+  box-shadow: inset 0 0 0 1.5px var(--wax), 0 8px 20px rgba(0, 0, 0, 0.38);
+}
+.cur.is-hot .st-dot span { opacity: 1; transition-delay: 0.1s; }
+
+/* --- 02 Лінійка: crosshair with a live measurement readout --- */
+.rl-h, .rl-v {
+  position: absolute;
+  background: var(--ink);
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.95))
+          drop-shadow(0 0 3px rgba(255, 255, 255, 0.55));
+}
+.rl-h { left: -16px; top: -1px; width: 32px; height: 2px; }
+.rl-v { left: -1px; top: -16px; width: 2px; height: 32px; }
+.rl-read {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  background: var(--canvas);
+  color: var(--ink);
+  box-shadow: 0 0 0 1.5px var(--ink);
+  font-family: var(--font-mono);
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+  font-size:var(--fs-3xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.55rem;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.rl-frame {
+  contain: layout style size;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1.5px dashed var(--ink);
+  border-radius: 8px;
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.9));
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  will-change: transform, width, height;
+}
+.rl-frame.is-on { opacity: 0.75; }
+
+/* --- 03 Розтікання: coral droplets fused by an SVG goo filter --- */
+/* Drawn on a canvas rather than as filtered DOM circles: an SVG goo filter on a
+   zero-size box whose children spread across the viewport blows the filter region
+   up to the full page and re-rasterises it every frame, which locks the renderer.
+   A tapered round-capped stroke is both cheaper and a truer brush mark. */
+.bl-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* --- 04 Конфеті: palette chips flung off the moving pointer --- */
+.cf-chip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.cf-nib {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  translate: -50% -50%;
+  rotate: -6deg;
+  border-radius: 3px;
+  background: var(--wax);
+  box-shadow: inset 0 0 0 1px rgba(27, 22, 32, 0.3), 0 4px 12px rgba(0, 0, 0, 0.28);
+}
+
+/* --- 05 Магніт: a lagging ring that takes the shape it lands on --- */
+.mg-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: 0 0 0 1px rgba(27, 22, 32, 0.4);
+  transition: opacity 0.18s ease;
+}
+.mg-ring {
+  contain: layout style size;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1.5px solid var(--card);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(27, 22, 32, 0.32), inset 0 0 0 1px rgba(27, 22, 32, 0.32);
+  will-change: transform, width, height;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease;
+}
+.mg-ring.is-on { background: rgba(245, 243, 236, 0.14); }
+.cur.is-hot .mg-dot { opacity: 0; }
+
+/* --- 06 Приводка: printer's registration marks bracketing the target --- */
+.rg-frame {
+  contain: layout style size;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.92))
+          drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+  will-change: transform, width, height;
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rg-c {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--ink);
+}
+.rg-c:nth-child(1) { left: 0; top: 0; border-right: 0; border-bottom: 0; }
+.rg-c:nth-child(2) { right: 0; top: 0; border-left: 0; border-bottom: 0; }
+.rg-c:nth-child(3) { right: 0; bottom: 0; border-left: 0; border-top: 0; }
+.rg-c:nth-child(4) { left: 0; bottom: 0; border-right: 0; border-top: 0; }
+.rg-target {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  transition: opacity 0.18s ease;
+}
+.rg-target::before,
+.rg-target::after {
+  content: "";
+  position: absolute;
+  background: var(--ink);
+}
+.rg-target::before { left: 50%; top: -7px; width: 2px; height: 27px; translate: -50% 0; }
+.rg-target::after { top: 50%; left: -7px; height: 2px; width: 27px; translate: 0 -50%; }
+.cur.is-hot .rg-target { opacity: 0; }
+
+/* ---------- reduced motion: instruments stay, the lag and the fling go ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .st-dot, .rl-frame, .mg-ring, .rg-frame { transition-duration: 0.01ms; }
+  .cf-chip { display: none; }
+}
+
+@media (max-width: 720px) {
+  .lab-zone h2 { font-size:var(--fs-section-sm); }
+  .zone-play { gap: 0.85rem 1rem; }
+  .zone-swatch { display: none; }
+}
+
+/* Card-stock cream ground for the ink-bleed variant — the coral needs a warm
+   paper to soak into, and #f3f4f6 (block--card) is the cooler gray one. */
+.block--cream { background: var(--card); color: var(--ink); }
+
+/* ---------- Блокова система ----------
+   Повнобічні кольорові блоки жили в globals.css і віддавались кожній сторінці
+   сайту, хоча публічні поверхні перейшли на обкладинку й редакційну сітку і
+   жодного .block уже не рендерять. Єдиний споживач — ця лабораторія, якій
+   потрібні великі поля різного кольору, щоб перевіряти курсор на кожному з
+   них. Тому правила переїхали сюди, до свого єдиного місця вжитку. */
+.block {
+  border-radius: 32px;
+  padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 4.25rem);
+  position: relative;
+  overflow: hidden;
+}
+.block-inner { max-width: 40rem; }
+.block p { margin: 0 0 1.05rem; max-width: 60ch; }
+.block p:last-child { margin-bottom: 0; }
+
+.block--card { border-radius: 40px; background: var(--cta-gray); color: var(--ink); }
+.block--candle { background: var(--candle); color: var(--ink); }
+.block--ink { background: var(--ink); color: var(--canvas); }
+.block--forest { background: var(--forest); color: var(--canvas); }
+.block--sky { background: var(--sky); color: var(--card); }
+
+@media (max-width: 720px) {
+  .block { border-radius: 22px; padding: 2.5rem 1.5rem; }
+  .block--card { border-radius: 40px; padding: 2rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .block { animation: rise 0.55s ease-out both; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -28,24 +28,25 @@ Two things a neighboring portfolio couldn't truthfully claim together:
 
 ## Operating Context
 
-Case studies are documented as structured project write-ups (role, duration, stack, process steps, outcomes). The first one is already built as a standalone, self-contained static HTML page (not a Next.js route) at `public/case-studies/birthday-website.html`, so it can carry its own embedded fonts/styles independent of the site shell.
+Case studies are documented as structured project write-ups (role, duration, stack, process steps, outcomes). They began as standalone static HTML pages in `public/`; that is no longer true. Every one is now a Next.js route rendered by a shared `EditorialPage` component from a plain content file in `src/app/_content/`, and the old `.html` addresses are kept alive by permanent redirects in `next.config.ts`. A new case study is one content file plus a three-line route; it needs no markup of its own.
 
 ## Capabilities and Constraints
 
-- Exactly one case study exists right now: the birthday website project (sweet27.vercel.app), built and documented. More are expected later but are not ready — the homepage should not promise a specific number or use "coming soon" filler.
-- No resume/CV file has been provided. Do not fabricate a download link.
+- Three case studies exist and are published: the AI career platform (under NDA, no visuals), Napa (habit tracking, a two-week sprint), and the birthday website (sweet27.vercel.app). One long-form article is published as well. Nothing here is filler, and the homepage still should not promise a count or use "coming soon" copy for work that is not ready.
+- The case studies are written in English; the article is written in Ukrainian. Neither has a translation, and none should be invented — a locale route that serves untranslated text is worse than no locale route.
+- No resume/CV file has been provided. Do not fabricate a download link. The two "Download CV" buttons currently point at `#` by the site owner's explicit decision, pending a real link.
 - Additional personal/career context exists in a separate Claude Project ("career-consultant") that is not accessible from this session — do not invent facts attributed to it.
 
 ## Brand Commitments
 
 - Name: Anastasiia Sihetii. Role line: "Product Designer · Design Engineer."
-- Site language: Ukrainian (matches the existing case study).
-- Visual world is already established by the shipped case study and is binding for the homepage, not just a suggestion: bento grid of full-bleed color blocks, coral hero, dark process block, huge geometric display numerals, dev-tool monospace labels, a rotated sticker badge, single-theme "poster/zine" commitment (no light/dark adaptive branching). New surfaces extend this system rather than introducing a second visual language.
+- Site language: the homepage exists in both English and Ukrainian, at `/` and `/uk`, with English as the default and as `x-default`. Individual work pages are single-language and declare their own language on `<article lang>`.
+- Visual world is binding and documented in DESIGN.md under the north star "The Poster and the Page": a plain-white cover whose wordmark runs under the crop, full-bleed one-colour case cards, poster-scale CTA pills, and a quiet single-column reading world for cases and articles. The earlier bento-block system it grew out of survives only on the internal `/cursor` lab page. Single-theme commitment holds: no light/dark branching anywhere. New surfaces extend this system rather than introducing a second visual language.
 
 ## Evidence on Hand
 
 - Case study: `public/case-studies/birthday-website.html` — real, complete, shipped project (Sweet27 birthday site, live at sweet27.vercel.app).
-- Contact: email sihetii.ai@gmail.com · GitHub github.com/AnastasiiaSihetii · LinkedIn https://www.linkedin.com/in/anastasiia-sihetii/.
+- Contact: email anastasiia.sihetii@gmail.com · GitHub github.com/AnastasiiaSihetii · LinkedIn https://www.linkedin.com/in/anastasiia-sihetii/.
 - No testimonials, client logos, press, or additional case studies exist yet — none should be fabricated.
 
 ## Product Principles

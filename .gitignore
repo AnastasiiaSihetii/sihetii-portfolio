@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local working sources (design exports, not shipped)
 /assets
+# 60 МБ сирих PNG-експортів кейсу Napa. У продакшн ідуть оброблені кадри з
+# public/case-studies/img/loops/ — ці лежать поруч як джерело й у git не місце.
+/loops app
