@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Anastasiia Sihetii — Product Designer · Design Engineer",
   description:
-    "Portfolio of Anastasiia Sihetii: I design products and build the front end myself, from idea to production.",
+    "I design product interfaces and build the front end myself. Case studies from agency, startup and enterprise work, and writing about design engineering.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

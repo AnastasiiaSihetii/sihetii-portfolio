@@ -12,8 +12,8 @@ const PATHS: Record<Lang, string> = { en: "/", uk: "/uk" };
 const TITLE = "Anastasiia Sihetii — Product Designer · Design Engineer";
 
 const DESCRIPTION: Record<Lang, string> = {
-  en: "Portfolio of Anastasiia Sihetii: I design products and build the front end myself, from idea to production.",
-  uk: "Портфоліо Anastasiia Sihetii: проєктую і збираю продукти сама, від ідеї до продакшену.",
+  en: "I design product interfaces and build the front end myself. Case studies from agency, startup and enterprise work, and writing about design engineering.",
+  uk: "Проєктую продуктові інтерфейси і сама збираю фронтенд. Кейси з агенційних, стартапних і enterprise-проєктів та тексти про дизайн-інженерію.",
 };
 
 const OG_LOCALE: Record<Lang, string> = { en: "en_US", uk: "uk_UA" };
@@ -36,7 +36,7 @@ export function homeMetadata(lang: Lang): Metadata {
     openGraph: {
       type: "website",
       url: PATHS[lang],
-      siteName: "Anastasiia Sihetii",
+      siteName: "sihetii.com",
       title: TITLE,
       description,
       locale: OG_LOCALE[lang],
