@@ -1,0 +1,28 @@
+/* ============================================================
+   Site cursor — the "Розтікання" instrument, chosen from /cursor
+   Drawn on a viewport-fixed canvas because any DOM parent here
+   would clip it (.block sets overflow:hidden).
+   ============================================================ */
+
+.site-cursor {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* The native pointer is only ever hidden once the drawn one is actually running,
+   and only on a device that has a pointer to hide. */
+html[data-site-cursor="on"],
+html[data-site-cursor="on"] * {
+  cursor: none;
+}
+
+/* A caret still has to be visible where text is being entered. */
+html[data-site-cursor="on"] input,
+html[data-site-cursor="on"] textarea,
+html[data-site-cursor="on"] [contenteditable="true"] {
+  cursor: text;
+}

@@ -230,6 +230,20 @@ A plain-white, non-block list pattern for external proof (talks, articles): a ph
 ### Language toggle (signature component)
 A compact EN/UA segmented pill (`.lang-toggle`) in the footer: a 2px-gap track on CTA Gray, two buttons at 13px/600 weight — deliberately below the type ramp, since this is a small secondary control, not content. The active language gets an ink pill; the inactive one sits transparent in Muted Slate until hover. Switching it re-renders the whole page's copy from `lang-content.tsx` and updates `<html lang>`.
 
+### Cursor (signature component — `src/app/site-cursor.tsx`)
+
+The only place in this system where the printed world gives way to something screen-native. On a fine pointer the native cursor is replaced by a drawn one in **CTA Blue** (`#134bff`) — the site's own blue, borrowed from the Download CV pill. It is a pointer proper, not an ornament: an arrow at rest, swapping to a pointing hand over anything interactive, both drawn a little larger than the system originals to sit with the rest of this world. Both keep their hotspot at the origin — the arrow's tip, the hand's fingertip — so the shape can change without the aim shifting. **The swap is the hover signal**; an earlier build grew the pointer a few pixels instead, which was far too quiet to read. Behind it trails a run of small geometric figures. Circle, diamond, square and triangle cycle at random, one dropped every 20px of travel, each smaller and eventually fainter than the one ahead of it, up to a 700px budget of path. Nearer figures simply cover further ones: no knockout, no blend mode, so each keeps its whole colour and hue alone holds neighbours apart. When the hand stops the run reels itself into the head along its own path in about seven tenths of a second.
+
+**The cursor palette is deliberately outside this system.** Five fluorescent hues carry the trail and none of them is a `colors` token:
+
+`#7c1aff` violet · `#ffcc00` golden · `#00ffd1` turquoise · `#ff0090` magenta · `#39ff14` green
+
+They sit at the chroma ceiling for their hue and are ordered so consecutive picks clash. This is the one sanctioned exception to the palette — it exists because the cursor is the single element that never sits *in* a composition, only over one, so it answers to legibility against every block colour rather than to the block palette itself.
+
+**The Keyline Rule.** The pointer carries a 3px white keyline, stroked along its outline and then filled over, so it follows the arrow and the hand alike. `#134bff` is not only the cursor's colour but also a surface here — both Download CV pills and the blue case card. The pills invert to ink on hover so the head still reads, but the case card is a large field of the exact same blue, and without the keyline the head disappears into it while still hiding the text underneath. On the cream and white sections, where the blue already reads, white on white is invisible; on blue, ink, forest and candle it is what keeps the cursor on screen.
+
+Over a text field the drawn pointer stands down and the native I-beam takes over, rather than the two stacking. Turned off entirely on coarse pointers, so touch keeps its native behaviour. Under `prefers-reduced-motion` the head is drawn and the trail is not. The animation loop stops itself once the hand is still and the trail has cleared, and wakes on the next pointer move.
+
 ### Navigation
 No persistent nav chrome exists in this system; wayfinding is scroll-based within a single page, reinforced by mono "↓ [next section name]" cues rather than a nav bar.
 
@@ -246,5 +260,6 @@ No persistent nav chrome exists in this system; wayfinding is scroll-based withi
 - **Don't** add `prefers-color-scheme` or `data-theme` branching — this system commits to one printed world, not an adaptive UI.
 - **Don't** add a shadow to anything except the sticker badge.
 - **Don't** use more than one sticker badge per viewport.
+- **Don't** reach for the five fluorescent cursor colors anywhere else — they are cursor-only and belong to no surface, border, or type in this system.
 - **Don't** introduce hard square corners; every rectangle carries at least an 8px radius.
 - **Don't** number case studies or index entries in a way that implies a series ("Кейс · 01") until a second entry actually exists.
