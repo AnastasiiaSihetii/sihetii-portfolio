@@ -166,10 +166,10 @@ export const content: Record<
         <br />
         {"I'm a "}
         <strong>product designer</strong>
-        {" moving into "}
-        <strong>design engineering</strong>
+        {" working as a "}
+        <strong>design engineer</strong>
         {
-          ". That shift comes from 5+ years designing product interfaces across agency, startup, and enterprise environments—most recently at OneReach.ai, where I designed a UI builder and an agent/skills-based task platform for enterprise users."
+          ". Behind that are 5+ years designing product interfaces across agency, startup, and enterprise environments—most recently at OneReach.ai, where I designed a UI builder and an agent/skills-based task platform for enterprise users."
         }
         <br />
         <br />
@@ -225,10 +225,10 @@ export const content: Record<
         <br />
         {"Я "}
         <strong>продукт-дизайнерка</strong>
-        {", яка переходить у "}
-        <strong>дизайн-інженерію</strong>
+        {", яка працює "}
+        <strong>дизайн-інженером</strong>
         {
-          ". Цей перехід — результат 5+ років проєктування продуктових інтерфейсів в агентствах, стартапах та enterprise-компаніях, останнім часом — в OneReach.ai, де я розробляла UI-конструктор і платформу задач на основі агентів/скілів для корпоративних користувачів."
+          ". За цим — 5+ років проєктування продуктових інтерфейсів в агентствах, стартапах та enterprise-компаніях, останнім часом — в OneReach.ai, де я розробляла UI-конструктор і платформу задач на основі агентів/скілів для корпоративних користувачів."
         }
         <br />
         <br />
