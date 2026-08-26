@@ -11,7 +11,8 @@ const isExternal = (href: string) => /^https?:\/\//.test(href);
    masthead printed on it, then the title, blurb and date. Kept in its own file so the
    article pages can render the same card instead of restating its markup. */
 export function ArticleCard({ article, lang }: { article: Article; lang: Lang }) {
-  const external = isExternal(article.href);
+  const href = article.href[lang];
+  const external = isExternal(href);
 
   return (
     <div className="article-row">
@@ -37,7 +38,7 @@ export function ArticleCard({ article, lang }: { article: Article; lang: Lang })
             структурі сторінки, а не лежати набором посилань поза нею. */}
         <h3 className="item-title">
           <a
-            href={article.href}
+            href={href}
             /* Нова вкладка — тільки тому, що лишаєш сайт. Власна стаття
                відкривається в цій самій, як і будь-який внутрішній перехід. */
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}

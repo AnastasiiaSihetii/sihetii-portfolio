@@ -34,7 +34,7 @@ export const OTHER_WORK: WorkLink[] = [
     thumb: "/case-birthday.jpg",
   },
   {
-    href: "/articles/design-engineer-2026",
+    href: "/en/articles/design-engineer-2026",
     title: "Design Engineer in 2026: the role, the pay, and the way in",
     desc: "A research piece on the design engineer role built on 2026 data only: current openings with salary ranges, the shared requirements across postings, a snapshot of the Ukrainian market, and the typical transition path from product design.",
     date: "[August 2026]",
@@ -51,5 +51,13 @@ export const MORE_LIMIT = 2;
 /** Усе, крім поточної сторінки, обрізане до MORE_LIMIT. Ліміт живе тут, а не на
  *  сторінці, щоб кожна нова сторінка успадкувала правило без окремої правки.
  *  Які саме записи потраплять, вирішує порядок OTHER_WORK — він вибудуваний. */
+/* Сторінка виключає себе з власного підвалу. Порівнюємо без мовного префікса:
+   у статті дві адреси на одну роботу, і українська версія не повинна
+   рекомендувати саму себе в перекладі. */
+const withoutLocale = (href: string) => href.replace(/^\/en(?=\/)/, "");
+
 export const otherWorkExcept = (href: string) =>
-  OTHER_WORK.filter((w) => w.href !== href).slice(0, MORE_LIMIT);
+  OTHER_WORK.filter((w) => withoutLocale(w.href) !== withoutLocale(href)).slice(
+    0,
+    MORE_LIMIT,
+  );

@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 export type Lang = "en" | "uk";
 
 export type Article = {
-  href: string;
+  /* Адреса на мову. Зовнішні матеріали мають ту саму адресу в обох — вони
+     лежать не в нас; своя стаття має дві, бо існує двома мовами. */
+  href: Record<Lang, string>;
   /* Platform name. Not printed in the copy any more — the masthead below says it —
      so this is what the logo announces to a screen reader. */
   source: string;
@@ -19,7 +21,10 @@ export type Article = {
 
 export const articles: Article[] = [
   {
-    href: "/articles/design-engineer-2026",
+    href: {
+      uk: "/articles/design-engineer-2026",
+      en: "/en/articles/design-engineer-2026",
+    },
     source: "sihetii.com",
     logo: { src: "/articles/logos/sihetii.svg", width: 1734, height: 479, scale: 0.7 },
     date: { en: "August 2026", uk: "Серпень 2026" },
@@ -46,7 +51,7 @@ export const articles: Article[] = [
     },
   },
   {
-    href: "https://journal.gen.tech/post/claude-design-figma-make-canva-magic",
+    href: { uk: "https://journal.gen.tech/post/claude-design-figma-make-canva-magic", en: "https://journal.gen.tech/post/claude-design-figma-make-canva-magic" },
     source: "High Bar Journal",
     logo: { src: "/articles/logos/high-bar-journal.png", width: 1020, height: 216, scale: 0.9 },
     date: { en: "May 2026", uk: "Травень 2026" },
@@ -86,7 +91,7 @@ export const articles: Article[] = [
     },
   },
   {
-    href: "https://dou.ua/forums/topic/58654/",
+    href: { uk: "https://dou.ua/forums/topic/58654/", en: "https://dou.ua/forums/topic/58654/" },
     source: "DOU",
     logo: { src: "/articles/logos/dou.svg", width: 58, height: 21, scale: 0.53 },
     date: { en: "April 2026", uk: "Квітень 2026" },
@@ -100,7 +105,7 @@ export const articles: Article[] = [
     },
   },
   {
-    href: "https://dou.ua/forums/topic/58173/",
+    href: { uk: "https://dou.ua/forums/topic/58173/", en: "https://dou.ua/forums/topic/58173/" },
     source: "DOU",
     logo: { src: "/articles/logos/dou.svg", width: 58, height: 21, scale: 0.53 },
     date: { en: "March 2026", uk: "Березень 2026" },

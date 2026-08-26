@@ -24,7 +24,7 @@
   --fs-4xl:3rem;        /* 48px    статистичні цифри */
   --fs-display:clamp(3.1rem,7.6vw,5.8rem);
   --fs-headline:clamp(2.4rem,5vw,3.5rem);
-  --fs-h1-case:clamp(2.35rem,8.6vw,2.9rem);
+  --fs-h1-case:clamp(2.75rem,8.6vw,2.9rem);
   --fs-h1-article:clamp(2rem,5vw,2.9rem);
   --fs-stat:clamp(2rem,4.4vw,2.9rem);
   --fs-section:clamp(2.25rem,4.5vw,2.5rem);
@@ -295,17 +295,21 @@ section p:last-child { margin-bottom: 0; }
   .site-footer .btn--cta-light { font-size:var(--fs-md); height: 96px; }
 }
 
-/* Small CTA variant used in the cover hero (Figma spec: 18px / -4% tracking) */
+/* Small CTA variant used in the cover hero. The Figma spec said 18px, but the
+   pill it sits in is 120px tall on a phone and stretches taller still beside the
+   bio on desktop — at 18px the label read as a caption inside a primary action. */
 .btn--cta-sm {
   height: auto;
   padding: 0.75rem 1.25rem;
-  font-size:var(--fs-sm);
+  font-size:var(--fs-lg);
   line-height: 1.4;
   letter-spacing: -0.04em;
   font-weight: 600;
   flex: 1 0 0;
 }
-.btn--cta-sm.btn--cta-light { height: 80px; flex: none; }
+/* The email address is long; it keeps a step below the CV label so the pill holds
+   its side padding on narrow phones — same trade the footer light CTA makes. */
+.btn--cta-sm.btn--cta-light { height: 80px; flex: none; font-size:var(--fs-md); }
 
 /* ---------- Instrument switch (footer language + cursor) ---------- */
 /* Chassis is still the system's 999px pill. What makes it this site's rather

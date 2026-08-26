@@ -225,7 +225,7 @@ export function HomePage({ lang }: { lang: Lang }) {
 
               <div className="article-list">
                 {articles.map((article) => (
-                  <ArticleCard key={article.href} article={article} lang={lang} />
+                  <ArticleCard key={article.href[lang]} article={article} lang={lang} />
                 ))}
               </div>
             </div>

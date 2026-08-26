@@ -64,7 +64,7 @@
   font-size: var(--fs-h1-case);
   font-weight: 600;
   line-height: 1.12;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   margin: 0 0 1.2rem;
 }
 .lead {
@@ -232,6 +232,9 @@
    волосяної рамки вони розтікаються по полотну. У кейсах кадри самодостатні,
    там рамка зайва. */
 .framedShots .shot img { border: 1px solid var(--hair); }
+/* 32px is drawn against a 1120px column. On a phone the frame is a third that
+   wide, and the same radius eats visibly into the image. */
+@media (max-width: 640px) { .shot img { border-radius: 20px; } }
 .shot figcaption { font-size: var(--fs-xs); color: var(--muted); margin: 0.8rem auto 0; line-height: 1.5; max-width: 39.5rem; }
 .hero { margin-top: 1.4rem; }
 /* Кадр над заголовком ділить перший екран із h1, тож висоту задає сам кадр:
