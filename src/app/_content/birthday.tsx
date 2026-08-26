@@ -116,7 +116,7 @@ export const birthday = {
       "/case-studies/img/birthday/03.jpg",
       "Two phone screens: the Day 1 agenda with its timed schedule, and the Wishlist screen explaining that a reservation is anonymous and can only be cancelled from the same device, with counters showing 6 free and 15 reserved ideas",
       "wide",
-      2560,
+      2048,
       2847,
     ),
 
