@@ -24,11 +24,16 @@ export function ArticleCard({ article, lang }: { article: Article; lang: Lang })
           height={122}
           className="article-thumb"
         />
+        {/* Марка видавця намальована на всю ширину свого файлу (до 1734px), а
+            стоїть у слоті 179px, з якого займає 88.8%. Без sizes next/image
+            бере ці намальовані розміри за справжні й віддає кандидата на 2048px
+            на слот у 159px. Тут стоїть реальна ширина слота. */}
         <Image
           src={article.logo.src}
           alt={article.source}
           width={article.logo.width}
           height={article.logo.height}
+          sizes="160px"
           className="article-logo"
           style={{ "--logo-scale": article.logo.scale } as CSSProperties}
         />
