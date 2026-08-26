@@ -123,10 +123,11 @@ export function SiteHeader({ width, cta, lang = "en" }: Props) {
       data-compact="false"
       style={width ? ({ "--sh-width": width } as React.CSSProperties) : undefined}
     >
+      {/* Скільки тексту позаду. Смуга дублює те, що вже несе смуга прокрутки,
+          тож для допоміжних технологій її немає — це підказка для ока.
+          Стоїть поза пігулкою: вона фіксована до кромки вікна, не до неї. */}
+      <span className={styles.progress} aria-hidden="true" />
       <nav className={styles.inner} aria-label="Site">
-        {/* Скільки тексту позаду. Смуга дублює те, що вже несе смуга прокрутки,
-            тож для допоміжних технологій її немає — це підказка для ока. */}
-        <span className={styles.progress} aria-hidden="true" />
         <Link href={lang === "uk" ? "/uk" : "/"} className={styles.brand} aria-label={chrome.homeLabel}>
           <Image src="/articles/logos/sihetii.svg" alt="sihetii.com" width={87} height={24} priority />
         </Link>
