@@ -16,6 +16,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
+      <head>
+        {/* Шрифт стоїть у @font-face всередині globals.css, тобто браузер
+            дізнається про нього аж коли розбере CSS — на один рейс пізніше,
+            ніж міг би. До того часу текст уже намальований запасним шрифтом,
+            а коли Fixel приходить, рядки перемальовуються: саме цей другий
+            малюнок і був LCP головної. Preload забирає той зайвий рейс. */}
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href="/fonts/fixel-variable-100900-var-0.woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         {children}
         <SiteCursor />
