@@ -301,7 +301,7 @@ section p:last-child { margin-bottom: 0; }
 .btn--cta-sm {
   height: auto;
   padding: 0.75rem 1.25rem;
-  font-size:var(--fs-lg);
+  font-size:var(--fs-2xl);
   line-height: 1.4;
   letter-spacing: -0.04em;
   font-weight: 600;
@@ -309,7 +309,7 @@ section p:last-child { margin-bottom: 0; }
 }
 /* The email address is long; it keeps a step below the CV label so the pill holds
    its side padding on narrow phones — same trade the footer light CTA makes. */
-.btn--cta-sm.btn--cta-light { height: 80px; flex: none; font-size:var(--fs-md); }
+.btn--cta-sm.btn--cta-light { height: 80px; flex: none; font-size:var(--fs-lg); }
 
 /* ---------- Instrument switch (footer language + cursor) ---------- */
 /* Chassis is still the system's 999px pill. What makes it this site's rather
@@ -446,8 +446,10 @@ section p:last-child { margin-bottom: 0; }
 @media (max-width: 900px) {
   .hero-cover-header { flex-direction: column; padding-top: 2.5rem; padding-bottom: 2.5rem; }
   .hero-cta-group { max-width: none; }
-  .btn--cta-sm { flex: none; height: 120px; }
-  .btn--cta-sm.btn--cta-light { height: 80px; }
+  /* Stacked, the pills lose the height they had standing beside the bio, so the
+     labels step down with them. */
+  .btn--cta-sm { flex: none; height: 120px; font-size:var(--fs-lg); }
+  .btn--cta-sm.btn--cta-light { height: 80px; font-size:var(--fs-md); }
 }
 
 /* Wordmark reads larger on phones; letters crop at the edges rather than shrink to fit */
