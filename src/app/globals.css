@@ -411,7 +411,19 @@ section p:last-child { margin-bottom: 0; }
 /* h1 сторінки — це марка. Заголовкова типографіка тут не потрібна жодна:
    елемент лише тримає зображення й зрізає його краї. */
 .hero-cover-title { margin: 0; width: 100%; line-height: 0; overflow: hidden; }
-.hero-cover-img { width: 100%; height: auto; display: block; }
+/* The mark's viewBox opens 120 units left of the "s" so phones can show the
+   glyph whole. Wide screens don't want that extra air, so they scale up by
+   1560/1440 and pull the overhang back off the left edge — the cover crops
+   exactly where it always did. */
+.hero-cover-img {
+  width: 108.3333%;
+  /* The global img reset would clamp that back to the container and strand the
+     overhang inside the frame, so the cover opts out of it. */
+  max-width: none;
+  margin-left: -8.3333%;
+  height: auto;
+  display: block;
+}
 .hero-cover-header {
   background: var(--canvas);
   display: flex;
@@ -454,7 +466,9 @@ section p:last-child { margin-bottom: 0; }
 
 /* Wordmark reads larger on phones; letters crop at the edges rather than shrink to fit */
 @media (max-width: 600px) {
-  .hero-cover-img { width: 145%; max-width: none; }
+  /* Phones keep the overhang: the "s" reads as an "s" instead of the quarter
+     glyph the old viewBox left behind. 169% holds the letters ~8% larger. */
+  .hero-cover-img { width: 169%; margin-left: 0; max-width: none; }
 }
 
 /* ---------- Cases (Figma node 98:102) ---------- */
@@ -868,11 +882,16 @@ section p:last-child { margin-bottom: 0; }
 
 @media (max-width: 720px) {
   .footer-side { gap: 2rem; width: 100%; }
+  /* Twice the signature: on a phone the sign-off is the last thing on screen
+     and 44.4% left it reading as a caption rather than a close. */
+  .footer-logo { width: 88.8%; }
   /* Копірайт закриває підвал: на вузькому екрані він іде після марки, а не
      перед нею. Ближче до марки, ніж до решти стосу, — це її підпис. */
   .footer-body { gap: 2rem; }
   .footer-copyright { margin-top: -0.5rem; }
-  .footer-badge { width: 6rem; }
+  /* The badge doubles with the mark it stands under: at 12rem it holds the same
+     share of the sign-off that 6rem held before the mark grew. */
+  .footer-badge { width: 12rem; }
 }
 
 @media (max-width: 720px) {
