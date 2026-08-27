@@ -1,4 +1,5 @@
 import type { Lang } from "../lang-content";
+import { HIDE_RESEARCH_ARTICLE, RESEARCH_ARTICLE_PATH } from "./site";
 
 /** Блок «Інші роботи» в підвалі внутрішніх сторінок. Сторінка бере звідси всі
  *  записи, крім себе самої — тому кожна нова сторінка з'являється в підвалі
@@ -20,7 +21,7 @@ export type WorkLink = {
 
 const SIHETII_LOGO = { src: "/articles/logos/sihetii.svg", scale: 0.7, alt: "sihetii.com" };
 
-export const OTHER_WORK: Record<Lang, WorkLink[]> = {
+const ALL_WORK: Record<Lang, WorkLink[]> = {
   en: [
     {
       href: "/case-studies/ai-career-platform",
@@ -83,6 +84,16 @@ export const OTHER_WORK: Record<Lang, WorkLink[]> = {
       logo: SIHETII_LOGO,
     },
   ],
+};
+
+/* Дослідження тимчасово зняте. Знімаємо з обох мов одночасно: sitemap.ts
+   парує записи за порядковим номером, і різна довжина списків його зламала б. */
+const keep = (w: WorkLink) =>
+  !HIDE_RESEARCH_ARTICLE || !w.href.includes(RESEARCH_ARTICLE_PATH);
+
+export const OTHER_WORK: Record<Lang, WorkLink[]> = {
+  en: ALL_WORK.en.filter(keep),
+  uk: ALL_WORK.uk.filter(keep),
 };
 
 /** Скільки рекомендацій показує підвал будь-якої внутрішньої сторінки.

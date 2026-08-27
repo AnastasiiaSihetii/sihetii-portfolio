@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import SiteCursor from "./site-cursor";
 import { SITE_URL } from "./site-url";
 import "./globals.css";
@@ -42,6 +43,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             })(window, document, "clarity", "script", "y46c2lbj60");
           `}
         </Script>
+        {/* Тільки прод. На прев'ю-деплоях і локально VERCEL_ENV інший, тож наші
+            власні заходи не потрапляють у статистику. Компонент, а не тег зі
+            сторінки GA: він сам рахує переходи між роутами, а звичайний gtag
+            побачив би лише перший вхід — сайт не перезавантажується. */}
+        {process.env.VERCEL_ENV === "production" && (
+          <GoogleAnalytics gaId="G-PEXJR9E0NH" />
+        )}
       </body>
     </html>
   );

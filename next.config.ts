@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
        тягнув удвічі більше, ніж треба. 2560 закриває цей слот точно. */
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840],
   },
+  /* Резюме віддаємо людям, але не пускаємо в пошук окремим документом: до нього
+     має вести сторінка сайту, а не видача. */
+  async headers() {
+    return [
+      {
+        source: "/anastasiia-sihetii-cv.pdf",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+    ];
+  },
   /* Сторінки колись лежали як статичні .html у public/. Зараз це роути,
      але старі адреси вже розійшлися посиланнями — тримаємо їх живими. */
   async redirects() {
@@ -15,6 +25,13 @@ const nextConfig: NextConfig = {
       { source: "/case-studies/birthday-website.html", destination: "/case-studies/birthday-website", permanent: true },
       { source: "/case-studies/loops-app.html", destination: "/case-studies/loops-app", permanent: true },
       { source: "/articles/design-engineer-2026.html", destination: "/articles/design-engineer-2026", permanent: true },
+      /* Дослідження тимчасово зняте — див. HIDE_RESEARCH_ARTICLE у
+         _content/site.ts. Редирект навмисно тимчасовий (307): постійний
+         осів би в кешах браузерів і в індексі, і повернути статтю на її
+         адресу було б значно важче, ніж прибрати ці два рядки.
+         Кожна мова веде на свою головну. */
+      { source: "/articles/design-engineer-2026", destination: "/uk", permanent: false },
+      { source: "/en/articles/design-engineer-2026", destination: "/", permanent: false },
     ];
   },
 };

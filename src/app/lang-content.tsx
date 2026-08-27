@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { HIDE_RESEARCH_ARTICLE, RESEARCH_ARTICLE_PATH } from "./_content/site";
 
 export type Lang = "en" | "uk";
 
@@ -19,7 +20,7 @@ export type Article = {
   desc: Record<Lang, ReactNode>;
 };
 
-export const articles: Article[] = [
+const ALL_ARTICLES: Article[] = [
   {
     href: {
       uk: "/articles/design-engineer-2026",
@@ -62,8 +63,8 @@ export const articles: Article[] = [
     desc: {
       en: (
         <>
-          Shared her experience using Claude Design, Figma Make, and Canva Magic Design for a new
-          feature in High Bar Journal by{" "}
+          I shared my experience using Claude Design, Figma Make, and Canva Magic Design for a
+          new feature in High Bar Journal by{" "}
           <a
             href="https://www.linkedin.com/company/genesis-technology-partners/"
             target="_blank"
@@ -100,7 +101,7 @@ export const articles: Article[] = [
       uk: "Дизайн-система з Figma MCP та Claude Code: як скоротити ручну роботу",
     },
     desc: {
-      en: "In her blog, designer Anastasiia shares how she integrates Claude Code and Figma MCP into her daily workflow — showing in practice how to build design systems from the terminal and turn days of routine work into hours of creative work.",
+      en: "How I integrate Claude Code and Figma MCP into my daily workflow: building design systems from the terminal, and turning days of routine work into hours of creative work.",
       uk: "Дизайнерка Анастасія у своєму блозі розповідає про інтеграцію Claude Code та Figma MCP у щоденну роботу. Вона на практиці показує як будувати дизайн-системи через термінал і перетворювати дні рутини на години творчості.",
     },
   },
@@ -114,11 +115,16 @@ export const articles: Article[] = [
       uk: "ШІ в щоденних задачах дизайнера: від брифу до прототипу за години",
     },
     desc: {
-      en: "What happens to a designer's work when AI becomes part of the daily routine? In her blog, designer Anastasiia shows in practice how she uses AI for research, UX copy, visuals, and prototypes — and how it shortens the work cycle from days to hours. She also shares which skills are now must-haves for designers.",
+      en: "What happens to a designer's work when AI becomes part of the daily routine? I show in practice how I use AI for research, UX copy, visuals, and prototypes, and how it shortens the work cycle from days to hours — plus which skills are now must-haves for designers.",
       uk: "Що відбувається з роботою дизайнера, коли AI стає частиною щоденної рутини? У своєму блозі дизайнерка Анастасія показує на практиці, як використовує ШІ для ресерчу, UX-копі, візуалів і прототипів і як це скорочує робочий цикл із днів до годин. А ще розповідає, які навички для дизайнерів тепер маст-хев.",
     },
   },
 ];
+
+/* Дослідження тимчасово зняте — див. HIDE_RESEARCH_ARTICLE у _content/site.ts. */
+export const articles: Article[] = ALL_ARTICLES.filter(
+  (a) => !HIDE_RESEARCH_ARTICLE || !a.href.uk.includes(RESEARCH_ARTICLE_PATH),
+);
 
 export const content: Record<
   Lang,

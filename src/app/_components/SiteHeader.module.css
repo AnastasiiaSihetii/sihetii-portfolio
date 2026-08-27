@@ -28,15 +28,21 @@
   --sh-lift: -0.375rem;
 }
 
-.inner {
+/* Місце в потоці — рівно смуга. Далі пігулка живе власним шаром, і аркуш,
+   розкриваючись, іде поверх тексту, а не перед ним. */
+.shell {
   position: relative;
+  min-height: 49px;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   max-width: var(--sh-width);
   margin: 0 auto;
-  padding: 4px 4px 4px 1.25rem;
-  min-height: 49px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   background: var(--canvas);
   border-radius: 999px;
   box-shadow: 0 1px 2px rgba(27, 22, 32, 0.05), 0 6px 20px rgba(27, 22, 32, 0.09);
@@ -55,7 +61,17 @@
      дорогою анімацією й гаснути після неї, а на липкому елементі вона висіла
      б увесь час життя сторінки. Пігулка й так на власному шарі — її тримає
      там і sticky, і власний transform. */
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Верхня смуга — те, чим пігулка була до меню. */
+.bar {
+  padding: 4px 4px 4px 1.25rem;
+  min-height: 49px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Смуга прочитаного. Стоїть на верхній кромці вікна, поверх усього: це
@@ -126,14 +142,20 @@
   color: var(--ink);
   white-space: nowrap;
 }
-.navLink .mark {
+.mark {
   padding-inline: 0.2em;
   margin-inline: -0.2em;
   border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 .navLink:hover .mark,
-.navLink:focus-visible .mark {
+.navLink:focus-visible .mark,
+.section:hover .mark,
+.section:focus-visible .mark,
+.profile:hover .mark,
+.profile:focus-visible .mark {
   background: var(--ink);
   color: var(--canvas);
 }
@@ -171,7 +193,186 @@
   /* На вузькому екрані пігулка й так майже на всю ширину — стискати її
      сильно нема куди, тому крок менший. */
   .header[data-compact="true"] { --sh-scale: 0.94; }
-  .inner { padding-left: 1rem; }
+  .bar { padding-left: 1rem; }
   .brand img { height: 20px; }
   .cta { font-size: var(--fs-xs); padding: 0 0.95rem; }
+}
+
+@media (max-width: 380px) {
+  /* Троє в рядку: марка, кнопка й меню. Кнопка віддає поля першою — вона
+     єдина з трьох, чия ширина набрана текстом. */
+  .bar { padding-left: 0.85rem; }
+  .cta { padding: 0 0.75rem; }
+  .actions { gap: 0.25rem; }
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Меню телефона: та сама пігулка, розгорнута в аркуш.
+
+   Другого власника тіні тут не з'являється — це той самий елемент, що змінив
+   форму, і тінь на ньому та сама. Тому й немає затемнення позаду: аркуш не
+   лежить поверх сторінки окремим вікном, він з неї виріс.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Кнопка меню. Кругла мішень 44px, гліф намальований, не взятий зі шрифту.
+   Вище брейкпоінта її немає взагалі: там у смузі стоїть «Кейси». */
+.menuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.menuBtn:hover,
+.menuBtn:focus-visible { background: var(--cta-gray); }
+
+.glyph line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  /* Точка обертання — центр viewBox, а не власна рамка риски: у горизонтальної
+     лінії вона нульової висоти, і fill-box дав би обертання навколо нічого. */
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.header[data-open="true"] .barTop { transform: rotate(45deg) translateY(3px); }
+.header[data-open="true"] .barBottom { transform: rotate(-45deg) translateY(-3px); }
+
+/* У відкритому меню пошта вже стоїть окремим рядком в аркуші, тож кнопка з
+   рядка йде. Гасне, а не зникає: місце за собою лишає, і хрестик не смикається
+   вбік у момент розкриття. */
+.header[data-open="true"] .cta {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0s linear 0.15s;
+}
+
+/* Відкритий аркуш не масштабується разом зі скролом: стиснення придумане для
+   пігулки в рядок, а не для півекрана тексту. */
+.header[data-open="true"] .inner {
+  border-radius: 32px;
+  transform: translateY(0) scale(1);
+}
+
+/* Прозорий перехоплювач кліку повз аркуш. Нижче пігулки за z-index і без
+   жодного кольору: він ловить тап, а не малює шар. */
+.catcher {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Висота від нуля до власної: 0fr → 1fr — єдиний спосіб анімувати «до
+   auto», не знаючи наперед, скільки там рядків. */
+.sheet {
+  display: none;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.header[data-open="true"] .sheet { grid-template-rows: 1fr; }
+
+.sheetInner {
+  min-height: 0;
+  overflow: hidden;
+}
+.sheetInner:focus-visible { outline: none; }
+.header[data-open="true"] .sheetInner {
+  /* Аркуш ніколи не виходить за екран: довший список починає скролитись
+     усередині себе, не тягнучи за собою сторінку. */
+  max-height: calc(100dvh - 7rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sheetBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  padding: 1.15rem 1.5rem 1.75rem;
+}
+
+/* Групи приходять по черзі — не кожна власною анімацією, а однією хвилею
+   слідом за розкриттям. Крок дрібний: аркуш і так відкривається за 0.42s. */
+.group {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.24s ease, transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.header[data-open="true"] .group {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--i) * 45ms + 60ms);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.05rem;
+}
+
+/* Пункти меню тим самим кеглем і насиченістю, що профілі в підвалі
+   головної: одна вага на всі текстові посилання поза прозою. */
+.section, .profile {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+  display: inline-block;
+}
+
+/* Дві дії аркуша. Ті самі пари кольорів, що в підвалі головної, у розмірі
+   рядка: синя веде до резюме, світла — до пошти. */
+.sheetActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sheetCta {
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+/* Резюме вище за пошту — та сама нерівність, що між двома слабами підвалу
+   головної, тільки в масштабі аркуша: синя дія важча, і видно це висотою. */
+.sheetCtaBlue {
+  min-height: 96px;
+  font-size: var(--fs-md);
+  background: var(--cta-blue);
+  color: var(--canvas);
+}
+.sheetCtaGray { background: var(--cta-gray); color: var(--ink); }
+.sheetCta:hover,
+.sheetCta:focus-visible { background: var(--ink); color: var(--canvas); }
+
+@media (max-width: 640px) {
+  /* Текстове «Кейси» йде в аркуш, де ті самі роботи названі поіменно. */
+  .navLink { display: none; }
+  .menuBtn { display: inline-flex; }
+  .sheet { display: grid; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet, .group, .glyph line { transition: none; }
+  .header[data-open="true"] .group { transition-delay: 0s; }
 }

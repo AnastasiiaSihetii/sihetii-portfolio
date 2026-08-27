@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { articles, content, type Lang } from "../lang-content";
-import { EMAIL } from "../_content/site";
+import { CV_PATH, EMAIL, PROFILES } from "../_content/site";
 import { birthday } from "../_content/birthday";
 import { birthdayUk } from "../_content/birthday.uk";
 import { careerPlatform } from "../_content/career-platform";
@@ -87,7 +87,7 @@ export function HomePage({ lang }: { lang: Lang }) {
             <Image
               src="/sihetii-wordmark.svg"
               alt="Anastasiia Sihetii — Product Designer · Design Engineer"
-              width={1440}
+              width={1560}
               height={356}
               priority
               className="hero-cover-img"
@@ -96,8 +96,14 @@ export function HomePage({ lang }: { lang: Lang }) {
           <div className="hero-cover-header">
             <p className="hero-cover-bio">{typo(t.bio)}</p>
             <div className="hero-cta-group">
-              {/* TODO: swap href for the Google Drive CV link once it's ready */}
-              <a href="#" className="btn btn--cta btn--cta-sm">
+              {/* Нова вкладка, а не download: рекрутер спершу гортає, і сайт
+                  лишається відкритим за резюме. */}
+              <a
+                href={CV_PATH}
+                target="_blank"
+                rel="noopener"
+                className="btn btn--cta btn--cta-sm"
+              >
                 {t.downloadCv}
               </a>
               <a
@@ -169,7 +175,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </section>
 
           {/* ---------- Public: talks (Figma: Portfolio 2026, node 99:625) ---------- */}
-          <section className="public-section" aria-labelledby="public-h">
+          <section id="public" className="public-section" aria-labelledby="public-h">
             <div className="public-group">
               <h2 className="section-heading" id="public-h">
                 {t.public.heading}
@@ -228,7 +234,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </section>
 
           {/* ---------- Articles ---------- */}
-          <section className="articles-section" aria-labelledby="articles-h">
+          <section id="articles" className="articles-section" aria-labelledby="articles-h">
             <div className="articles-group">
               <h2 className="section-heading" id="articles-h">
                 {t.articlesHeading}
@@ -246,8 +252,7 @@ export function HomePage({ lang }: { lang: Lang }) {
 
       {/* ---------- Footer: CTAs, grouped links, badge ---------- */}
       <footer className="site-footer">
-        {/* TODO: swap href for the Google Drive CV link once it's ready */}
-        <a href="#" className="btn btn--cta">
+        <a href={CV_PATH} target="_blank" rel="noopener" className="btn btn--cta">
           {t.downloadCv}
         </a>
         <a href={`mailto:${EMAIL}`} className="btn btn--cta btn--cta-light">
@@ -263,24 +268,11 @@ export function HomePage({ lang }: { lang: Lang }) {
             {/* One list, one column, hard left: six destinations read faster stacked
                 than split across two columns that invited a wrong reading order. */}
             <nav className="footer-link-group" aria-label={t.footer.profilesLabel}>
-              <a href="https://www.linkedin.com/in/anastasiia-sihetii/" target="_blank" rel="noopener noreferrer">
-                LinkedIn
-              </a>
-              <a href="https://github.com/AnastasiiaSihetii" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-              <a href="https://dou.ua/users/anastasiya-sigetij/" target="_blank" rel="noopener noreferrer">
-                Dou
-              </a>
-              <a href="https://www.behance.net/anastasiiasihetii" target="_blank" rel="noopener noreferrer">
-                Behance
-              </a>
-              <a href="https://dribbble.com/anastasiia_sihetii" target="_blank" rel="noopener noreferrer">
-                Dribbble
-              </a>
-              <a href="https://wa.me/380683540164" target="_blank" rel="noopener noreferrer">
-                WhatsApp
-              </a>
+              {PROFILES.map((p) => (
+                <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer">
+                  {p.label}
+                </a>
+              ))}
             </nav>
             <div className="footer-prefs">
               {/* Touch screens have no pointer to redraw, so there is nothing to
