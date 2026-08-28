@@ -102,7 +102,7 @@ $3 500 — медіана розробника, 4 541 респондент
 
 За 2026 рік на DOU вийшло щонайменше чотири матеріали від людей, які поєднують дизайн і код. [Марія Нечипорук](https://dou.ua/forums/topic/60864/) пише про скіли для Claude Code, [Денис Осадчий](https://dou.ua/forums/topic/61294/) про власний міст між Figma і Claude Code, [Олена Івлєва](https://dou.ua/forums/topic/59081/) про межу між генерацією і продуктом, [Яна Лізгова](https://dou.ua/forums/topic/60149/) про магазин, зібраний з Claude Code. І трохи пишу про це я.
 
-Поруч з'являються курси. [Володимир Мерленко](https://volomydyr.com/) з Cieden випустив плагін Design Engineer для Claude Code, доступ за донат у фонд KOLO. [Projector](https://prjctr.com/course/build-your-startup-with-ai) запускає «Build Your Startup with AI».
+Поруч з'являються курси. [Володимир Мерленко](https://volomydyr.com/) з Cieden випустив плагін Design Engineer для Claude Code, доступ за донат у фонд KOLO. [Денис Осадчий](https://www.md-academy.design/), окрім мосту з Figma, веде md.academy, академію дизайн-інженерів: шість сесій по 90 хвилин про Claude Code, дизайн-токени й дизайн-системи. [Алеся Бойко](https://uiuxpolyudsky-vibecode.com.ua/) з «UI/UX Design по-людськи» зібрала програму «AI Product Design & Design Engineering»: понад п'ятдесят відеоуроків, від промптів і Figma Make до Next.js, Supabase і деплою. [Projector](https://prjctr.com/course/build-your-startup-with-ai) запускає «Build Your Startup with AI».
 
 ### Як я шукала роботу інженером
 
@@ -235,7 +235,7 @@ $3 500 — медіана розробника, 4 541 респондент
 
 — DOU, матеріали українських design engineers 2026: [Марія Нечипорук](https://dou.ua/forums/topic/60864/), [Денис Осадчий](https://dou.ua/forums/topic/61294/), [Олена Івлєва](https://dou.ua/forums/topic/59081/), [Яна Лізгова](https://dou.ua/forums/topic/60149/)
 
-— [Володимир Мерленко: Design Engineer plugin для Claude Code](https://volomydyr.com/); [Anthropic, Dan Cary: Designing with Claude: From prompt to production](https://www.youtube.com/watch?v=Uvl-tRga98g) (Code w/ Claude 2026, Лондон, 19.05.2026); [Projector: Build Your Startup with AI](https://prjctr.com/course/build-your-startup-with-ai); [Neoversity: HCI & Design для епохи AI, архівна копія](http://web.archive.org/web/20260117192300/https://neoversity.com.ua/product-design-m)
+— [Володимир Мерленко: Design Engineer plugin для Claude Code](https://volomydyr.com/); [Anthropic, Dan Cary: Designing with Claude: From prompt to production](https://www.youtube.com/watch?v=Uvl-tRga98g) (Code w/ Claude 2026, Лондон, 19.05.2026); [md.academy: академія дизайн-інженерів, Денис Осадчий](https://www.md-academy.design/); [Алеся Бойко, UI/UX Design по-людськи: AI Product Design & Design Engineering](https://uiuxpolyudsky-vibecode.com.ua/); [Projector: Build Your Startup with AI](https://prjctr.com/course/build-your-startup-with-ai); [Neoversity: HCI & Design для епохи AI, архівна копія](http://web.archive.org/web/20260117192300/https://neoversity.com.ua/product-design-m)
 
 — [Claude Academy](https://academy.claude.com/), безкоштовні курси Anthropic по Claude Code (серпень 2026)
 
