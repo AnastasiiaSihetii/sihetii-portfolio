@@ -25,13 +25,12 @@ const nextConfig: NextConfig = {
       { source: "/case-studies/birthday-website.html", destination: "/case-studies/birthday-website", permanent: true },
       { source: "/case-studies/loops-app.html", destination: "/case-studies/loops-app", permanent: true },
       { source: "/articles/design-engineer-2026.html", destination: "/articles/design-engineer-2026", permanent: true },
-      /* Дослідження тимчасово зняте — див. HIDE_RESEARCH_ARTICLE у
-         _content/site.ts. Редирект навмисно тимчасовий (307): постійний
-         осів би в кешах браузерів і в індексі, і повернути статтю на її
-         адресу було б значно важче, ніж прибрати ці два рядки.
-         Кожна мова веде на свою головну. */
+      /* Український оригінал знятий із сайту: він вийшов на DOU, і головна
+         веде туди. Редирект навмисно тимчасовий (307): постійний осів би в
+         кешах браузерів і в індексі, і повернути статтю на її адресу було б
+         значно важче, ніж прибрати цей рядок. Англійський переклад редиректу
+         не має — на DOU його немає, тож картка на головній веде саме сюди. */
       { source: "/articles/design-engineer-2026", destination: "/uk", permanent: false },
-      { source: "/en/articles/design-engineer-2026", destination: "/", permanent: false },
     ];
   },
 };
