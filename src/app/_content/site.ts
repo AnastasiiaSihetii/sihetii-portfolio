@@ -20,8 +20,12 @@ export const PROFILES = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/anastasiia-sihetii/" },
   { label: "GitHub", href: "https://github.com/AnastasiiaSihetii" },
   { label: "Dou", href: "https://dou.ua/users/anastasiya-sigetij/" },
+  { label: "X", href: "https://x.com/sihetii_jpeg" },
   { label: "Behance", href: "https://www.behance.net/anastasiiasihetii" },
   { label: "Dribbble", href: "https://dribbble.com/anastasiia_sihetii" },
+  /* Адреса дана з реферальним хвостом Contra, який вказує сам на себе. У підвалі
+     він нічого не дає, тож лишилася канонічна частина. */
+  { label: "Contra", href: "https://contra.com/anastasiia_sihetii_cf0xfdw9" },
   { label: "WhatsApp", href: "https://wa.me/380683540164" },
 ] as const;
 

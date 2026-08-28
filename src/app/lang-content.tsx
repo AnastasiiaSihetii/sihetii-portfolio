@@ -21,6 +21,28 @@ export type Article = {
 };
 
 const ALL_ARTICLES: Article[] = [
+  /* Публікація дослідження на DOU. Той самий текст живе й на сайті, тож у списку
+     стоїть один рядок замість двох: українська веде на оригінал на DOU,
+     англійська — на переклад у себе. Марка на аркуші одна на обидві мови, і це
+     марка видання, де текст вийшов. Запис нижче з адресами сайту лишається під
+     прапорцем HIDE_RESEARCH_ARTICLE і в списки не потрапляє. */
+  {
+    href: {
+      uk: "https://dou.ua/forums/topic/61629/",
+      en: "/en/articles/design-engineer-2026",
+    },
+    source: "DOU",
+    logo: { src: "/articles/logos/dou.svg", width: 58, height: 21, scale: 0.53 },
+    date: { en: "August 2026", uk: "Серпень 2026" },
+    title: {
+      en: "Design Engineer in 2026: the role and who is hiring",
+      uk: "Design Engineer у 2026: хто це і хто наймає",
+    },
+    desc: {
+      en: "A research piece on the design engineer role built on 2026 data only: who is hiring globally and for how much, from Anthropic and Vercel to Cursor and Ramp, a consolidated profile of the requirements, a text analysis of 382 design and 147 front-end vacancies on the Ukrainian market, and the path in from product design.",
+      uk: "Дослідження ролі design engineer лише на даних 2026 року: хто наймає у світі і скільки платить, від Anthropic і Vercel до Cursor і Ramp, зведений профіль вимог, текстовий аналіз 382 дизайнерських і 147 фронтенд-вакансій українського ринку та шлях переходу з продуктового дизайну.",
+    },
+  },
   {
     href: {
       uk: "/articles/design-engineer-2026",
